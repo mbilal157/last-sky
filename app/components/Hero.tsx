@@ -84,7 +84,7 @@ const HeroSection = () => {
         />
       </div>
 
-      <div className="flex h-[13rem] w-[95%] items-center justify-center">
+      <div className="flex h-[13rem] w-[100%] items-center justify-center">
         <MaskContainer
           size={75}
           revealSize={200}

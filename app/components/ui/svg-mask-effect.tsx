@@ -141,7 +141,7 @@ export const MaskContainer = ({
   return (
     <motion.div
       ref={containerRef}
-      className={cn("relative h-screen overflow-hidden", className)}
+      className={cn("relative h-screen w-screen overflow-hidden", className)}
       animate={{
         backgroundColor: isHovered ? "var(--slate-900)" : "var(--white)",
       }}
