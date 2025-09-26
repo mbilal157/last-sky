@@ -89,12 +89,12 @@ const HeroSection = () => {
           size={75}
           revealSize={200}
           revealText={
-            <p className="mx-auto max-w-4xl text-center w-[85%] mb-2 text-4xl font-bold text-slate-600 dark:text-white">
+            <p className="mx-auto max-w-4xl text-center w-[85%] mb-2 text-4xl font-bold text-slate-600 dark:text-slate-200">
               Beyond <span className="text-blue-500">Limits</span>, Above The
               Skyline Of <span className="text-blue-500">Creativity</span>
             </p>
           }
-          className="h-[15rem] rounded-md text-white dark:text-black"
+          className="h-[15rem] rounded-md text-white "
         >
           <span className="mb-80">
             Where ideas turn into visual masterpieces

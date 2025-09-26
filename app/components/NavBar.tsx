@@ -4,12 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, ChevronDown } from "lucide-react";
 import { useTheme } from "next-themes";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [portfolioOpen, setPortfolioOpen] = useState(false); // for mobile dropdown
   const { theme, systemTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -19,7 +20,15 @@ export default function Navbar() {
   const links = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Portfolio", href: "#portfolio" },
+    {
+      name: "Portfolio",
+      href: "#portfolio",
+      dropdown: [
+        { name: "Graphic Design", href: "/portfolio/graphic-design" },
+        { name: "Video Editing", href: "/portfolio/video-editing" },
+        { name: "Photography", href: "/portfolio/photography" },
+      ],
+    },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -28,7 +37,6 @@ export default function Navbar() {
       ? "/images/logo1.png"
       : "/images/logo.png";
 
-  // ModeToggle simplified inline
   const ModeToggle = () => {
     if (!mounted) return null;
     return (
@@ -62,10 +70,41 @@ export default function Navbar() {
         </h2>
       </div>
 
-      {/* desktop links */}
+      {/* Desktop links */}
       <div className="hidden md:flex gap-6 ml-auto items-center">
         {links.map((link) => {
           const isActive = pathname === link.href;
+
+          if (link.dropdown) {
+            return (
+              <div key={link.name} className="relative group">
+                <button
+                  className={`flex items-center gap-1 font-medium text-base py-2 transition-colors duration-300 ${
+                    isActive
+                      ? "text-[#0098ff]"
+                      : "text-foreground hover:text-[#068de8]"
+                  }`}
+                >
+                  {link.name}
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+
+                {/* Dropdown menu on hover */}
+                <div className="absolute left-0 mt-2 w-48 bg-background shadow-md rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
+                  {link.dropdown.map((sub) => (
+                    <Link
+                      key={sub.name}
+                      href={sub.href}
+                      className="block px-4 py-2 text-sm hover:bg-[#0098ff] dark:hover:bg-gray-800"
+                    >
+                      {sub.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            );
+          }
+
           return (
             <Link
               key={link.name}
@@ -85,7 +124,7 @@ export default function Navbar() {
         <ModeToggle />
       </div>
 
-      {/* mobile button */}
+      {/* Mobile button */}
       <button
         className="ml-auto md:hidden text-foreground"
         onClick={() => setMenuOpen((s) => !s)}
@@ -93,11 +132,48 @@ export default function Navbar() {
         {menuOpen ? <X size={28} /> : <Menu size={28} />}
       </button>
 
-      {/* mobile menu */}
+      {/* Mobile menu */}
       {menuOpen && (
         <div className="absolute top-20 left-0 w-full bg-background text-foreground shadow-md md:hidden flex flex-col items-start p-6 gap-4 transition-colors duration-300">
           {links.map((link) => {
             const isActive = pathname === link.href;
+
+            if (link.dropdown) {
+              return (
+                <div key={link.name} className="w-full">
+                  <button
+                    onClick={() => setPortfolioOpen((o) => !o)}
+                    className={`w-full flex justify-between items-center font-medium text-lg py-2 transition-colors duration-300 ${
+                      isActive
+                        ? "text-blue-600"
+                        : "text-foreground hover:text-blue-600"
+                    }`}
+                  >
+                    {link.name}
+                    <ChevronDown
+                      className={`w-5 h-5 transition-transform ${
+                        portfolioOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  {portfolioOpen && (
+                    <div className="ml-4 flex flex-col gap-2">
+                      {link.dropdown.map((sub) => (
+                        <Link
+                          key={sub.name}
+                          href={sub.href}
+                          onClick={() => setMenuOpen(false)}
+                          className="block py-1 text-base hover:text-blue-600"
+                        >
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={link.name}
