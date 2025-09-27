@@ -27,6 +27,7 @@ export default function Navbar() {
         { name: "Graphic Design", href: "/portfolio/graphic-design" },
         { name: "Video Editing", href: "/portfolio/video-editing" },
         { name: "Photography", href: "/portfolio/photography" },
+        { name: "Animations", href: "/portfolio/animations" },
       ],
     },
     { name: "Contact", href: "#contact" },
@@ -86,7 +87,6 @@ export default function Navbar() {
                   }`}
                 >
                   {link.name}
-                  <ChevronDown className="w-4 h-4" />
                 </button>
 
                 {/* Dropdown menu on hover */}
@@ -111,8 +111,8 @@ export default function Navbar() {
               href={link.href}
               className={`relative font-medium text-base py-2 group transition-colors duration-300 ${
                 isActive
-                  ? "text-blue-600"
-                  : "text-foreground hover:text-blue-600"
+                  ? "text-[#0098ff]"
+                  : "text-foreground hover:text-[#0692ef]"
               }`}
             >
               {link.name}

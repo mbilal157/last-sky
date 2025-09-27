@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
 
 export default function VideoEditing() {
   const { theme } = useTheme();
+  const router = useRouter();
 
   const services = [
     {
@@ -13,35 +14,35 @@ export default function VideoEditing() {
       description:
         "Quick, engaging edits for Instagram, TikTok, and YouTube Shorts that grab attention instantly.",
       image: "/images/services/reels.jpg",
-      link: "/portfolio/video-editing/reels",
+      link: "/portfolio/video-editing",
     },
     {
       title: "Corporate / Promo Videos",
       description:
         "Professional corporate and promotional video edits that showcase your brand in style.",
       image: "/images/services/corporate.jpg",
-      link: "/portfolio/video-editing/corporate",
+      link: "/portfolio/video-editing",
     },
     {
       title: "Event Highlights",
       description:
         "Memorable highlight videos for weddings, parties, and events that tell a story worth sharing.",
       image: "/images/services/events.jpg",
-      link: "/portfolio/video-editing/events",
+      link: "/portfolio/video-editing",
     },
     {
       title: "Motion Graphics",
       description:
         "Dynamic motion graphics and animated typography videos that bring ideas to life.",
       image: "/images/services/motion.jpg",
-      link: "/portfolio/video-editing/motion-graphics",
+      link: "/portfolio/video-editing",
     },
     {
       title: "Typography Videos",
       description:
         "Stylish text-based videos with smooth transitions and bold animations for maximum impact.",
       image: "/images/services/typography.jpg",
-      link: "/portfolio/video-editing/typography",
+      link: "/portfolio/video-editing",
     },
   ];
 
@@ -108,12 +109,12 @@ export default function VideoEditing() {
               <p className="text-gray-700 dark:text-gray-300 flex-1">
                 {service.description}
               </p>
-              <Link
-                href={service.link}
+              <button
+                onClick={() => router.push(service.link)}
                 className="mt-4 inline-block px-4 py-2 text-sm font-medium text-white bg-[#0098ff] rounded-lg hover:bg-blue-700 transition self-start"
               >
                 View Work →
-              </Link>
+              </button>
             </div>
           </div>
         ))}
@@ -129,18 +130,18 @@ export default function VideoEditing() {
           into polished, professional videos.
         </p>
         <div className="flex justify-center gap-4">
-          <Link
-            href="/portfolio"
+          <button
+            onClick={() => router.push("/portfolio")}
             className="px-6 py-3 bg-white text-[#0098ff] rounded-lg font-medium hover:bg-gray-200 transition"
           >
             Explore Portfolio
-          </Link>
-          <Link
-            href="/contact"
+          </button>
+          <button
+            onClick={() => router.push("/contact")}
             className="px-6 py-3 bg-black text-white rounded-lg font-medium hover:bg-gray-800 transition"
           >
             Get in Touch
-          </Link>
+          </button>
         </div>
       </section>
     </div>

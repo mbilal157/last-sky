@@ -149,7 +149,7 @@ export const MaskContainer = ({
     >
       {/* Mask Ball */}
       <motion.div
-        className="absolute flex h-full w-full items-center justify-center bg-[#0098FF] text-6xl [mask-image:url(/mask.svg)] [mask-repeat:no-repeat] dark:bg-white"
+        className="absolute flex h-full w-full items-center justify-center bg-[#0098FF] dark:text-white text-6xl [mask-image:url(/mask.svg)] [mask-repeat:no-repeat] dark:bg-white"
         animate={{
           maskPosition: `${Math.max(
             0,
@@ -187,7 +187,7 @@ export const MaskContainer = ({
       </motion.div>
 
       {/* Always reveal text below */}
-      <div className="flex h-full w-full items-center justify-center">
+      <div className="flex h-full w-full dark:text-white items-center justify-center">
         {revealText}
       </div>
     </motion.div>

@@ -2,14 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Instagram,
-  Facebook,
-  MessageCircle,
-} from "lucide-react";
+import { Mail, Phone, Instagram, Facebook } from "lucide-react";
+import Link from "next/link";
 
 export default function ContactUs() {
   const { theme, systemTheme } = useTheme();
@@ -77,7 +71,7 @@ export default function ContactUs() {
                     isDark ? "text-gray-300" : "text-gray-600"
                   } max-w-sm`}
                 >
-                  skylineproduction@yahoo.com
+                  theskylineproduction@yahoo.com
                 </p>
               </div>
             </div>
@@ -100,30 +94,7 @@ export default function ContactUs() {
                     isDark ? "text-gray-300" : "text-gray-600"
                   } max-w-sm`}
                 >
-                  +92 302 5070320
-                </p>
-              </div>
-            </div>
-
-            {/* Address */}
-            <div className="flex flex-row items-center md:items-start text-center gap-4 md:text-left">
-              <div className="p-3 bg-[#0098ff] rounded-xl w-fit">
-                <MapPin className="w-6 h-6 text-white" />
-              </div>
-              <div className="flex flex-col">
-                <h3
-                  className={`text-xl font-semibold ${
-                    isDark ? "text-white" : ""
-                  }`}
-                >
-                  Visit us
-                </h3>
-                <p
-                  className={`${
-                    isDark ? "text-gray-300" : "text-gray-600"
-                  } max-w-sm`}
-                >
-                  13 Street Sector II G1 Islamabad
+                  +92 308 0444057
                 </p>
               </div>
             </div>
@@ -138,15 +109,32 @@ export default function ContactUs() {
                 Follow us on
               </h3>
               <div className="flex gap-4">
-                <div className="p-3 bg-[#0098ff] rounded-xl w-fit text-white transition-transform duration-300 hover:rotate-12">
+                <Link
+                  href="https://www.instagram.com/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-[#0098ff] rounded-xl w-fit text-white transition-transform duration-300 hover:rotate-12"
+                >
                   <Instagram className="w-6 h-6" />
-                </div>
-                <div className="p-3 bg-[#0098ff] rounded-xl w-fit text-white transition-transform duration-300 hover:rotate-12">
+                </Link>
+
+                <Link
+                  href="https://www.instagram.com/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-[#0098ff] rounded-xl w-fit text-white transition-transform duration-300 hover:rotate-12"
+                >
                   <Facebook className="w-6 h-6" />
-                </div>
-                <div className="p-3 bg-[#0098ff] rounded-xl w-fit text-white transition-transform duration-300 hover:rotate-12">
-                  <MessageCircle className="w-6 h-6" />
-                </div>
+                </Link>
+
+                <Link
+                  href="https://www.instagram.com/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-[#0098ff] rounded-xl w-fit text-white transition-transform duration-300 hover:rotate-12"
+                >
+                  <Facebook className="w-6 h-6" />
+                </Link>
               </div>
             </div>
           </div>
@@ -221,14 +209,11 @@ export default function ContactUs() {
                   }`}
                 >
                   <option value="">Select a service</option>
-                  <option value="web-development">Web Development</option>
                   <option value="graphic-design">Graphic Design</option>
-                  <option value="filmography">Filmography</option>
-                  <option value="video-graphy">Video Graphy</option>
                   <option value="video-editing">Video Editing</option>
-                  <option value="creative-media">
-                    Creative Media Solutions
-                  </option>
+                  <option value="web-development">Web Development</option>
+                  <option value="filmography">Photography</option>
+                  <option value="video-graphy">Animations</option>
                 </select>
               </div>
 

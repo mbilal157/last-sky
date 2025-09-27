@@ -2,16 +2,13 @@
 
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Play, X, Eye, Clock, Calendar, Volume2, VolumeX } from "lucide-react";
+import { Play, X, Volume2, VolumeX } from "lucide-react";
 import Image from "next/image";
 // 🔹 Types
 type VideoProject = {
   id: number;
   title: string;
   description: string;
-  duration: string;
-  views: string;
-  date: string;
   thumbnail: string;
   videoUrl: string;
 };
@@ -43,9 +40,6 @@ const videoProjects: VideoProjects = {
       title: "Random",
       description:
         "A vibrant motion graphics piece showcasing cosmic energy and particle effects",
-      duration: "1:45",
-      views: "12.4K",
-      date: "2023-11-15",
       thumbnail: "/images/portfolio/THUMBNAIL/THUMBNAIL (9).jpg",
       videoUrl: "/videos/motiongraphicsound.mp4",
     },
@@ -53,9 +47,7 @@ const videoProjects: VideoProjects = {
       id: 2,
       title: "Urban Motion Series",
       description: "Dynamic urban landscapes with motion graphic overlays",
-      duration: "2:30",
-      views: "8.7K",
-      date: "2023-10-22",
+
       thumbnail: "/api/placeholder/300/200",
       videoUrl: "#",
     },
@@ -64,9 +56,7 @@ const videoProjects: VideoProjects = {
       title: "Abstract Fluid Dynamics",
       description:
         "Fluid simulation with vibrant color transitions and abstract forms",
-      duration: "1:15",
-      views: "15.2K",
-      date: "2023-12-05",
+
       thumbnail: "/api/placeholder/300/200",
       videoUrl: "#",
     },
@@ -74,9 +64,7 @@ const videoProjects: VideoProjects = {
       id: 4,
       title: "Product Reveal Animation",
       description: "Sleek product reveal with dynamic motion graphics",
-      duration: "0:45",
-      views: "23.8K",
-      date: "2023-09-18",
+
       thumbnail: "/api/placeholder/300/200",
       videoUrl: "#",
     },
@@ -86,9 +74,7 @@ const videoProjects: VideoProjects = {
       id: 1,
       title: "Dynamic Promo Typography",
       description: "Glowing neon text animation with urban backdrop",
-      duration: "1:20",
-      views: "18.3K",
-      date: "2023-11-28",
+
       thumbnail: "/api/placeholder/300/200",
       videoUrl: "/videos/typography/DYNAMIC PROMO TYPOGRAPHY SOUND.mp4",
     },
@@ -97,9 +83,7 @@ const videoProjects: VideoProjects = {
       title: "Kinetic Typography",
       description:
         "Text animation with liquid metal properties and reflections",
-      duration: "0:55",
-      views: "22.1K",
-      date: "2023-10-05",
+
       thumbnail: "/videos/typography/KINETIC TYPOGRAPHY SOUND 2.mp4",
       videoUrl: "#",
     },
@@ -108,9 +92,7 @@ const videoProjects: VideoProjects = {
       title: "Skyline Typography",
       description:
         "Text animation with liquid metal properties and reflections",
-      duration: "0:55",
-      views: "22.1K",
-      date: "2023-10-05",
+
       thumbnail: "/api/placeholder/300/200",
       videoUrl: "/videos/typography/SKYLINE TYPOGRAPHY SOUND.mp4",
     },
@@ -119,9 +101,7 @@ const videoProjects: VideoProjects = {
       title: "Typography opener",
       description:
         "Text animation with liquid metal properties and reflections",
-      duration: "0:55",
-      views: "22.1K",
-      date: "2023-10-05",
+
       thumbnail: "/api/placeholder/300/200",
       videoUrl: "/videos/typography/TYPOGRAPHY OPENER SOUND.mp4",
     },
@@ -130,9 +110,7 @@ const videoProjects: VideoProjects = {
       title: "General Typography",
       description:
         "Text animation with liquid metal properties and reflections",
-      duration: "0:55",
-      views: "22.1K",
-      date: "2023-10-05",
+
       thumbnail: "/api/placeholder/300/200",
       videoUrl: "/videos/typography/TYPOGRAPHYYYY SOUND.mp4",
     },
@@ -142,9 +120,7 @@ const videoProjects: VideoProjects = {
       id: 1,
       title: "Rhythmic Text Animation",
       description: "Text synchronized to music rhythm with dynamic movement",
-      duration: "2:15",
-      views: "14.6K",
-      date: "2023-12-12",
+
       thumbnail: "/api/placeholder/300/200",
       videoUrl: "/videos/real-estate-promo/REAL ESTATE INTRO PROMO SOUND.mp4",
     },
@@ -152,9 +128,7 @@ const videoProjects: VideoProjects = {
       id: 2,
       title: "3D Kinetic Words",
       description: "Three-dimensional text moving through virtual space",
-      duration: "1:40",
-      views: "9.8K",
-      date: "2023-11-03",
+
       thumbnail: "/api/placeholder/300/200",
       videoUrl: "/videos/real-estate-promo/REAL ESTATE PROMO SOUND.mp4",
     },
@@ -162,9 +136,7 @@ const videoProjects: VideoProjects = {
       id: 3,
       title: "3D Kinetic Words",
       description: "Three-dimensional text moving through virtual space",
-      duration: "1:40",
-      views: "9.8K",
-      date: "2023-11-03",
+
       thumbnail: "/api/placeholder/300/200",
       videoUrl: "/videos/real-estate-promo/REAL ESTATE SLIDESHOW SOUND.mp4",
     },
@@ -172,9 +144,7 @@ const videoProjects: VideoProjects = {
       id: 4,
       title: "3D Kinetic Words",
       description: "Three-dimensional text moving through virtual space",
-      duration: "1:40",
-      views: "9.8K",
-      date: "2023-11-03",
+
       thumbnail: "/api/placeholder/300/200",
       videoUrl: "/videos/real-estate-promo/REAL ESTATE SLIDESHOW.mp4",
     },
@@ -182,9 +152,7 @@ const videoProjects: VideoProjects = {
       id: 5,
       title: "3D Kinetic Words",
       description: "Three-dimensional text moving through virtual space",
-      duration: "1:40",
-      views: "9.8K",
-      date: "2023-11-03",
+
       thumbnail: "/api/placeholder/300/200",
       videoUrl: "/videos/real-estate-promo/REAL ESTATE STYLISH PROMO SOUND.mp4",
     },
@@ -194,9 +162,7 @@ const videoProjects: VideoProjects = {
       id: 1,
       title: "Fashion Promo",
       description: "Energetic promo video for a tech startup launch",
-      duration: "2:00",
-      views: "32.5K",
-      date: "2023-12-01",
+
       thumbnail: "/api/placeholder/300/200",
       videoUrl: "/videos/fashion-promo/FASHION PROMO 2 SOUND.mp4",
     },
@@ -204,9 +170,7 @@ const videoProjects: VideoProjects = {
       id: 2,
       title: "Corporate Brand Story",
       description: "Narrative-driven corporate branding video",
-      duration: "3:20",
-      views: "19.7K",
-      date: "2023-10-14",
+
       thumbnail: "/api/placeholder/300/200",
       videoUrl: "/videos/fashion-promo/STOMP FASHION SOUND.mp4",
     },
@@ -328,8 +292,8 @@ const VideoCard = ({ video, onPlay }: VideoCardProps) => {
           <Image
             src={video.thumbnail}
             alt={video.title}
-            width={400} // ⚠️ required
-            height={225} // ⚠️ required
+            width={400}
+            height={225}
             className="w-full h-full object-cover"
           />
           <motion.div
@@ -351,21 +315,6 @@ const VideoCard = ({ video, onPlay }: VideoCardProps) => {
           <p className="text-neutral-600 dark:text-neutral-300 text-sm mb-3 line-clamp-2">
             {video.description}
           </p>
-
-          <div className="flex justify-between items-center text-xs text-neutral-500 dark:text-neutral-400">
-            <div className="flex items-center">
-              <Clock size={14} className="mr-1" />
-              <span>{video.duration}</span>
-            </div>
-            <div className="flex items-center">
-              <Eye size={14} className="mr-1" />
-              <span>{video.views}</span>
-            </div>
-            <div className="flex items-center">
-              <Calendar size={14} className="mr-1" />
-              <span>{new Date(video.date).toLocaleDateString()}</span>
-            </div>
-          </div>
         </div>
       </div>
     </motion.div>

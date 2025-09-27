@@ -28,7 +28,7 @@ const portfolioItems = [
     category: "Video Editing",
     title: "Instagram Post",
     subtitle: "Engaging edits tailored for Instagram posts",
-    video: "/videos/reels.mp4",
+    image: "/portfolio/whyus.jpg",
     href: "/portfolio/video-editing",
   },
   {
@@ -204,16 +204,7 @@ export default function Portfolio() {
 
                 {/* Media */}
                 <CardItem translateZ="100" className="mt-4">
-                  {item.video ? (
-                    <video
-                      src={item.video}
-                      controls
-                      loop
-                      muted
-                      autoPlay
-                      className="h-56 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-                    />
-                  ) : (
+                  {
                     <Image
                       src={item.image as string}
                       alt={item.title}
@@ -221,7 +212,7 @@ export default function Portfolio() {
                       height={400}
                       className="h-56 w-full object-cover rounded-xl group-hover/card:shadow-xl"
                     />
-                  )}
+                  }
                 </CardItem>
               </CardBody>
             </CardContainer>

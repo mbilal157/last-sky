@@ -12,8 +12,8 @@ import ContactUs from "./components/Contact";
 import Footer from "./components/Footer";
 import CursorCircle from "./components/ui/cusor";
 
-// ✅ Updated LogoIntro now uses ResumeIconBox (cut-out resume icon)
 import LogoIntro from "./components/ui/Logo-intro";
+import ReviewsSection from "./components/Reviews";
 
 export default function Home() {
   const [introDone, setIntroDone] = useState(false);
@@ -37,6 +37,7 @@ export default function Home() {
             <FeaturesSection />
             <CreativeServices />
             <Portfolio />
+            <ReviewsSection />
             <ContactUs />
             <Footer />
           </motion.div>

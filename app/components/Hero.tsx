@@ -78,7 +78,7 @@ const HeroSection = () => {
           alt="logo"
           width={80}
           height={80}
-          className={`w-full h-full object-contain  transition-transform duration-300 hover:scale-110 ${
+          className={`w-full h-full object-contain mt-18  transition-transform duration-300 hover:scale-110 ${
             resolvedTheme === "dark" ? "block" : "hidden"
           }`}
         />
@@ -89,12 +89,12 @@ const HeroSection = () => {
           size={75}
           revealSize={200}
           revealText={
-            <p className="mx-auto max-w-4xl text-center w-[85%] mb-2 text-4xl font-bold text-slate-600 dark:text-slate-200">
+            <p className="mx-auto max-w-4xl text-center w-[85%] mb-2 text-4xl font-bold text-neutral-500 dark:text-white">
               Beyond <span className="text-blue-500">Limits</span>, Above The
               Skyline Of <span className="text-blue-500">Creativity</span>
             </p>
           }
-          className="h-[15rem] rounded-md text-white "
+          className="h-[15rem] rounded-md"
         >
           <span className="mb-80">
             Where ideas turn into visual masterpieces
@@ -103,7 +103,7 @@ const HeroSection = () => {
       </div>
 
       {/* Buttons */}
-      <div className="flex gap-4">
+      <div className="flex gap-4 mb-6">
         <button className="px-6 py-2 rounded-2xl bg-[#0098ff] text-white hover:bg-[#068be3] transform hover:scale-105 transition-transform duration-200 flex items-center gap-2">
           Explore Our Work
           <span>→</span>
