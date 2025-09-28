@@ -56,7 +56,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full h-20 px-4 md:px-12 flex items-center bg-background text-foreground shadow-md z-50 transition-colors duration-300">
+    <nav className="fixed top-0 left-0 w-full h-20 dark:border-white border-b-2 px-4 md:px-12 flex items-center bg-background text-foreground shadow-md z-50 transition-colors duration-300">
       {/* Logo */}
       <div className="flex items-center gap-2">
         <Image
@@ -87,15 +87,16 @@ export default function Navbar() {
                   }`}
                 >
                   {link.name}
+                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                 </button>
 
                 {/* Dropdown menu on hover */}
-                <div className="absolute left-0 mt-2 w-48 bg-background shadow-md rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
+                <div className="absolute left-0 w-48 bg-white  shadow-md rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
                   {link.dropdown.map((sub) => (
                     <Link
                       key={sub.name}
                       href={sub.href}
-                      className="block px-4 py-2 text-sm hover:bg-[#0098ff] dark:hover:bg-gray-800"
+                      className="block px-4 py-2 text-sm dark:bg-black dark:text-white hover:bg-[#0098ff] dark:hover:bg-gray-800"
                     >
                       {sub.name}
                     </Link>

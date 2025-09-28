@@ -27,10 +27,23 @@ body {
   background: hsl(var(--background));
 }
 
+
 .hero-background {
   background-image: var(--hero-bg-image);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   transition: background-image 0.3s ease;
+}
+@theme inline {
+  --animate-scroll: scroll var(--animation-duration, 120s) var(--animation-direction, forwards) linear infinite;
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 0.5rem));
+    }
+  }
 }

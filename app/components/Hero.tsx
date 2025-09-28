@@ -63,7 +63,7 @@ const HeroSection = () => {
       )}
 
       {/* Logo */}
-      <div className="w-30 h-25 mb-6">
+      <div className="w-30 h-25">
         <Image
           src="/images/logo.png"
           alt="logo"
@@ -78,38 +78,38 @@ const HeroSection = () => {
           alt="logo"
           width={80}
           height={80}
-          className={`w-full h-full object-contain mt-18  transition-transform duration-300 hover:scale-110 ${
+          className={`w-full h-full object-contain  transition-transform duration-300 hover:scale-110 ${
             resolvedTheme === "dark" ? "block" : "hidden"
           }`}
         />
       </div>
 
-      <div className="flex h-[13rem] w-[100%] items-center justify-center">
+      <div className="flex h-[8rem] w-[100%] items-center justify-center">
         <MaskContainer
           size={75}
           revealSize={200}
           revealText={
-            <p className="mx-auto max-w-4xl text-center w-[85%] mb-2 text-4xl font-bold text-neutral-500 dark:text-white">
+            <p className="mx-auto max-w-4xl text-center w-[85%] mb-2 text-4xl font-bold">
               Beyond <span className="text-blue-500">Limits</span>, Above The
               Skyline Of <span className="text-blue-500">Creativity</span>
             </p>
           }
           className="h-[15rem] rounded-md"
         >
-          <span className="mb-80">
-            Where ideas turn into visual masterpieces
-          </span>
+          <p className="mx-auto text-center text-3xl font-extrabold tracking-wide">
+            Where Ideas Turns Into Visual Masterpieces
+          </p>
         </MaskContainer>
       </div>
 
       {/* Buttons */}
-      <div className="flex gap-4 mb-6">
+      <div className="flex gap-4 ">
         <button className="px-6 py-2 rounded-2xl bg-[#0098ff] text-white hover:bg-[#068be3] transform hover:scale-105 transition-transform duration-200 flex items-center gap-2">
-          Explore Our Work
+          Our Portfolio
           <span>→</span>
         </button>
         <button className="px-6 py-2 rounded-2xl border border-[#0098ff] text-[#0098ff] hover:bg-blue-50 dark:hover:bg-blue-900/30 transform hover:scale-105 transition-transform duration-200">
-          Get started today
+          Contact us
         </button>
       </div>
     </section>

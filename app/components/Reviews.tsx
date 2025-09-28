@@ -49,6 +49,7 @@ const InfiniteMovingCards = ({
   direction = "left",
   pauseOnHover = true,
   className,
+  speed,
 }: {
   items: {
     quote: string;
@@ -59,6 +60,7 @@ const InfiniteMovingCards = ({
   direction?: "left" | "right";
   pauseOnHover?: boolean;
   className?: string;
+  speed?: number;
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
@@ -78,11 +80,15 @@ const InfiniteMovingCards = ({
         direction === "left" ? "forwards" : "reverse"
       );
 
-      containerRef.current.style.setProperty("--animation-duration", "40s");
+      // use speed prop instead of hardcoding
+      containerRef.current.style.setProperty(
+        "--animation-duration",
+        `${speed}s`
+      );
 
       setStart(true);
     }
-  }, [direction]);
+  }, [direction, speed]);
 
   return (
     <div
@@ -104,7 +110,7 @@ const InfiniteMovingCards = ({
           <li
             key={`${item.name}-${idx}`}
             className={cn(
-              "relative w-[350px] max-w-full shrink-0 rounded-2xl border px-8 pt-16 pb-8 md:w-[450px]",
+              "relative w-[350px] max-w-full shrink-0 rounded-2xl border px-8 pt-16 pb-8 md:w-[450px] transition-transform duration-300 ease-in-out hover:scale-102 hover:shadow-2xl",
               theme === "dark"
                 ? "bg-bg3 border-gray-700 text-white"
                 : "bg-white border-zinc-200 text-black"
@@ -170,7 +176,7 @@ export default function ReviewsSection() {
       >
         Reviews of Production House
       </h2>
-      <InfiniteMovingCards items={items} />
+      <InfiniteMovingCards items={items} speed={100} />
     </section>
   );
 }

@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "motion/react";
 import { cn } from "../../../lib/utils";
+import { useTheme } from "next-themes";
 
 export const MaskContainer = ({
   children,
@@ -16,6 +17,9 @@ export const MaskContainer = ({
   revealSize?: number;
   className?: string;
 }) => {
+  const { theme, systemTheme } = useTheme();
+  const resolvedTheme = theme === "system" ? systemTheme : theme;
+
   const [isHovered, setIsHovered] = useState(false);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
   const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
@@ -25,7 +29,7 @@ export const MaskContainer = ({
 
   const [wasInsideMask, setWasInsideMask] = useState(false);
   const [showHeroCursor, setShowHeroCursor] = useState(false);
-  const [edgeProximity, setEdgeProximity] = useState(1); // 1 = not near edge, 0 = at edge
+  const [edgeProximity, setEdgeProximity] = useState(1);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -38,14 +42,12 @@ export const MaskContainer = ({
 
       setMousePosition({ x, y });
 
-      // Calculate distance to edges
-      const boundaryOffset = 50; // Increase this for smoother transition
+      const boundaryOffset = 50;
       const distanceToLeft = x;
       const distanceToRight = rect.width - x;
       const distanceToTop = y;
       const distanceToBottom = rect.height - y;
 
-      // Find the closest edge distance
       const minDistance = Math.min(
         distanceToLeft,
         distanceToRight,
@@ -53,14 +55,10 @@ export const MaskContainer = ({
         distanceToBottom
       );
 
-      // Calculate proximity (1 = not near edge, 0 = at edge)
       const proximity = Math.min(1, minDistance / boundaryOffset);
       setEdgeProximity(proximity);
 
-      // Detect if touching boundary (with some threshold)
       const isTouching = minDistance < 10;
-
-      // Add the boundary detection for hero cursor here
       if (isTouching && !showHeroCursor) {
         window.dispatchEvent(new CustomEvent("heroBoundaryEnter"));
         setShowHeroCursor(true);
@@ -69,7 +67,6 @@ export const MaskContainer = ({
         setShowHeroCursor(false);
       }
 
-      // Check if cursor is inside the mask area
       const currentMaskSize = isHovered ? revealSize : size;
       const maskX = Math.max(
         0,
@@ -89,7 +86,6 @@ export const MaskContainer = ({
         y >= maskY &&
         y <= maskY + currentMaskSize;
 
-      // Emit custom events when entering/leaving mask area
       if (isInsideMaskArea && !wasInsideMask) {
         window.dispatchEvent(new CustomEvent("heroMaskEnter"));
         setWasInsideMask(true);
@@ -122,7 +118,6 @@ export const MaskContainer = ({
     return () => node.removeEventListener("mousemove", updateMousePosition);
   }, [updateMousePosition]);
 
-  // Clean up event listeners on unmount
   useEffect(() => {
     return () => {
       if (wasInsideMask) {
@@ -134,7 +129,6 @@ export const MaskContainer = ({
     };
   }, [wasInsideMask, showHeroCursor]);
 
-  // Smoothly reduce mask size as it approaches the edge
   const baseMaskSize = isHovered ? revealSize : size;
   const smoothMaskSize = baseMaskSize * edgeProximity;
 
@@ -142,14 +136,10 @@ export const MaskContainer = ({
     <motion.div
       ref={containerRef}
       className={cn("relative h-screen w-screen overflow-hidden", className)}
-      animate={{
-        backgroundColor: isHovered ? "var(--slate-900)" : "var(--white)",
-      }}
-      transition={{ backgroundColor: { duration: 0.5 } }}
     >
-      {/* Mask Ball */}
+      {/* Masked Area */}
       <motion.div
-        className="absolute flex h-full w-full items-center justify-center bg-[#0098FF] dark:text-white text-6xl [mask-image:url(/mask.svg)] [mask-repeat:no-repeat] dark:bg-white"
+        className="absolute flex h-full w-screen items-center justify-center [mask-image:url(/mask.svg)] [mask-repeat:no-repeat] bg-[#0098ff] dark:bg-white"
         animate={{
           maskPosition: `${Math.max(
             0,
@@ -171,24 +161,28 @@ export const MaskContainer = ({
           maskPosition: { duration: 0.1, ease: "linear" },
         }}
       >
-        <div className="absolute inset-0 z-0 h-full w-full bg-[#0098ff] opacity-50 dark:bg-white" />
-
         <div
-          onMouseEnter={() => {
-            setIsHovered(true);
-          }}
-          onMouseLeave={() => {
-            setIsHovered(false);
-          }}
-          className="relative z-20 mx-auto max-w-4xl text-center text-4xl font-bold"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className={cn(
+            "relative z-20 mx-auto max-w-4xl text-center text-4xl font-bold",
+            resolvedTheme === "dark" ? "text-neutral-800" : "text-white"
+          )}
         >
           {children}
         </div>
       </motion.div>
 
-      {/* Always reveal text below */}
-      <div className="flex h-full w-full dark:text-white items-center justify-center">
-        {revealText}
+      {/* Reveal Text */}
+      <div className="flex h-full w-screen items-center justify-center">
+        <div
+          className={cn(
+            "mx-auto w-screen text-center text-4xl font-bold transition-colors duration-300",
+            resolvedTheme === "dark" ? "text-white" : "text-neutral-800"
+          )}
+        >
+          {revealText}
+        </div>
       </div>
     </motion.div>
   );

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { Paintbrush, Share2, Clapperboard } from "lucide-react";
+import { Paintbrush, Globe, Clapperboard, Film, Camera } from "lucide-react";
 
 const services = [
   {
@@ -15,19 +15,31 @@ const services = [
       "Business Cards & Stationery",
       "Custom Illustrations / Vector Work",
     ],
+    subcategories: [
+      {
+        title: "Social Media Design",
+        features: [
+          "Instagram Posts, Stories & Highlights",
+          "Facebook & LinkedIn Banners",
+          "YouTube Thumbnails & Channel Art",
+        ],
+      },
+    ],
     href: "/services/graphic-design",
   },
   {
-    icon: Share2,
-    title: "Social Media Design",
-    subtitle: "Engaging Visual Content",
+    icon: Globe,
+    title: "Web Design & Development",
+    subtitle: "Modern, Responsive & Scalable Websites",
     features: [
-      "Instagram Posts",
-      "Stories & Highlights",
-      "Facebook & LinkedIn Banners",
-      "YouTube Thumbnails & Channel Art",
+      "Custom Website Design",
+      "Responsive Web Design",
+      "UI/UX Design",
+      "Website Redesign & Revamp",
+      "Landing Pages",
+      "Portfolio & Business Websites",
     ],
-    href: "/services/social-media-design",
+    href: "/services/web-design-development",
   },
   {
     icon: Clapperboard,
@@ -35,11 +47,30 @@ const services = [
     subtitle: "Professional Visual Storytelling",
     features: [
       "Reels & Shorts (15–60 sec)",
-      "Corporate / Promo Videos",
+      "Corporate & Promo Videos",
       "Event Highlights",
-      "Motion Graphics / Typography Videos",
+      "Long-Form Video Editing",
     ],
     href: "/services/video-editing",
+  },
+  {
+    icon: Camera,
+    title: "Photography",
+    subtitle: "Capturing Moments Professionally",
+    features: [
+      "Cinematic Photography",
+      "Kids Photography",
+      "Wedding Photography",
+      "Documentary Photography",
+    ],
+    href: "/services/photography",
+  },
+  {
+    icon: Film,
+    title: "Animations",
+    subtitle: "Creative Motion & Visual Effects",
+    features: ["Logo Animation", "Motion Graphics", "Typography Videos"],
+    href: "/services/animations",
   },
 ];
 
