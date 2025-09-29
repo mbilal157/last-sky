@@ -4,31 +4,25 @@ import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { VideoCategory } from "../video-eddting/ContentMap.tsx";
 import { motion } from "framer-motion";
-import { Film, Star, Home, Type } from "lucide-react";
+import { Film, Home, Type } from "lucide-react";
 
-type ContentKey =
-  | "Motion Graphics"
-  | "Fashion Promo"
-  | "Real Estate Promo"
-  | "Typography";
+type ContentKey = "Promo" | "Typography" | "Wedding";
 // Update your contentMap with the new component
 const contentMap: Record<ContentKey, React.ReactNode> = {
-  "Motion Graphics": <VideoCategory category="Motion Graphics" />,
-  "Fashion Promo": <VideoCategory category="Fashion Promo" />,
-  "Real Estate Promo": <VideoCategory category="Real Estate Promo" />,
+  Promo: <VideoCategory category="Promo" />,
+  Wedding: <VideoCategory category="Wedding" />,
   Typography: <VideoCategory category="Typography" />,
 };
 
 export function VideoSidebarDemo() {
   const links: { label: ContentKey; href: string; icon: React.ReactNode }[] = [
-    { label: "Motion Graphics", href: "#", icon: <Film /> },
-    { label: "Fashion Promo", href: "#", icon: <Star /> },
-    { label: "Real Estate Promo", href: "#", icon: <Home /> },
+    { label: "Promo", href: "#", icon: <Film /> },
     { label: "Typography", href: "#", icon: <Type /> },
+    { label: "Wedding", href: "#", icon: <Home /> },
   ];
 
   const [open, setOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState<ContentKey>("Motion Graphics");
+  const [activeLink, setActiveLink] = useState<ContentKey>("Promo");
   return (
     <div className="flex h-screen w-full">
       {/* Sidebar (fixed) */}

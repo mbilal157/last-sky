@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Play, X, Volume2, VolumeX } from "lucide-react";
+import { Play, X } from "lucide-react";
 import Image from "next/image";
 // 🔹 Types
 type VideoProject = {
@@ -34,41 +34,6 @@ type VideoCategoryProps = {
 
 // 🔹 Sample data
 const videoProjects: VideoProjects = {
-  "Motion Graphics": [
-    {
-      id: 1,
-      title: "Random",
-      description:
-        "A vibrant motion graphics piece showcasing cosmic energy and particle effects",
-      thumbnail: "/images/portfolio/THUMBNAIL/THUMBNAIL (9).jpg",
-      videoUrl: "/videos/motiongraphicsound.mp4",
-    },
-    {
-      id: 2,
-      title: "Urban Motion Series",
-      description: "Dynamic urban landscapes with motion graphic overlays",
-
-      thumbnail: "/api/placeholder/300/200",
-      videoUrl: "#",
-    },
-    {
-      id: 3,
-      title: "Abstract Fluid Dynamics",
-      description:
-        "Fluid simulation with vibrant color transitions and abstract forms",
-
-      thumbnail: "/api/placeholder/300/200",
-      videoUrl: "#",
-    },
-    {
-      id: 4,
-      title: "Product Reveal Animation",
-      description: "Sleek product reveal with dynamic motion graphics",
-
-      thumbnail: "/api/placeholder/300/200",
-      videoUrl: "#",
-    },
-  ],
   Typography: [
     {
       id: 1,
@@ -76,53 +41,33 @@ const videoProjects: VideoProjects = {
       description: "Glowing neon text animation with urban backdrop",
 
       thumbnail: "/api/placeholder/300/200",
-      videoUrl: "/videos/typography/DYNAMIC PROMO TYPOGRAPHY SOUND.mp4",
+      videoUrl: "https://www.youtube.com/watch?v=AY_PWpfAt_M",
     },
     {
       id: 2,
-      title: "Kinetic Typography",
-      description:
-        "Text animation with liquid metal properties and reflections",
+      title: "Dynamic Promo Typography",
+      description: "Glowing neon text animation with urban backdrop",
 
-      thumbnail: "/videos/typography/KINETIC TYPOGRAPHY SOUND 2.mp4",
-      videoUrl: "#",
+      thumbnail: "/api/placeholder/300/200",
+      videoUrl: "https://www.youtube.com/watch?v=qfhxIhswYRU",
     },
     {
       id: 3,
-      title: "Skyline Typography",
-      description:
-        "Text animation with liquid metal properties and reflections",
+      title: "Dynamic Promo Typography",
+      description: "Glowing neon text animation with urban backdrop",
 
       thumbnail: "/api/placeholder/300/200",
-      videoUrl: "/videos/typography/SKYLINE TYPOGRAPHY SOUND.mp4",
-    },
-    {
-      id: 4,
-      title: "Typography opener",
-      description:
-        "Text animation with liquid metal properties and reflections",
-
-      thumbnail: "/api/placeholder/300/200",
-      videoUrl: "/videos/typography/TYPOGRAPHY OPENER SOUND.mp4",
-    },
-    {
-      id: 5,
-      title: "General Typography",
-      description:
-        "Text animation with liquid metal properties and reflections",
-
-      thumbnail: "/api/placeholder/300/200",
-      videoUrl: "/videos/typography/TYPOGRAPHYYYY SOUND.mp4",
+      videoUrl: "https://www.youtube.com/watch?v=NkXqqwW48r",
     },
   ],
-  "Real Estate Promo": [
+  Wedding: [
     {
       id: 1,
       title: "Rhythmic Text Animation",
       description: "Text synchronized to music rhythm with dynamic movement",
 
       thumbnail: "/api/placeholder/300/200",
-      videoUrl: "/videos/real-estate-promo/REAL ESTATE INTRO PROMO SOUND.mp4",
+      videoUrl: "https://www.youtube.com/watch?v=TIOG22vi5Vc&feature=youtu.be",
     },
     {
       id: 2,
@@ -130,7 +75,7 @@ const videoProjects: VideoProjects = {
       description: "Three-dimensional text moving through virtual space",
 
       thumbnail: "/api/placeholder/300/200",
-      videoUrl: "/videos/real-estate-promo/REAL ESTATE PROMO SOUND.mp4",
+      videoUrl: "https://www.youtube.com/watch?v=vRulY2oo65M",
     },
     {
       id: 3,
@@ -138,7 +83,7 @@ const videoProjects: VideoProjects = {
       description: "Three-dimensional text moving through virtual space",
 
       thumbnail: "/api/placeholder/300/200",
-      videoUrl: "/videos/real-estate-promo/REAL ESTATE SLIDESHOW SOUND.mp4",
+      videoUrl: "https://www.youtube.com/watch?v=kQZ4N2vsLMM",
     },
     {
       id: 4,
@@ -146,7 +91,7 @@ const videoProjects: VideoProjects = {
       description: "Three-dimensional text moving through virtual space",
 
       thumbnail: "/api/placeholder/300/200",
-      videoUrl: "/videos/real-estate-promo/REAL ESTATE SLIDESHOW.mp4",
+      videoUrl: "https://www.youtube.com/watch?v=ZERRulxpUyM",
     },
     {
       id: 5,
@@ -154,33 +99,25 @@ const videoProjects: VideoProjects = {
       description: "Three-dimensional text moving through virtual space",
 
       thumbnail: "/api/placeholder/300/200",
-      videoUrl: "/videos/real-estate-promo/REAL ESTATE STYLISH PROMO SOUND.mp4",
+      videoUrl: "https://www.youtube.com/watch?v=-so9sXCGEPI",
+    },
+    {
+      id: 6,
+      title: "3D Kinetic Words",
+      description: "Three-dimensional text moving through virtual space",
+
+      thumbnail: "/api/placeholder/300/200",
+      videoUrl: "https://www.youtube.com/watch?v=x0r_A6jQtiE",
     },
   ],
-  "Fashion Promo": [
+  Promo: [
     {
       id: 1,
       title: "Chic Runway Highlights",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/fas-pro.jpg",
-      videoUrl: "/videos/fashion-promo/FASHION PROMO 2 SOUND.mp4",
-    },
-    {
-      id: 2,
-      title: "Streetwear Vibes",
-      description:
-        "Energetic visuals showcasing trendy street fashion with an urban edge.",
-      thumbnail: "/images/portfolio/video-editing/fas-pro1.jpg",
-      videoUrl: "/videos/fashion-promo/STOMP FASHION SOUND.mp4",
-    },
-    {
-      id: 3,
-      title: "Elegant Fashion Teaser",
-      description:
-        "A sleek teaser video emphasizing elegance, style, and creative fashion trends.",
-      thumbnail: "/images/portfolio/video-editing/fas-pro2.jpg",
-      videoUrl: "/videos/fashion-promo/STOMP FASHION SOUND.mp4",
+      videoUrl: "https://www.youtube.com/watch?v=FBnJEG1EwGE",
     },
   ],
 };
@@ -188,26 +125,6 @@ const videoProjects: VideoProjects = {
 // 🔹 Video Player Modal
 const VideoModal = ({ video, isOpen, onClose }: VideoModalProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
 
   if (!isOpen || !video) return null;
 
@@ -234,41 +151,47 @@ const VideoModal = ({ video, isOpen, onClose }: VideoModalProps) => {
         </button>
 
         <div className="relative">
-          <video
-            ref={videoRef}
-            className="w-full h-auto max-h-[70vh]"
-            poster={video.thumbnail}
-            onClick={togglePlay}
-          >
-            <source src={video.videoUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <div className="relative w-full max-h-[70vh]">
+            {video.videoUrl.includes("youtube.com") ||
+            video.videoUrl.includes("youtu.be") ? (
+              // 🔹 Use proper YouTube embed link
+              <iframe
+                className="w-full h-[70vh]"
+                src={(() => {
+                  let videoId = "";
+                  if (video.videoUrl.includes("watch?v=")) {
+                    videoId = video.videoUrl
+                      .split("watch?v=")[1]
+                      ?.split("&")[0];
+                  } else if (video.videoUrl.includes("youtu.be/")) {
+                    videoId = video.videoUrl
+                      .split("youtu.be/")[1]
+                      ?.split("?")[0];
+                  }
+                  return `https://www.youtube.com/embed/${videoId}`;
+                })()}
+                title={video.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            ) : (
+              // 🔹 Use native video player for .mp4 files
+              <video
+                ref={videoRef}
+                className="w-full h-auto max-h-[70vh]"
+                poster={video.thumbnail}
+                controls
+                autoPlay
+              >
+                <source src={video.videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            )}
+          </div>
 
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-            <div className="flex items-center justify-between">
-              <button
-                className="text-white hover:text-blue-400 transition-colors"
-                onClick={togglePlay}
-              >
-                {isPlaying ? (
-                  <div className="w-10 h-10 flex items-center justify-center bg-black bg-opacity-50 rounded-full">
-                    <div className="w-2 h-6 bg-white mx-0.5"></div>
-                    <div className="w-2 h-6 bg-white mx-0.5"></div>
-                  </div>
-                ) : (
-                  <div className="w-10 h-10 flex items-center justify-center bg-black bg-opacity-50 rounded-full">
-                    <Play size={24} fill="white" className="pl-1" />
-                  </div>
-                )}
-              </button>
-
-              <button
-                className="text-white hover:text-blue-400 transition-colors"
-                onClick={toggleMute}
-              >
-                {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
-              </button>
-            </div>
+            <div className="flex items-center justify-between"></div>
           </div>
         </div>
 
