@@ -10,9 +10,9 @@ const portfolioItems = [
   {
     id: 1,
     category: "Video Editing",
-    title: "Long Form Videos",
-    subtitle: "Engaging long-form video editing for YouTube & more",
-    image: "/images/portfolio/logocard.png",
+    title: "Fashion Promo",
+    subtitle: "Engaging fashion video editing to boost brand presence online",
+    image: "/images/portfolio/video-editing/fas-pro2.jpg",
     href: "/portfolio/video-editing",
   },
   {

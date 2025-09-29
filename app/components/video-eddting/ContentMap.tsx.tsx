@@ -160,18 +160,26 @@ const videoProjects: VideoProjects = {
   "Fashion Promo": [
     {
       id: 1,
-      title: "Fashion Promo",
-      description: "Energetic promo video for a tech startup launch",
-
-      thumbnail: "/api/placeholder/300/200",
+      title: "Chic Runway Highlights",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fas-pro.jpg",
       videoUrl: "/videos/fashion-promo/FASHION PROMO 2 SOUND.mp4",
     },
     {
       id: 2,
-      title: "Corporate Brand Story",
-      description: "Narrative-driven corporate branding video",
-
-      thumbnail: "/api/placeholder/300/200",
+      title: "Streetwear Vibes",
+      description:
+        "Energetic visuals showcasing trendy street fashion with an urban edge.",
+      thumbnail: "/images/portfolio/video-editing/fas-pro1.jpg",
+      videoUrl: "/videos/fashion-promo/STOMP FASHION SOUND.mp4",
+    },
+    {
+      id: 3,
+      title: "Elegant Fashion Teaser",
+      description:
+        "A sleek teaser video emphasizing elegance, style, and creative fashion trends.",
+      thumbnail: "/images/portfolio/video-editing/fas-pro2.jpg",
       videoUrl: "/videos/fashion-promo/STOMP FASHION SOUND.mp4",
     },
   ],
