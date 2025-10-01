@@ -8,73 +8,73 @@ import { useTheme } from "next-themes";
 
 const items = [
   {
-    name: "Aun ALi",
+    name: "Aun Ali",
     title: "Youtuber",
     quote:
-      "The solar panel installation has cut my electricity bills by nearly 70%. I couldn’t be happier with the results!",
+      "Their editing team took my raw footage and turned it into high-quality YouTube content. My channel looks more professional than ever.",
     image: "/images/reviews/aun.jpg",
   },
   {
     name: "Shaukat Bhatti",
     title: "Politician",
     quote:
-      "Extremely professional team. Our factory now runs on clean solar energy and the savings are remarkable.",
+      "The graphics and campaign videos they produced were impactful and helped me connect with my audience more effectively.",
     image: "/images/reviews/bhatti.jpg",
   },
   {
     name: "Enigma Path",
-    title: "Youtube Automation",
+    title: "YouTube Automation",
     quote:
-      "Switching to solar was the best investment. Reliable power, reduced costs, and a greener footprint.",
+      "From thumbnails to seamless edits, their creative team boosted the quality of my automated channels and increased engagement.",
     image: "/images/reviews/enigma.jpg",
   },
   {
     name: "Faisal Kiyani",
     title: "Businessman",
     quote:
-      "Our school’s solar system has drastically reduced expenses and serves as a great example of sustainability for students.",
+      "They designed our company website and branding materials with precision. The professional look has impressed our clients.",
     image: "/images/reviews/faisal.jpg",
   },
   {
     name: "Fauji Foundation",
-    title: "Military Schooling network",
+    title: "Military Schooling Network",
     quote:
-      "Thanks to the solar panels, our energy bills are under control and we never worry about power outages anymore.",
+      "The photography and promotional videos they created for our institutions were outstanding and perfectly captured our values.",
     image: "/images/reviews/fauji.jpg",
   },
   {
     name: "Imtinan Ahmed",
     title: "Youtuber",
     quote:
-      "Thanks to the solar panels, our energy bills are under control and we never worry about power outages anymore.",
+      "With their editing and motion graphics, my videos now stand out in a crowded niche. My content looks next-level.",
     image: "/images/reviews/imtinan.jpg",
   },
   {
     name: "Umer Afzal Kiyani",
     title: "Businessman",
     quote:
-      "Thanks to the solar panels, our energy bills are under control and we never worry about power outages anymore.",
+      "They handled everything from web design to promo shoots for our brand. A one-stop solution for creative needs.",
     image: "/images/reviews/lehri.jpg",
   },
   {
     name: "Mufti Saleem Rabani",
-    title: "Islamic Scholar/Youtuber",
+    title: "Islamic Scholar / Youtuber",
     quote:
-      "Thanks to the solar panels, our energy bills are under control and we never worry about power outages anymore.",
+      "Their team edits my lectures beautifully with professional graphics, making the content clearer and more engaging for viewers.",
     image: "/images/reviews/mufti.jpg",
   },
   {
     name: "NoBills Tech",
-    title: "Solar Services Company",
+    title: "Tech Services Company",
     quote:
-      "Thanks to the solar panels, our energy bills are under control and we never worry about power outages anymore.",
+      "We got a complete corporate profile designed along with a sleek website. Their creative direction exceeded expectations.",
     image: "/images/reviews/nobills.jpg",
   },
   {
     name: "Shangrilla Billing",
     title: "Medical Billing Company",
     quote:
-      "Thanks to the solar panels, our energy bills are under control and we never worry about power outages anymore.",
+      "They produced a stunning brand video and redesigned our website, which has improved our online presence significantly.",
     image: "/images/reviews/shangrilla.jpg",
   },
 ];
