@@ -8,39 +8,74 @@ import { useTheme } from "next-themes";
 
 const items = [
   {
-    name: "Sarah Johnson",
-    title: "Homeowner",
+    name: "Aun ALi",
+    title: "Youtuber",
     quote:
       "The solar panel installation has cut my electricity bills by nearly 70%. I couldn’t be happier with the results!",
-    image: "/images/reviews/cl5.jpg",
+    image: "/images/reviews/aun.jpg",
   },
   {
-    name: "Michael Chen",
-    title: "Factory Owner",
+    name: "Shaukat Bhatti",
+    title: "Politician",
     quote:
       "Extremely professional team. Our factory now runs on clean solar energy and the savings are remarkable.",
-    image: "/images/reviews/cl1.jpg",
+    image: "/images/reviews/bhatti.jpg",
   },
   {
-    name: "Emily Rodriguez",
-    title: "Small Business Owner",
+    name: "Enigma Path",
+    title: "Youtube Automation",
     quote:
       "Switching to solar was the best investment. Reliable power, reduced costs, and a greener footprint.",
-    image: "/images/reviews/cl4.jpg",
+    image: "/images/reviews/enigma.jpg",
   },
   {
-    name: "Robert Williams",
-    title: "School Principal",
+    name: "Faisal Kiyani",
+    title: "Businessman",
     quote:
       "Our school’s solar system has drastically reduced expenses and serves as a great example of sustainability for students.",
-    image: "/images/reviews/cl2.jpg",
+    image: "/images/reviews/faisal.jpg",
   },
   {
-    name: "Lisa Thompson",
-    title: "Restaurant Owner",
+    name: "Fauji Foundation",
+    title: "Military Schooling network",
     quote:
       "Thanks to the solar panels, our energy bills are under control and we never worry about power outages anymore.",
-    image: "/images/reviews/cl3.jpg",
+    image: "/images/reviews/fauji.jpg",
+  },
+  {
+    name: "Imtinan Ahmed",
+    title: "Youtuber",
+    quote:
+      "Thanks to the solar panels, our energy bills are under control and we never worry about power outages anymore.",
+    image: "/images/reviews/imtinan.jpg",
+  },
+  {
+    name: "Umer Afzal Kiyani",
+    title: "Businessman",
+    quote:
+      "Thanks to the solar panels, our energy bills are under control and we never worry about power outages anymore.",
+    image: "/images/reviews/lehri.jpg",
+  },
+  {
+    name: "Mufti Saleem Rabani",
+    title: "Islamic Scholar/Youtuber",
+    quote:
+      "Thanks to the solar panels, our energy bills are under control and we never worry about power outages anymore.",
+    image: "/images/reviews/mufti.jpg",
+  },
+  {
+    name: "NoBills Tech",
+    title: "Solar Services Company",
+    quote:
+      "Thanks to the solar panels, our energy bills are under control and we never worry about power outages anymore.",
+    image: "/images/reviews/nobills.jpg",
+  },
+  {
+    name: "Shangrilla Billing",
+    title: "Medical Billing Company",
+    quote:
+      "Thanks to the solar panels, our energy bills are under control and we never worry about power outages anymore.",
+    image: "/images/reviews/shangrilla.jpg",
   },
 ];
 
@@ -101,7 +136,7 @@ const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex w-max min-w-full shrink-0 flex-nowrap gap-6 py-12",
+          "flex w-max min-w-full flex-nowrap gap-6 py-12",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
@@ -110,49 +145,55 @@ const InfiniteMovingCards = ({
           <li
             key={`${item.name}-${idx}`}
             className={cn(
-              "relative w-[350px] max-w-full shrink-0 rounded-2xl border px-8 pt-16 pb-8 md:w-[450px] transition-transform duration-300 ease-in-out hover:scale-102 hover:shadow-2xl",
+              // corrected sizes: narrower width, taller height
+              "relative w-[280px] h-[270px] shrink-0 rounded-2xl border px-6 py-6 md:w-[360px] lg:w-[440px] transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl",
               theme === "dark"
                 ? "bg-bg3 border-gray-700 text-white"
                 : "bg-white border-zinc-200 text-black"
             )}
           >
-            {/* Profile Image */}
-            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2">
+            <div className="absolute -top-10 right-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-md">
               <Image
-                width={96}
-                height={96}
                 src={item.image}
                 alt={item.name}
-                className="w-24 h-24 rounded-full border-4 border-white shadow-lg object-cover"
+                width={128}
+                height={128}
+                className="w-full h-full object-cover"
               />
             </div>
 
-            <blockquote className="flex flex-col items-center text-center mt-2">
+            {/* Content */}
+            <blockquote className="relative z-10 flex flex-col text-left">
               <h3
                 className={cn(
-                  "text-lg font-bold mb-1",
+                  "text-xl font-extrabold mb-1", // bigger heading
                   theme === "dark" ? "text-white" : "text-gray-900"
                 )}
               >
                 {item.name}
               </h3>
+
               <p
                 className={cn(
-                  "text-sm font-medium mb-4",
+                  "text-lg font-semibold mb-4", // bigger subheading
                   theme === "dark" ? "text-gray-300" : "text-gray-800"
                 )}
               >
                 {item.title}
               </p>
-              <FaQuoteLeft className="text-2xl text-[#0098ff] mb-4 opacity-70" />
-              <span
-                className={cn(
-                  "relative z-20 text-sm leading-[1.6] font-normal italic",
-                  theme === "dark" ? "text-gray-300" : "text-gray-700"
-                )}
-              >
-                {item.quote}
-              </span>
+
+              {/* Quote icon on the left, text on the right */}
+              <div className="flex flex-col gap-3">
+                <FaQuoteLeft className="text-4xl text-[#00c8ff] flex-shrink-0" />
+                <p
+                  className={cn(
+                    "text-sm leading-relaxed font-normal",
+                    theme === "dark" ? "text-gray-300" : "text-gray-700"
+                  )}
+                >
+                  {item.quote}
+                </p>
+              </div>
             </blockquote>
           </li>
         ))}
