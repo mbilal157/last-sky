@@ -4,21 +4,33 @@ import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { VideoCategory } from "../video-eddting/ContentMap.tsx";
 import { motion } from "framer-motion";
-import { Film, Home, Type } from "lucide-react";
+import { Film, Heart, Building2, Dumbbell, Shirt, Type } from "lucide-react";
 
-type ContentKey = "Promo" | "Typography" | "Wedding";
+type ContentKey =
+  | "Promo"
+  | "Typography"
+  | "Wedding"
+  | "RealEstate"
+  | "Sports"
+  | "Fashion";
 // Update your contentMap with the new component
 const contentMap: Record<ContentKey, React.ReactNode> = {
   Promo: <VideoCategory category="Promo" />,
   Wedding: <VideoCategory category="Wedding" />,
   Typography: <VideoCategory category="Typography" />,
+  RealEstate: <VideoCategory category="RealEstate" />,
+  Sports: <VideoCategory category="Sports" />,
+  Fashion: <VideoCategory category="Fashion" />,
 };
 
 export function VideoSidebarDemo() {
   const links: { label: ContentKey; href: string; icon: React.ReactNode }[] = [
     { label: "Promo", href: "#", icon: <Film /> },
     { label: "Typography", href: "#", icon: <Type /> },
-    { label: "Wedding", href: "#", icon: <Home /> },
+    { label: "Wedding", href: "#", icon: <Heart /> },
+    { label: "RealEstate", href: "#", icon: <Building2 /> },
+    { label: "Sports", href: "#", icon: <Dumbbell /> },
+    { label: "Fashion", href: "#", icon: <Shirt /> },
   ];
 
   const [open, setOpen] = useState(false);

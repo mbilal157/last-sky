@@ -40,7 +40,7 @@ const videoProjects: VideoProjects = {
       title: "Dynamic Promo Typography",
       description: "Glowing neon text animation with urban backdrop",
 
-      thumbnail: "/api/placeholder/300/200",
+      thumbnail: "/images/portfolio/video-editing/typo1.jpg",
       videoUrl: "https://www.youtube.com/watch?v=AY_PWpfAt_M",
     },
     {
@@ -48,7 +48,7 @@ const videoProjects: VideoProjects = {
       title: "Dynamic Promo Typography",
       description: "Glowing neon text animation with urban backdrop",
 
-      thumbnail: "/api/placeholder/300/200",
+      thumbnail: "/images/portfolio/video-editing/typo3.jpg",
       videoUrl: "https://www.youtube.com/watch?v=qfhxIhswYRU",
     },
     {
@@ -56,8 +56,8 @@ const videoProjects: VideoProjects = {
       title: "Dynamic Promo Typography",
       description: "Glowing neon text animation with urban backdrop",
 
-      thumbnail: "/api/placeholder/300/200",
-      videoUrl: "https://www.youtube.com/watch?v=NkXqqwW48r",
+      thumbnail: "/images/portfolio/video-editing/typo2.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=NkXqqwW48rY",
     },
   ],
   Wedding: [
@@ -118,6 +118,84 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/promo.jpg",
       videoUrl: "https://www.youtube.com/watch?v=FBnJEG1EwGE",
+    },
+    {
+      id: 2,
+      title: "Chic Runway Highlights",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/story-fra.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=rzGYMXeTpqc",
+    },
+  ],
+  RealEstate: [
+    {
+      id: 1,
+      title: "Chic Runway Highlights",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/real1.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=ei0lbYPYyN4",
+    },
+    {
+      id: 2,
+      title: "Chic Runway Highlights",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/real1.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=2AtsQrYLLhs",
+    },
+    {
+      id: 3,
+      title: "Chic Runway Highlights",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/real1.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=HCv95_5BvCk",
+    },
+    {
+      id: 4,
+      title: "Chic Runway Highlights",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/real1.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=OQVpVi1QCLM",
+    },
+    {
+      id: 3,
+      title: "Chic Runway Highlights",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/real1.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=HCv95_5BvCk",
+    },
+  ],
+  Sports: [
+    {
+      id: 1,
+      title: "Championship 2025 promo",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/sports.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=YKqRiyCcsOQ",
+    },
+  ],
+  Fashion: [
+    {
+      id: 1,
+      title: "Fashion promo",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fas-pro1.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=292WH5DYAms",
+    },
+    {
+      id: 2,
+      title: "Fashion promo",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fas-pro.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=qnNo8F4Cbzo",
     },
   ],
 };
