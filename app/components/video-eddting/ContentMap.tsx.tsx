@@ -116,7 +116,7 @@ const videoProjects: VideoProjects = {
       title: "Chic Runway Highlights",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fas-pro.jpg",
+      thumbnail: "/images/portfolio/video-editing/promo.jpg",
       videoUrl: "https://www.youtube.com/watch?v=FBnJEG1EwGE",
     },
   ],

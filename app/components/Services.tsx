@@ -28,18 +28,16 @@ const services = [
     href: "/services/graphic-design",
   },
   {
-    icon: Globe,
-    title: "Web Design & Development",
-    subtitle: "Modern, Responsive & Scalable Websites",
+    icon: Camera,
+    title: "Photography",
+    subtitle: "Capturing Moments Professionally",
     features: [
-      "Custom Website Design",
-      "Responsive Web Design",
-      "UI/UX Design",
-      "Website Redesign & Revamp",
-      "Landing Pages",
-      "Portfolio & Business Websites",
+      "Cinematic Photography",
+      "Kids Photography",
+      "Wedding Photography",
+      "Documentary Photography",
     ],
-    href: "/services/web-design-development",
+    href: "/services/photography",
   },
   {
     icon: Clapperboard,
@@ -53,24 +51,27 @@ const services = [
     ],
     href: "/services/video-editing",
   },
-  {
-    icon: Camera,
-    title: "Photography",
-    subtitle: "Capturing Moments Professionally",
-    features: [
-      "Cinematic Photography",
-      "Kids Photography",
-      "Wedding Photography",
-      "Documentary Photography",
-    ],
-    href: "/services/photography",
-  },
+
   {
     icon: Film,
     title: "Animations",
     subtitle: "Creative Motion & Visual Effects",
     features: ["Logo Animation", "Motion Graphics", "Typography Videos"],
     href: "/services/animations",
+  },
+  {
+    icon: Globe,
+    title: "Web Design & Development",
+    subtitle: "Modern, Responsive & Scalable Websites",
+    features: [
+      "Custom Website Design",
+      "Responsive Web Design",
+      "UI/UX Design",
+      "Website Redesign & Revamp",
+      "Landing Pages",
+      "Portfolio & Business Websites",
+    ],
+    href: "/services/web-design-development",
   },
 ];
 

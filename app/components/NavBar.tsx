@@ -28,6 +28,10 @@ export default function Navbar() {
         { name: "Video Editing", href: "/portfolio/video-editing" },
         { name: "Photography", href: "/portfolio/photography" },
         { name: "Animations", href: "/portfolio/animations" },
+        {
+          name: "Web Design and Development",
+          href: "/portfolio/web-design-and-development",
+        },
       ],
     },
     { name: "Contact", href: "#contact" },
