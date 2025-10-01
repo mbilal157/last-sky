@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Play, X } from "lucide-react";
 import Image from "next/image";
+import { createPortal } from "react-dom";
 
 interface CardProps {
   item: {
@@ -158,29 +159,30 @@ export const InfiniteMovingCards = ({
         </ul>
       ))}
 
-      {/* Preview Modal */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black/70 bg-opacity-90 z-50 flex items-center justify-center p-2"
-          onClick={closePreview}
-        >
-          <div className="relative max-w-4xl max-h-full">
-            <button
-              className="absolute -top-12 right-0 z-10 bg-black/35 bg-opacity-50 rounded-full p-2 text-white hover:bg-opacity-75 transition-all"
-              onClick={closePreview}
-            >
-              <X size={24} />
-            </button>
-            <Image
-              src={selectedImage}
-              alt="Preview"
-              width={1200}
-              height={800}
-              className="object-contain rounded-lg"
-            />
-          </div>
-        </div>
-      )}
+      {selectedImage &&
+        createPortal(
+          <div
+            className="fixed inset-0 bg-black/70 z-[9999] flex items-center justify-center p-2"
+            onClick={closePreview}
+          >
+            <div className="relative max-w-4xl max-h-full">
+              <button
+                className="absolute -top-12 right-0 z-10 bg-black/35 rounded-full p-2 text-white hover:bg-opacity-75 transition-all"
+                onClick={closePreview}
+              >
+                <X size={24} />
+              </button>
+              <Image
+                src={selectedImage}
+                alt="Preview"
+                width={1200}
+                height={800}
+                className="object-contain z-10 rounded-lg"
+              />
+            </div>
+          </div>,
+          document.body
+        )}
     </div>
   );
 };

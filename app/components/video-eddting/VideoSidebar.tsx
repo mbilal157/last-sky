@@ -25,12 +25,36 @@ const contentMap: Record<ContentKey, React.ReactNode> = {
 
 export function VideoSidebarDemo() {
   const links: { label: ContentKey; href: string; icon: React.ReactNode }[] = [
-    { label: "Promo", href: "#", icon: <Film /> },
-    { label: "Typography", href: "#", icon: <Type /> },
-    { label: "Wedding", href: "#", icon: <Heart /> },
-    { label: "RealEstate", href: "#", icon: <Building2 /> },
-    { label: "Sports", href: "#", icon: <Dumbbell /> },
-    { label: "Fashion", href: "#", icon: <Shirt /> },
+    {
+      label: "Promo",
+      href: "#",
+      icon: <Film className="text-black" />,
+    },
+    {
+      label: "Typography",
+      href: "#",
+      icon: <Type className="text-black" />,
+    },
+    {
+      label: "Wedding",
+      href: "#",
+      icon: <Heart className="text-black" />,
+    },
+    {
+      label: "RealEstate",
+      href: "#",
+      icon: <Building2 className="text-black" />,
+    },
+    {
+      label: "Sports",
+      href: "#",
+      icon: <Dumbbell className="text-black" />,
+    },
+    {
+      label: "Fashion",
+      href: "#",
+      icon: <Shirt className="text-black" />,
+    },
   ];
 
   const [open, setOpen] = useState(false);
@@ -81,7 +105,7 @@ const Logo = () => (
     <motion.span
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="font-medium whitespace-pre text-black dark:text-white"
+      className="font-medium whitespace-pre"
     >
       Video Editing
     </motion.span>

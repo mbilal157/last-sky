@@ -11,71 +11,78 @@ const items = [
     name: "Aun Ali",
     title: "Youtuber",
     quote:
-      "Their editing team took my raw footage and turned it into high-quality YouTube content. My channel looks more professional than ever.",
+      "Skyline Production has been handling my thumbnails and social media visuals for months now. The creativity and consistency they bring really make my content stand out. Highly recommended!.",
     image: "/images/reviews/aun.jpg",
   },
   {
     name: "Shaukat Bhatti",
     title: "Politician",
     quote:
-      "The graphics and campaign videos they produced were impactful and helped me connect with my audience more effectively.",
+      "Skyline Production provided excellent media coverage for our political activities. Their team worked with professionalism and delivered high-quality visuals that highlighted our message effectively. I appreciate their commitment and creative approach.”.",
     image: "/images/reviews/bhatti.jpg",
   },
   {
     name: "Enigma Path",
     title: "YouTube Automation",
     quote:
-      "From thumbnails to seamless edits, their creative team boosted the quality of my automated channels and increased engagement.",
+      "Partnering with Skyline Production for our YouTube automation projects has been a game-changer. From channel branding to editing support, they’ve consistently delivered with speed and creativity. Their work makes our workflow smooth and our content look professional.",
     image: "/images/reviews/enigma.jpg",
   },
   {
     name: "Faisal Kiyani",
-    title: "Businessman",
+    title: "Multinational Business Owner.",
     quote:
-      "They designed our company website and branding materials with precision. The professional look has impressed our clients.",
+      "Working with Skyline Production has been a remarkable experience. Their team delivered branding and creative content that matched international standards. The professionalism, timely delivery, and innovative ideas make them a reliable choice for any business seeking impactful visuals.",
     image: "/images/reviews/faisal.jpg",
   },
   {
     name: "Fauji Foundation",
     title: "Military Schooling Network",
     quote:
-      "The photography and promotional videos they created for our institutions were outstanding and perfectly captured our values.",
+      "Skyline Production has been a wonderful creative partner for our school system. From designing educational posters to covering events, their work has always reflected quality and creativity. They understand how to present ideas in a way that connects with students and parents alike.",
     image: "/images/reviews/fauji.jpg",
   },
   {
     name: "Imtinan Ahmed",
     title: "Youtuber",
     quote:
-      "With their editing and motion graphics, my videos now stand out in a crowded niche. My content looks next-level.",
+      "Skyline Production has been an essential part of my documentary journey. From creative video edits to detailed hand-shot work, their team added real cinematic quality to my content. Their professionalism and creative input make them a top choice for creators like me.",
     image: "/images/reviews/imtinan.jpg",
   },
   {
     name: "Umer Afzal Kiyani",
-    title: "Businessman",
+    title: "Member Executive(PGF)",
     quote:
-      "They handled everything from web design to promo shoots for our brand. A one-stop solution for creative needs.",
+      "Skyline Production covered one of my important business gatherings, and the photography was truly impressive. The pictures captured the essence of the event with clarity and style. Their professionalism and attention to detail make them a trusted name in our region.",
     image: "/images/reviews/lehri.jpg",
   },
   {
     name: "Mufti Saleem Rabani",
     title: "Islamic Scholar / Youtuber",
     quote:
-      "Their team edits my lectures beautifully with professional graphics, making the content clearer and more engaging for viewers.",
+      "Skyline Production has been helping us record and edit our lectures with professionalism and respect for our message. Their team ensures high-quality video and clear sound, which allows our audience to benefit from our teachings without distraction. We appreciate their dedication to preserving Islamic content in the best possible way.",
     image: "/images/reviews/mufti.jpg",
   },
   {
     name: "NoBills Tech",
     title: "Tech Services Company",
     quote:
-      "We got a complete corporate profile designed along with a sleek website. Their creative direction exceeded expectations.",
+      "Skyline Production designed our promotional materials with precision and creativity. The visuals captured our brand identity perfectly and gave a professional touch to our marketing campaigns. We’re very satisfied with their work and look forward to more collaborations.",
     image: "/images/reviews/nobills.jpg",
   },
   {
     name: "Shangrilla Billing",
     title: "Medical Billing Company",
     quote:
-      "They produced a stunning brand video and redesigned our website, which has improved our online presence significantly.",
+      "Skyline Production created our corporate designs and visuals with outstanding professionalism. Their work gave our brand a modern, trustworthy image that resonates with our clients. Timely delivery and excellent communication made the entire process smooth.",
     image: "/images/reviews/shangrilla.jpg",
+  },
+  {
+    name: "Faizan",
+    title: "Wedding Client",
+    quote:
+      "Our wedding slideshow created by Skyline Production was breathtaking. They captured our memories so beautifully, with music and editing that touched everyone’s heart. Truly grateful!",
+    image: "/images/reviews/faizan.jpg",
   },
 ];
 
