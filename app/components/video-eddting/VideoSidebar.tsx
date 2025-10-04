@@ -1,9 +1,9 @@
 "use client";
 import { Sidebar, SidebarBody, SidebarLink } from "../ui/sidebar";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { VideoCategory } from "../video-eddting/ContentMap.tsx";
-import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 import {
   Film,
   Heart,
@@ -12,6 +12,7 @@ import {
   Dumbbell,
   Shirt,
   Type,
+  Video,
 } from "lucide-react";
 
 type ContentKey =
@@ -57,11 +58,26 @@ export function VideoSidebarDemo() {
 
   return (
     <div className="flex h-screen w-full bg-white dark:bg-neutral-900">
-      {/* Sidebar (fixed & collapsible on hover) */}
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700">
           <div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
-            <div className="mt-8 ml-1 w-full flex flex-col gap-2">
+            {/* ✅ "Video Editing" top section */}
+            <div
+              className={cn(
+                "flex items-center gap-3 px-3 py-2 mb-4 w-full rounded-md transition-all duration-300",
+                open ? " justify-start" : "justify-center"
+              )}
+            >
+              <Video className="text-black dark:text-white shrink-0" />
+              {open && (
+                <span className="text-sm font-medium text-black dark:text-white whitespace-pre">
+                  Video Editing
+                </span>
+              )}
+            </div>
+
+            {/* ✅ Sidebar Links */}
+            <div className="mt-4 ml-1 w-full flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink
                   key={idx}
@@ -69,7 +85,7 @@ export function VideoSidebarDemo() {
                   onClick={() => setActiveLink(link.label)}
                   className={
                     activeLink === link.label
-                      ? "bg-neutral-300 dark:bg-neutral-700" // ✅ active full-row bg
+                      ? "bg-neutral-300 dark:bg-neutral-700"
                       : ""
                   }
                 />
@@ -79,7 +95,7 @@ export function VideoSidebarDemo() {
         </SidebarBody>
       </Sidebar>
 
-      {/* Main content (auto-adjusts width) */}
+      {/* Main content */}
       <motion.main
         animate={{
           marginLeft: open ? "240px" : "64px",
@@ -94,7 +110,6 @@ export function VideoSidebarDemo() {
     </div>
   );
 }
-
 const Dashboard = () => (
   <div className="space-y-6">
     {[...new Array(12)].map((_, idx) => (
