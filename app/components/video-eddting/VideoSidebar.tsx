@@ -64,7 +64,7 @@ export function VideoSidebarDemo() {
               )}
             >
               <Image
-                src="/images/portfolio/video-editing/vidico.jpg"
+                src="/images/portfolio/video-editing/vedico.jpg"
                 alt="Video Logo"
                 width={36}
                 height={36}
@@ -78,7 +78,7 @@ export function VideoSidebarDemo() {
             </div>
 
             {/* ✅ Sidebar Links */}
-            <div className="mt-4 ml-1 w-full flex flex-col gap-2">
+            <div className="mt-2 ml-1 w-full flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink
                   key={idx}
