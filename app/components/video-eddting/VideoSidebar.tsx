@@ -22,7 +22,7 @@ type ContentKey =
   | "Sports"
   | "Fashion"
   | "Stories";
-// Update your contentMap with the new component
+
 const contentMap: Record<ContentKey, React.ReactNode> = {
   Promo: <VideoCategory category="Promo" />,
   Wedding: <VideoCategory category="Wedding" />,
@@ -35,36 +35,16 @@ const contentMap: Record<ContentKey, React.ReactNode> = {
 
 export function VideoSidebarDemo() {
   const links: { label: ContentKey; href: string; icon: React.ReactNode }[] = [
-    {
-      label: "Promo",
-      href: "#",
-      icon: <Film className="text-black" />,
-    },
-    {
-      label: "Typography",
-      href: "#",
-      icon: <Type className="text-black" />,
-    },
-    {
-      label: "Wedding",
-      href: "#",
-      icon: <Heart className="text-black" />,
-    },
+    { label: "Promo", href: "#", icon: <Film className="text-black" /> },
+    { label: "Typography", href: "#", icon: <Type className="text-black" /> },
+    { label: "Wedding", href: "#", icon: <Heart className="text-black" /> },
     {
       label: "RealEstate",
       href: "#",
       icon: <Building2 className="text-black" />,
     },
-    {
-      label: "Sports",
-      href: "#",
-      icon: <Dumbbell className="text-black" />,
-    },
-    {
-      label: "Fashion",
-      href: "#",
-      icon: <Shirt className="text-black" />,
-    },
+    { label: "Sports", href: "#", icon: <Dumbbell className="text-black" /> },
+    { label: "Fashion", href: "#", icon: <Shirt className="text-black" /> },
     {
       label: "Stories",
       href: "#",
@@ -74,39 +54,44 @@ export function VideoSidebarDemo() {
 
   const [open, setOpen] = useState(false);
   const [activeLink, setActiveLink] = useState<ContentKey>("Promo");
-  return (
-    <div className="flex h-screen w-full">
-      {/* Sidebar (fixed) */}
-      <div className="fixed top-20 left-0 h-screen w-[20%] border-r border-neutral-200 bg-gray-100 dark:border-neutral-700 dark:bg-neutral-800">
-        <Sidebar open={open} setOpen={setOpen} animate={false}>
-          <SidebarBody className="justify-between gap-10">
-            <div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
-              <Logo />
-              <div className="mt-8 flex flex-col gap-2">
-                {links.map((link, idx) => (
-                  <SidebarLink
-                    key={idx}
-                    link={link}
-                    onClick={() => setActiveLink(link.label)}
-                    className={
-                      activeLink === link.label
-                        ? "bg-neutral-200 dark:bg-neutral-700 rounded-md"
-                        : ""
-                    }
-                  />
-                ))}
-              </div>
-            </div>
-          </SidebarBody>
-        </Sidebar>
-      </div>
 
-      {/* Main content (scrollable) */}
-      <div className="ml-[22%] flex-1  overflow-y-auto p-6 bg-white dark:bg-neutral-900">
+  return (
+    <div className="flex h-screen w-full bg-white dark:bg-neutral-900">
+      {/* Sidebar (fixed & collapsible on hover) */}
+      <Sidebar open={open} setOpen={setOpen} animate={true}>
+        <SidebarBody className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700">
+          <div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
+            <Logo />
+            <div className="mt-8 ml-4 w-full flex flex-col gap-2">
+              {links.map((link, idx) => (
+                <SidebarLink
+                  key={idx}
+                  link={link}
+                  onClick={() => setActiveLink(link.label)}
+                  className={`rounded-md ${
+                    activeLink === link.label
+                      ? "bg-neutral-200 w-full dark:bg-neutral-700"
+                      : "hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </SidebarBody>
+      </Sidebar>
+
+      {/* Main content (auto-adjusts width) */}
+      <motion.main
+        animate={{
+          marginLeft: open ? "240px" : "64px",
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="flex-1 overflow-y-auto p-6"
+      >
         <AnimatePresence mode="wait">
           {contentMap[activeLink] || <Dashboard />}
         </AnimatePresence>
-      </div>
+      </motion.main>
     </div>
   );
 }
@@ -127,7 +112,6 @@ const Logo = () => (
   </a>
 );
 
-// Dummy dashboard component
 const Dashboard = () => (
   <div className="space-y-6">
     {[...new Array(12)].map((_, idx) => (
