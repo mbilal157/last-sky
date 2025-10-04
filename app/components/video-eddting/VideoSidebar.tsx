@@ -1,7 +1,9 @@
 "use client";
+
 import { Sidebar, SidebarBody, SidebarLink } from "../ui/sidebar";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 import { VideoCategory } from "../video-eddting/ContentMap.tsx";
 import { cn } from "@/lib/utils";
 import {
@@ -12,7 +14,6 @@ import {
   Dumbbell,
   Shirt,
   Type,
-  Video,
 } from "lucide-react";
 
 type ContentKey =
@@ -35,42 +36,42 @@ const contentMap: Record<ContentKey, React.ReactNode> = {
 };
 
 export function VideoSidebarDemo() {
-  const links: { label: ContentKey; href: string; icon: React.ReactNode }[] = [
-    { label: "Promo", href: "#", icon: <Film className="text-black" /> },
-    { label: "Typography", href: "#", icon: <Type className="text-black" /> },
-    { label: "Wedding", href: "#", icon: <Heart className="text-black" /> },
-    {
-      label: "RealEstate",
-      href: "#",
-      icon: <Building2 className="text-black" />,
-    },
-    { label: "Sports", href: "#", icon: <Dumbbell className="text-black" /> },
-    { label: "Fashion", href: "#", icon: <Shirt className="text-black" /> },
-    {
-      label: "Stories",
-      href: "#",
-      icon: <Clapperboard className="text-black" />,
-    },
-  ];
-
   const [open, setOpen] = useState(false);
   const [activeLink, setActiveLink] = useState<ContentKey>("Promo");
 
+  const links: { label: ContentKey; href: string; icon: React.ReactNode }[] = [
+    { label: "Promo", href: "#", icon: <Film /> },
+    { label: "Typography", href: "#", icon: <Type /> },
+    { label: "Wedding", href: "#", icon: <Heart /> },
+    { label: "RealEstate", href: "#", icon: <Building2 /> },
+    { label: "Sports", href: "#", icon: <Dumbbell /> },
+    { label: "Fashion", href: "#", icon: <Shirt /> },
+    { label: "Stories", href: "#", icon: <Clapperboard /> },
+  ];
+
   return (
-    <div className="flex h-screen w-full bg-white dark:bg-neutral-900">
+    <div className="flex h-screen w-full bg-white dark:bg-neutral-900 text-black dark:text-white">
+      {" "}
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700">
-          <div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
+          <div className="flex flex-1 flex-col overflow-x-hidden bg-white dark:bg-black overflow-y-auto">
             {/* ✅ "Video Editing" top section */}
             <div
               className={cn(
-                "flex items-center gap-3 px-3 py-2 mb-4 w-full rounded-md transition-all duration-300",
-                open ? " justify-start" : "justify-center"
+                "flex items-center gap-3 px-3 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
+                "bg-neutral-200 dark:bg-black text-black dark:text-white",
+                open ? "justify-start" : "justify-center"
               )}
             >
-              <Video className="text-black dark:text-white shrink-0" />
+              <Image
+                src="/images/portfolio/video-editing/vidico.jpg"
+                alt="Video Logo"
+                width={36}
+                height={36}
+                className="rounded-full object-cover"
+              />{" "}
               {open && (
-                <span className="text-sm font-medium text-black dark:text-white whitespace-pre">
+                <span className="text-sm font-medium whitespace-pre text-black dark:text-white">
                   Video Editing
                 </span>
               )}
@@ -83,19 +84,18 @@ export function VideoSidebarDemo() {
                   key={idx}
                   link={link}
                   onClick={() => setActiveLink(link.label)}
-                  className={
+                  className={cn(
                     activeLink === link.label
-                      ? "bg-neutral-300 dark:bg-neutral-700"
-                      : ""
-                  }
+                      ? "bg-neutral-300 dark:bg-neutral-500 text-black dark:text-white"
+                      : "text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800"
+                  )}
                 />
               ))}
             </div>
           </div>
         </SidebarBody>
       </Sidebar>
-
-      {/* Main content */}
+      {/* ✅ Main content */}
       <motion.main
         animate={{
           marginLeft: open ? "240px" : "64px",
@@ -110,6 +110,7 @@ export function VideoSidebarDemo() {
     </div>
   );
 }
+
 const Dashboard = () => (
   <div className="space-y-6">
     {[...new Array(12)].map((_, idx) => (
