@@ -34,9 +34,9 @@ const portfolioItems = [
   {
     id: 4,
     category: "Video Editing",
-    title: "Corporate Videos / Promos",
-    subtitle: "Professional promo videos for businesses & events",
-    image: "/images/whyus.jpg",
+    title: "Typography Videos / Promo",
+    subtitle: "Professional typography videos for businesses & events",
+    image: "/images/portfolio/cover/typgved.jpg",
     href: "/portfolio/video-editing",
   },
   {
