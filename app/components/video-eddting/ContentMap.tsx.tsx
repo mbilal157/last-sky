@@ -66,7 +66,7 @@ const videoProjects: VideoProjects = {
       title: "Rhythmic Text Animation",
       description: "Text synchronized to music rhythm with dynamic movement",
 
-      thumbnail: "/images/portfolio/video-editing/wed1.jpg",
+      thumbnail: "/images/portfolio/video-editing/wed2.jpg",
       videoUrl: "https://www.youtube.com/watch?v=TIOG22vi5Vc&feature=youtu.be",
     },
     {
@@ -74,7 +74,7 @@ const videoProjects: VideoProjects = {
       title: "3D Kinetic Words",
       description: "Three-dimensional text moving through virtual space",
 
-      thumbnail: "/images/portfolio/video-editing/wed2.jpg",
+      thumbnail: "/images/portfolio/video-editing/wed1.jpg",
       videoUrl: "https://www.youtube.com/watch?v=vRulY2oo65M",
     },
     {
@@ -109,6 +109,14 @@ const videoProjects: VideoProjects = {
       thumbnail: "/api/placeholder/300/200",
       videoUrl: "https://www.youtube.com/watch?v=x0r_A6jQtiE",
     },
+    {
+      id: 6,
+      title: "3D Kinetic Words",
+      description: "Three-dimensional text moving through virtual space",
+
+      thumbnail: "/api/placeholder/300/200",
+      videoUrl: "https://www.youtube.com/watch?v=qpc2aVlbV3U",
+    },
   ],
   Promo: [
     {
@@ -126,6 +134,14 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/story-fra.jpg",
       videoUrl: "https://www.youtube.com/watch?v=rzGYMXeTpqc",
+    },
+    {
+      id: 3,
+      title: "Fashion Promo",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/story-fra.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=uCiQjHgBdOM",
     },
   ],
   RealEstate: [
@@ -170,6 +186,64 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/sports.jpg",
       videoUrl: "https://www.youtube.com/watch?v=YKqRiyCcsOQ",
+    },
+  ],
+  Stories: [
+    {
+      id: 1,
+      title: "Story One",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/sports.jpg",
+      videoUrl: "https://www.youtube.com/shorts/QTjtgbkITew",
+    },
+    {
+      id: 2,
+      title: "Fashion Story",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fas-pro1.jpg",
+      videoUrl: "https://www.youtube.com/shorts/aaN7JC4iH4U",
+    },
+    {
+      id: 7,
+      title: "Fashion Story 2",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fas-pro.jpg",
+      videoUrl: "https://www.youtube.com/shorts/kclhtOd398k",
+    },
+    {
+      id: 3,
+      title: "Real estate promo story",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/real1.jpg",
+      videoUrl: "https://www.youtube.com/shorts/1jn7qrG0JXk",
+    },
+    {
+      id: 4,
+      title: "Real estate promo 2 story",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/real2.jpg",
+      videoUrl: "https://www.youtube.com/shorts/BPpeZK35YCU",
+    },
+    {
+      id: 5,
+      title: "Fitness story",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/sports.jpg",
+      videoUrl: "https://www.youtube.com/shorts/WlWTmWZOQNg",
+    },
+    {
+      id: 6,
+      title: "Fitness 2 story",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/sports.jpg",
+      videoUrl: "https://www.youtube.com/shorts/sXXX638WfCM",
     },
   ],
   Fashion: [

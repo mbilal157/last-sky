@@ -12,7 +12,8 @@ type ContentKey =
   | "Wedding"
   | "RealEstate"
   | "Sports"
-  | "Fashion";
+  | "Fashion"
+  | "Stories";
 // Update your contentMap with the new component
 const contentMap: Record<ContentKey, React.ReactNode> = {
   Promo: <VideoCategory category="Promo" />,
@@ -21,6 +22,7 @@ const contentMap: Record<ContentKey, React.ReactNode> = {
   RealEstate: <VideoCategory category="RealEstate" />,
   Sports: <VideoCategory category="Sports" />,
   Fashion: <VideoCategory category="Fashion" />,
+  Stories: <VideoCategory category="Stories" />,
 };
 
 export function VideoSidebarDemo() {
@@ -52,6 +54,11 @@ export function VideoSidebarDemo() {
     },
     {
       label: "Fashion",
+      href: "#",
+      icon: <Shirt className="text-black" />,
+    },
+    {
+      label: "Stories",
       href: "#",
       icon: <Shirt className="text-black" />,
     },
