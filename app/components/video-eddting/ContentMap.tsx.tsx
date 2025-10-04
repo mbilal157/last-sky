@@ -66,7 +66,7 @@ const videoProjects: VideoProjects = {
       title: "Rhythmic Text Animation",
       description: "Text synchronized to music rhythm with dynamic movement",
 
-      thumbnail: "/api/placeholder/300/200",
+      thumbnail: "/images/portfolio/video-editing/wed1.jpg",
       videoUrl: "https://www.youtube.com/watch?v=TIOG22vi5Vc&feature=youtu.be",
     },
     {
@@ -74,7 +74,7 @@ const videoProjects: VideoProjects = {
       title: "3D Kinetic Words",
       description: "Three-dimensional text moving through virtual space",
 
-      thumbnail: "/api/placeholder/300/200",
+      thumbnail: "/images/portfolio/video-editing/wed2.jpg",
       videoUrl: "https://www.youtube.com/watch?v=vRulY2oo65M",
     },
     {
