@@ -135,14 +135,6 @@ const videoProjects: VideoProjects = {
       thumbnail: "/images/portfolio/video-editing/story-fra.jpg",
       videoUrl: "https://www.youtube.com/watch?v=rzGYMXeTpqc",
     },
-    {
-      id: 3,
-      title: "Fashion Promo",
-      description:
-        "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/story-fra.jpg",
-      videoUrl: "https://www.youtube.com/watch?v=uCiQjHgBdOM",
-    },
   ],
   RealEstate: [
     {
@@ -262,6 +254,14 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/fas-pro.jpg",
       videoUrl: "https://www.youtube.com/watch?v=qnNo8F4Cbzo",
+    },
+    {
+      id: 3,
+      title: "Fashion Promo",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fas-pro2.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=uCiQjHgBdOM",
     },
   ],
 };
