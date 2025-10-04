@@ -31,7 +31,8 @@ export function Thumbnails() {
             key={idx}
             items={row}
             speed="normal"
-            rows={1} // only 1 row per InfiniteMovingCards
+            direction={idx % 2 === 0 ? "right" : "left"} // 👈 alternate directions
+            rows={1}
           />
         ))}
       </div>

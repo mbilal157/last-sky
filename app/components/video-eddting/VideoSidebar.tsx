@@ -4,7 +4,15 @@ import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { VideoCategory } from "../video-eddting/ContentMap.tsx";
 import { motion } from "framer-motion";
-import { Film, Heart, Building2, Dumbbell, Shirt, Type } from "lucide-react";
+import {
+  Film,
+  Heart,
+  Clapperboard,
+  Building2,
+  Dumbbell,
+  Shirt,
+  Type,
+} from "lucide-react";
 
 type ContentKey =
   | "Promo"
@@ -60,7 +68,7 @@ export function VideoSidebarDemo() {
     {
       label: "Stories",
       href: "#",
-      icon: <Shirt className="text-black" />,
+      icon: <Clapperboard className="text-black" />,
     },
   ];
 

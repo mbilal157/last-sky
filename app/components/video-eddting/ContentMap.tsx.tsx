@@ -87,30 +87,30 @@ const videoProjects: VideoProjects = {
     },
     {
       id: 4,
-      title: "3D Kinetic Words",
+      title: "Best promo",
       description: "Three-dimensional text moving through virtual space",
 
-      thumbnail: "/api/placeholder/300/200",
+      thumbnail: "/images/portfolio/video-editing/wed3.jpg",
       videoUrl: "https://www.youtube.com/watch?v=ZERRulxpUyM",
     },
     {
       id: 5,
-      title: "3D Kinetic Words",
+      title: "New weddding",
       description: "Three-dimensional text moving through virtual space",
 
-      thumbnail: "/api/placeholder/300/200",
+      thumbnail: "/images/portfolio/video-editing/wed4.jpg",
       videoUrl: "https://www.youtube.com/watch?v=-so9sXCGEPI",
     },
     {
       id: 6,
-      title: "3D Kinetic Words",
+      title: "3D Words",
       description: "Three-dimensional text moving through virtual space",
 
-      thumbnail: "/api/placeholder/300/200",
+      thumbnail: "/images/portfolio/video-editing/wed5.jpg",
       videoUrl: "https://www.youtube.com/watch?v=x0r_A6jQtiE",
     },
     {
-      id: 6,
+      id: 7,
       title: "3D Kinetic Words",
       description: "Three-dimensional text moving through virtual space",
 
@@ -271,6 +271,17 @@ const VideoModal = ({ video, isOpen, onClose }: VideoModalProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   if (!isOpen || !video) return null;
+  const getYouTubeEmbedUrl = (url: string) => {
+    let videoId = "";
+    if (url.includes("watch?v=")) {
+      videoId = url.split("watch?v=")[1]?.split("&")[0];
+    } else if (url.includes("youtu.be/")) {
+      videoId = url.split("youtu.be/")[1]?.split("?")[0];
+    } else if (url.includes("shorts/")) {
+      videoId = url.split("shorts/")[1]?.split("?")[0];
+    }
+    return `https://www.youtube.com/embed/${videoId}`;
+  };
 
   return (
     <motion.div
@@ -301,19 +312,7 @@ const VideoModal = ({ video, isOpen, onClose }: VideoModalProps) => {
               // 🔹 Use proper YouTube embed link
               <iframe
                 className="w-full h-[70vh]"
-                src={(() => {
-                  let videoId = "";
-                  if (video.videoUrl.includes("watch?v=")) {
-                    videoId = video.videoUrl
-                      .split("watch?v=")[1]
-                      ?.split("&")[0];
-                  } else if (video.videoUrl.includes("youtu.be/")) {
-                    videoId = video.videoUrl
-                      .split("youtu.be/")[1]
-                      ?.split("?")[0];
-                  }
-                  return `https://www.youtube.com/embed/${videoId}`;
-                })()}
+                src={getYouTubeEmbedUrl(video.videoUrl)}
                 title={video.title}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -351,6 +350,7 @@ const VideoModal = ({ video, isOpen, onClose }: VideoModalProps) => {
 // 🔹 Video Card
 const VideoCard = ({ video, onPlay }: VideoCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const isReel = video.videoUrl.includes("shorts/"); // ✅ Detect Reels
 
   return (
     <motion.div
@@ -363,12 +363,17 @@ const VideoCard = ({ video, onPlay }: VideoCardProps) => {
         className="relative overflow-hidden cursor-pointer"
         onClick={() => onPlay(video)}
       >
-        <div className="aspect-video relative">
+        {/* ✅ Use aspect-[9/16] for Reels (vertical) */}
+        <div
+          className={
+            isReel ? "aspect-[9/16] relative" : "aspect-video relative"
+          }
+        >
           <Image
             src={video.thumbnail}
             alt={video.title}
             width={400}
-            height={225}
+            height={isReel ? 700 : 225}
             className="w-full h-full object-cover"
           />
           <motion.div

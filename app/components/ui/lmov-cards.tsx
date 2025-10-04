@@ -20,6 +20,7 @@ export const InfiniteMovingCards = ({
   pauseOnHover = true,
   className,
   rows = 3,
+  direction,
 }: {
   items: {
     title: string;
@@ -29,6 +30,7 @@ export const InfiniteMovingCards = ({
   pauseOnHover?: boolean;
   className?: string;
   rows?: number;
+  direction?: "right" | "left" | undefined;
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollerRefs = useRef<(HTMLUListElement | null)[]>([]);
@@ -137,7 +139,9 @@ export const InfiniteMovingCards = ({
           className={cn(
             "flex w-max min-w-full shrink-0 flex-nowrap gap-2 py-1 mb-1",
             start &&
-              (rowIndex % 2 === 0 ? "animate-scroll" : "animate-scroll-reverse")
+              (direction === "right"
+                ? "animate-scroll-reverse"
+                : "animate-scroll")
           )}
         >
           {row.map((item, idx) => (
@@ -147,7 +151,6 @@ export const InfiniteMovingCards = ({
               onPreview={handlePreview}
             />
           ))}
-          {/* Duplicate the row for seamless looping */}
           {row.map((item, idx) => (
             <Card
               key={`${item.title}-${rowIndex}-${idx}-dup`}

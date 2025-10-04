@@ -135,7 +135,7 @@ export default function Portfolio() {
       className={`py-20 px-6 transition-colors duration-300 ${
         resolvedTheme === "dark"
           ? "bg-[url('/images/bg3.jpg')] bg-cover bg-center text-gray-100"
-          : "bg-white text-gray-800"
+          : "bg-[url('/images/bg.jpg')] text-gray-800"
       }`}
     >
       <div className="max-w-6xl mx-auto">
