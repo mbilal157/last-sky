@@ -18,9 +18,9 @@ const portfolioItems = [
   {
     id: 2,
     category: "Video Editing",
-    title: "Reels Editing",
+    title: "Reel Estate Promo",
     subtitle: "Short, dynamic reels for Instagram, TikTok & YouTube Shorts",
-    image: "/images/whyus.jpg",
+    image: "/images/portfolio/video-editing/real3.jpg",
     href: "/portfolio/video-editing",
   },
   {
@@ -60,7 +60,7 @@ const portfolioItems = [
     category: "Social Media Design",
     title: "YouTube Thumbnails",
     subtitle: "Eye-catching thumbnails designed to boost clicks",
-    image: "/images/portfolio/thumbnail.jpg",
+    image: "/images/portfolio/cover/thumbnail.jpg",
     href: "/portfolio/images/cover/social-media-design",
   },
   {
@@ -68,7 +68,7 @@ const portfolioItems = [
     category: "Graphic Design",
     title: "Logos & Branding",
     subtitle: "Unique and professional logos to define your brand",
-    image: "/images/portfolio/sm.jpg",
+    image: "/images/portfolio/cover/p2-card.jpg",
     href: "/portfolio/graphic-design",
   },
   {

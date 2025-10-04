@@ -60,7 +60,7 @@ const items = [
     name: "Mufti Saleem Rabani",
     title: "Islamic Scholar / Youtuber",
     quote:
-      "Skyline Production has been helping us record and edit our lectures with professionalism and respect for our message. Their team ensures high-quality video and clear sound, which allows our audience to benefit from our teachings without distraction. We appreciate their dedication to preserving Islamic content in the best possible way.",
+      "Skyline Production has helped us record and edit lectures with professionalism and respect for our message. Their team ensures high-quality video and clear sound, allowing our audience to benefit from teachings without distraction. We appreciate their dedication to preserving Islamic content in the best way.",
     image: "/images/reviews/mufti.jpg",
   },
   {
@@ -173,7 +173,7 @@ const InfiniteMovingCards = ({
             <blockquote className="relative z-10 flex flex-col text-left">
               <h3
                 className={cn(
-                  "text-xl font-extrabold mb-1", // bigger heading
+                  "text-xl font-extrabold", // bigger heading
                   theme === "dark" ? "text-white" : "text-gray-900"
                 )}
               >
@@ -182,7 +182,7 @@ const InfiniteMovingCards = ({
 
               <p
                 className={cn(
-                  "text-lg font-semibold mb-4", // bigger subheading
+                  "text-lg font-semibold mb-1",
                   theme === "dark" ? "text-gray-300" : "text-gray-800"
                 )}
               >

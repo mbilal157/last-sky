@@ -161,14 +161,6 @@ const videoProjects: VideoProjects = {
       thumbnail: "/images/portfolio/video-editing/real4.jpg",
       videoUrl: "https://www.youtube.com/watch?v=OQVpVi1QCLM",
     },
-    {
-      id: 5,
-      title: "Chic Runway Highlights",
-      description:
-        "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/real1.jpg",
-      videoUrl: "https://www.youtube.com/watch?v=HCv95_5BvCk",
-    },
   ],
   Sports: [
     {
