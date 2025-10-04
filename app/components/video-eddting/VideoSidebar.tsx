@@ -61,18 +61,17 @@ export function VideoSidebarDemo() {
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700">
           <div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
-            <Logo />
-            <div className="mt-8 ml-4 w-full flex flex-col gap-2">
+            <div className="mt-8 ml-1 w-full flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink
                   key={idx}
                   link={link}
                   onClick={() => setActiveLink(link.label)}
-                  className={`rounded-md ${
+                  className={
                     activeLink === link.label
-                      ? "bg-neutral-200 w-full dark:bg-neutral-700"
-                      : "hover:bg-neutral-100 dark:hover:bg-neutral-700"
-                  }`}
+                      ? "bg-neutral-300 dark:bg-neutral-700" // ✅ active full-row bg
+                      : ""
+                  }
                 />
               ))}
             </div>
@@ -95,22 +94,6 @@ export function VideoSidebarDemo() {
     </div>
   );
 }
-
-const Logo = () => (
-  <a
-    href="#"
-    className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-black"
-  >
-    <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-black dark:bg-white" />
-    <motion.span
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="font-medium whitespace-pre"
-    >
-      Video Editing
-    </motion.span>
-  </a>
-);
 
 const Dashboard = () => (
   <div className="space-y-6">

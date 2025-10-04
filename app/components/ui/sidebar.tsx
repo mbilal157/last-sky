@@ -1,50 +1,31 @@
-// ui/sidebar.tsx
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
-import { motion, AnimatePresence, HTMLMotionProps } from "framer-motion";
+import React, { createContext, useContext, useState } from "react";
+import { motion, HTMLMotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { IconMenu2, IconX } from "@tabler/icons-react";
-
-/** Types */
-export interface Links {
-  label: string;
-  href: string;
-  icon: React.ReactNode;
-}
 
 interface SidebarContextProps {
   open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen: (val: boolean) => void;
   animate: boolean;
 }
 
-const SidebarContext = createContext<SidebarContextProps | undefined>(
-  undefined
-);
+const SidebarContext = createContext<SidebarContextProps | null>(null);
 
-/** Exported hook (single declaration) */
-export const useSidebar = (): SidebarContextProps => {
-  const ctx = useContext(SidebarContext);
-  if (!ctx) throw new Error("useSidebar must be used within a SidebarProvider");
-  return ctx;
-};
-
-/** Provider */
-export const SidebarProvider = ({
+export const Sidebar = ({
   children,
-  open: openProp,
-  setOpen: setOpenProp,
   animate = true,
+  open: externalOpen,
+  setOpen: externalSetOpen,
 }: {
-  children: ReactNode;
-  open?: boolean;
-  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  children: React.ReactNode;
   animate?: boolean;
+  open?: boolean;
+  setOpen?: (val: boolean) => void;
 }) => {
-  const [openState, setOpenState] = useState(false);
-  const open = openProp !== undefined ? openProp : openState;
-  const setOpen = setOpenProp !== undefined ? setOpenProp : setOpenState;
+  const [internalOpen, setInternalOpen] = useState(false);
+  const open = externalOpen ?? internalOpen;
+  const setOpen = externalSetOpen ?? setInternalOpen;
 
   return (
     <SidebarContext.Provider value={{ open, setOpen, animate }}>
@@ -53,160 +34,76 @@ export const SidebarProvider = ({
   );
 };
 
-/** Convenience wrapper */
-export const Sidebar = ({
-  children,
-  open,
-  setOpen,
-  animate,
-}: {
-  children: ReactNode;
-  open?: boolean;
-  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
-  animate?: boolean;
-}) => {
-  return (
-    <SidebarProvider open={open} setOpen={setOpen} animate={animate}>
-      {children}
-    </SidebarProvider>
-  );
-};
-
-/**
- * IMPORTANT:
- * - MotionDivProps uses HTMLMotionProps<"div"> but forces children => ReactNode
- *   so MotionValue* types cannot leak into the children type.
- */
-type MotionDivProps = Omit<HTMLMotionProps<"div">, "children"> & {
-  children?: ReactNode;
-};
-
-/** SidebarBody: pass motion props only to DesktopSidebar (motion.div).
- *  Do NOT blindly spread motion props into MobileSidebar (plain div).
- */
-export const SidebarBody = (props: MotionDivProps) => {
-  return (
-    <>
-      <DesktopSidebar {...props} />
-      {/* Pass only safe props to MobileSidebar (className + children) */}
-      <MobileSidebar className={props.className}>
-        {props.children}
-      </MobileSidebar>
-    </>
-  );
-};
-
-/** Desktop: motion.div -> safe to spread motion props here */
-export const DesktopSidebar = ({
+export const SidebarBody = ({
   className,
   children,
   ...props
-}: MotionDivProps) => {
+}: React.PropsWithChildren<HTMLMotionProps<"div">>) => {
   const { open, setOpen, animate } = useSidebar();
 
   return (
     <motion.div
-      {...props}
-      className={cn(
-        "h-screen px-2 py-4 hidden md:flex md:flex-col bg-neutral-100 dark:bg-neutral-800 fixed left-0 top-0 z-50 shadow-lg",
-        className
-      )}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
       animate={{
         width: animate ? (open ? "240px" : "64px") : "240px",
       }}
-      transition={{ duration: 0.25, ease: "easeInOut" }}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className={cn(
+        "h-screen flex flex-col bg-neutral-100 dark:bg-neutral-800 fixed left-0 top-0 z-50 shadow-md",
+        className
+      )}
+      {...props}
     >
-      <div className="flex flex-col items-start gap-4 overflow-hidden">
-        {children}
-      </div>
+      {children}
     </motion.div>
   );
 };
 
-/** Mobile: plain div. Do NOT spread motion-specific props here. */
-export const MobileSidebar = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children?: ReactNode;
-}) => {
-  const { open, setOpen } = useSidebar();
-
-  return (
-    <div
-      className={cn(
-        "h-10 px-4 py-4 flex flex-row md:hidden items-center justify-between bg-neutral-100 dark:bg-neutral-800 w-full",
-        className
-      )}
-    >
-      <div className="flex justify-end z-20 w-full">
-        <IconMenu2
-          className="text-neutral-800 dark:text-neutral-200"
-          onClick={() => setOpen(!open)}
-        />
-      </div>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ x: "-100%", opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: "-100%", opacity: 0 }}
-            transition={{ duration: 0.28, ease: "easeInOut" }}
-            className={cn(
-              "fixed h-full w-full inset-0 bg-white dark:bg-neutral-900 p-8 z-[100] flex flex-col justify-between",
-              className
-            )}
-          >
-            <div
-              className="absolute right-6 top-6 z-50 text-neutral-800 dark:text-neutral-200"
-              onClick={() => setOpen(false)}
-            >
-              <IconX />
-            </div>
-
-            {children}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
-/** Link - stays the same but children typed as ReactNode inside MotionDivProps avoids leaks */
 export const SidebarLink = ({
   link,
-  className,
   onClick,
+  className,
 }: {
-  link: Links;
-  className?: string;
+  link: { label: string; href: string; icon: React.ReactNode };
   onClick?: () => void;
+  className?: string;
 }) => {
-  const { open, animate } = useSidebar();
+  const { open } = useSidebar();
 
   return (
     <button
-      type="button"
       onClick={onClick}
       className={cn(
-        "flex items-center justify-start gap-2 group/sidebar py-2 w-full text-left",
+        "flex items-center w-full px-3 py-2 rounded-md transition-all duration-300 overflow-hidden",
+        "hover:bg-neutral-200 dark:hover:bg-neutral-700",
         className
       )}
     >
-      {link.icon}
+      {/* ✅ Always visible icon */}
+      <div className="shrink-0">{link.icon}</div>
+
+      {/* ✅ Smoothly show/hide label */}
       <motion.span
+        initial={false}
         animate={{
-          display: animate ? (open ? "inline-block" : "none") : "inline-block",
-          opacity: animate ? (open ? 1 : 0) : 1,
+          opacity: open ? 1 : 0,
+          width: open ? "auto" : 0,
+          marginLeft: open ? 12 : 0,
         }}
-        className="text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre"
+        transition={{ duration: 0.2 }}
+        className="text-sm text-neutral-700 dark:text-neutral-200 whitespace-pre"
       >
         {link.label}
       </motion.span>
     </button>
   );
+};
+
+export const useSidebar = () => {
+  const context = useContext(SidebarContext);
+  if (!context) {
+    throw new Error("useSidebar must be used within a Sidebar provider");
+  }
+  return context;
 };
