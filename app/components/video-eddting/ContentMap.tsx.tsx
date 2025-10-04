@@ -82,7 +82,7 @@ const videoProjects: VideoProjects = {
       title: "3D Kinetic Words",
       description: "Three-dimensional text moving through virtual space",
 
-      thumbnail: "/api/placeholder/300/200",
+      thumbnail: "/images/portfolio/video-editing/wed6.jpg",
       videoUrl: "https://www.youtube.com/watch?v=kQZ4N2vsLMM",
     },
     {
@@ -114,7 +114,7 @@ const videoProjects: VideoProjects = {
       title: "3D Kinetic Words",
       description: "Three-dimensional text moving through virtual space",
 
-      thumbnail: "/api/placeholder/300/200",
+      thumbnail: "/images/portfolio/video-editing/wed7.jpg",
       videoUrl: "https://www.youtube.com/watch?v=qpc2aVlbV3U",
     },
   ],
@@ -194,7 +194,7 @@ const videoProjects: VideoProjects = {
       title: "Story One",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/sports.jpg",
+      thumbnail: "/images/portfolio/video-editing/newtre.jpg",
       videoUrl: "https://www.youtube.com/shorts/QTjtgbkITew",
     },
     {
@@ -202,7 +202,7 @@ const videoProjects: VideoProjects = {
       title: "Fashion Story",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fas-pro1.jpg",
+      thumbnail: "/images/portfolio/video-editing/fastre.jpg",
       videoUrl: "https://www.youtube.com/shorts/aaN7JC4iH4U",
     },
     {
@@ -210,7 +210,7 @@ const videoProjects: VideoProjects = {
       title: "Fashion Story 2",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fas-pro.jpg",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
       videoUrl: "https://www.youtube.com/shorts/kclhtOd398k",
     },
     {
@@ -218,7 +218,7 @@ const videoProjects: VideoProjects = {
       title: "Real estate promo story",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/real1.jpg",
+      thumbnail: "/images/portfolio/video-editing/respro.jpg",
       videoUrl: "https://www.youtube.com/shorts/1jn7qrG0JXk",
     },
     {
@@ -226,7 +226,7 @@ const videoProjects: VideoProjects = {
       title: "Real estate promo 2 story",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/real2.jpg",
+      thumbnail: "/images/portfolio/video-editing/comoff.jpg",
       videoUrl: "https://www.youtube.com/shorts/BPpeZK35YCU",
     },
     {
@@ -234,7 +234,7 @@ const videoProjects: VideoProjects = {
       title: "Fitness story",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/sports.jpg",
+      thumbnail: "/images/portfolio/video-editing/fit2.jpg",
       videoUrl: "https://www.youtube.com/shorts/WlWTmWZOQNg",
     },
     {
@@ -242,7 +242,7 @@ const videoProjects: VideoProjects = {
       title: "Fitness 2 story",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/sports.jpg",
+      thumbnail: "/images/portfolio/video-editing/fit1.jpg",
       videoUrl: "https://www.youtube.com/shorts/sXXX638WfCM",
     },
   ],

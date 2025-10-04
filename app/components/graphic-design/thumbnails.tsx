@@ -31,7 +31,7 @@ export function Thumbnails() {
             key={idx}
             items={row}
             speed="normal"
-            direction={idx % 2 === 0 ? "right" : "left"} // 👈 alternate directions
+            direction={idx % 2 === 0 ? "right" : "left"}
             rows={1}
           />
         ))}
