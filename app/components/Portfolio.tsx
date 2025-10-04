@@ -57,11 +57,11 @@ const portfolioItems = [
   },
   {
     id: 7,
-    category: "Social Media Design",
+    category: "Graphic Design",
     title: "YouTube Thumbnails",
     subtitle: "Eye-catching thumbnails designed to boost clicks",
     image: "/images/portfolio/cover/thumbnail.jpg",
-    href: "/portfolio/images/cover/social-media-design",
+    href: "/portfolio/graphic-design",
   },
   {
     id: 8,
