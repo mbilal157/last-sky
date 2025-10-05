@@ -53,7 +53,7 @@ const portfolioItems = [
     title: "Custom Web Design",
     subtitle: "Responsive and modern website design solutions",
     image: "/images/portfolio/smc.jpg",
-    href: "/portfolio/web-design",
+    href: "/portfolio/web-design-development",
   },
   {
     id: 7,

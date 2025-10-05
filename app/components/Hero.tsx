@@ -48,7 +48,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="hero-background flex flex-col items-center justify-center min-h-screen text-center transition-colors duration-300 relative">
+    <section className="hero-background flex flex-col items-center justify-center w-screen min-h-screen text-center transition-colors duration-300 relative">
       {/* Hero Section specific cursor ball - appears at boundary */}
       {showHeroCursor && (
         <div

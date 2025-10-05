@@ -91,7 +91,7 @@ export const SidebarLink = ({
       )}
     >
       {/* ✅ Always visible icon */}
-      <div className={cn("shrink-0 dark:text-white", textColor)}>
+      <div className={cn("shrink-0 font-extrabold dark:text-white", textColor)}>
         {link.icon}
       </div>
 

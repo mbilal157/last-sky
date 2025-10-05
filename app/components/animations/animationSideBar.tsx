@@ -6,54 +6,30 @@ import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import {
-  ImageIcon,
-  FileText,
-  Youtube,
-  Briefcase,
-  Megaphone,
-  PenTool,
-} from "lucide-react";
-import { Thumbnails } from "./thumbnails";
-import { Logos } from "./logos";
-import { Posters } from "./posters";
+import { PlayCircle, Move3d, Type } from "lucide-react";
 
-const BusinessCards = () => (
+const Logo = () => (
   <div className="p-4 text-lg font-semibold">Business Cards Content</div>
 );
-const CustomIllustrations = () => (
+const Motion = () => (
   <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
 );
-const Posts = () => (
+const Typgraphy = () => (
   <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
 );
 
 // ✅ Wrap this part separately so Suspense can handle searchParams
 function SidebarDemoContent() {
   const links = [
-    { label: "Logos and Branding", href: "#", icon: <ImageIcon size={24} /> },
-    { label: "Social Media Posts", href: "#", icon: <Megaphone size={24} /> },
-    { label: "Posters and Flyers", href: "#", icon: <FileText size={24} /> },
-    { label: "Thumbnails", href: "#", icon: <Youtube size={24} /> },
-    {
-      label: "Business cards and stationary",
-      href: "#",
-      icon: <Briefcase size={24} />,
-    },
-    {
-      label: "custom illustrations / vector work",
-      href: "#",
-      icon: <PenTool size={24} />,
-    },
+    { label: "Logo Animation", href: "#", icon: <PlayCircle size={24} /> },
+    { label: "Motion Graphics", href: "#", icon: <Move3d size={24} /> },
+    { label: "Typography Videos", href: "#", icon: <Type size={24} /> },
   ];
 
   const contentMap: Record<string, React.ReactNode> = {
-    "Logos and Branding": <Logos />,
-    "Social Media Posts": <Posts />,
-    "Posters and Flyers": <Posters />,
-    Thumbnails: <Thumbnails />,
-    "Business cards and stationary": <BusinessCards />,
-    "custom illustrations / vector work": <CustomIllustrations />,
+    "Logo Animation": <Logo />,
+    "Motion Graphics": <Motion />,
+    "Typography Videos": <Typgraphy />,
   };
 
   const [open, setOpen] = useState(false);
@@ -61,18 +37,13 @@ function SidebarDemoContent() {
   const selectedItem = searchParams.get("item");
 
   const [activeLink, setActiveLink] = useState<string>(() => {
-    if (!selectedItem) return "Logos and Branding";
+    if (!selectedItem) return "Logo Animation";
 
-    if (selectedItem.includes("Thumbnail")) return "Thumbnails";
-    if (selectedItem.includes("Social Media Posts")) return "Posts";
-    if (selectedItem.includes("Logo")) return "Logos and Branding";
-    if (selectedItem.includes("Poster")) return "Posters and Flyers";
-    if (selectedItem.includes("Business"))
-      return "Business cards and stationary";
-    if (selectedItem.includes("Illustration"))
-      return "custom illustrations / vector work";
+    if (selectedItem.includes("Logo Animation")) return "Logo Animation";
+    if (selectedItem.includes("Motion Graphics")) return "Motion Graphics";
+    if (selectedItem.includes("Typography Videos")) return "Typography Videos";
 
-    return "Logos and Branding";
+    return "Logo Animation";
   });
 
   return (
@@ -88,7 +59,7 @@ function SidebarDemoContent() {
               )}
             >
               <Image
-                src="/images/portfolio/grapdes.jpg"
+                src="/images/portfolio/animation.jpg"
                 alt="Graphics Logo"
                 width={32}
                 height={32}
@@ -96,7 +67,7 @@ function SidebarDemoContent() {
               />
               {open && (
                 <span className="text-sm font-medium whitespace-pre text-black dark:text-white">
-                  Graphic Design
+                  Animations
                 </span>
               )}
             </div>
@@ -135,7 +106,7 @@ function SidebarDemoContent() {
 }
 
 // ✅ Wrap in Suspense here
-export function SidebarDemo() {
+export function AnimationSideBarDemo() {
   return (
     <Suspense fallback={<div className="p-10 text-center">Loading...</div>}>
       <SidebarDemoContent />

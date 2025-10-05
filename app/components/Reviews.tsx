@@ -50,7 +50,7 @@ const items = [
     image: "/images/reviews/imtinan.jpg",
   },
   {
-    name: "M.Umer Afzal Kiyani",
+    name: "M.Umar Afzal Kiani",
     title: (
       <>
         Member Executive <br />
@@ -141,7 +141,7 @@ const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative z-20 max-w-7xl overflow-hidden]",
         className
       )}
     >

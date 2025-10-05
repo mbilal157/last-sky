@@ -30,7 +30,7 @@ export default function Navbar() {
         { name: "Animations", href: "/portfolio/animations" },
         {
           name: "Web Design and Development",
-          href: "/portfolio/web-design-and-development",
+          href: "/portfolio/web-design-development",
         },
       ],
     },
@@ -60,7 +60,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full h-20 dark:border-white border-b-2 px-4 md:px-12 flex items-center bg-background text-foreground shadow-md z-50 transition-colors duration-300">
+    <nav className="fixed top-0 left-0 w-full h-20 dark:border-white border-b-2 px-4 md:px-12 flex items-center dark:bg-black bg-white text-foreground shadow-md z-50 transition-colors duration-300">
       {/* Logo */}
       <div className="flex items-center gap-2">
         <Image
