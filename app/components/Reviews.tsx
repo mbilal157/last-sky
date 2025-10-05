@@ -86,7 +86,7 @@ const items = [
     name: "Faizan",
     title: "Wedding Client",
     quote:
-      "Our wedding slideshow was breathtaking. Skyline Production captured our memories beautifully, with music and editing that touched everyone’s heart.",
+      "Our wedding slideshow was breathtaking. Skyline Production captured our memories beautifully, with music and editing that touched everyone's heart.",
     image: "/images/reviews/faizan.jpg",
   },
 ];
@@ -127,7 +127,6 @@ const InfiniteMovingCards = ({
         direction === "left" ? "forwards" : "reverse"
       );
 
-      // use speed prop instead of hardcoding
       containerRef.current.style.setProperty(
         "--animation-duration",
         `${speed}s`
@@ -141,10 +140,30 @@ const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 max-w-7xl overflow-hidden]",
+        "scroller relative z-20 max-w-7xl overflow-hidden",
         className
       )}
     >
+      {/* Left Gradient */}
+      <div
+        className={cn(
+          "absolute left-0 top-0 bottom-0 w-[5%] z-30 pointer-events-none",
+          theme === "dark"
+            ? "bg-gradient-to-r from-black to-transparent"
+            : "bg-gradient-to-r from-white to-transparent"
+        )}
+      />
+
+      {/* Right Gradient */}
+      <div
+        className={cn(
+          "absolute right-0 top-0 bottom-0 w-[5%] z-30 pointer-events-none",
+          theme === "dark"
+            ? "bg-gradient-to-l from-black to-transparent"
+            : "bg-gradient-to-l from-white to-transparent"
+        )}
+      />
+
       <ul
         ref={scrollerRef}
         className={cn(
@@ -157,7 +176,6 @@ const InfiniteMovingCards = ({
           <li
             key={`${item.name}-${idx}`}
             className={cn(
-              // corrected sizes: narrower width, taller height
               "relative w-[280px] h-[270px] shrink-0 rounded-2xl border px-6 py-6 md:w-[360px] lg:w-[440px] transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl",
               theme === "dark"
                 ? "bg-bg3 border-gray-700 text-white"
@@ -178,7 +196,7 @@ const InfiniteMovingCards = ({
             <blockquote className="relative z-10 flex flex-col text-left">
               <h3
                 className={cn(
-                  "text-xl font-extrabold", // bigger heading
+                  "text-xl font-extrabold",
                   theme === "dark" ? "text-white" : "text-gray-900"
                 )}
               >

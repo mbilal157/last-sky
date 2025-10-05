@@ -139,7 +139,7 @@ export const MaskContainer = ({
     >
       {/* Masked Area */}
       <motion.div
-        className="absolute flex h-full w-screen items-center justify-center [mask-image:url(/mask.svg)] [mask-repeat:no-repeat] bg-[#0098ff] dark:bg-white"
+        className="absolute flex h-full w-screen items-center justify-center [mask-image:url(/mask.svg)] [mask-repeat:no-repeat] bg-[#0098ff] dark:bg-[#0098ff]"
         animate={{
           maskPosition: `${Math.max(
             0,
