@@ -15,9 +15,11 @@ import {
   Dumbbell,
   Shirt,
   Type,
+  Video,
 } from "lucide-react";
 
 type ContentKey =
+  | "All"
   | "Promo"
   | "Typography"
   | "Wedding"
@@ -27,6 +29,7 @@ type ContentKey =
   | "Stories";
 
 const contentMap: Record<ContentKey, React.ReactNode> = {
+  All: <VideoCategory category="All" />,
   Promo: <VideoCategory category="Promo" />,
   Wedding: <VideoCategory category="Wedding" />,
   Typography: <VideoCategory category="Typography" />,
@@ -42,7 +45,7 @@ export function VideoSidebarDemo() {
   const selectedItem = searchParams.get("item");
 
   const getCategoryFromItem = (item: string | null): ContentKey => {
-    if (!item) return "Promo"; // default
+    if (!item) return "All"; // default
     const lower = item.toLowerCase();
 
     // Check for specific titles from portfolio
@@ -55,7 +58,7 @@ export function VideoSidebarDemo() {
     if (lower.includes("stories")) return "Stories";
     if (lower.includes("promo")) return "Promo";
 
-    return "Promo";
+    return "All";
   };
 
   const [activeLink, setActiveLink] = useState<ContentKey>(
@@ -67,6 +70,7 @@ export function VideoSidebarDemo() {
   }, [selectedItem]);
 
   const links: { label: ContentKey; href: string; icon: React.ReactNode }[] = [
+    { label: "All", href: "#", icon: <Video /> },
     { label: "Promo", href: "#", icon: <Film /> },
     { label: "Typography", href: "#", icon: <Type /> },
     { label: "Wedding", href: "#", icon: <Heart /> },

@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Play, X } from "lucide-react";
 import Image from "next/image";
+import { InfiniteMovingCards } from "./allmovcards";
 // 🔹 Types
 type VideoProject = {
   id: number;
@@ -11,6 +12,7 @@ type VideoProject = {
   description: string;
   thumbnail: string;
   videoUrl: string;
+  category: string;
 };
 
 type VideoProjects = {
@@ -42,6 +44,7 @@ const videoProjects: VideoProjects = {
 
       thumbnail: "/images/portfolio/video-editing/typo1.jpg",
       videoUrl: "https://www.youtube.com/watch?v=AY_PWpfAt_M",
+      category: "Typography",
     },
     {
       id: 2,
@@ -50,7 +53,9 @@ const videoProjects: VideoProjects = {
 
       thumbnail: "/images/portfolio/video-editing/typo3.jpg",
       videoUrl: "https://www.youtube.com/watch?v=qfhxIhswYRU",
+      category: "Typography",
     },
+
     {
       id: 3,
       title: "Dynamic Promo Typography",
@@ -58,6 +63,7 @@ const videoProjects: VideoProjects = {
 
       thumbnail: "/images/portfolio/video-editing/typo2.jpg",
       videoUrl: "https://www.youtube.com/watch?v=NkXqqwW48rY",
+      category: "Typography",
     },
   ],
   Wedding: [
@@ -68,6 +74,7 @@ const videoProjects: VideoProjects = {
 
       thumbnail: "/images/portfolio/video-editing/wed2.jpg",
       videoUrl: "https://www.youtube.com/watch?v=TIOG22vi5Vc&feature=youtu.be",
+      category: "Wedding",
     },
     {
       id: 2,
@@ -76,6 +83,7 @@ const videoProjects: VideoProjects = {
 
       thumbnail: "/images/portfolio/video-editing/wed1.jpg",
       videoUrl: "https://www.youtube.com/watch?v=vRulY2oo65M",
+      category: "Wedding",
     },
     {
       id: 3,
@@ -84,6 +92,7 @@ const videoProjects: VideoProjects = {
 
       thumbnail: "/images/portfolio/video-editing/wed6.jpg",
       videoUrl: "https://www.youtube.com/watch?v=kQZ4N2vsLMM",
+      category: "Wedding",
     },
     {
       id: 4,
@@ -92,6 +101,7 @@ const videoProjects: VideoProjects = {
 
       thumbnail: "/images/portfolio/video-editing/wed3.jpg",
       videoUrl: "https://www.youtube.com/watch?v=ZERRulxpUyM",
+      category: "Wedding",
     },
     {
       id: 5,
@@ -100,6 +110,7 @@ const videoProjects: VideoProjects = {
 
       thumbnail: "/images/portfolio/video-editing/wed4.jpg",
       videoUrl: "https://www.youtube.com/watch?v=-so9sXCGEPI",
+      category: "Wedding",
     },
     {
       id: 6,
@@ -108,6 +119,7 @@ const videoProjects: VideoProjects = {
 
       thumbnail: "/images/portfolio/video-editing/wed5.jpg",
       videoUrl: "https://www.youtube.com/watch?v=x0r_A6jQtiE",
+      category: "Wedding",
     },
     {
       id: 7,
@@ -116,6 +128,7 @@ const videoProjects: VideoProjects = {
 
       thumbnail: "/images/portfolio/video-editing/wed7.jpg",
       videoUrl: "https://www.youtube.com/watch?v=qpc2aVlbV3U",
+      category: "Wedding",
     },
   ],
   Promo: [
@@ -126,6 +139,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/promo.jpg",
       videoUrl: "https://www.youtube.com/watch?v=FBnJEG1EwGE",
+      category: "Promo",
     },
     {
       id: 2,
@@ -134,6 +148,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/story-fra.jpg",
       videoUrl: "https://www.youtube.com/watch?v=rzGYMXeTpqc",
+      category: "Promo",
     },
   ],
   RealEstate: [
@@ -144,6 +159,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/real1.jpg",
       videoUrl: "https://www.youtube.com/watch?v=ei0lbYPYyN4",
+      category: "RealEstate",
     },
     {
       id: 2,
@@ -152,6 +168,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/real2.jpg",
       videoUrl: "https://www.youtube.com/watch?v=2AtsQrYLLhs",
+      category: "RealEstate",
     },
     {
       id: 3,
@@ -160,6 +177,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/real3.jpg",
       videoUrl: "https://www.youtube.com/watch?v=HCv95_5BvCk",
+      category: "RealEstate",
     },
     {
       id: 4,
@@ -168,6 +186,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/real4.jpg",
       videoUrl: "https://www.youtube.com/watch?v=OQVpVi1QCLM",
+      category: "RealEstate",
     },
   ],
   Sports: [
@@ -178,6 +197,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/sports.jpg",
       videoUrl: "https://www.youtube.com/watch?v=YKqRiyCcsOQ",
+      category: "Sports",
     },
   ],
   Stories: [
@@ -188,6 +208,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/newtre.jpg",
       videoUrl: "https://www.youtube.com/shorts/QTjtgbkITew",
+      category: "Stories",
     },
     {
       id: 2,
@@ -196,6 +217,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/fastre.jpg",
       videoUrl: "https://www.youtube.com/shorts/aaN7JC4iH4U",
+      category: "Stories",
     },
     {
       id: 7,
@@ -204,6 +226,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/fesal.jpg",
       videoUrl: "https://www.youtube.com/shorts/kclhtOd398k",
+      category: "Stories",
     },
     {
       id: 3,
@@ -212,6 +235,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/respro.jpg",
       videoUrl: "https://www.youtube.com/shorts/1jn7qrG0JXk",
+      category: "Stories",
     },
     {
       id: 4,
@@ -220,6 +244,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/comoff.jpg",
       videoUrl: "https://www.youtube.com/shorts/BPpeZK35YCU",
+      category: "Stories",
     },
     {
       id: 5,
@@ -228,6 +253,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/fit2.jpg",
       videoUrl: "https://www.youtube.com/shorts/WlWTmWZOQNg",
+      category: "Stories",
     },
     {
       id: 6,
@@ -236,6 +262,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/fit1.jpg",
       videoUrl: "https://www.youtube.com/shorts/sXXX638WfCM",
+      category: "Stories",
     },
   ],
   Fashion: [
@@ -246,6 +273,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/fas-pro1.jpg",
       videoUrl: "https://www.youtube.com/watch?v=292WH5DYAms",
+      category: "Fashion",
     },
     {
       id: 2,
@@ -254,6 +282,7 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/fas-pro.jpg",
       videoUrl: "https://www.youtube.com/watch?v=qnNo8F4Cbzo",
+      category: "Fashion",
     },
     {
       id: 3,
@@ -262,11 +291,23 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/fas-pro2.jpg",
       videoUrl: "https://www.youtube.com/watch?v=uCiQjHgBdOM",
+      category: "Fashion",
     },
   ],
 };
 
-// 🔹 Video Player Modal
+const createAllVideos = (): VideoProject[] => {
+  const allVideos: VideoProject[] = [];
+  Object.values(videoProjects).forEach((categoryVideos) => {
+    allVideos.push(...categoryVideos);
+  });
+  return allVideos;
+};
+
+// Add All category to videoProjects
+videoProjects.All = createAllVideos();
+
+// 🔹 Video Player Modal (same as before)
 const VideoModal = ({ video, isOpen, onClose }: VideoModalProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -309,7 +350,6 @@ const VideoModal = ({ video, isOpen, onClose }: VideoModalProps) => {
           <div className="relative w-full max-h-[70vh]">
             {video.videoUrl.includes("youtube.com") ||
             video.videoUrl.includes("youtu.be") ? (
-              // 🔹 Use proper YouTube embed link
               <iframe
                 className="w-full h-[70vh]"
                 src={getYouTubeEmbedUrl(video.videoUrl)}
@@ -319,7 +359,6 @@ const VideoModal = ({ video, isOpen, onClose }: VideoModalProps) => {
                 allowFullScreen
               ></iframe>
             ) : (
-              // 🔹 Use native video player for .mp4 files
               <video
                 ref={videoRef}
                 className="w-full h-auto max-h-[70vh]"
@@ -341,6 +380,9 @@ const VideoModal = ({ video, isOpen, onClose }: VideoModalProps) => {
         <div className="p-4 bg-neutral-900 text-white">
           <h3 className="text-xl font-bold mb-2">{video.title}</h3>
           <p className="text-neutral-400">{video.description}</p>
+          <span className="inline-block mt-2 px-3 py-1 bg-blue-600 text-white text-sm rounded-full">
+            {video.category}
+          </span>
         </div>
       </motion.div>
     </motion.div>
@@ -400,8 +442,97 @@ const VideoCard = ({ video, onPlay }: VideoCardProps) => {
     </motion.div>
   );
 };
+interface InfiniteMovingCardsItem {
+  title: string;
+  src: string;
+  description?: string;
+  category?: string;
+  videoUrl?: string;
+  id?: number;
+}
+const AllVideosCarousel = ({ videos }: { videos: VideoProject[] }) => {
+  const [selectedVideo, setSelectedVideo] = useState<VideoProject | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-// 🔹 Category Component
+  const handlePlayVideo = (video: VideoProject) => {
+    setSelectedVideo(video);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedVideo(null);
+  };
+
+  // Convert videos to InfiniteMovingCards format with proper typing
+  const carouselItems: InfiniteMovingCardsItem[] = videos.map((video) => ({
+    title: video.title,
+    src: video.thumbnail,
+    description: video.description,
+    category: video.category,
+    videoUrl: video.videoUrl,
+    id: video.id,
+  }));
+
+  // Split into rows for the carousel
+  const rowSizes = [6, 6, 6, 5];
+  const chunkedVideos: InfiniteMovingCardsItem[][] = [];
+  let start = 0;
+
+  for (const size of rowSizes) {
+    if (start >= carouselItems.length) break;
+    chunkedVideos.push(carouselItems.slice(start, start + size));
+    start += size;
+  }
+
+  // Properly typed click handler
+  const handleItemClick = (item: InfiniteMovingCardsItem) => {
+    const video = videos.find((v) => v.id === item.id);
+    if (video) handlePlayVideo(video);
+  };
+
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+        className="pb-10"
+      >
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold text-neutral-800 dark:text-white mb-2">
+            All Videos
+          </h2>
+          <p className="text-neutral-600 dark:text-neutral-400">
+            {videos.length} {videos.length === 1 ? "project" : "projects"}
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          {chunkedVideos.map((row, idx) => (
+            <div key={idx} className="relative">
+              <InfiniteMovingCards
+                items={row}
+                speed="normal"
+                direction={idx % 2 === 0 ? "right" : "left"}
+                rows={1}
+                onItemClick={handleItemClick} // Use the properly typed handler
+              />
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
+      <VideoModal
+        video={selectedVideo}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
+    </>
+  );
+};
+
 export const VideoCategory = ({ category }: VideoCategoryProps) => {
   const videos = videoProjects[category] || [];
   const [selectedVideo, setSelectedVideo] = useState<VideoProject | null>(null);
@@ -416,6 +547,11 @@ export const VideoCategory = ({ category }: VideoCategoryProps) => {
     setIsModalOpen(false);
     setSelectedVideo(null);
   };
+
+  // Use custom layout for All category, grid layout for others
+  if (category === "All") {
+    return <AllVideosCarousel videos={videos} />;
+  }
 
   return (
     <>
@@ -439,7 +575,7 @@ export const VideoCategory = ({ category }: VideoCategoryProps) => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {videos.map((video) => (
               <VideoCard
-                key={video.id}
+                key={`${category}-${video.id}`}
                 video={video}
                 onPlay={handlePlayVideo}
               />

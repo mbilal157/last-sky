@@ -1,12 +1,12 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useState, Suspense } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "../ui/sidebar";
 import { useSearchParams } from "next/navigation";
-import { AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { ImageIcon, FileText, Youtube, Briefcase, PenTool } from "lucide-react";
-import { motion } from "motion/react";
 import { Thumbnails } from "./thumbnails";
 import { Logos } from "./logos";
 import { Posters } from "./posters";
@@ -18,7 +18,8 @@ const CustomIllustrations = () => (
   <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
 );
 
-export function SidebarDemo() {
+// ✅ Wrap this part separately so Suspense can handle searchParams
+function SidebarDemoContent() {
   const links = [
     { label: "Logos and Branding", href: "#", icon: <ImageIcon size={16} /> },
     { label: "Posters and Flyers", href: "#", icon: <FileText size={16} /> },
@@ -50,7 +51,6 @@ export function SidebarDemo() {
   const [activeLink, setActiveLink] = useState<string>(() => {
     if (!selectedItem) return "Logos and Branding";
 
-    // Match item titles to sidebar labels
     if (selectedItem.includes("Thumbnail")) return "Thumbnails";
     if (selectedItem.includes("Logo")) return "Logos and Branding";
     if (selectedItem.includes("Poster")) return "Posters and Flyers";
@@ -67,7 +67,6 @@ export function SidebarDemo() {
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700">
           <div className="flex flex-1 flex-col overflow-x-hidden bg-white dark:bg-black overflow-y-auto">
-            {/* ✅ "Video Editing" top section */}
             <div
               className={cn(
                 "flex items-center gap-3 px-3 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
@@ -89,7 +88,6 @@ export function SidebarDemo() {
               )}
             </div>
 
-            {/* ✅ Sidebar Links */}
             <div className="mt-2 ml-1 w-full flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink
@@ -107,7 +105,7 @@ export function SidebarDemo() {
           </div>
         </SidebarBody>
       </Sidebar>
-      {/* ✅ Main content */}
+
       <motion.main
         animate={{
           marginLeft: open ? "240px" : "64px",
@@ -123,21 +121,14 @@ export function SidebarDemo() {
   );
 }
 
-export const Logo = () => (
-  <a
-    href="#"
-    className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-black"
-  >
-    <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-black dark:bg-white" />
-    <motion.span
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="font-medium whitespace-pre text-black dark:text-white"
-    >
-      Graphic Design
-    </motion.span>
-  </a>
-);
+// ✅ Wrap in Suspense here
+export function SidebarDemo() {
+  return (
+    <Suspense fallback={<div className="p-10 text-center">Loading...</div>}>
+      <SidebarDemoContent />
+    </Suspense>
+  );
+}
 
 const Dashboard = () => (
   <div className="space-y-6">

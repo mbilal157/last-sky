@@ -1,19 +1,12 @@
 "use client";
 
-import Navbar from "@/app/components/NavBar";
-import { VideoSidebarDemo } from "@/app/components/video-eddting/VideoSidebar";
+import { Suspense } from "react";
+import { VideoSidebarDemo as VideoSidebarDemoInner } from "../../components/video-eddting/VideoSidebar";
 
-const ClaimSubmissionContent = () => {
+export default function VideoSidebarDemo() {
   return (
-    <>
-      <Navbar />
-
-      <div className="mt-20">
-        {/* 👆 pushes SidebarDemo down by 4rem (64px) so it clears Navbar */}
-        <VideoSidebarDemo />
-      </div>
-    </>
+    <Suspense fallback={<div className="p-6 text-center">Loading...</div>}>
+      <VideoSidebarDemoInner />
+    </Suspense>
   );
-};
-
-export default ClaimSubmissionContent;
+}
