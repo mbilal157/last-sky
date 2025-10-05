@@ -176,7 +176,11 @@ export default function Portfolio() {
           {filteredItems.map((item) => (
             <CardContainer key={item.id} className="inter-var">
               <CardBody
-                onClick={() => router.push(item.href ?? "#")}
+                onClick={() =>
+                  router.push(
+                    `${item.href}?item=${encodeURIComponent(item.title)}`
+                  )
+                }
                 className="cursor-pointer bg-gray-50 dark:bg-[#1e1d1d] border dark:border-white/[0.2] border-black/[0.1] rounded-xl p-6 hover:shadow-lg transition"
               >
                 {/* Category */}

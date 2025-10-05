@@ -2,10 +2,11 @@
 
 import { Sidebar, SidebarBody, SidebarLink } from "../ui/sidebar";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { VideoCategory } from "../video-eddting/ContentMap.tsx";
 import { cn } from "@/lib/utils";
+import { useSearchParams } from "next/navigation";
 import {
   Film,
   Heart,
@@ -37,7 +38,33 @@ const contentMap: Record<ContentKey, React.ReactNode> = {
 
 export function VideoSidebarDemo() {
   const [open, setOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState<ContentKey>("Promo");
+  const searchParams = useSearchParams();
+  const selectedItem = searchParams.get("item");
+
+  const getCategoryFromItem = (item: string | null): ContentKey => {
+    if (!item) return "Promo"; // default
+    const lower = item.toLowerCase();
+
+    // Check for specific titles from portfolio
+    if (lower.includes("fashion")) return "Fashion";
+    if (lower.includes("real estate") || lower.includes("reel estate"))
+      return "RealEstate";
+    if (lower.includes("typography")) return "Typography";
+    if (lower.includes("wedding")) return "Wedding";
+    if (lower.includes("sports")) return "Sports";
+    if (lower.includes("stories")) return "Stories";
+    if (lower.includes("promo")) return "Promo";
+
+    return "Promo";
+  };
+
+  const [activeLink, setActiveLink] = useState<ContentKey>(
+    getCategoryFromItem(selectedItem)
+  );
+
+  useEffect(() => {
+    setActiveLink(getCategoryFromItem(selectedItem));
+  }, [selectedItem]);
 
   const links: { label: ContentKey; href: string; icon: React.ReactNode }[] = [
     { label: "Promo", href: "#", icon: <Film /> },
@@ -51,7 +78,6 @@ export function VideoSidebarDemo() {
 
   return (
     <div className="flex h-screen w-full bg-white dark:bg-neutral-900 text-black dark:text-white">
-      {" "}
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700">
           <div className="flex flex-1 flex-col overflow-x-hidden bg-white dark:bg-black overflow-y-auto">
@@ -69,7 +95,7 @@ export function VideoSidebarDemo() {
                 width={36}
                 height={36}
                 className="rounded-full object-cover"
-              />{" "}
+              />
               {open && (
                 <span className="text-sm font-medium whitespace-pre text-black dark:text-white">
                   Video Editing
