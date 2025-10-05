@@ -24,8 +24,8 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange={false} // Enable transitions
-          storageKey="skyline-theme" // Custom storage key
+          disableTransitionOnChange={false}
+          storageKey="skyline-theme"
         >
           <Navbar />
           {children}
