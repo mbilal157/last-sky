@@ -65,6 +65,15 @@ const videoProjects: VideoProjects = {
       videoUrl: "https://www.youtube.com/watch?v=NkXqqwW48rY",
       category: "Typography",
     },
+    {
+      id: 4,
+      title: "Dynamic Promo Typography",
+      description: "Glowing neon text animation with urban backdrop",
+
+      thumbnail: "/images/portfolio/video-editing/typo4.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=VY-OfO7U1xQ",
+      category: "Typography",
+    },
   ],
   Wedding: [
     {
@@ -220,15 +229,6 @@ const videoProjects: VideoProjects = {
       category: "Stories",
     },
     {
-      id: 7,
-      title: "Fashion Story 2",
-      description:
-        "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
-      videoUrl: "https://www.youtube.com/shorts/kclhtOd398k",
-      category: "Stories",
-    },
-    {
       id: 3,
       title: "Real estate promo story",
       description:
@@ -262,6 +262,150 @@ const videoProjects: VideoProjects = {
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/fit1.jpg",
       videoUrl: "https://www.youtube.com/shorts/sXXX638WfCM",
+      category: "Stories",
+    },
+    {
+      id: 7,
+      title: "Fashion Story 2",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://www.youtube.com/shorts/kclhtOd398k",
+      category: "Stories",
+    },
+    {
+      id: 8,
+      title: "Wedding Story 1",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://www.youtube.com/shorts/W9l1vN0YwE",
+      category: "Stories",
+    },
+    {
+      id: 9,
+      title: "Wedding 2",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://www.youtube.com/shorts/5WGPrHWCIZE",
+      category: "Stories",
+    },
+    {
+      id: 10,
+      title: "Wedding 3",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://www.youtube.com/shorts/7YR6G0bK6J8",
+      category: "Stories",
+    },
+    {
+      id: 11,
+      title: "Wedding 4",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://www.youtube.com/shorts/KzuewjKhyjI",
+      category: "Stories",
+    },
+    {
+      id: 12,
+      title: "Wedding 5",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://www.youtube.com/shorts/8Q2bsQVOpc0",
+      category: "Stories",
+    },
+    {
+      id: 13,
+      title: "Wedding 6",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://www.youtube.com/shorts/FIpGMSkvamM",
+      category: "Stories",
+    },
+    {
+      id: 14,
+      title: "Wedding 7",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://www.youtube.com/shorts/1zQGe6EAe-I",
+      category: "Stories",
+    },
+    {
+      id: 15,
+      title: "Travel 1",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://www.youtube.com/shorts/PvUC6kMzfhQ",
+      category: "Stories",
+    },
+    {
+      id: 16,
+      title: "Travel 2",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://www.youtube.com/shorts/htoI5kGHxWY",
+      category: "Stories",
+    },
+    {
+      id: 17,
+      title: "New 1",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://www.youtube.com/shorts/F5QGcd3b8Xk",
+      category: "Stories",
+    },
+    {
+      id: 18,
+      title: "New 2",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://youtube.com/shorts/bCB6OYfd_lU?feature=share",
+      category: "Stories",
+    },
+    {
+      id: 19,
+      title: "New 3",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://youtube.com/shorts/gTTLMMBpPd8?feature=share",
+      category: "Stories",
+    },
+    {
+      id: 20,
+      title: "New 4",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://youtube.com/shorts/4E2HmtFNLJY?feature=share",
+      category: "Stories",
+    },
+    {
+      id: 21,
+      title: "New 5",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://youtube.com/shorts/nZhCu_1HV5Q?feature=share",
+      category: "Stories",
+    },
+    {
+      id: 22,
+      title: "New 6",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      videoUrl: "https://youtube.com/shorts/KbFiR_-j6oc?feature=share",
       category: "Stories",
     },
   ],

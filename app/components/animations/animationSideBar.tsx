@@ -7,10 +7,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { PlayCircle, Move3d, Type } from "lucide-react";
+import { VideoCategory } from "./ContentMap.tsx";
 
-const Logo = () => (
-  <div className="p-4 text-lg font-semibold">Business Cards Content</div>
-);
 const Motion = () => (
   <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
 );
@@ -27,7 +25,7 @@ function SidebarDemoContent() {
   ];
 
   const contentMap: Record<string, React.ReactNode> = {
-    "Logo Animation": <Logo />,
+    "Logo Animation": <VideoCategory category="Logo" />,
     "Motion Graphics": <Motion />,
     "Typography Videos": <Typgraphy />,
   };
