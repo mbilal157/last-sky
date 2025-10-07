@@ -6,23 +6,19 @@ import { useEffect, useState } from "react";
 
 export default function AboutUs() {
   const { theme, systemTheme } = useTheme();
-  const [resolvedTheme, setResolvedTheme] = useState<string>("light"); // always string
+  const [resolvedTheme, setResolvedTheme] = useState<string>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-
-    // safely resolve theme
     const currentTheme =
       theme === "system" ? systemTheme ?? "light" : theme ?? "light";
-
     setResolvedTheme(currentTheme);
   }, [theme, systemTheme]);
 
   if (!mounted) {
     return (
       <section className="relative py-16 px-6 md:px-12 bg-white text-gray-800">
-        {/* Loading skeleton */}
         <div className="max-w-6xl mx-auto">
           <div className="h-12 bg-gray-200 rounded w-1/3 mb-4 mx-auto"></div>
           <div className="h-6 bg-gray-200 rounded w-2/3 mb-12 mx-auto"></div>
@@ -51,9 +47,9 @@ export default function AboutUs() {
         through innovation, design, and cutting-edge development.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 items-center max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
         {/* Left Column - Features */}
-        <div className="space-y-6 ml-24">
+        <div className="space-y-6 md:ml-24 ml-4">
           {/* Feature 1 */}
           <div className="flex flex-row items-start gap-3 text-left">
             <div className="p-4 bg-[#0098ff] rounded-2xl w-fit">
@@ -108,14 +104,14 @@ export default function AboutUs() {
           </div>
         </div>
 
-        {/* Right Column - Image with Badge */}
-        <div className="relative flex justify-center mr-22">
+        {/* Right Column - Image */}
+        <div className="relative flex justify-center md:mr-22 mx-[3%]">
           <Image
             src="/images/whyus.jpg"
             alt="Features"
             width={600}
             height={400}
-            className="rounded-2xl h-[26rem] w-[22rem] shadow-lg object-cover"
+            className="rounded-2xl shadow-lg object-cover w-full md:w-[22rem] h-auto md:h-auto"
           />
           <div
             className={`absolute left-6 bottom-0 translate-y-1/2 px-6 py-4 rounded-2xl shadow-lg ${

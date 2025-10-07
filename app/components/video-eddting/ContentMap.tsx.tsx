@@ -74,6 +74,24 @@ const videoProjects: VideoProjects = {
       videoUrl: "https://www.youtube.com/watch?v=VY-OfO7U1xQ",
       category: "Typography",
     },
+    {
+      id: 5,
+      title: "Chic Runway Highlights",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/promo.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=FBnJEG1EwGE",
+      category: "Promo",
+    },
+    {
+      id: 6,
+      title: "Chic Runway Highlights",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/story-fra.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=rzGYMXeTpqc",
+      category: "Promo",
+    },
   ],
   Wedding: [
     {
@@ -140,15 +158,15 @@ const videoProjects: VideoProjects = {
       category: "Wedding",
     },
   ],
-  Promo: [
+  LongVideos: [
     {
       id: 1,
       title: "Chic Runway Highlights",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/promo.jpg",
-      videoUrl: "https://www.youtube.com/watch?v=FBnJEG1EwGE",
-      category: "Promo",
+      videoUrl: "https://www.youtube.com/watch?v=ajgqtfz9_j8&t=142s",
+      category: "LongVideos",
     },
     {
       id: 2,
@@ -156,8 +174,82 @@ const videoProjects: VideoProjects = {
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
       thumbnail: "/images/portfolio/video-editing/story-fra.jpg",
-      videoUrl: "https://www.youtube.com/watch?v=rzGYMXeTpqc",
-      category: "Promo",
+      videoUrl: "https://www.youtube.com/watch?v=47x9bsOo3gI",
+      category: "LongVideos",
+    },
+    {
+      id: 3,
+      title: "Chic Runway Highlights",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/story-fra.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=F_O3YcIAjic",
+      category: "LongVideos",
+    },
+    {
+      id: 4,
+      title: "Chic Runway Highlights",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/story-fra.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=8noQ3u_BKho&t=163s",
+      category: "LongVideos",
+    },
+  ],
+  Shorts: [
+    {
+      id: 1,
+      title: "Chic Runway Highlights",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/promo.jpg",
+      videoUrl: "https://www.youtube.com/shorts/nTPKleaIgpk",
+      category: "Shorts",
+    },
+    {
+      id: 2,
+      title: "Chic Runway Highlights",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/promo.jpg",
+      videoUrl: "https://www.youtube.com/shorts/f0GJtnkXttY",
+      category: "Shorts",
+    },
+    {
+      id: 3,
+      title: "Chic Runway Highlights",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/promo.jpg",
+      videoUrl: "https://www.youtube.com/shorts/735gp0yhsiI",
+      category: "Shorts",
+    },
+    {
+      id: 16,
+      title: "Quick photo editing tip",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/weds9.jpg",
+      videoUrl: "https://www.youtube.com/shorts/F5QGcd3b8Xk",
+      category: "Stories",
+    },
+    {
+      id: 17,
+      title: "Thumbnail design tip 1",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/weds10.jpg",
+      videoUrl: "https://youtube.com/shorts/bCB6OYfd_lU?feature=share",
+      category: "Stories",
+    },
+    {
+      id: 18,
+      title: "Thumbnail design tip 1",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/weds11.jpg",
+      videoUrl: "https://youtube.com/shorts/gTTLMMBpPd8?feature=share",
+      category: "Stories",
     },
   ],
   RealEstate: [
@@ -196,17 +288,6 @@ const videoProjects: VideoProjects = {
       thumbnail: "/images/portfolio/video-editing/real4.jpg",
       videoUrl: "https://www.youtube.com/watch?v=OQVpVi1QCLM",
       category: "RealEstate",
-    },
-  ],
-  Sports: [
-    {
-      id: 1,
-      title: "Championship 2025 promo",
-      description:
-        "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/sports.jpg",
-      videoUrl: "https://www.youtube.com/watch?v=YKqRiyCcsOQ",
-      category: "Sports",
     },
   ],
   Stories: [
@@ -347,33 +428,6 @@ const videoProjects: VideoProjects = {
     },
     {
       id: 16,
-      title: "Quick photo editing tip",
-      description:
-        "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/weds9.jpg",
-      videoUrl: "https://www.youtube.com/shorts/F5QGcd3b8Xk",
-      category: "Stories",
-    },
-    {
-      id: 17,
-      title: "Thumbnail design tip 1",
-      description:
-        "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/weds10.jpg",
-      videoUrl: "https://youtube.com/shorts/bCB6OYfd_lU?feature=share",
-      category: "Stories",
-    },
-    {
-      id: 18,
-      title: "Thumbnail design tip 1",
-      description:
-        "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/weds11.jpg",
-      videoUrl: "https://youtube.com/shorts/gTTLMMBpPd8?feature=share",
-      category: "Stories",
-    },
-    {
-      id: 19,
       title: "Event Promo",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
@@ -382,7 +436,7 @@ const videoProjects: VideoProjects = {
       category: "Stories",
     },
     {
-      id: 20,
+      id: 17,
       title: "Brands Promo",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",

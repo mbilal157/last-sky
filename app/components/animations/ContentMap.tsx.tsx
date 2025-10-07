@@ -101,6 +101,17 @@ const videoProjects: VideoProjects = {
       category: "Logo",
     },
   ],
+  Motion: [
+    {
+      id: 1,
+      title: "Championship 2025 promo",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/sports.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=YKqRiyCcsOQ",
+      category: "Sports",
+    },
+  ],
 };
 
 const createAllVideos = (): VideoProject[] => {

@@ -8,33 +8,33 @@ import { VideoCategory } from "../video-eddting/ContentMap.tsx";
 import { cn } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
 import {
-  Film,
   Heart,
   Clapperboard,
   Building2,
-  Dumbbell,
   Shirt,
   Type,
   Video,
+  Clock,
+  Zap,
 } from "lucide-react";
 
 type ContentKey =
   | "All"
-  | "Promo"
   | "Typography"
   | "Wedding"
+  | "LongVideos"
   | "RealEstate"
-  | "Sports"
+  | "Shorts"
   | "Fashion"
   | "Stories";
 
 const contentMap: Record<ContentKey, React.ReactNode> = {
   All: <VideoCategory category="All" />,
-  Promo: <VideoCategory category="Promo" />,
   Wedding: <VideoCategory category="Wedding" />,
   Typography: <VideoCategory category="Typography" />,
+  LongVideos: <VideoCategory category="LongVideos" />,
   RealEstate: <VideoCategory category="RealEstate" />,
-  Sports: <VideoCategory category="Sports" />,
+  Shorts: <VideoCategory category="Shorts" />,
   Fashion: <VideoCategory category="Fashion" />,
   Stories: <VideoCategory category="Stories" />,
 };
@@ -54,9 +54,9 @@ export function VideoSidebarDemo() {
       return "RealEstate";
     if (lower.includes("typography")) return "Typography";
     if (lower.includes("wedding")) return "Wedding";
-    if (lower.includes("sports")) return "Sports";
+    if (lower.includes("longvideos")) return "LongVideos";
+    if (lower.includes("shorts")) return "Shorts";
     if (lower.includes("stories")) return "Stories";
-    if (lower.includes("promo")) return "Promo";
 
     return "All";
   };
@@ -71,11 +71,11 @@ export function VideoSidebarDemo() {
 
   const links: { label: ContentKey; href: string; icon: React.ReactNode }[] = [
     { label: "All", href: "#", icon: <Video /> },
-    { label: "Promo", href: "#", icon: <Film /> },
     { label: "Typography", href: "#", icon: <Type /> },
     { label: "Wedding", href: "#", icon: <Heart /> },
+    { label: "LongVideos", href: "#", icon: <Clock /> },
+    { label: "Shorts", href: "#", icon: <Zap /> },
     { label: "RealEstate", href: "#", icon: <Building2 /> },
-    { label: "Sports", href: "#", icon: <Dumbbell /> },
     { label: "Fashion", href: "#", icon: <Shirt /> },
     { label: "Stories", href: "#", icon: <Clapperboard /> },
   ];

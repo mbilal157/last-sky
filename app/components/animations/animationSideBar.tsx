@@ -6,28 +6,19 @@ import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { PlayCircle, Move3d, Type } from "lucide-react";
+import { PlayCircle, Move3d } from "lucide-react";
 import { VideoCategory } from "./ContentMap.tsx";
-
-const Motion = () => (
-  <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
-);
-const Typgraphy = () => (
-  <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
-);
 
 // ✅ Wrap this part separately so Suspense can handle searchParams
 function SidebarDemoContent() {
   const links = [
     { label: "Logo Animation", href: "#", icon: <PlayCircle size={24} /> },
     { label: "Motion Graphics", href: "#", icon: <Move3d size={24} /> },
-    { label: "Typography Videos", href: "#", icon: <Type size={24} /> },
   ];
 
   const contentMap: Record<string, React.ReactNode> = {
     "Logo Animation": <VideoCategory category="Logo" />,
-    "Motion Graphics": <Motion />,
-    "Typography Videos": <Typgraphy />,
+    "Motion Graphics": <VideoCategory category="Motion" />,
   };
 
   const [open, setOpen] = useState(false);
@@ -38,8 +29,7 @@ function SidebarDemoContent() {
     if (!selectedItem) return "Logo Animation";
 
     if (selectedItem.includes("Logo Animation")) return "Logo Animation";
-    if (selectedItem.includes("Motion Graphics")) return "Motion Graphics";
-    if (selectedItem.includes("Typography Videos")) return "Typography Videos";
+    if (selectedItem.includes("motion")) return "Motion";
 
     return "Logo Animation";
   });

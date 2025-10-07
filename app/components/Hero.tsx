@@ -48,7 +48,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="hero-background flex flex-col items-center justify-center w-screen min-h-screen text-center transition-colors duration-300 relative">
+    <section className="hero-background flex flex-col items-center justify-center w-full min-h-screen text-center transition-colors duration-300 relative">
       {/* Hero Section specific cursor ball - appears at boundary */}
       {showHeroCursor && (
         <div
@@ -69,6 +69,7 @@ const HeroSection = () => {
           alt="logo"
           width={80}
           height={80}
+          priority
           className={`w-full h-full object-contain transition-transform duration-300 hover:scale-110 ${
             resolvedTheme === "light" ? "block" : "hidden"
           }`}
@@ -78,6 +79,7 @@ const HeroSection = () => {
           alt="logo"
           width={80}
           height={80}
+          priority
           className={`w-full h-full object-contain  transition-transform duration-300 hover:scale-110 ${
             resolvedTheme === "dark" ? "block" : "hidden"
           }`}
@@ -96,7 +98,7 @@ const HeroSection = () => {
           }
           className="h-[15rem] rounded-md"
         >
-          <p className="mx-auto text-center text-3xl font-extrabold tracking-wide">
+          <p className="mx-auto text-center  text-3xl font-extrabold tracking-wide">
             Where Ideas Turns Into Visual Masterpieces
           </p>
         </MaskContainer>

@@ -12,7 +12,7 @@ const portfolioItems = [
     category: "Video Editing",
     title: "Fashion Promo",
     subtitle: "Engaging fashion video editing to boost brand presence online",
-    image: "/images/portfolio/video-editing/fas-pro2.jpg",
+    image: "/images/portfolio/cover/fescover.jpg",
     href: "/portfolio/video-editing",
   },
   {
@@ -20,7 +20,7 @@ const portfolioItems = [
     category: "Video Editing",
     title: "Reel Estate Promo",
     subtitle: "Short, dynamic reels for Instagram, TikTok & YouTube Shorts",
-    image: "/images/portfolio/video-editing/real3.jpg",
+    image: "/images/portfolio/cover/realcover.jpg",
     href: "/portfolio/video-editing",
   },
   {
@@ -28,7 +28,7 @@ const portfolioItems = [
     category: "Animations",
     title: "Logo Animation",
     subtitle: "Creative animated logos to elevate brand identity",
-    image: "/portfolio/whyus.jpg",
+    image: "/images/portfolio/cover/logocover.jpg",
     href: "/portfolio/animations",
   },
   {
