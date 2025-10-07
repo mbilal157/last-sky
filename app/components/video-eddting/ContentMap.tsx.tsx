@@ -164,7 +164,7 @@ const videoProjects: VideoProjects = {
       title: "Chic Runway Highlights",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/promo.jpg",
+      thumbnail: "/images/portfolio/video-editing/long2.jpg",
       videoUrl: "https://www.youtube.com/watch?v=ajgqtfz9_j8&t=142s",
       category: "LongVideos",
     },
@@ -173,7 +173,7 @@ const videoProjects: VideoProjects = {
       title: "Chic Runway Highlights",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/story-fra.jpg",
+      thumbnail: "/images/portfolio/video-editing/long3.jpg",
       videoUrl: "https://www.youtube.com/watch?v=47x9bsOo3gI",
       category: "LongVideos",
     },
@@ -182,7 +182,7 @@ const videoProjects: VideoProjects = {
       title: "Chic Runway Highlights",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/story-fra.jpg",
+      thumbnail: "/images/portfolio/video-editing/long1.jpg",
       videoUrl: "https://www.youtube.com/watch?v=F_O3YcIAjic",
       category: "LongVideos",
     },
@@ -191,7 +191,7 @@ const videoProjects: VideoProjects = {
       title: "Chic Runway Highlights",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/story-fra.jpg",
+      thumbnail: "/images/portfolio/video-editing/long4.jpg",
       videoUrl: "https://www.youtube.com/watch?v=8noQ3u_BKho&t=163s",
       category: "LongVideos",
     },
@@ -202,7 +202,7 @@ const videoProjects: VideoProjects = {
       title: "Chic Runway Highlights",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/promo.jpg",
+      thumbnail: "/images/portfolio/video-editing/short1.jpg",
       videoUrl: "https://www.youtube.com/shorts/nTPKleaIgpk",
       category: "Shorts",
     },
@@ -211,7 +211,7 @@ const videoProjects: VideoProjects = {
       title: "Chic Runway Highlights",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/promo.jpg",
+      thumbnail: "/images/portfolio/video-editing/short3.jpg",
       videoUrl: "https://www.youtube.com/shorts/f0GJtnkXttY",
       category: "Shorts",
     },
@@ -220,7 +220,7 @@ const videoProjects: VideoProjects = {
       title: "Chic Runway Highlights",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/promo.jpg",
+      thumbnail: "/images/portfolio/video-editing/short2.jpg",
       videoUrl: "https://www.youtube.com/shorts/735gp0yhsiI",
       category: "Shorts",
     },

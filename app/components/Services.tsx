@@ -56,7 +56,7 @@ const services = [
     icon: Film,
     title: "Animations",
     subtitle: "Creative Motion & Visual Effects",
-    features: ["Logo Animation", "Motion Graphics", "Typography Videos"],
+    features: ["Logo Animation", "Motion Graphics"],
     href: "/services/animations",
   },
   {
