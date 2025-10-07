@@ -113,7 +113,7 @@ export function AnimationSideBarDemo() {
 }
 
 const Dashboard = () => (
-  <div className="space-y-6">
+  <div className="space-y-6 mt-44">
     {[...new Array(12)].map((_, idx) => (
       <div
         key={idx}

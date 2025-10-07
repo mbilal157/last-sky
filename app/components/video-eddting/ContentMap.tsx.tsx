@@ -256,15 +256,6 @@ const videoProjects: VideoProjects = {
       category: "Stories",
     },
     {
-      id: 6,
-      title: "Fitness 2 story",
-      description:
-        "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fit1.jpg",
-      videoUrl: "https://www.youtube.com/shorts/sXXX638WfCM",
-      category: "Stories",
-    },
-    {
       id: 7,
       title: "Fashion Story 2",
       description:
@@ -275,11 +266,11 @@ const videoProjects: VideoProjects = {
     },
     {
       id: 8,
-      title: "Wedding Story 1",
+      title: "Wedding 1",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
-      videoUrl: "https://www.youtube.com/shorts/W9l1vN0YwE",
+      thumbnail: "/images/portfolio/video-editing/weds1.jpg",
+      videoUrl: "https://www.youtube.com/shorts/5WGPrHWCIZE",
       category: "Stories",
     },
     {
@@ -287,8 +278,8 @@ const videoProjects: VideoProjects = {
       title: "Wedding 2",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
-      videoUrl: "https://www.youtube.com/shorts/5WGPrHWCIZE",
+      thumbnail: "/images/portfolio/video-editing/weds2.jpg",
+      videoUrl: "https://www.youtube.com/shorts/7YR6G0bK6J8",
       category: "Stories",
     },
     {
@@ -296,8 +287,8 @@ const videoProjects: VideoProjects = {
       title: "Wedding 3",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
-      videoUrl: "https://www.youtube.com/shorts/7YR6G0bK6J8",
+      thumbnail: "/images/portfolio/video-editing/weds3.jpg",
+      videoUrl: "https://www.youtube.com/shorts/KzuewjKhyjI",
       category: "Stories",
     },
     {
@@ -305,8 +296,8 @@ const videoProjects: VideoProjects = {
       title: "Wedding 4",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
-      videoUrl: "https://www.youtube.com/shorts/KzuewjKhyjI",
+      thumbnail: "/images/portfolio/video-editing/weds4.jpg",
+      videoUrl: "https://www.youtube.com/shorts/8Q2bsQVOpc0",
       category: "Stories",
     },
     {
@@ -314,8 +305,8 @@ const videoProjects: VideoProjects = {
       title: "Wedding 5",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
-      videoUrl: "https://www.youtube.com/shorts/8Q2bsQVOpc0",
+      thumbnail: "/images/portfolio/video-editing/weds5.jpg",
+      videoUrl: "https://www.youtube.com/shorts/FIpGMSkvamM",
       category: "Stories",
     },
     {
@@ -323,89 +314,80 @@ const videoProjects: VideoProjects = {
       title: "Wedding 6",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
-      videoUrl: "https://www.youtube.com/shorts/FIpGMSkvamM",
-      category: "Stories",
-    },
-    {
-      id: 14,
-      title: "Wedding 7",
-      description:
-        "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      thumbnail: "/images/portfolio/video-editing/weds6.jpg",
       videoUrl: "https://www.youtube.com/shorts/1zQGe6EAe-I",
       category: "Stories",
     },
     {
-      id: 15,
+      id: 6,
+      title: "Fitness 2 story",
+      description:
+        "A bold and stylish promo capturing the essence of modern runway fashion.",
+      thumbnail: "/images/portfolio/video-editing/fit1.jpg",
+      videoUrl: "https://www.youtube.com/shorts/sXXX638WfCM",
+      category: "Stories",
+    },
+    {
+      id: 14,
       title: "Travel 1",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      thumbnail: "/images/portfolio/video-editing/weds7.jpg",
       videoUrl: "https://www.youtube.com/shorts/PvUC6kMzfhQ",
       category: "Stories",
     },
     {
-      id: 16,
+      id: 15,
       title: "Travel 2",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      thumbnail: "/images/portfolio/video-editing/weds8.jpg",
       videoUrl: "https://www.youtube.com/shorts/htoI5kGHxWY",
       category: "Stories",
     },
     {
-      id: 17,
-      title: "New 1",
+      id: 16,
+      title: "Quick photo editing tip",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      thumbnail: "/images/portfolio/video-editing/weds9.jpg",
       videoUrl: "https://www.youtube.com/shorts/F5QGcd3b8Xk",
       category: "Stories",
     },
     {
-      id: 18,
-      title: "New 2",
+      id: 17,
+      title: "Thumbnail design tip 1",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      thumbnail: "/images/portfolio/video-editing/weds10.jpg",
       videoUrl: "https://youtube.com/shorts/bCB6OYfd_lU?feature=share",
       category: "Stories",
     },
     {
-      id: 19,
-      title: "New 3",
+      id: 18,
+      title: "Thumbnail design tip 1",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      thumbnail: "/images/portfolio/video-editing/weds11.jpg",
       videoUrl: "https://youtube.com/shorts/gTTLMMBpPd8?feature=share",
       category: "Stories",
     },
     {
-      id: 20,
-      title: "New 4",
+      id: 19,
+      title: "Event Promo",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      thumbnail: "/images/portfolio/video-editing/weds12.jpg",
       videoUrl: "https://youtube.com/shorts/4E2HmtFNLJY?feature=share",
       category: "Stories",
     },
     {
-      id: 21,
-      title: "New 5",
+      id: 20,
+      title: "Brands Promo",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
+      thumbnail: "/images/portfolio/video-editing/weds13.jpg",
       videoUrl: "https://youtube.com/shorts/nZhCu_1HV5Q?feature=share",
-      category: "Stories",
-    },
-    {
-      id: 22,
-      title: "New 6",
-      description:
-        "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/fesal.jpg",
-      videoUrl: "https://youtube.com/shorts/KbFiR_-j6oc?feature=share",
       category: "Stories",
     },
   ],
@@ -619,7 +601,7 @@ const AllVideosCarousel = ({ videos }: { videos: VideoProject[] }) => {
   }));
 
   // Split into rows for the carousel
-  const rowSizes = [6, 6, 6, 5];
+  const rowSizes = [6, 6, 6, 20];
   const chunkedVideos: InfiniteMovingCardsItem[][] = [];
   let start = 0;
 

@@ -39,64 +39,64 @@ const videoProjects: VideoProjects = {
   Logo: [
     {
       id: 1,
-      title: "Animated Logo 1",
+      title: "MB Logo",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/promo.jpg",
+      thumbnail: "/images/portfolio/animations/logo1.png",
       videoUrl: "https://youtu.be/JdoHVjzYt7A",
       category: "Logo",
     },
     {
       id: 2,
-      title: "Animated Logo 2",
+      title: "Noor-e-islam",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/promo.jpg",
+      thumbnail: "/images/portfolio/animations/logo2.jpg",
       videoUrl: "https://youtu.be/tz2iRTSOZmc",
       category: "Logo",
     },
     {
       id: 3,
-      title: "Animated Logo 3",
+      title: "NoBills tech",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/promo.jpg",
+      thumbnail: "/images/portfolio/animations/logo3.png",
       videoUrl: "https://youtu.be/HL8DoLtQ4Fw",
       category: "Logo",
     },
     {
       id: 4,
-      title: "Animated Logo 4",
+      title: "CalmZen Sounds",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/promo.jpg",
+      thumbnail: "/images/portfolio/animations/logo4.jpg",
       videoUrl: "https://youtu.be/xobf0TNSL1E",
       category: "Logo",
     },
     {
       id: 5,
-      title: "Animated Logo 5",
+      title: "Power of focus",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/promo.jpg",
+      thumbnail: "/images/portfolio/animations/logo5.jpg",
       videoUrl: "https://youtu.be/VEXfFJCxYoY",
       category: "Logo",
     },
     {
       id: 6,
-      title: "Animated Logo 6",
+      title: "Blue wings",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/promo.jpg",
+      thumbnail: "/images/portfolio/animations/logo6.jpg",
       videoUrl: "https://youtu.be/Yz8ldcne3fw",
       category: "Logo",
     },
     {
       id: 7,
-      title: "Animated Logo 7",
+      title: "Mufti Saleem Rabani",
       description:
         "A bold and stylish promo capturing the essence of modern runway fashion.",
-      thumbnail: "/images/portfolio/video-editing/promo.jpg",
+      thumbnail: "/images/portfolio/animations/logo7.jpg",
       videoUrl: "https://youtu.be/eFgGj2rG3M0",
       category: "Logo",
     },
