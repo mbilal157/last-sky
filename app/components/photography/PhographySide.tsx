@@ -7,10 +7,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Camera, Heart, Film, Baby } from "lucide-react";
+import { Cinematic } from "./cinematicData";
 
-const Cinematic = () => (
-  <div className="p-4 text-lg font-semibold">Business Cards Content</div>
-);
 const Kids = () => (
   <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
 );
