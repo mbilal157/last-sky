@@ -33,7 +33,7 @@ function SidebarDemoContent() {
   const links = [
     { label: "Logos and Branding", href: "#", icon: <ImageIcon size={24} /> },
     { label: "Social Media Posts", href: "#", icon: <Megaphone size={24} /> },
-    { label: "Posters and Flyers", href: "#", icon: <FileText size={24} /> },
+    { label: "Image Manipulation", href: "#", icon: <FileText size={24} /> },
     { label: "Thumbnails", href: "#", icon: <Youtube size={24} /> },
     {
       label: "Business cards and stationary",
@@ -50,7 +50,7 @@ function SidebarDemoContent() {
   const contentMap: Record<string, React.ReactNode> = {
     "Logos and Branding": <Logos />,
     "Social Media Posts": <Posts />,
-    "Posters and Flyers": <Posters />,
+    "Image Manipulation": <Posters />,
     Thumbnails: <Thumbnails />,
     "Business cards and stationary": <BusinessCards />,
     "custom illustrations / vector work": <CustomIllustrations />,
@@ -66,7 +66,7 @@ function SidebarDemoContent() {
     if (selectedItem.includes("Thumbnail")) return "Thumbnails";
     if (selectedItem.includes("Social Media Posts")) return "Posts";
     if (selectedItem.includes("Logo")) return "Logos and Branding";
-    if (selectedItem.includes("Poster")) return "Posters and Flyers";
+    if (selectedItem.includes("Poster")) return "Image Manipulation";
     if (selectedItem.includes("Business"))
       return "Business cards and stationary";
     if (selectedItem.includes("Illustration"))

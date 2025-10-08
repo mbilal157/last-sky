@@ -10,10 +10,7 @@ import { Camera, Heart, Film, Baby } from "lucide-react";
 import { Cinematic } from "./cinematicData";
 import { Kids } from "./kids";
 import { Wedding } from "./weddata";
-
-const Documentary = () => (
-  <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
-);
+import { Documentary } from "./documentry";
 
 // ✅ Wrap this part separately so Suspense can handle searchParams
 function SidebarDemoContent() {
