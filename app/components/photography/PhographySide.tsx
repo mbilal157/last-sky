@@ -8,13 +8,9 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Camera, Heart, Film, Baby } from "lucide-react";
 import { Cinematic } from "./cinematicData";
+import { Kids } from "./kids";
+import { Wedding } from "./weddata";
 
-const Kids = () => (
-  <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
-);
-const Wedding = () => (
-  <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
-);
 const Documentary = () => (
   <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
 );
@@ -40,7 +36,7 @@ function SidebarDemoContent() {
   const selectedItem = searchParams.get("item");
 
   const [activeLink, setActiveLink] = useState<string>(() => {
-    if (!selectedItem) return "Logos and Branding";
+    if (!selectedItem) return "Cinematic Photography";
 
     if (selectedItem.includes("Cinematic Photography"))
       return "Cinematic Photography";
