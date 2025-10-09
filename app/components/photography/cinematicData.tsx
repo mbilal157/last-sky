@@ -24,7 +24,7 @@ const Card = ({ src, className }: CardProps) => (
 
 export default function CinematicGrid() {
   return (
-    <div className="grid gap-4 p-6 max-w-7xl mx-auto">
+    <div className="grid gap-4 p-6 pt-14 max-w-7xl mx-auto">
       {/* 1️⃣ Row 1 */}
       <div className="grid grid-cols-3 gap-4 h-[65vh]">
         <Card src="/images/portfolio/photos/v1.jpg" type="v" />
@@ -71,13 +71,13 @@ export default function CinematicGrid() {
       </div>
 
       {/* 4️⃣ Row 4 */}
-      <div className="grid mt-24 grid-cols-[1.3fr_0.7fr] gap-4 h-[60vh]">
+      <div className="grid mt-24 grid-cols-[0.9fr_1.1fr] gap-4 h-[60vh]">
         <Card src="/images/portfolio/photos/v5.jpg" type="v" />
         <Card src="/images/portfolio/photos/v6.jpg" type="v" />
       </div>
 
       {/* 5️⃣ Row 5 */}
-      <div className="grid grid-cols-[1.3fr_0.7fr] gap-4 h-[55vh]">
+      <div className="grid grid-cols-[1.3fr_0.9fr] gap-4 h-[55vh]">
         <Card src="/images/portfolio/photos/h1.jpg" type="h" />
         <Card src="/images/portfolio/photos/h4.jpg" type="h" />
       </div>
