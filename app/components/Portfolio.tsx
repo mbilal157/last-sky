@@ -44,7 +44,7 @@ const portfolioItems = [
     category: "Photography",
     title: "Documentary Photography",
     subtitle: "Stylish and cinematic photography for every occasion",
-    image: "/images/portfolio/documentarycover.jpg",
+    image: "/images/portfolio/cover/docover.jpg",
     href: "/portfolio/photography",
   },
   {

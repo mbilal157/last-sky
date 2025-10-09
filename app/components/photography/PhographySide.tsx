@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Camera, Heart, Film, Baby } from "lucide-react";
-import { Cinematic } from "./cinematicData";
+import Cinematic from "./cinematicData";
 import { Kids } from "./kids";
 import { Wedding } from "./weddata";
 import { Documentary } from "./documentry";

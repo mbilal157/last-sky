@@ -17,15 +17,11 @@ import {
 import { Thumbnails } from "./thumbnails";
 import { Logos } from "./logos";
 import { Posters } from "./posters";
+import { BCards } from "./bcards";
+import { Illustrations } from "./illus";
 
-const BusinessCards = () => (
-  <div className="p-4 text-lg font-semibold">Business Cards Content</div>
-);
-const CustomIllustrations = () => (
-  <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
-);
 const Posts = () => (
-  <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
+  <div className="p-4 text-lg font-semibold">Graphic Design Content</div>
 );
 
 // ✅ Wrap this part separately so Suspense can handle searchParams
@@ -41,7 +37,7 @@ function SidebarDemoContent() {
       icon: <Briefcase size={24} />,
     },
     {
-      label: "custom illustrations / vector work",
+      label: "Custom Illustrations",
       href: "#",
       icon: <PenTool size={24} />,
     },
@@ -52,8 +48,8 @@ function SidebarDemoContent() {
     "Social Media Posts": <Posts />,
     "Image Manipulation": <Posters />,
     Thumbnails: <Thumbnails />,
-    "Business cards and stationary": <BusinessCards />,
-    "custom illustrations / vector work": <CustomIllustrations />,
+    "Business cards and stationary": <BCards />,
+    "Custom Illustrations": <Illustrations />,
   };
 
   const [open, setOpen] = useState(false);
@@ -69,8 +65,7 @@ function SidebarDemoContent() {
     if (selectedItem.includes("Poster")) return "Image Manipulation";
     if (selectedItem.includes("Business"))
       return "Business cards and stationary";
-    if (selectedItem.includes("Illustration"))
-      return "custom illustrations / vector work";
+    if (selectedItem.includes("Illustration")) return "Custom Illustrations";
 
     return "Logos and Branding";
   });
@@ -78,7 +73,7 @@ function SidebarDemoContent() {
   return (
     <div className="flex h-screen w-full bg-white dark:bg-neutral-900 text-black dark:text-white">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
-        <SidebarBody className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700">
+        <SidebarBody className="hidden sm:flex justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700">
           <div className="flex flex-1 flex-col overflow-x-hidden bg-white dark:bg-black overflow-y-auto">
             <div
               className={cn(
@@ -124,7 +119,7 @@ function SidebarDemoContent() {
           marginLeft: open ? "240px" : "64px",
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="flex-1 overflow-y-auto p-6"
+        className="flex-1 overflow-y-auto p-6 pt-16 sm:pt-6"
       >
         <AnimatePresence mode="wait">
           {contentMap[activeLink] || <Dashboard />}

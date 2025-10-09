@@ -10,7 +10,6 @@ export default function AboutUs() {
   const { theme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Ensure we only render after hydration
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -28,6 +27,16 @@ export default function AboutUs() {
 
   const resolvedTheme = theme === "system" ? systemTheme : theme;
 
+  const aboutText = `
+    Skyline Production is a creative media studio offering a complete range of services under one roof — 
+    from graphic design and video editing to web design, development, and animations. 
+    We combine creativity with technology to deliver impactful visuals and digital experiences that help brands grow, 
+    communicate their stories, and connect with audiences effectively. 
+    Our goal is simple — to bring ideas to life through visuals that inspire, engage, and make a lasting impression. 
+    Whether you need stunning designs, cinematic edits, or interactive websites, 
+    Skyline Production is your trusted creative partner for all things digital and design.
+  `;
+
   return (
     <section
       id="about"
@@ -40,13 +49,14 @@ export default function AboutUs() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Side - Image */}
         <div className="relative group overflow-hidden rounded-2xl shadow-lg">
-          <Image
-            src="/images/about.jpg"
-            alt="About Skyline Production"
-            width={1000}
-            height={400}
-            className="w-full h-[400px] object-cover transform group-hover:scale-110 transition-transform duration-700"
-          />
+          <div className="relative w-full aspect-[1/1] overflow-hidden group">
+            <Image
+              src="/images/3pro.jpg"
+              alt="About Skyline Production"
+              fill
+              className="object-cover transform group-hover:scale-110 transition-transform duration-700"
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <h2 className="absolute bottom-4 left-4 text-white text-2xl md:text-3xl font-bold drop-shadow-lg">
             Who We Are
@@ -56,13 +66,10 @@ export default function AboutUs() {
         {/* Right Side - Content */}
         <div className="flex flex-col justify-center">
           <h3 className="text-3xl md:text-4xl font-bold mb-4">
-            The SkyLine Production
+            The Skyline Production
           </h3>
-          <p className="text-lg leading-relaxed mb-4">
-            At Skyline Production, we believe in the power of creativity and
-            innovation. With years of experience in media production, our team
-            delivers high-quality visuals, films, and branding solutions that
-            leave a lasting impact.
+          <p className="text-lg leading-relaxed mb-4 whitespace-pre-line">
+            {aboutText}
           </p>
 
           <button

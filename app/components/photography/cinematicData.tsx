@@ -2,62 +2,111 @@
 
 import Image from "next/image";
 
-export function Cinematic() {
-  const cards = [
-    // 4:5 verticals
-    ...Array.from({ length: 32 }, (_, i) => ({
-      id: i + 1,
-      image: `/images/portfolio/photos/v${i + 1}.jpg`,
-      ratio: "aspect-[4/5]",
-      type: "v",
-    })),
-    // 5:4 horizontals
-    ...Array.from({ length: 4 }, (_, i) => ({
-      id: 33 + i,
-      image: `/images/portfolio/photos/h${i + 1}.jpg`,
-      ratio: "aspect-[5/4]",
-      type: "h",
-    })),
-  ];
+interface CardProps {
+  src: string;
+  type: "h" | "v";
+  className?: string;
+}
 
-  // shuffle for randomness
-  const shuffled = cards.sort(() => Math.random() - 0.5);
+const Card = ({ src, className }: CardProps) => (
+  <div
+    className={`overflow-hidden rounded-2xl shadow-md w-full h-full ${className}`}
+  >
+    <Image
+      src={src}
+      alt="Grid Image"
+      width={800}
+      height={800}
+      className="w-full h-full object-cover"
+    />
+  </div>
+);
 
+export default function CinematicGrid() {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
-      <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-5 space-y-5">
-        {shuffled.map((card) => {
-          // random variations
-          const randomRotate = Math.random() * 1 - 1; // -3° to +3°
-          const randomTranslateY = Math.random() * 1 - 1; // -6px to +6px
-          const randomScale = 0.95 + Math.random() * 0.1; // 0.95x–1.05x
+    <div className="grid gap-4 p-6 max-w-7xl mx-auto">
+      {/* 1️⃣ Row 1 */}
+      <div className="grid grid-cols-3 gap-4 h-[65vh]">
+        <Card src="/images/portfolio/photos/v1.jpg" type="v" />
+        <Card src="/images/portfolio/photos/v2.jpg" type="v" />
+        <div className="flex flex-col gap-4 h-full">
+          <Card
+            src="/images/portfolio/photos/h2.jpg"
+            type="h"
+            className="h-1/2"
+          />
+          <Card
+            src="/images/portfolio/photos/h1.jpg"
+            type="h"
+            className="h-1/2"
+          />
+        </div>
+      </div>
 
-          return (
-            <div
-              key={card.id}
-              className="break-inside-avoid"
-              style={{
-                transform: `translateY(${randomTranslateY}px)`,
-              }}
-            >
-              <div
-                className={`relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer ${card.ratio}`}
-                style={{
-                  transform: `rotate(${randomRotate}deg) scale(${randomScale})`,
-                  transformOrigin: "center",
-                }}
-              >
-                <Image
-                  src={card.image}
-                  alt={`Poster ${card.id}`}
-                  fill
-                  sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 25vw"
-                  className="object-cover hover:scale-105 transition-transform duration-700 ease-out"
-                />
-              </div>
-            </div>
-          );
-        })}
+      {/* 2️⃣ Row 2 */}
+      <div className="h-[60vh] mt-28">
+        <Card
+          src="/images/portfolio/photos/h4.jpg"
+          type="h"
+          className="w-full h-full"
+        />
+      </div>
+
+      {/* 3️⃣ Row 3 */}
+      <div className="grid grid-cols-3 gap-4 h-[70vh]">
+        <Card src="/images/portfolio/photos/v3.jpg" type="v" />
+        <div className="flex flex-col gap-4 h-full">
+          <Card
+            src="/images/portfolio/photos/h3.jpg"
+            type="h"
+            className="h-1/2"
+          />
+          <Card
+            src="/images/portfolio/photos/h2.jpg"
+            type="h"
+            className="h-1/2"
+          />
+        </div>
+        <Card src="/images/portfolio/photos/v4.jpg" type="v" />
+      </div>
+
+      {/* 4️⃣ Row 4 */}
+      <div className="grid mt-24 grid-cols-[1.3fr_0.7fr] gap-4 h-[60vh]">
+        <Card src="/images/portfolio/photos/v5.jpg" type="v" />
+        <Card src="/images/portfolio/photos/v6.jpg" type="v" />
+      </div>
+
+      {/* 5️⃣ Row 5 */}
+      <div className="grid grid-cols-[1.3fr_0.7fr] gap-4 h-[55vh]">
+        <Card src="/images/portfolio/photos/h1.jpg" type="h" />
+        <Card src="/images/portfolio/photos/h4.jpg" type="h" />
+      </div>
+
+      {/* 6️⃣ Row 6 */}
+      <div className="grid grid-cols-3 gap-4 h-[70vh]">
+        <Card src="/images/portfolio/photos/v7.jpg" type="v" />
+        <Card src="/images/portfolio/photos/v8.jpg" type="v" />
+        <div className="flex flex-col gap-4 h-full">
+          <Card
+            src="/images/portfolio/photos/h3.jpg"
+            type="h"
+            className="h-1/2"
+          />
+          <Card
+            src="/images/portfolio/photos/h2.jpg"
+            type="h"
+            className="h-1/2"
+          />
+        </div>
+      </div>
+
+      {/* 7️⃣ Row 7 */}
+      <div className="h-[65vh] mt-20">
+        <Card
+          src="/images/portfolio/photos/h1.jpg"
+          type="h"
+          className="w-full h-full"
+        />
       </div>
     </div>
   );
