@@ -42,9 +42,9 @@ const portfolioItems = [
   {
     id: 5,
     category: "Photography",
-    title: "Cinematic Photos",
+    title: "Documentary Photography",
     subtitle: "Stylish and cinematic photography for every occasion",
-    image: "/images/whyus.jpg",
+    image: "/images/portfolio/documentarycover.jpg",
     href: "/portfolio/photography",
   },
   {
