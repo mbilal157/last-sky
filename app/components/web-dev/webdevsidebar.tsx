@@ -5,6 +5,7 @@ import { Sidebar, SidebarBody, SidebarLink } from "../ui/sidebar";
 import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import WebDesign from "./webdes";
 import Image from "next/image";
 import {
   Code2,
@@ -16,9 +17,6 @@ import {
 
 const Custom = () => (
   <div className="p-4 text-lg font-semibold">Business Cards Content</div>
-);
-const Responsive = () => (
-  <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
 );
 const Redesign = () => (
   <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
@@ -50,7 +48,7 @@ function SidebarDemoContent() {
 
   const contentMap: Record<string, React.ReactNode> = {
     "Custom Website Design": <Custom />,
-    "Responsive Wesite Design": <Responsive />,
+    "Responsive Wesite Design": <WebDesign />,
     "UI/UX Design": <UserInterface />,
     "Website Redesign & Revamp": <Redesign />,
     "Landing Pages": <Landing />,
