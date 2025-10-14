@@ -1,6 +1,4 @@
-"use client";
-
-import AboutPage from ".";
+import AboutPage from "./index";
 
 import type { Metadata } from "next";
 

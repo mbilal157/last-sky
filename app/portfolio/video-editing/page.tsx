@@ -1,6 +1,4 @@
-"use client";
-
-import VideoSidebarDemo from ".";
+import VideoSidebarDemo from "./index";
 
 import type { Metadata } from "next";
 

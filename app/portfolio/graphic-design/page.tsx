@@ -1,6 +1,4 @@
-"use client";
-
-import ClaimSubmissionContent from ".";
+import ClaimSubmissionContent from "./index";
 
 import type { Metadata } from "next";
 
