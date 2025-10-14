@@ -60,7 +60,18 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full h-20 border-b border-border px-4 md:px-12 flex items-center bg-background text-foreground shadow-sm z-50 transition-colors duration-300">
+    <nav
+      className="
+    fixed top-0 left-0 w-full h-20
+    px-4 md:px-12 flex items-center justify-between
+    bg-white/30 dark:bg-gray-900/60
+    backdrop-blur-xl backdrop-saturate-150
+    text-black dark:text-white
+    sh    adow-[0_2px_10px_0_rgba(0,0,0,0.02)] dark:shadow-[0_2px_10px_0_rgba(255,255,255,0.02)]
+    z-50
+    transition-all duration-300
+  "
+    >
       {/* Logo */}
       <div className="flex items-center gap-2">
         <Image

@@ -7,6 +7,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import WebDesign from "./webdes";
 import Image from "next/image";
+import CustomWebsiteDevelopment from "./custom";
+import Landing from "./landing";
 import {
   Code2,
   MonitorSmartphone,
@@ -15,16 +17,10 @@ import {
   FileDown,
 } from "lucide-react";
 
-const Custom = () => (
-  <div className="p-4 text-lg font-semibold">Business Cards Content</div>
-);
 const Redesign = () => (
   <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
 );
 const UserInterface = () => (
-  <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
-);
-const Landing = () => (
   <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
 );
 
@@ -47,7 +43,7 @@ function SidebarDemoContent() {
   ];
 
   const contentMap: Record<string, React.ReactNode> = {
-    "Custom Website Design": <Custom />,
+    "Custom Website Design": <CustomWebsiteDevelopment />,
     "Responsive Wesite Design": <WebDesign />,
     "UI/UX Design": <UserInterface />,
     "Website Redesign & Revamp": <Redesign />,
