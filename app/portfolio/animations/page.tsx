@@ -1,12 +1,15 @@
 "use client";
 
-import { Suspense } from "react";
-import { AnimationSideBarDemo } from "@/app/components/animations/animationSideBar";
+import VideoSidebarDemo from ".";
 
-export default function VideoSidebarDemo() {
-  return (
-    <Suspense fallback={<div className="p-6 text-center">Loading...</div>}>
-      <AnimationSideBarDemo />
-    </Suspense>
-  );
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Creative Animation Services",
+  description:
+    "Bring stories and ideas to life with our professional animation services. We design engaging 2D and 3D animations that capture attention and deliver your message with impact.",
+};
+
+export default function Video() {
+  return <VideoSidebarDemo />;
 }

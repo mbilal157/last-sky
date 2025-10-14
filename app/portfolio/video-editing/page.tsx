@@ -1,12 +1,15 @@
 "use client";
 
-import { Suspense } from "react";
-import { VideoSidebarDemo as VideoSidebarDemoInner } from "../../components/video-eddting/VideoSidebar";
+import VideoSidebarDemo from ".";
 
-export default function VideoSidebarDemo() {
-  return (
-    <Suspense fallback={<div className="p-6 text-center">Loading...</div>}>
-      <VideoSidebarDemoInner />
-    </Suspense>
-  );
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Professional Video Editing Services",
+  description:
+    "Enhance your visuals with our expert video editing services. We craft engaging, cinematic, and high-quality videos that tell your story and captivate your audience.",
+};
+
+export default function Video() {
+  return <VideoSidebarDemo />;
 }

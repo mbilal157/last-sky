@@ -1,12 +1,15 @@
 "use client";
 
-import { Suspense } from "react";
-import { WebDevSideBarDemo } from "@/app/components/web-dev/webdevsidebar";
+import VideoSidebarDemo from ".";
 
-export default function VideoSidebarDemo() {
-  return (
-    <Suspense fallback={<div className="p-6 text-center">Loading...</div>}>
-      <WebDevSideBarDemo />
-    </Suspense>
-  );
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Web Design & Development Services",
+  description:
+    "Transform your online presence with our custom web design and development solutions. We build fast, responsive, and user-friendly websites that drive results and growth.",
+};
+
+export default function Web() {
+  return <VideoSidebarDemo />;
 }

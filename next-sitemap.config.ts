@@ -2,5 +2,4 @@
 module.exports = {
   siteUrl: "https://theskylineproduction.com",
   generateRobotsTxt: true,
-  sitemapSize: 7000,
 };

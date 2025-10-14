@@ -1,19 +1,15 @@
 "use client";
 
-import Navbar from "@/app/components/NavBar";
-import { SidebarDemo } from "@/app/components/graphic-design/GraphicSideBar";
+import ClaimSubmissionContent from ".";
 
-const ClaimSubmissionContent = () => {
-  return (
-    <>
-      <Navbar />
+import type { Metadata } from "next";
 
-      <div className="mt-20">
-        {/* 👆 pushes SidebarDemo down by 4rem (64px) so it clears Navbar */}
-        <SidebarDemo />
-      </div>
-    </>
-  );
+export const metadata: Metadata = {
+  title: "Creative Graphic Design Services",
+  description:
+    "Bring your ideas to life with our professional graphic design services. We create visually striking designs that communicate your brand’s message and captivate your audience.",
 };
 
-export default ClaimSubmissionContent;
+export default function Video() {
+  return <ClaimSubmissionContent />;
+}
