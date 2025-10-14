@@ -75,6 +75,30 @@ export default function CustomWebsiteDevelopment() {
           />
         </div>
       </div>
+      {/* Project 3 */}
+      <div>
+        <h1 className="text-4xl md:text-5xl font-bold mb-2 text-foreground text-center">
+          Project 3
+        </h1>
+
+        <h2 className="text-2xl md:text-3xl font-semibold text-black dark:text-white text-center mb-4">
+          Premium Mango Export Website Design & Development
+        </h2>
+        <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
+          The client required a professional platform to showcase and export
+          fresh, high-quality mangoes worldwide. Our team developed a visually
+          appealing, fast, and user-friendly website that highlights product
+          quality, simplifies international orders, and builds global trust for
+          smooth export operations.
+        </p>
+        <div className="h-[95vh] mt-14">
+          <Card
+            src="/images/portfolio/web/custom3.jpg"
+            type="h"
+            className="w-full h-full"
+          />
+        </div>
+      </div>
     </section>
   );
 }
