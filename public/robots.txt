@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: theskylineproduction.com
+Host: www.theskylineproduction.com
 
 # Sitemaps
-Sitemap: https://theskylineproduction.com/sitemap.xml
+Sitemap: https://www.theskylineproduction.com/sitemap.xml
