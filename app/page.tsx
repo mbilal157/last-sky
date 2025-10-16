@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import Head from "next/head";
 import HeroSection from "./components/Hero";
 import AboutUs from "./components/AboutUs";
 import FeaturesSection from "./components/About";
@@ -32,6 +32,20 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>
+          The Skyline Production | Web Design, Photography & Video Editing
+        </title>
+        <meta
+          name="description"
+          content="The Skyline Production offers creative web design, photography, animation, and video editing services that bring your brand to life."
+        />
+        <meta
+          name="keywords"
+          content="Skyline Production, Web Design, Video Editing, Photography, Animations, Branding, Creative Agency"
+        />
+        <link rel="canonical" href="https://www.theskylineproduction.com/" />
+      </Head>
       {/* Intro animation (runs only once per site load) */}
       {!introDone && <LogoIntro onFinish={handleIntroFinish} />}
 
