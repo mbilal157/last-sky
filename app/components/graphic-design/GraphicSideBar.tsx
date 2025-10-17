@@ -15,7 +15,7 @@ import {
   PenTool,
 } from "lucide-react";
 import { Thumbnails } from "./thumbnails";
-import { Logos } from "./logos";
+import Logos from "./logos";
 import { Posters } from "./posters";
 import { BCards } from "./bcards";
 import { Illustrations } from "./illus";

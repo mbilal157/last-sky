@@ -247,7 +247,7 @@ export default function ReviewsSection() {
       >
         Reviews of Production House
       </h2>
-      <InfiniteMovingCards items={items} speed={100} />
+      <InfiniteMovingCards items={items} speed={150} />
     </section>
   );
 }

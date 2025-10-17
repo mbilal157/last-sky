@@ -52,7 +52,7 @@ const portfolioItems = [
     category: "Web Design & Development",
     title: "Custom Web Design",
     subtitle: "Responsive and modern website design solutions",
-    image: "/images/portfolio/smc.jpg",
+    image: "/images/portfolio/cover/webcover.jpg",
     href: "/portfolio/web-design-development",
   },
   {

@@ -110,8 +110,8 @@ export default function AboutUs() {
             src="/images/whyus.jpg"
             alt="Features"
             width={600}
-            height={400}
-            className="rounded-2xl shadow-lg object-cover w-full md:w-[22rem] h-auto md:h-auto"
+            height={600}
+            className="rounded-2xl shadow-lg object-cover w-full md:w-[25rem] md:h-[20rem] "
           />
           <div
             className={`absolute left-6 bottom-0 translate-y-1/2 px-6 py-4 rounded-2xl shadow-lg ${

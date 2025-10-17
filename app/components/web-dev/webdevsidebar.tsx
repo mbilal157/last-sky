@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import WebDesign from "./webdes";
 import Image from "next/image";
 import CustomWebsiteDevelopment from "./custom";
+import UiUx from "./UiUx";
 import Landing from "./landing";
 import {
   Code2,
@@ -18,9 +19,6 @@ import {
 } from "lucide-react";
 
 const Redesign = () => (
-  <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
-);
-const UserInterface = () => (
   <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
 );
 
@@ -45,7 +43,7 @@ function SidebarDemoContent() {
   const contentMap: Record<string, React.ReactNode> = {
     "Custom Website Design": <CustomWebsiteDevelopment />,
     "Responsive Wesite Design": <WebDesign />,
-    "UI/UX Design": <UserInterface />,
+    "UI/UX Design": <UiUx />,
     "Website Redesign & Revamp": <Redesign />,
     "Landing Pages": <Landing />,
   };
@@ -67,14 +65,33 @@ function SidebarDemoContent() {
     return "Custom Website Design";
   });
 
+  const headerContent = (
+    <div className="flex items-center gap-3">
+      <Image
+        src="/images/portfolio/web.jpg"
+        alt="Graphics Logo"
+        width={32}
+        height={32}
+        className="rounded-full object-cover"
+      />
+      <span className="text-sm font-medium whitespace-nowrap text-white">
+        Website Design and Development
+      </span>
+    </div>
+  );
+
   return (
     <div className="flex h-screen w-full bg-white dark:bg-neutral-900 text-black dark:text-white">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
-        <SidebarBody className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700">
+        <SidebarBody
+          className="justify-between gap-10 border-r border-neutral-200 dark:border-neutral-700"
+          header={headerContent}
+        >
           <div className="flex flex-1 flex-col overflow-x-hidden bg-white dark:bg-black overflow-y-auto">
+            {/* Desktop Header - Only visible on desktop */}
             <div
               className={cn(
-                "flex items-center gap-3 px-1 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
+                "hidden sm:flex items-center gap-3 px-1 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
                 "bg-neutral-200 dark:bg-black text-black dark:text-white",
                 open ? "justify-start" : "justify-center"
               )}
@@ -111,12 +128,23 @@ function SidebarDemoContent() {
         </SidebarBody>
       </Sidebar>
 
+      {/* Desktop Main Content */}
       <motion.main
         animate={{
           marginLeft: open ? "240px" : "64px",
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="flex-1 overflow-y-auto p-6"
+        className="hidden sm:flex flex-1 overflow-y-auto p-6"
+      >
+        <AnimatePresence mode="wait">
+          {contentMap[activeLink] || <Dashboard />}
+        </AnimatePresence>
+      </motion.main>
+
+      {/* Mobile Main Content */}
+      <motion.main
+        className="sm:hidden flex-1 overflow-y-auto p-4 w-full"
+        style={{ marginTop: "64px" }}
       >
         <AnimatePresence mode="wait">
           {contentMap[activeLink] || <Dashboard />}
