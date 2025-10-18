@@ -110,7 +110,7 @@ export default function ContactUs() {
               </h3>
               <div className="flex gap-4">
                 <Link
-                  href="https://www.instagram.com/yourusername"
+                  href="https://www.instagram.com/theskylineproduction/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-[#0098ff] rounded-xl w-fit text-white transition-transform duration-300 hover:rotate-12"
@@ -119,16 +119,7 @@ export default function ContactUs() {
                 </Link>
 
                 <Link
-                  href="https://www.instagram.com/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-[#0098ff] rounded-xl w-fit text-white transition-transform duration-300 hover:rotate-12"
-                >
-                  <Facebook className="w-6 h-6" />
-                </Link>
-
-                <Link
-                  href="https://www.instagram.com/yourusername"
+                  href="https://www.facebook.com/TheSkylineProduction"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 bg-[#0098ff] rounded-xl w-fit text-white transition-transform duration-300 hover:rotate-12"

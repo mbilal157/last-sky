@@ -46,9 +46,6 @@ export const SidebarBody = ({
   }
 >) => {
   const { open, setOpen, animate } = useSidebar();
-  const { theme } = useTheme();
-  const bgColor = theme === "dark" ? "bg-neutral-900" : "bg-neutral-100";
-
   return (
     <>
       {/* Mobile Navbar with Dropdown */}
@@ -65,7 +62,7 @@ export const SidebarBody = ({
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className={cn(
             "h-screen flex-col fixed left-0 top-0 z-50 shadow-md transition-colors duration-300",
-            bgColor,
+            "bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white",
             className
           )}
           {...props}
@@ -99,9 +96,8 @@ const MobileDropdown = ({
       {/* Mobile Navbar - Header Bar */}
       <div
         className={cn(
-          "sm:hidden flex items-center justify-between w-full h-16 fixed top-0 left-0 right-0 z-50 px-4 shadow-md transition-colors duration-300 border-b",
-          bgColor,
-          borderColor
+          "sm:hidden flex items-center justify-between w-full h-16 fixed top-0 left-0 right-0 z-50 px-4 shadow-md border-b",
+          "bg-neutral-100 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 text-black dark:text-white"
         )}
       >
         <div className="flex items-center justify-start">{header}</div>
@@ -186,31 +182,21 @@ export const SidebarLink = ({
   const { theme } = useTheme();
 
   const textColor = theme === "dark" ? "text-white" : "text-black";
-  const hoverBg =
-    theme === "dark" ? "hover:bg-neutral-700" : "hover:bg-neutral-200";
 
   return (
     <>
-      {/* Desktop Version */}
       <button
         onClick={onClick}
         className={cn(
           "hidden sm:flex items-center justify-start gap-3 w-full px-3 py-3 rounded-md transition-all duration-300 overflow-hidden",
-          hoverBg,
+          "hover:bg-neutral-200 dark:hover:bg-neutral-700 text-black dark:text-white",
           className
         )}
       >
-        {/* Icon */}
-        <div
-          className={cn(
-            "shrink-0 flex items-center justify-center w-5 h-5",
-            textColor
-          )}
-        >
+        <div className="shrink-0 flex items-center justify-center w-5 h-5">
           {link.icon}
         </div>
 
-        {/* Label */}
         <motion.span
           initial={false}
           animate={{
@@ -218,18 +204,16 @@ export const SidebarLink = ({
             width: open ? "auto" : 0,
           }}
           transition={{ duration: 0.2 }}
-          className={cn("text-sm whitespace-nowrap", textColor)}
+          className="text-sm whitespace-nowrap"
         >
           {link.label}
         </motion.span>
       </button>
-
       {/* Mobile Version */}
       <button
         onClick={onClick}
         className={cn(
           "sm:hidden flex items-center justify-start gap-3 w-full px-4 py-3 rounded-md transition-all duration-300",
-          hoverBg,
           className
         )}
       >

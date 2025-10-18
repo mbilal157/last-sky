@@ -22,7 +22,6 @@ const Redesign = () => (
   <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
 );
 
-// ✅ Wrap this part separately so Suspense can handle searchParams
 function SidebarDemoContent() {
   const links = [
     { label: "Custom Website Design", href: "#", icon: <Code2 size={24} /> },
@@ -74,20 +73,20 @@ function SidebarDemoContent() {
         height={32}
         className="rounded-full object-cover"
       />
-      <span className="text-sm font-medium whitespace-nowrap text-white">
-        Website Design and Development
+      <span className="text-sm font-medium whitespace-nowrap dark:text-white text-black">
+        Website Design & Development
       </span>
     </div>
   );
 
   return (
-    <div className="flex h-screen w-full bg-white dark:bg-neutral-900 text-black dark:text-white">
+    <div className="flex h-screen w-full  dark:bg-neutral-900 text-black dark:text-white">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody
-          className="justify-between gap-10 border-r border-neutral-200 dark:border-neutral-700"
+          className="justify-between gap-10 border-r border-neutral-200 mt-20 dark:border-neutral-700"
           header={headerContent}
         >
-          <div className="flex flex-1 flex-col overflow-x-hidden bg-white dark:bg-black overflow-y-auto">
+          <div className="flex flex-1 h-full flex-col overflow-x-hidden  dark:bg-black overflow-y-auto">
             {/* Desktop Header - Only visible on desktop */}
             <div
               className={cn(
@@ -105,7 +104,7 @@ function SidebarDemoContent() {
               />
               {open && (
                 <span className="text-sm font-medium whitespace-pre text-black dark:text-white">
-                  Website Design and Development
+                  Website Design & Development
                 </span>
               )}
             </div>

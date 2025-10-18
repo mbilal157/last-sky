@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Paintbrush, Globe, Clapperboard, Film, Camera } from "lucide-react";
 
@@ -25,7 +24,6 @@ const services = [
         ],
       },
     ],
-    href: "/services/graphic-design",
   },
   {
     icon: Camera,
@@ -37,7 +35,6 @@ const services = [
       "Wedding Photography",
       "Documentary Photography",
     ],
-    href: "/services/photography",
   },
   {
     icon: Clapperboard,
@@ -49,7 +46,6 @@ const services = [
       "Event Highlights",
       "Long-Form Video Editing",
     ],
-    href: "/services/video-editing",
   },
 
   {
@@ -57,7 +53,6 @@ const services = [
     title: "Animations",
     subtitle: "Creative Motion & Visual Effects",
     features: ["Logo Animation", "Motion Graphics"],
-    href: "/services/animations",
   },
   {
     icon: Globe,
@@ -71,7 +66,6 @@ const services = [
       "Landing Pages",
       "Portfolio & Business Websites",
     ],
-    href: "/services/web-design-development",
   },
 ];
 
@@ -118,10 +112,9 @@ export default function CreativeServices() {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Link
+              <div
                 key={index}
-                href={service.href}
-                className={`group block border rounded-xl p-6 transition-all duration-300 ${
+                className={`group block border rounded-xl p-6 cursor-default transition-all duration-300 ${
                   resolvedTheme === "dark"
                     ? "bg-gray-800 border-gray-700 hover:bg-gray-700"
                     : "bg-blue-50 border-[#b9dff6] hover:bg-[#cbe6f7]"
@@ -185,10 +178,9 @@ export default function CreativeServices() {
                   ))}
                 </ul>
 
-                {/* Learn More Link */}
+                {/* Hover Icon (for visual consistency) */}
                 {hoveredCard === index && (
                   <div className="flex items-center text-[#0098ff] font-medium mt-4">
-                    <span>Learn more</span>
                     <svg
                       className="w-5 h-5 ml-2"
                       fill="none"
@@ -205,7 +197,7 @@ export default function CreativeServices() {
                     </svg>
                   </div>
                 )}
-              </Link>
+              </div>
             );
           })}
         </div>
