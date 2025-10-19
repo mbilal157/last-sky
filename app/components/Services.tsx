@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Paintbrush, Globe, Clapperboard, Film, Camera } from "lucide-react";
 
@@ -8,27 +9,19 @@ const services = [
     icon: Paintbrush,
     title: "Graphic Design",
     subtitle: "Creative & Professional Designs",
+    href: "/portfolio/graphic-design",
     features: [
       "Logos & Branding",
       "Posters & Flyers",
       "Business Cards & Stationery",
       "Custom Illustrations / Vector Work",
     ],
-    subcategories: [
-      {
-        title: "Social Media Design",
-        features: [
-          "Instagram Posts, Stories & Highlights",
-          "Facebook & LinkedIn Banners",
-          "YouTube Thumbnails & Channel Art",
-        ],
-      },
-    ],
   },
   {
     icon: Camera,
     title: "Photography",
     subtitle: "Capturing Moments Professionally",
+    href: "/portfolio/photography",
     features: [
       "Cinematic Photography",
       "Kids Photography",
@@ -40,6 +33,7 @@ const services = [
     icon: Clapperboard,
     title: "Video Editing",
     subtitle: "Professional Visual Storytelling",
+    href: "/portfolio/video-editing",
     features: [
       "Reels & Shorts (15–60 sec)",
       "Corporate & Promo Videos",
@@ -47,17 +41,18 @@ const services = [
       "Long-Form Video Editing",
     ],
   },
-
   {
     icon: Film,
     title: "Animations",
     subtitle: "Creative Motion & Visual Effects",
+    href: "/portfolio/animations",
     features: ["Logo Animation", "Motion Graphics"],
   },
   {
     icon: Globe,
     title: "Web Design & Development",
     subtitle: "Modern, Responsive & Scalable Websites",
+    href: "/portfolio/web-design-development",
     features: [
       "Custom Website Design",
       "Responsive Web Design",
@@ -112,9 +107,10 @@ export default function CreativeServices() {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <div
+              <Link
                 key={index}
-                className={`group block border rounded-xl p-6 cursor-default transition-all duration-300 ${
+                href={service.href}
+                className={`group block border rounded-xl p-6 transition-all duration-300 ${
                   resolvedTheme === "dark"
                     ? "bg-gray-800 border-gray-700 hover:bg-gray-700"
                     : "bg-blue-50 border-[#b9dff6] hover:bg-[#cbe6f7]"
@@ -181,6 +177,7 @@ export default function CreativeServices() {
                 {/* Hover Icon (for visual consistency) */}
                 {hoveredCard === index && (
                   <div className="flex items-center text-[#0098ff] font-medium mt-4">
+                    <span>Check Our Work</span>
                     <svg
                       className="w-5 h-5 ml-2"
                       fill="none"
@@ -197,7 +194,7 @@ export default function CreativeServices() {
                     </svg>
                   </div>
                 )}
-              </div>
+              </Link>
             );
           })}
         </div>
