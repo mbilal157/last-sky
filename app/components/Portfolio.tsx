@@ -117,7 +117,7 @@ export default function Portfolio() {
 
   if (!mounted) {
     return (
-      <section className="py-20 px-6 bg-white text-gray-800">
+      <section id="portfolio" className="py-20 px-6 bg-white text-gray-800">
         <div className="max-w-6xl mx-auto">
           <div className="h-10 bg-gray-200 rounded w-1/3 mb-6 mx-auto"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -172,7 +172,7 @@ export default function Portfolio() {
         </div>
 
         {/* Portfolio Grid with 3D Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 mx-4 sm:mx-6 lg:grid-cols-3 gap-x-10">
           {filteredItems.map((item) => (
             <CardContainer key={item.id} className="inter-var">
               <CardBody
