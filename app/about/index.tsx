@@ -1,5 +1,5 @@
 "use client";
-
+import { StickyScrollRevealDemo } from "../components/about/buttom";
 const AboutPage = () => {
   return (
     <>
@@ -17,6 +17,7 @@ const AboutPage = () => {
           </p>
         </div>
       </div>
+      <StickyScrollRevealDemo />
     </>
   );
 };

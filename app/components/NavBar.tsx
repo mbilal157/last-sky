@@ -74,16 +74,18 @@ export default function Navbar() {
     >
       {/* Logo */}
       <div className="flex items-center gap-2">
-        <Image
-          src={logoSrc}
-          alt="SLP Logo"
-          width={48}
-          height={40}
-          className="w-12 h-10 object-contain rounded-lg transition-transform duration-200 hover:scale-105"
-        />
-        <h2 className="text-sm sm:text-base md:text-xl font-semibold transition-colors duration-300">
-          The SkyLine Production
-        </h2>
+        <Link href="/" className="flex items-center gap-2 cursor-pointer">
+          <Image
+            src={logoSrc}
+            alt="SLP Logo"
+            width={48}
+            height={40}
+            className="w-12 h-10 object-contain rounded-lg transition-transform duration-200 hover:scale-105"
+          />
+          <h2 className="text-sm sm:text-base md:text-xl font-semibold transition-colors duration-300">
+            The SkyLine Production
+          </h2>
+        </Link>
       </div>
 
       {/* Desktop links */}
