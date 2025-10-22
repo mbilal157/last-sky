@@ -14,13 +14,8 @@ import {
   Code2,
   MonitorSmartphone,
   LayoutDashboard,
-  RefreshCcw,
   FileDown,
 } from "lucide-react";
-
-const Redesign = () => (
-  <div className="p-4 text-lg font-semibold">Custom Illustrations Content</div>
-);
 
 function SidebarDemoContent() {
   const links = [
@@ -31,11 +26,6 @@ function SidebarDemoContent() {
       icon: <MonitorSmartphone size={24} />,
     },
     { label: "UI/UX Design", href: "#", icon: <LayoutDashboard size={24} /> },
-    {
-      label: "Website Redesign & Revamp",
-      href: "#",
-      icon: <RefreshCcw size={24} />,
-    },
     { label: "Landing Pages", href: "#", icon: <FileDown size={24} /> },
   ];
 
@@ -43,7 +33,6 @@ function SidebarDemoContent() {
     "Custom Website Design": <CustomWebsiteDevelopment />,
     "Responsive Wesite Design": <WebDesign />,
     "UI/UX Design": <UiUx />,
-    "Website Redesign & Revamp": <Redesign />,
     "Landing Pages": <Landing />,
   };
 
@@ -57,8 +46,6 @@ function SidebarDemoContent() {
     if (selectedItem.includes("Responsive Wesite Design"))
       return "Responsive Wesite Design";
     if (selectedItem.includes("UI/UX Design")) return "UI/UX Design";
-    if (selectedItem.includes("Website Redesign & Revamp"))
-      return "Website Redesign & Revamp";
     if (selectedItem.includes("Landing Pages")) return "Landing Pages";
 
     return "Custom Website Design";
