@@ -5,7 +5,7 @@ import Image from "next/image";
 export function Posters() {
   const cards = [
     // 4:5 verticals (v1–v13)
-    ...Array.from({ length: 13 }, (_, i) => ({
+    ...Array.from({ length: 17 }, (_, i) => ({
       id: i + 1,
       image: `/images/portfolio/newphotos/posters/v${i + 1}.jpg`,
       ratio: "aspect-[4/5]",

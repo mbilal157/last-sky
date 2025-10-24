@@ -162,6 +162,23 @@ export default function Logos() {
           <Card src="/images/portfolio/logos/logo8.png" />
         </div>
       </section>
+      {/* -------------------- BARES CONSTRUCTS BRANDING SECTION -------------------- */}
+      <section className="mt-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-foreground">
+          Bares Constructs
+        </h2>
+        <p className="text-base md:text-lg text-center text-muted-foreground mb-8">
+          For Bares Constructs, we developed a strong and modern brand identity
+          that reflects reliability, precision, and craftsmanship. The design
+          concept highlights bold typography, earthy tones, and structural
+          visuals — representing Bares Constructs’ commitment to building
+          excellence, durability, and trust in every project.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+          <Card src="/images/portfolio/logos/logo8.png" />
+        </div>
+      </section>
     </div>
   );
 }
