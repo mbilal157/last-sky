@@ -13,6 +13,7 @@ import {
   Briefcase,
   Megaphone,
   PenTool,
+  Package,
 } from "lucide-react";
 import { Thumbnails } from "./thumbnails";
 import Logos from "./logos";
@@ -20,6 +21,7 @@ import { Posters } from "./posters";
 import { BCards } from "./bcards";
 import { Illustrations } from "./illus";
 import { Posts } from "./posts";
+import { Products } from "./products";
 
 // ✅ Wrap this part separately so Suspense can handle searchParams
 function SidebarDemoContent() {
@@ -28,6 +30,11 @@ function SidebarDemoContent() {
     { label: "Social Media Posts", href: "#", icon: <Megaphone size={24} /> },
     { label: "Image Manipulation", href: "#", icon: <FileText size={24} /> },
     { label: "Thumbnails", href: "#", icon: <Youtube size={24} /> },
+    {
+      label: "Products Packaging & Design",
+      href: "#",
+      icon: <Package size={24} />,
+    },
     {
       label: "Business cards and stationary",
       href: "#",
@@ -45,6 +52,7 @@ function SidebarDemoContent() {
     "Social Media Posts": <Posts />,
     "Image Manipulation": <Posters />,
     Thumbnails: <Thumbnails />,
+    "Products Packaging & Design": <Products />,
     "Business cards and stationary": <BCards />,
     "Custom Illustrations": <Illustrations />,
   };
@@ -57,6 +65,8 @@ function SidebarDemoContent() {
     if (!selectedItem) return "Logos and Branding";
 
     if (selectedItem.includes("Thumbnail")) return "Thumbnails";
+    if (selectedItem.includes("Products Packaging & Design"))
+      return "Products Packaging & Design";
     if (selectedItem.includes("Social Media Posts"))
       return "Social Media Posts";
     if (selectedItem.includes("Logo")) return "Logos and Branding";

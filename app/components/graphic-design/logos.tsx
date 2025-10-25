@@ -179,6 +179,21 @@ export default function Logos() {
           <Card src="/images/portfolio/logos/logo9.png" />
         </div>
       </section>
+      {/* -------------------- SIPPP DRINKS BRANDING SECTION -------------------- */}
+      <section className="mt-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-foreground">
+          Sippp Drinks
+        </h2>
+        <p className="text-base md:text-lg text-center text-muted-foreground mb-8">
+          For Sippp Drinks, we created a refreshing and energetic brand identity
+          that captures the spirit of modern beverages. The design emphasizes
+          vibrant colors, playful typography, and fluid shapes — symbolizing
+          freshness, creativity, and the joy of every sip.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+          <Card src="/images/portfolio/logos/logo1.png" />
+        </div>
+      </section>
     </div>
   );
 }
