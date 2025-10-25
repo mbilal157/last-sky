@@ -22,7 +22,7 @@ const Footer = () => {
   return (
     <footer
       className={`py-12 text-gray-800 transition-colors duration-300 ${
-        isDark ? "bg-black bg-cover bg-center text-gray-100" : "bg-blue-50"
+        isDark ? "bg-black bg-cover bg-center text-gray-100" : "bg-white"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
