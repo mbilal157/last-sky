@@ -224,7 +224,7 @@ const Card: React.FC<
 
   const aspectClasses =
     cardSize === "large"
-      ? "pb-[100%]" // 🔹 Force 3:3 ratio for large cards
+      ? "pb-[108%]" // 🔹 Force 3:3 ratio for large cards
       : aspectRatio === "square"
       ? "pb-[100%]" // normal square
       : "pb-[56.25%]"; // widescreen for smaller cards
