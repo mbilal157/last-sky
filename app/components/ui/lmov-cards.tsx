@@ -222,14 +222,12 @@ const Card: React.FC<
   const sizeClasses =
     cardSize === "large" ? "w-[26rem]" : cardSize === "small" ? "w-48" : "w-64";
 
-  // Aspect ratio adjustment
   const aspectClasses =
-    aspectRatio === "square"
-      ? "pb-[100%]" // 1:1 ratio
-      : cardSize === "large"
-      ? "pb-[60%]" // a little taller for large wides
-      : "pb-[56.25%]"; // standard 16:9
-
+    cardSize === "large"
+      ? "pb-[100%]" // 🔹 Force 3:3 ratio for large cards
+      : aspectRatio === "square"
+      ? "pb-[100%]" // normal square
+      : "pb-[56.25%]"; // widescreen for smaller cards
   return (
     <li
       className={cn(
@@ -245,7 +243,8 @@ const Card: React.FC<
           src={item.src}
           alt={item.title}
           fill
-          className="object-contain rounded-md"
+          quality={100}
+          className="object-cover rounded-md"
           sizes="(max-width: 500px) 100vw, 15vw"
         />
         <div

@@ -176,7 +176,7 @@ export default function Logos() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
-          <Card src="/images/portfolio/logos/logo8.png" />
+          <Card src="/images/portfolio/logos/logo9.png" />
         </div>
       </section>
     </div>
