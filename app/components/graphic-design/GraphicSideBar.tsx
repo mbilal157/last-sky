@@ -57,7 +57,8 @@ function SidebarDemoContent() {
     if (!selectedItem) return "Logos and Branding";
 
     if (selectedItem.includes("Thumbnail")) return "Thumbnails";
-    if (selectedItem.includes("Social Media Posts")) return "Posts";
+    if (selectedItem.includes("Social Media Posts"))
+      return "Social Media Posts";
     if (selectedItem.includes("Logo")) return "Logos and Branding";
     if (selectedItem.includes("Poster")) return "Image Manipulation";
     if (selectedItem.includes("Business"))
