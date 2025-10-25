@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon, ChevronDown } from "lucide-react";
 import { useTheme } from "next-themes";
+import { MouseEvent } from "react";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -34,9 +35,20 @@ export default function Navbar() {
         },
       ],
     },
-    { name: "Contact", href: "#contact" },
+    { name: "Contact", href: "/#contact" },
   ];
-
+  const handleContactClick = (e: MouseEvent<HTMLElement>) => {
+    if (pathname === "/") {
+      // If we're already on home page, scroll to contact
+      e.preventDefault();
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    // If we're on another page, the regular link navigation will happen
+    setMenuOpen(false);
+  };
   const logoSrc =
     mounted && resolvedTheme === "dark"
       ? "/images/logo1.png"
@@ -102,6 +114,9 @@ export default function Navbar() {
                       ? "text-[#0098ff]"
                       : "text-foreground hover:text-[#068de8]"
                   }`}
+                  onClick={
+                    link.name === "Contact" ? handleContactClick : undefined
+                  }
                 >
                   {link.name}
                   <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />

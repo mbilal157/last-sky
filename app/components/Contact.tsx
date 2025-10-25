@@ -24,7 +24,8 @@ export default function ContactUs() {
 
   return (
     <section
-      className={`py-20 px-6 transition-colors duration-300 ${
+      id="contact"
+      className={`py-20 px-6 transition-colors duration-300  ${
         isDark ? "bg-black text-gray-100" : "bg-white text-gray-800"
       }`}
     >
