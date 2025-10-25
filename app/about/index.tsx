@@ -1,15 +1,26 @@
 "use client";
+
+import { useEffect, useState } from "react";
 import { StickyScrollRevealDemo } from "../components/about/buttom";
+import Footer from "../components/Footer";
+
 const AboutPage = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null; // avoid hydration issues
+
   return (
     <>
-      <div className=" px-6 md:px-12 lg:px-24">
-        {/* Heading + Intro Section */}
-        <div className="text-center max-w-3xl mt-40 mx-auto mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-200 mt-8 mb-6">
+      <div className="px-6 md:px-12 lg:px-24 bg-white dark:bg-neutral-900 transition-colors duration-300">
+        <div className="text-center max-w-3xl mt-20 mx-auto pb-12 pt-10 ">
+          <h1 className="text-4xl md:text-5xl font-bold text-black dark:text-white mt-8 mb-6 ">
             About <span className="text-[#0098ff]">Skyline Production</span>
           </h1>
-          <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-lg text-black dark:text-white">
             At Skyline Production, we transform ideas into powerful visuals that
             inspire and engage. From graphic design to cinematic editing, we
             bring creativity and precision together to deliver content that
@@ -17,7 +28,9 @@ const AboutPage = () => {
           </p>
         </div>
       </div>
+
       <StickyScrollRevealDemo />
+      <Footer />
     </>
   );
 };
