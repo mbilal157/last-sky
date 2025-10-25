@@ -21,6 +21,7 @@ export const InfiniteMovingCards = ({
   className,
   rows = 3,
   direction,
+  cardSize = "medium", // 👈 NEW PROP
 }: {
   items: {
     title: string;
@@ -31,6 +32,7 @@ export const InfiniteMovingCards = ({
   className?: string;
   rows?: number;
   direction?: "right" | "left" | undefined;
+  cardSize?: "small" | "medium" | "large"; // 👈 NEW PROP TYPE
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollerRefs = useRef<(HTMLUListElement | null)[]>([]);
@@ -149,6 +151,8 @@ export const InfiniteMovingCards = ({
               key={`${item.title}-${rowIndex}-${idx}`}
               item={item}
               onPreview={handlePreview}
+              isDuplicate={false}
+              cardSize={cardSize}
             />
           ))}
           {row.map((item, idx) => (
@@ -157,6 +161,7 @@ export const InfiniteMovingCards = ({
               item={item}
               onPreview={handlePreview}
               isDuplicate={true}
+              cardSize={cardSize}
             />
           ))}
         </ul>
@@ -165,23 +170,30 @@ export const InfiniteMovingCards = ({
       {selectedImage &&
         createPortal(
           <div
-            className="fixed inset-0 bg-black/70 z-[9999] flex items-center justify-center p-2"
+            className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4"
             onClick={closePreview}
           >
-            <div className="relative max-w-4xl max-h-full">
+            <div
+              className="relative flex items-center justify-center max-w-[95vw] max-h-[95vh] w-full h-full"
+              onClick={(e) => e.stopPropagation()} // prevent closing when clicking the image
+            >
               <button
-                className="absolute -top-12 right-0 z-10 bg-black/35 rounded-full p-2 text-white hover:bg-opacity-75 transition-all"
+                className="absolute top-4 right-4 z-20 bg-black/50 rounded-full p-2 text-white hover:bg-opacity-75 transition-all"
                 onClick={closePreview}
               >
                 <X size={24} />
               </button>
-              <Image
-                src={selectedImage}
-                alt="Preview"
-                width={1200}
-                height={800}
-                className="object-contain z-10 rounded-lg"
-              />
+
+              {/* ✅ Responsive Image Container */}
+              <div className="relative w-full h-full flex items-center justify-center">
+                <Image
+                  src={selectedImage}
+                  alt="Preview"
+                  fill
+                  className="object-contain rounded-lg"
+                  sizes="100vw"
+                />
+              </div>
             </div>
           </div>,
           document.body
@@ -190,33 +202,51 @@ export const InfiniteMovingCards = ({
   );
 };
 
-const Card: React.FC<CardProps> = ({
-  item,
-  onPreview,
-  isDuplicate = false,
-}) => {
+const Card: React.FC<
+  CardProps & { cardSize?: "small" | "medium" | "large" }
+> = ({ item, onPreview, isDuplicate = false, cardSize = "medium" }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [aspectRatio, setAspectRatio] = useState<"square" | "wide">("wide");
+
+  // Detect image ratio (1:1 or 16:9)
+  useEffect(() => {
+    const img = new window.Image(); // ✅ uses the browser Image constructor
+    img.src = item.src;
+    img.onload = () => {
+      const ratio = img.width / img.height;
+      setAspectRatio(ratio < 1.2 ? "square" : "wide");
+    };
+  }, [item.src]);
+
+  // Width adjustment
+  const sizeClasses =
+    cardSize === "large" ? "w-[26rem]" : cardSize === "small" ? "w-48" : "w-64";
+
+  // Aspect ratio adjustment
+  const aspectClasses =
+    aspectRatio === "square"
+      ? "pb-[100%]" // 1:1 ratio
+      : cardSize === "large"
+      ? "pb-[60%]" // a little taller for large wides
+      : "pb-[56.25%]"; // standard 16:9
 
   return (
     <li
       className={cn(
-        "relative w-64 max-w-full shrink-0 rounded-xl overflow-hidden border border-zinc-200 bg-gray-100 dark:border-zinc-700 dark:bg-neutral-900 transition-all duration-300",
-        isHovered && "transform scale-106 shadow-lg z-10"
+        `relative ${sizeClasses} max-w-full shrink-0 rounded-xl overflow-hidden border border-zinc-200 bg-gray-100 dark:border-zinc-700 dark:bg-neutral-900 transition-all duration-300`,
+        isHovered && "transform scale-[1.03] shadow-lg z-10"
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{ visibility: isDuplicate ? "hidden" : "visible" }}
     >
-      {/* 16:9 Aspect Ratio Container */}
-      <div className="relative pb-[56.25%] h-0">
-        {" "}
-        {/* 16:9 aspect ratio (9/16 = 0.5625) */}
+      <div className={cn("relative h-0", aspectClasses)}>
         <Image
           src={item.src}
           alt={item.title}
           fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-contain rounded-md"
+          sizes="(max-width: 500px) 100vw, 15vw"
         />
         <div
           className={cn(

@@ -19,10 +19,7 @@ import Logos from "./logos";
 import { Posters } from "./posters";
 import { BCards } from "./bcards";
 import { Illustrations } from "./illus";
-
-const Posts = () => (
-  <div className="p-4 text-lg font-semibold">Graphic Design Content</div>
-);
+import { Posts } from "./posts";
 
 // ✅ Wrap this part separately so Suspense can handle searchParams
 function SidebarDemoContent() {

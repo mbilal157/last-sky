@@ -5,7 +5,7 @@ import Image from "next/image";
 export function BCards() {
   const cards = [
     // 5:4 horizontals
-    ...Array.from({ length: 6 }, (_, i) => ({
+    ...Array.from({ length: 7 }, (_, i) => ({
       id: 33 + i,
       image: `/images/portfolio/newphotos/bcards/h${i + 1}.jpg`,
       ratio: "aspect-[5/4]",
