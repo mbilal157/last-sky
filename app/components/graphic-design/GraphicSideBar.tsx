@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, Suspense } from "react";
+import React, { useState, Suspense, useEffect } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "../ui/sidebar";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -15,6 +15,7 @@ import {
   PenTool,
   Package,
 } from "lucide-react";
+
 import { Thumbnails } from "./thumbnails";
 import Logos from "./logos";
 import { Posters } from "./posters";
@@ -23,28 +24,23 @@ import { Illustrations } from "./illus";
 import { Posts } from "./posts";
 import { Products } from "./products";
 
-// ✅ Wrap this part separately so Suspense can handle searchParams
+// ---------------------------------------------------------------------------
+//  MAIN SIDEBAR COMPONENT
+// ---------------------------------------------------------------------------
+
 function SidebarDemoContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const selectedItem = searchParams.get("item");
+
   const links = [
-    { label: "Logos and Branding", href: "#", icon: <ImageIcon size={24} /> },
-    { label: "Social Media Posts", href: "#", icon: <Megaphone size={24} /> },
-    { label: "Image Manipulation", href: "#", icon: <FileText size={24} /> },
-    { label: "Thumbnails", href: "#", icon: <Youtube size={24} /> },
-    {
-      label: "Products Packaging & Design",
-      href: "#",
-      icon: <Package size={24} />,
-    },
-    {
-      label: "Business cards and stationary",
-      href: "#",
-      icon: <Briefcase size={24} />,
-    },
-    {
-      label: "Custom Illustrations",
-      href: "#",
-      icon: <PenTool size={24} />,
-    },
+    { label: "Logos and Branding", icon: <ImageIcon size={24} /> },
+    { label: "Social Media Posts", icon: <Megaphone size={24} /> },
+    { label: "Image Manipulation", icon: <FileText size={24} /> },
+    { label: "Thumbnails", icon: <Youtube size={24} /> },
+    { label: "Products Packaging & Design", icon: <Package size={24} /> },
+    { label: "Business cards and stationary", icon: <Briefcase size={24} /> },
+    { label: "Custom Illustrations", icon: <PenTool size={24} /> },
   ];
 
   const contentMap: Record<string, React.ReactNode> = {
@@ -57,32 +53,35 @@ function SidebarDemoContent() {
     "Custom Illustrations": <Illustrations />,
   };
 
+  // -----------------------------------------------------------------------
+  //  Set Active Link Based on URL
+  // -----------------------------------------------------------------------
+  const [activeLink, setActiveLink] = useState("Logos and Branding");
+
+  useEffect(() => {
+    if (selectedItem) {
+      setActiveLink(selectedItem);
+    }
+  }, [selectedItem]);
+
+  // -----------------------------------------------------------------------
+  //  Update URL When Clicking Sidebar Link
+  // -----------------------------------------------------------------------
+  function updateURL(label: string) {
+    const encoded = encodeURIComponent(label);
+    router.push(`/portfolio/graphic-design?item=${encoded}`);
+  }
+
   const [open, setOpen] = useState(false);
-  const searchParams = useSearchParams();
-  const selectedItem = searchParams.get("item");
 
-  const [activeLink, setActiveLink] = useState<string>(() => {
-    if (!selectedItem) return "Logos and Branding";
-
-    if (selectedItem.includes("Thumbnail")) return "Thumbnails";
-    if (selectedItem.includes("Products Packaging & Design"))
-      return "Products Packaging & Design";
-    if (selectedItem.includes("Social Media Posts"))
-      return "Social Media Posts";
-    if (selectedItem.includes("Logo")) return "Logos and Branding";
-    if (selectedItem.includes("Poster")) return "Image Manipulation";
-    if (selectedItem.includes("Business"))
-      return "Business cards and stationary";
-    if (selectedItem.includes("Illustration")) return "Custom Illustrations";
-
-    return "Logos and Branding";
-  });
+  // -----------------------------------------------------------------------
 
   return (
     <div className="flex h-screen w-full bg-white dark:bg-neutral-900 text-black dark:text-white">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody className="hidden sm:flex justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700">
           <div className="flex flex-1 flex-col overflow-x-hidden bg-white dark:bg-black overflow-y-auto">
+            {/* Logo */}
             <div
               className={cn(
                 "flex items-center gap-3 px-1 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
@@ -98,18 +97,22 @@ function SidebarDemoContent() {
                 className="rounded-full object-cover"
               />
               {open && (
-                <span className="text-sm font-medium whitespace-pre text-black dark:text-white">
+                <span className="text-sm font-medium whitespace-pre">
                   Graphic Design
                 </span>
               )}
             </div>
 
+            {/* Sidebar Links */}
             <div className="mt-2 ml-1 w-full flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink
                   key={idx}
                   link={link}
-                  onClick={() => setActiveLink(link.label)}
+                  onClick={() => {
+                    setActiveLink(link.label);
+                    updateURL(link.label);
+                  }}
                   className={cn(
                     activeLink === link.label
                       ? "bg-neutral-300 dark:bg-neutral-500 text-black dark:text-white"
@@ -122,6 +125,7 @@ function SidebarDemoContent() {
         </SidebarBody>
       </Sidebar>
 
+      {/* MAIN CONTENT */}
       <motion.main
         animate={{
           marginLeft: open ? "240px" : "64px",
@@ -137,7 +141,8 @@ function SidebarDemoContent() {
   );
 }
 
-// ✅ Wrap in Suspense here
+// ---------------------------------------------------------------------------
+
 export function SidebarDemo() {
   return (
     <Suspense fallback={<div className="p-10 text-center">Loading...</div>}>
@@ -145,6 +150,8 @@ export function SidebarDemo() {
     </Suspense>
   );
 }
+
+// ---------------------------------------------------------------------------
 
 const Dashboard = () => (
   <div className="space-y-6">

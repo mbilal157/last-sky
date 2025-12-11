@@ -1,56 +1,84 @@
 "use client";
 
-import React, { useState, Suspense } from "react";
+import React, { useState, Suspense, useEffect } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "../ui/sidebar";
-import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Camera, Heart, Film, Baby } from "lucide-react";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import Cinematic from "./cinematicData";
 import { Kids } from "./kids";
 import { Wedding } from "./weddata";
 import { Documentary } from "./documentry";
 
-// ✅ Wrap this part separately so Suspense can handle searchParams
+type ContentKey =
+  | "Cinematic Photography"
+  | "Wedding Photography"
+  | "Documentry Photography"
+  | "Kids Photography";
+
+const contentMap: Record<ContentKey, React.ReactNode> = {
+  "Cinematic Photography": <Cinematic />,
+  "Wedding Photography": <Wedding />,
+  "Documentry Photography": <Documentary />,
+  "Kids Photography": <Kids />,
+};
+
+export function PhotoSideBarDemo() {
+  return (
+    <Suspense fallback={<div className="p-10 text-center">Loading...</div>}>
+      <SidebarDemoContent />
+    </Suspense>
+  );
+}
+
 function SidebarDemoContent() {
-  const links = [
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const selectedItem = searchParams.get("item");
+
+  const updateURL = (label: ContentKey) => {
+    router.push(`${pathname}?item=${encodeURIComponent(label)}`, {
+      scroll: false,
+    });
+  };
+
+  const getCategoryFromItem = (item: string | null): ContentKey => {
+    if (!item) return "Cinematic Photography";
+    const lower = item.toLowerCase();
+
+    if (lower.includes("cinematic")) return "Cinematic Photography";
+    if (lower.includes("wedding")) return "Wedding Photography";
+    if (lower.includes("documentry")) return "Documentry Photography";
+    if (lower.includes("kids")) return "Kids Photography";
+
+    return "Cinematic Photography";
+  };
+
+  const [activeLink, setActiveLink] = useState<ContentKey>(
+    getCategoryFromItem(selectedItem)
+  );
+
+  useEffect(() => {
+    setActiveLink(getCategoryFromItem(selectedItem));
+  }, [selectedItem]);
+
+  const [open, setOpen] = useState(false);
+
+  const links: { label: ContentKey; href: string; icon: React.ReactNode }[] = [
     { label: "Cinematic Photography", href: "#", icon: <Camera size={24} /> },
     { label: "Wedding Photography", href: "#", icon: <Heart size={24} /> },
     { label: "Documentry Photography", href: "#", icon: <Film size={24} /> },
     { label: "Kids Photography", href: "#", icon: <Baby size={24} /> },
   ];
 
-  const contentMap: Record<string, React.ReactNode> = {
-    "Cinematic Photography": <Cinematic />,
-    "Wedding Photography": <Wedding />,
-    "Documentry Photography": <Documentary />,
-    "Kids Photography": <Kids />,
-  };
-
-  const [open, setOpen] = useState(false);
-  const searchParams = useSearchParams();
-  const selectedItem = searchParams.get("item");
-
-  const [activeLink, setActiveLink] = useState<string>(() => {
-    if (!selectedItem) return "Cinematic Photography";
-
-    if (selectedItem.includes("Cinematic Photography"))
-      return "Cinematic Photography";
-    if (selectedItem.includes("Wedding Photography"))
-      return "Wedding Photography";
-    if (selectedItem.includes("Documentry Photography"))
-      return "Documentry Photography";
-    if (selectedItem.includes("Kids Photography")) return "Kids Photography";
-
-    return "Cinematic Photography";
-  });
-
   const headerContent = (
     <div className="flex items-center gap-3">
       <Image
         src="/images/portfolio/photo.jpg"
-        alt="Graphics Logo"
+        alt="Photography Logo"
         width={32}
         height={32}
         className="rounded-full object-cover"
@@ -69,7 +97,7 @@ function SidebarDemoContent() {
           header={headerContent}
         >
           <div className="flex flex-1 flex-col overflow-x-hidden bg-white dark:bg-black overflow-y-auto">
-            {/* Desktop Header - Only visible on desktop */}
+            {/* Desktop Header */}
             <div
               className={cn(
                 "hidden sm:flex items-center gap-3 px-1 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
@@ -79,7 +107,7 @@ function SidebarDemoContent() {
             >
               <Image
                 src="/images/portfolio/photo.jpg"
-                alt="Graphics Logo"
+                alt="Photography Logo"
                 width={32}
                 height={32}
                 className="rounded-full object-cover"
@@ -91,12 +119,16 @@ function SidebarDemoContent() {
               )}
             </div>
 
+            {/* Sidebar Links */}
             <div className="mt-2 ml-1 w-full flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink
                   key={idx}
                   link={link}
-                  onClick={() => setActiveLink(link.label)}
+                  onClick={() => {
+                    setActiveLink(link.label);
+                    updateURL(link.label);
+                  }}
                   className={cn(
                     activeLink === link.label
                       ? "bg-neutral-300 dark:bg-neutral-500 text-black dark:text-white"
@@ -111,9 +143,7 @@ function SidebarDemoContent() {
 
       {/* Desktop Main Content */}
       <motion.main
-        animate={{
-          marginLeft: open ? "240px" : "64px",
-        }}
+        animate={{ marginLeft: open ? "240px" : "64px" }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="hidden sm:flex flex-1 overflow-y-auto p-6"
       >
@@ -129,15 +159,6 @@ function SidebarDemoContent() {
         </AnimatePresence>
       </motion.main>
     </div>
-  );
-}
-
-// ✅ Wrap in Suspense here
-export function PhotoSideBarDemo() {
-  return (
-    <Suspense fallback={<div className="p-10 text-center">Loading...</div>}>
-      <SidebarDemoContent />
-    </Suspense>
   );
 }
 

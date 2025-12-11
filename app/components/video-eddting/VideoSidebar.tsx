@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { VideoCategory } from "../video-eddting/ContentMap.tsx";
 import { cn } from "@/lib/utils";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import {
   Heart,
   Clapperboard,
@@ -41,16 +41,25 @@ const contentMap: Record<ContentKey, React.ReactNode> = {
 
 export function VideoSidebarDemo() {
   const [open, setOpen] = useState(false);
+
+  const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const selectedItem = searchParams.get("item");
 
+  const updateURL = (label: string) => {
+    router.push(`${pathname}?item=${encodeURIComponent(label)}`, {
+      scroll: false,
+    });
+  };
+
   const getCategoryFromItem = (item: string | null): ContentKey => {
-    if (!item) return "All"; // default
+    if (!item) return "All";
+
     const lower = item.toLowerCase();
 
-    // Check for specific titles from portfolio
     if (lower.includes("fashion")) return "Fashion";
-    if (lower.includes("real estate") || lower.includes("reel estate"))
+    if (lower.includes("realestate") || lower.includes("real estate"))
       return "RealEstate";
     if (lower.includes("typography")) return "Typography";
     if (lower.includes("wedding")) return "Wedding";
@@ -85,7 +94,7 @@ export function VideoSidebarDemo() {
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700">
           <div className="flex flex-1 flex-col overflow-x-hidden bg-white dark:bg-black overflow-y-auto">
-            {/* ✅ "Video Editing" top section */}
+            {/* Top Section */}
             <div
               className={cn(
                 "flex items-center gap-3 px-3 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
@@ -107,13 +116,16 @@ export function VideoSidebarDemo() {
               )}
             </div>
 
-            {/* ✅ Sidebar Links */}
+            {/* Sidebar Links */}
             <div className="mt-2 ml-1 w-full flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink
                   key={idx}
                   link={link}
-                  onClick={() => setActiveLink(link.label)}
+                  onClick={() => {
+                    setActiveLink(link.label);
+                    updateURL(link.label);
+                  }}
                   className={cn(
                     activeLink === link.label
                       ? "bg-neutral-300 dark:bg-neutral-500 text-black dark:text-white"
@@ -125,7 +137,8 @@ export function VideoSidebarDemo() {
           </div>
         </SidebarBody>
       </Sidebar>
-      {/* ✅ Main content */}
+
+      {/* Main Content */}
       <motion.main
         animate={{
           marginLeft: open ? "240px" : "64px",

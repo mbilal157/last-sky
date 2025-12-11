@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState, Suspense } from "react";
+import React, { useState, Suspense, useEffect } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "../ui/sidebar";
-import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import WebDesign from "./webdes";
@@ -10,6 +9,7 @@ import Image from "next/image";
 import CustomWebsiteDevelopment from "./custom";
 import UiUx from "./UiUx";
 import Landing from "./landing";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import {
   Code2,
   MonitorSmartphone,
@@ -17,8 +17,63 @@ import {
   FileDown,
 } from "lucide-react";
 
+type ContentKey =
+  | "Custom Website Design"
+  | "Responsive Wesite Design"
+  | "UI/UX Design"
+  | "Landing Pages";
+
+const contentMap: Record<ContentKey, React.ReactNode> = {
+  "Custom Website Design": <CustomWebsiteDevelopment />,
+  "Responsive Wesite Design": <WebDesign />,
+  "UI/UX Design": <UiUx />,
+  "Landing Pages": <Landing />,
+};
+
+export function WebDevSideBarDemo() {
+  return (
+    <Suspense fallback={<div className="p-10 text-center">Loading...</div>}>
+      <SidebarDemoContent />
+    </Suspense>
+  );
+}
+
 function SidebarDemoContent() {
-  const links = [
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const selectedItem = searchParams.get("item");
+
+  const updateURL = (label: ContentKey) => {
+    router.push(`${pathname}?item=${encodeURIComponent(label)}`, {
+      scroll: false,
+    });
+  };
+
+  const getCategoryFromItem = (item: string | null): ContentKey => {
+    if (!item) return "Custom Website Design";
+    const lower = item.toLowerCase();
+
+    if (lower.includes("custom")) return "Custom Website Design";
+    if (lower.includes("responsive")) return "Responsive Wesite Design";
+    if (lower.includes("ui/ux") || lower.includes("uiux"))
+      return "UI/UX Design";
+    if (lower.includes("landing")) return "Landing Pages";
+
+    return "Custom Website Design";
+  };
+
+  const [activeLink, setActiveLink] = useState<ContentKey>(
+    getCategoryFromItem(selectedItem)
+  );
+
+  useEffect(() => {
+    setActiveLink(getCategoryFromItem(selectedItem));
+  }, [selectedItem]);
+
+  const [open, setOpen] = useState(false);
+
+  const links: { label: ContentKey; href: string; icon: React.ReactNode }[] = [
     { label: "Custom Website Design", href: "#", icon: <Code2 size={24} /> },
     {
       label: "Responsive Wesite Design",
@@ -29,33 +84,11 @@ function SidebarDemoContent() {
     { label: "Landing Pages", href: "#", icon: <FileDown size={24} /> },
   ];
 
-  const contentMap: Record<string, React.ReactNode> = {
-    "Custom Website Design": <CustomWebsiteDevelopment />,
-    "Responsive Wesite Design": <WebDesign />,
-    "UI/UX Design": <UiUx />,
-    "Landing Pages": <Landing />,
-  };
-
-  const [open, setOpen] = useState(false);
-  const searchParams = useSearchParams();
-  const selectedItem = searchParams.get("item");
-
-  const [activeLink, setActiveLink] = useState<string>(() => {
-    if (!selectedItem) return "Custom Website Design";
-
-    if (selectedItem.includes("Responsive Wesite Design"))
-      return "Responsive Wesite Design";
-    if (selectedItem.includes("UI/UX Design")) return "UI/UX Design";
-    if (selectedItem.includes("Landing Pages")) return "Landing Pages";
-
-    return "Custom Website Design";
-  });
-
   const headerContent = (
     <div className="flex items-center gap-3">
       <Image
         src="/images/portfolio/web.jpg"
-        alt="Graphics Logo"
+        alt="Website Logo"
         width={32}
         height={32}
         className="rounded-full object-cover"
@@ -67,14 +100,14 @@ function SidebarDemoContent() {
   );
 
   return (
-    <div className="flex h-screen w-full  dark:bg-neutral-900 text-black dark:text-white">
+    <div className="flex h-screen w-full dark:bg-neutral-900 text-black dark:text-white">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody
           className="justify-between gap-10 border-r border-neutral-200 mt-20 dark:border-neutral-700"
           header={headerContent}
         >
-          <div className="flex flex-1 h-full flex-col overflow-x-hidden  dark:bg-black overflow-y-auto">
-            {/* Desktop Header - Only visible on desktop */}
+          <div className="flex flex-1 h-full flex-col overflow-x-hidden dark:bg-black overflow-y-auto">
+            {/* Desktop Header */}
             <div
               className={cn(
                 "hidden sm:flex items-center gap-3 px-1 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
@@ -84,7 +117,7 @@ function SidebarDemoContent() {
             >
               <Image
                 src="/images/portfolio/web.jpg"
-                alt="Graphics Logo"
+                alt="Website Logo"
                 width={32}
                 height={32}
                 className="rounded-full object-cover"
@@ -96,12 +129,16 @@ function SidebarDemoContent() {
               )}
             </div>
 
+            {/* Sidebar Links */}
             <div className="mt-2 ml-1 w-full flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink
                   key={idx}
                   link={link}
-                  onClick={() => setActiveLink(link.label)}
+                  onClick={() => {
+                    setActiveLink(link.label);
+                    updateURL(link.label);
+                  }}
                   className={cn(
                     activeLink === link.label
                       ? "bg-neutral-300 dark:bg-neutral-500 text-black dark:text-white"
@@ -116,9 +153,7 @@ function SidebarDemoContent() {
 
       {/* Desktop Main Content */}
       <motion.main
-        animate={{
-          marginLeft: open ? "240px" : "64px",
-        }}
+        animate={{ marginLeft: open ? "240px" : "64px" }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="hidden sm:flex flex-1 overflow-y-auto p-6"
       >
@@ -137,15 +172,6 @@ function SidebarDemoContent() {
         </AnimatePresence>
       </motion.main>
     </div>
-  );
-}
-
-// ✅ Wrap in Suspense here
-export function WebDevSideBarDemo() {
-  return (
-    <Suspense fallback={<div className="p-10 text-center">Loading...</div>}>
-      <SidebarDemoContent />
-    </Suspense>
   );
 }
 

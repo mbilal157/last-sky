@@ -174,7 +174,7 @@ export const SidebarLink = ({
   onClick,
   className,
 }: {
-  link: { label: string; href: string; icon: React.ReactNode };
+  link: { label: string; href?: string; icon: React.ReactNode };
   onClick?: () => void;
   className?: string;
 }) => {

@@ -2,14 +2,14 @@
 
 import React, { useState, Suspense } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "../ui/sidebar";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
+
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { PlayCircle, Move3d } from "lucide-react";
 import { VideoCategory } from "./ContentMap.tsx";
 
-// ✅ Wrap this part separately so Suspense can handle searchParams
 function SidebarDemoContent() {
   const links = [
     { label: "Logo Animation", href: "#", icon: <PlayCircle size={24} /> },
@@ -22,14 +22,26 @@ function SidebarDemoContent() {
   };
 
   const [open, setOpen] = useState(false);
+
+  // Needed for reading "?item=..."
   const searchParams = useSearchParams();
   const selectedItem = searchParams.get("item");
+
+  // Needed for writing "?item=..."
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const updateURL = (label: string) => {
+    router.push(`${pathname}?item=${encodeURIComponent(label)}`, {
+      scroll: false,
+    });
+  };
 
   const [activeLink, setActiveLink] = useState<string>(() => {
     if (!selectedItem) return "Logo Animation";
 
-    if (selectedItem.includes("Logo Animation")) return "Logo Animation";
-    if (selectedItem.includes("motion")) return "Motion";
+    if (selectedItem.includes("Logo")) return "Logo Animation";
+    if (selectedItem.includes("Motion")) return "Motion Graphics";
 
     return "Logo Animation";
   });
@@ -39,6 +51,7 @@ function SidebarDemoContent() {
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700">
           <div className="flex flex-1 flex-col overflow-x-hidden bg-white dark:bg-black overflow-y-auto">
+            {/* Sidebar Header */}
             <div
               className={cn(
                 "flex items-center gap-3 px-1 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
@@ -48,7 +61,7 @@ function SidebarDemoContent() {
             >
               <Image
                 src="/images/portfolio/animation.jpg"
-                alt="Graphics Logo"
+                alt="Animation Logo"
                 width={32}
                 height={32}
                 className="rounded-full object-cover"
@@ -60,12 +73,16 @@ function SidebarDemoContent() {
               )}
             </div>
 
+            {/* Sidebar Links */}
             <div className="mt-2 ml-1 w-full flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink
                   key={idx}
                   link={link}
-                  onClick={() => setActiveLink(link.label)}
+                  onClick={() => {
+                    setActiveLink(link.label);
+                    updateURL(link.label);
+                  }}
                   className={cn(
                     activeLink === link.label
                       ? "bg-neutral-300 dark:bg-neutral-500 text-black dark:text-white"
@@ -78,6 +95,7 @@ function SidebarDemoContent() {
         </SidebarBody>
       </Sidebar>
 
+      {/* Content Area */}
       <motion.main
         animate={{
           marginLeft: open ? "240px" : "64px",
