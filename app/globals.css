@@ -80,15 +80,12 @@ body {
   display: none;
 }
 
-@keyframes scrollRight {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
+@keyframes border-dash {
+  to {
+    stroke-dashoffset: -100;
   }
 }
 
-.animate-scroll-right {
-  animation: scrollRight 12s linear infinite;
+.animate-border-dash {
+  animation: border-dash 2.5s linear infinite;
 }

@@ -128,10 +128,11 @@ const InfiniteMovingCards = ({
           <li
             key={`${item.name}-${idx}`}
             className={cn(
-              "relative w-[280px] h-[200px] shrink-0 rounded-2xl border px-6 py-6 md:w-[360px] lg:w-[400px] transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl",
-              theme === "dark"
-                ? "bg-bg3 border-gray-700 text-white"
-                : "bg-white border-zinc-200 text-black"
+              "relative w-[280px] h-[200px] shrink-0 rounded-2xl px-6 py-6 md:w-[360px] lg:w-[400px]",
+              "border border-white/30",
+              "bg-white/80 backdrop-blur-xl",
+              "shadow-[0_8px_30px_rgba(0,0,0,0.12)]",
+              "transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl"
             )}
           >
             <div className="absolute -top-8 right-4 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden shadow-md">
@@ -146,21 +147,11 @@ const InfiniteMovingCards = ({
 
             {/* Content */}
             <blockquote className="relative z-10 flex flex-col text-left">
-              <h3
-                className={cn(
-                  "text-xl font-extrabold",
-                  theme === "dark" ? "text-white" : "text-gray-900"
-                )}
-              >
+              <h3 className="text-xl font-extrabold text-gray-900">
                 {item.name}
               </h3>
 
-              <p
-                className={cn(
-                  "text-lg font-semibold mb-1",
-                  theme === "dark" ? "text-gray-300" : "text-gray-800"
-                )}
-              >
+              <p className="text-lg font-semibold mb-1 text-gray-800">
                 {item.title}
               </p>
               <div className="flex items-center gap-1 text-[#1dbf73] mb-2">
@@ -169,12 +160,7 @@ const InfiniteMovingCards = ({
                 ))}
               </div>
               <div className="flex flex-col gap-3">
-                <p
-                  className={cn(
-                    "text-sm leading-relaxed font-normal",
-                    theme === "dark" ? "text-gray-300" : "text-gray-700"
-                  )}
-                >
+                <p className="text-sm leading-relaxed font-normal text-gray-700">
                   {item.quote}
                 </p>
               </div>
@@ -218,22 +204,45 @@ export default function FiverrSection() {
           href="https://www.fiverr.com/your_profile_here"
           target="_blank"
           rel="noopener noreferrer"
-          className="
-      inline-flex items-center gap-2
+          className="relative inline-flex items-center gap-2
       px-8 py-3 rounded-xl font-semibold text-white
       bg-[#1dbf73]
-      shadow-md
       transition-all duration-300 ease-out
       hover:bg-[#08bd69]
       hover:-translate-y-1
       hover:shadow-[0_10px_30px_rgba(29,191,115,0.35)]
       active:translate-y-0
-      active:shadow-md
-    "
+      group"
         >
-          Visit Fiverr Profile
-          <span className="transition-transform duration-300 group-hover:translate-x-1">
-            →
+          {/* SVG border */}
+          <svg
+            className="pointer-events-none absolute inset-0"
+            width="100%"
+            height="100%"
+            viewBox="0 0 100 40"
+            preserveAspectRatio="none"
+          >
+            <rect
+              x="1"
+              y="1"
+              width="98"
+              height="38"
+              rx="12"
+              ry="12"
+              fill="none"
+              stroke="white"
+              strokeWidth="2"
+              strokeDasharray="20 80"
+              className="animate-border-dash"
+            />
+          </svg>
+
+          {/* Content */}
+          <span className="relative z-10 flex items-center gap-2">
+            Visit Fiverr Profile
+            <span className="transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
           </span>
         </a>
       </div>

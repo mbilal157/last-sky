@@ -18,7 +18,7 @@ const team = [
   },
   {
     name: "Muhammad Zohaib",
-    role: "Full Stack Developer & SEO Specialist",
+    role: "Full Stack Developer",
     image: "/images/team/zohaib.jpg",
   },
   {
@@ -30,11 +30,11 @@ const team = [
 
 export default function OurTeamPage() {
   return (
-    <section className="w-full py-20 px-4">
+    <section className="w-full pt-28 px-4">
       {/* Heading */}
-      <div className="max-w-6xl mx-auto text-center mb-16">
+      <div className="max-w-6xl mx-auto text-center mb-10">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Meet Our Team</h1>
-        <p className="text-gray-500 max-w-2xl mx-auto">
+        <p className=" max-w-2xl mx-auto">
           A passionate team of creators, developers, and strategists working
           together to build impactful digital solutions.
         </p>
@@ -45,7 +45,7 @@ export default function OurTeamPage() {
         {team.map((member, index) => (
           <div
             key={index}
-            className="relative rounded-3xl bg-white dark:bg-zinc-900 shadow-lg transition hover:-translate-y-1"
+            className="relative rounded-3xl shadow-lg transition hover:-translate-y-1"
           >
             {/* Image */}
             <div className="relative h-64 rounded-t-3xl  overflow-hidden">
@@ -58,9 +58,9 @@ export default function OurTeamPage() {
             </div>
 
             {/* OVERLAPPING WHITE BOX */}
-            <div className="relative z-10 -mt-4 bg-white dark:bg-zinc-900 rounded-t-3xl p-2 text-center">
-              <h1 className="text-lg font-bold">{member.name}</h1>
-              <h2 className="text-sm text-gray-500">{member.role}</h2>
+            <div className="relative z-10 -mt-4 bg-white rounded-t-3xl rounded-b-3xl p-2 text-center">
+              <h1 className="text-lg text-black font-bold">{member.name}</h1>
+              <h2 className="text-sm text-gray-700">{member.role}</h2>
             </div>
           </div>
         ))}
