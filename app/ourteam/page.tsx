@@ -2,22 +2,22 @@ import Image from "next/image";
 
 const team = [
   {
-    name: "Alex Ros",
+    name: "Taimor Qaisar",
     role: "Founder & CEO",
-    image: "/images/reviews/faisal.jpg",
+    image: "/images/team/taimoor.jpg",
   },
   {
-    name: "Alen Raz",
+    name: "Muhammad Ibtisam",
     role: "Co-Founder & COO",
-    image: "/images/reviews/faisal.jpg",
+    image: "/images/team/ibtisam.jpg",
   },
   {
-    name: "Hussey Mike",
-    role: "Full Stack Engineer",
-    image: "/images/reviews/faisal.jpg",
+    name: "Bilal Shahid",
+    role: "Full Stack Developer",
+    image: "/images/team/bilal.jpg",
   },
   {
-    name: "Sara Jon",
+    name: "Muhammad Zohaib",
     role: "Full Stack Developer & SEO Specialist",
     image: "/images/team/zohaib.jpg",
   },
@@ -45,7 +45,7 @@ export default function OurTeamPage() {
         {team.map((member, index) => (
           <div
             key={index}
-            className="relative rounded-3xl bg-white dark:bg-zinc-800 shadow-lg transition hover:-translate-y-1"
+            className="relative rounded-3xl bg-white dark:bg-zinc-900 shadow-lg transition hover:-translate-y-1"
           >
             {/* Image */}
             <div className="relative h-64 rounded-t-3xl  overflow-hidden">
