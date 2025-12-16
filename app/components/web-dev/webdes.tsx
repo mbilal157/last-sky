@@ -25,7 +25,7 @@ const Card = ({ src, className }: CardProps) => (
 
 export default function WebDesign() {
   return (
-    <div className="grid gap-4 p-6 pt-14 max-w-7xl mx-auto">
+    <div className="grid gap-4 p-6 pt-20 max-w-7xl mx-auto">
       <h1 className="text-4xl md:text-5xl font-bold mb-2 text-foreground text-center">
         Responsive Web Design
       </h1>
@@ -38,7 +38,7 @@ export default function WebDesign() {
         needs.
       </p>
       {/*  Row 1 */}
-      <div className="h-[95vh] mt-14">
+      <div className="h-auto mt-14 md:h-[95vh]">
         <Card
           src="/images/portfolio/web/web1.jpg"
           type="h"
@@ -46,7 +46,7 @@ export default function WebDesign() {
         />
       </div>
       {/*  Row 2 */}
-      <div className="h-[95vh] mt-12">
+      <div className="h-auto mt-14 md:h-[95vh]">
         <Card
           src="/images/portfolio/web/web2.jpg"
           type="h"
@@ -54,7 +54,7 @@ export default function WebDesign() {
         />
       </div>
       {/*  Row 3 */}
-      <div className="h-[95vh] mt-12">
+      <div className="h-auto mt-14 md:h-[95vh]">
         <Card
           src="/images/portfolio/web/web3.jpg"
           type="h"
@@ -62,7 +62,7 @@ export default function WebDesign() {
         />
       </div>
       {/*  Row 4 */}
-      <div className="h-[95vh] mt-12">
+      <div className="h-auto mt-14 md:h-[95vh]">
         <Card
           src="/images/portfolio/web/web4.jpg"
           type="h"
@@ -70,7 +70,7 @@ export default function WebDesign() {
         />
       </div>
       {/*  Row 5 */}
-      <div className="h-[95vh] mt-12">
+      <div className="h-auto mt-14 md:h-[95vh]">
         <Card
           src="/images/portfolio/web/web5.jpg"
           type="h"

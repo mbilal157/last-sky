@@ -17,8 +17,7 @@ const Card = ({ src, className }: CardProps) => (
       alt="Project Preview"
       width={1200}
       height={800}
-      className="w-full h-full object-cover"
-      priority
+      className="w-full h-auto md:h-full object-cover"
     />
   </div>
 );
@@ -42,7 +41,7 @@ export default function CustomWebsiteDevelopment() {
           transformed it into a stunning, fully functional web experience —
           optimized for both performance and aesthetics.
         </p>
-        <div className="h-[95vh] mt-14">
+        <div className="h-auto mt-14 md:h-[95vh]">
           <Card
             src="/images/portfolio/web/custom1.jpg"
             type="h"
@@ -67,7 +66,7 @@ export default function CustomWebsiteDevelopment() {
           a sleek, high-performance e-commerce platform tailored for seamless
           shopping and a delightful user experience.
         </p>
-        <div className="h-[95vh] mt-14">
+        <div className="h-auto mt-14 md:h-[95vh]">
           <Card
             src="/images/portfolio/web/custom2.jpg"
             type="h"
@@ -91,7 +90,7 @@ export default function CustomWebsiteDevelopment() {
           quality, simplifies international orders, and builds global trust for
           smooth export operations.
         </p>
-        <div className="h-[95vh] mt-14">
+        <div className="h-auto mt-14 md:h-[95vh]">
           <Card
             src="/images/portfolio/web/custom3.jpg"
             type="h"

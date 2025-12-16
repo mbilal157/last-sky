@@ -9,17 +9,16 @@ interface CardProps {
 
 const Card = ({ src, className }: CardProps) => (
   <div
-    className={`overflow-hidden rounded-2xl shadow-md w-full h-[110vh] relative ${
-      className || ""
-    }`}
+    className={`relative w-full overflow-hidden rounded-2xl shadow-md
+      aspect-[16/9] md:aspect-auto md:h-[110vh]
+      ${className || ""}`}
   >
     <Image
       src={src}
       alt="Grid Image"
       fill
-      unoptimized
-      className="object-cover object-center rounded-2xl"
-      style={{ borderRadius: "1rem" }}
+      className="object-cover rounded-2xl"
+      sizes="(max-width: 768px) 100vw, 1200px"
     />
   </div>
 );

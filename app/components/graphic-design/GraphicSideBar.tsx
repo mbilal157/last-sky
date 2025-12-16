@@ -74,12 +74,30 @@ function SidebarDemoContent() {
 
   const [open, setOpen] = useState(false);
 
+  const headerContent = (
+    <div className="flex items-center gap-3">
+      <Image
+        src="/images/portfolio/grapdes.jpg"
+        alt="Graphic Design Logo"
+        width={32}
+        height={32}
+        className="rounded-full object-cover"
+      />
+      <span className="text-sm font-medium whitespace-nowrap text-black dark:text-white">
+        Graphics Design
+      </span>
+    </div>
+  );
+
   // -----------------------------------------------------------------------
 
   return (
-    <div className="flex h-screen w-full bg-white dark:bg-neutral-900 text-black dark:text-white">
+    <div className="flex h-screen w-full mt-14 bg-white dark:bg-neutral-900 text-black dark:text-white">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
-        <SidebarBody className="hidden sm:flex justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700">
+        <SidebarBody
+          className="hidden sm:flex justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700"
+          header={headerContent}
+        >
           <div className="flex flex-1 flex-col overflow-x-hidden bg-white dark:bg-black overflow-y-auto">
             {/* Logo */}
             <div
@@ -89,13 +107,6 @@ function SidebarDemoContent() {
                 open ? "justify-start" : "justify-center"
               )}
             >
-              <Image
-                src="/images/portfolio/grapdes.jpg"
-                alt="Graphics Logo"
-                width={32}
-                height={32}
-                className="rounded-full object-cover"
-              />
               {open && (
                 <span className="text-sm font-medium whitespace-pre">
                   Graphic Design

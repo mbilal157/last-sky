@@ -61,7 +61,7 @@ export default function ContactUs() {
               </div>
               <div className="flex flex-col">
                 <h3
-                  className={`text-xl font-semibold ${
+                  className={`text-xl text-start font-semibold ${
                     isDark ? "text-white" : ""
                   }`}
                 >
@@ -84,7 +84,7 @@ export default function ContactUs() {
               </div>
               <div className="flex flex-col">
                 <h3
-                  className={`text-xl font-semibold ${
+                  className={`text-xl text-start font-semibold ${
                     isDark ? "text-white" : ""
                   }`}
                 >

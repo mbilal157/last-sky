@@ -3,39 +3,62 @@
 import { InfiniteMovingCards } from "../ui/lmov-cards";
 
 export function Posts() {
-  const rowSizes = [10, 6];
-
-  // Slice logos into chunks
-  const chunkedposts = [];
-  let start = 0;
-  for (const size of rowSizes) {
-    chunkedposts.push(
-      posts.slice(start, start + size).map((logo, index) => ({
-        title: `Thumbnail ${start + index + 1}`,
-        src: logo.image,
-      }))
-    );
-    start += size;
-  }
+  // Map posts to the type InfiniteMovingCards expects
+  const mappedPosts = posts.map((post, index) => ({
+    title: `Post ${index + 1}`,
+    src: post.image,
+  }));
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
-      <h2 className="text-3xl font-bold text-center mb-8 text-neutral-800 dark:text-white">
+    <section className="max-w-7xl mx-auto px-4 py-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
         Social Media Posts
       </h2>
 
-      <div className="space-y-8">
-        {chunkedposts.map((row, idx) => (
-          <InfiniteMovingCards
-            key={idx}
-            items={row}
-            speed="normal"
-            direction={idx % 2 === 0 ? "right" : "left"}
-            rows={1}
-            cardSize="large"
-          />
+      {/* MOBILE: simple grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:hidden">
+        {mappedPosts.map((post, i) => (
+          <PostCard key={i} src={post.src} />
         ))}
       </div>
+
+      {/* TABLET: single row moving cards */}
+      <div className="hidden md:block lg:hidden">
+        <InfiniteMovingCards
+          items={mappedPosts.slice(0, 8)}
+          speed="slow"
+          direction="right"
+          rows={1}
+          cardSize="medium"
+        />
+      </div>
+
+      {/* DESKTOP: multiple moving rows */}
+      <div className="hidden lg:flex flex-col gap-10">
+        <InfiniteMovingCards
+          items={mappedPosts.slice(0, 10)}
+          speed="normal"
+          direction="right"
+          rows={1}
+          cardSize="large"
+        />
+        <InfiniteMovingCards
+          items={mappedPosts.slice(10)}
+          speed="normal"
+          direction="left"
+          rows={1}
+          cardSize="large"
+        />
+      </div>
+    </section>
+  );
+}
+
+// Small PostCard component for mobile grid
+function PostCard({ src }: { src: string }) {
+  return (
+    <div className="rounded-2xl overflow-hidden shadow-md bg-white dark:bg-neutral-900">
+      <img src={src} alt="Post" className="w-full h-60 object-cover" />
     </div>
   );
 }

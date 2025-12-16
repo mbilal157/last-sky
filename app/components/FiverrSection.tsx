@@ -135,7 +135,7 @@ const InfiniteMovingCards = ({
               "transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl"
             )}
           >
-            <div className="absolute -top-8 right-4 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden shadow-md">
+            <div className="absolute -top-8 right-4 w-12 h-12 sm:w-24 sm:h-24 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden shadow-md">
               <Image
                 src={item.image}
                 alt={item.name}
@@ -214,27 +214,67 @@ export default function FiverrSection() {
       active:translate-y-0
       group"
         >
-          {/* SVG border */}
+          {/* SVG BORDER EFFECT */}
           <svg
-            className="pointer-events-none absolute inset-0"
+            className="pointer-events-none absolute inset-0 overflow-visible"
             width="100%"
             height="100%"
             viewBox="0 0 100 40"
             preserveAspectRatio="none"
           >
+            {/* Invisible path */}
             <rect
               x="1"
               y="1"
               width="98"
               height="38"
-              rx="12"
-              ry="12"
+              rx="10"
+              ry="10"
               fill="none"
               stroke="white"
-              strokeWidth="2"
-              strokeDasharray="20 80"
-              className="animate-border-dash"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeDasharray="8 100"
+              className="animate-border-dot"
             />
+
+            {/* Moving shiny dot */}
+            <circle r="1.8" fill="white">
+              <animateMotion dur="2.8s" repeatCount="indefinite" rotate="auto">
+                <mpath href="#borderPath" />
+              </animateMotion>
+            </circle>
+
+            {/* Particle sparks */}
+            {Array.from({ length: 6 }).map((_, i) => (
+              <circle key={i} r="0.6" fill="white" opacity="0.8">
+                <animateMotion
+                  dur="2.8s"
+                  repeatCount="indefinite"
+                  begin={`${i * 0.15}s`}
+                >
+                  <mpath href="#borderPath" />
+                </animateMotion>
+
+                {/* Particle burst */}
+                <animateTransform
+                  attributeName="transform"
+                  type="translate"
+                  from="0 0"
+                  to={`${Math.random() * 6 - 3} ${Math.random() * 6 - 3}`}
+                  dur="0.6s"
+                  repeatCount="indefinite"
+                />
+
+                <animate
+                  attributeName="opacity"
+                  from="1"
+                  to="0"
+                  dur="0.6s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+            ))}
           </svg>
 
           {/* Content */}

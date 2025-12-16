@@ -24,7 +24,7 @@ const Card = ({ src, className }: CardProps) => (
 
 export default function Logos() {
   return (
-    <div className="grid gap-8 p-6 pt-14 mt-10 max-w-7xl mx-auto">
+    <div className="grid gap-8 pt-14 mt-5 sm:mt-5 max-w-7xl mx-auto">
       <h1 className="text-4xl md:text-6xl font-bold mb-2 text-foreground text-center">
         Logos and Branding
       </h1>

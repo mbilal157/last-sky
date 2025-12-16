@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState } from "react";
 import { motion, HTMLMotionProps, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
+import Navbar from "../NavBar";
 
 interface SidebarContextProps {
   open: boolean;
@@ -96,17 +97,18 @@ const MobileDropdown = ({
       {/* Mobile Navbar - Header Bar */}
       <div
         className={cn(
-          "sm:hidden flex items-center justify-between w-full h-16 fixed top-0 left-0 right-0 z-50 px-4 shadow-md border-b",
+          "sm:hidden flex items-center justify-between w-full h-16 fixed top-20 left-0 right-0 z-50 px-4 shadow-md border-b",
           "bg-neutral-100 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 text-black dark:text-white"
         )}
       >
+        <Navbar />
         <div className="flex items-center justify-start">{header}</div>
 
         {/* Mobile Menu Toggle Button */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className={cn(
-            "p-2 rounded-md transition-all",
+            " rounded-md transition-all",
             theme === "dark" ? "hover:bg-neutral-800" : "hover:bg-neutral-200"
           )}
         >
@@ -139,7 +141,7 @@ const MobileDropdown = ({
               exit={{ opacity: 0 }}
               onClick={() => setMobileOpen(false)}
               className="fixed inset-0 z-30 sm:hidden"
-              style={{ top: "64px" }}
+              style={{ top: "80px" }}
             />
 
             {/* Dropdown Menu */}
@@ -156,7 +158,7 @@ const MobileDropdown = ({
               style={{ top: "64px" }}
             >
               <div
-                className="flex flex-col gap-1 p-2"
+                className="flex flex-col gap-1 px-0 p-2"
                 onClick={handleLinkClick}
               >
                 {children}
@@ -213,7 +215,7 @@ export const SidebarLink = ({
       <button
         onClick={onClick}
         className={cn(
-          "sm:hidden flex items-center justify-start gap-3 w-full px-4 py-3 rounded-md transition-all duration-300",
+          "sm:hidden flex items-center justify-start gap-3 w-full py-3 rounded-md transition-all duration-300",
           className
         )}
       >

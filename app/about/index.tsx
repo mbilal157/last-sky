@@ -18,8 +18,8 @@ const AboutPage = () => {
 
   return (
     <>
-      <div className="px-6 md:px-12 lg:px-24 bg-[url('/images/aboutt.jpg')] text-white transition-colors duration-300">
-        <div className="text-center max-w-3xl mt-20 mx-auto pb-12 pt-10 h-80 text-white">
+      <div className="px-6 md:px-12 lg:px-24  bg-[url('/images/aboutt.jpg')] text-white transition-colors duration-300">
+        <div className="text-center max-w-3xl  mt-20 mx-auto pb-12 pt-10 h-80 text-white">
           <h1 className="text-4xl md:text-5xl font-bold text-white mt-8 mb-6">
             About <span className="text-[#0098ff]">Skyline Production</span>
           </h1>

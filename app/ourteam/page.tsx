@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const team = [
   {
-    name: "Taimor Qaisar",
+    name: "Taimoor Qaiser",
     role: "Founder & CEO",
     image: "/images/team/taimoor.jpg",
   },
@@ -41,7 +41,7 @@ export default function OurTeamPage() {
       </div>
 
       {/* Cards */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+      <div className="max-w-6xl mx-auto grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
         {team.map((member, index) => (
           <div
             key={index}
@@ -58,7 +58,7 @@ export default function OurTeamPage() {
             </div>
 
             {/* OVERLAPPING WHITE BOX */}
-            <div className="relative z-10 -mt-4 bg-white rounded-t-3xl rounded-b-3xl p-2 text-center">
+            <div className="relative z-10 -mt-4 py-3 bg-white rounded-t-3xl rounded-b-3xl p-2 text-center">
               <h1 className="text-lg text-black font-bold">{member.name}</h1>
               <h2 className="text-sm text-gray-700">{member.role}</h2>
             </div>

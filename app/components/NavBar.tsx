@@ -80,8 +80,7 @@ export default function Navbar() {
     px-4 md:px-12 flex items-center justify-between
     bg-white/30 dark:bg-gray-900/60
     backdrop-blur-xl backdrop-saturate-150
-    text-black dark:text-white
-    sh    adow-[0_2px_10px_0_rgba(0,0,0,0.02)] dark:shadow-[0_2px_10px_0_rgba(255,255,255,0.02)]
+    shadow-[0_2px_10px_0_rgba(0,0,0,0.02)] dark:shadow-[0_2px_10px_0_rgba(255,255,255,0.02)]
     z-50
     transition-all duration-300
   "
@@ -160,7 +159,7 @@ export default function Navbar() {
 
       {/* Mobile button */}
       <button
-        className="ml-auto md:hidden text-foreground"
+        className="ml-auto md:hidden  text-foreground"
         onClick={() => setMenuOpen((s) => !s)}
       >
         {menuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -169,9 +168,8 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div
-          className="absolute top-20 left-0 w-full  bg-white/30 dark:bg-gray-900/60
-    backdrop-blur-xl backdrop-saturate-150
-    text-black dark:text-white shadow-md md:hidden flex flex-col items-start p-6 gap-4 transition-colors duration-300"
+          className="absolute top-20 left-0 w-full bg-white/100 dark:bg-black
+    text-black dark:text-white md:hidden flex flex-col items-start p-6 gap-4 transition-colors duration-300"
         >
           {links.map((link) => {
             const isActive = pathname === link.href;
@@ -181,11 +179,11 @@ export default function Navbar() {
                 <div key={link.name} className="w-full">
                   <button
                     onClick={() => setPortfolioOpen((o) => !o)}
-                    className={`w-full flex justify-between items-center font-medium text-lg py-2 transition-colors duration-300 ${
-                      isActive
-                        ? "text-blue-600"
-                        : "text-foreground hover:text-blue-600"
-                    }`}
+                    className={`w-full flex items-center justify-center
+    text-center rounded-3xl border border-border
+    shadow-2xl shadow-black/70 dark:shadow-black/40
+    font-medium text-lg py-2 transition-colors duration-300
+    ${isActive ? "text-blue-600" : "text-foreground hover:text-blue-600"}`}
                   >
                     {link.name}
                     <ChevronDown
@@ -217,11 +215,17 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className={`w-full font-medium text-lg py-2 transition-colors duration-300 ${
-                  isActive
-                    ? "text-blue-600"
-                    : "text-foreground hover:text-blue-600"
-                }`}
+                className={`w-full font-medium text-lg py-2
+    text-center
+    rounded-3xl
+    border border-border
+    shadow-2xl shadow-black/70 dark:shadow-black/40
+    transition-all duration-300
+    ${
+      isActive
+        ? "text-blue-600 border-blue-600"
+        : "text-foreground hover:text-blue-600 hover:border-blue-600"
+    }`}
               >
                 {link.name}
               </Link>

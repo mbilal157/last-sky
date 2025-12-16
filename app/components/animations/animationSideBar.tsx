@@ -45,11 +45,27 @@ function SidebarDemoContent() {
 
     return "Logo Animation";
   });
-
+  const headerContent = (
+    <div className="flex items-center gap-3">
+      <Image
+        src="/images/portfolio/animation.jpg"
+        alt="Graphic Design Logo"
+        width={32}
+        height={32}
+        className="rounded-full object-cover"
+      />
+      <span className="text-sm font-medium whitespace-nowrap text-black dark:text-white">
+        Animations
+      </span>
+    </div>
+  );
   return (
     <div className="flex h-screen w-full bg-white dark:bg-neutral-900 text-black dark:text-white">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
-        <SidebarBody className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700">
+        <SidebarBody
+          header={headerContent}
+          className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700"
+        >
           <div className="flex flex-1 flex-col overflow-x-hidden bg-white dark:bg-black overflow-y-auto">
             {/* Sidebar Header */}
             <div
@@ -59,13 +75,6 @@ function SidebarDemoContent() {
                 open ? "justify-start" : "justify-center"
               )}
             >
-              <Image
-                src="/images/portfolio/animation.jpg"
-                alt="Animation Logo"
-                width={32}
-                height={32}
-                className="rounded-full object-cover"
-              />
               {open && (
                 <span className="text-sm font-medium whitespace-pre text-black dark:text-white">
                   Animations
