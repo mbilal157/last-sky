@@ -3,43 +3,30 @@
 import { InfiniteMovingCards } from "../ui/lmov-cards";
 
 export function Thumbnails() {
-  // Split into 5 rows: 8,8,8,8,9
-  const rowSizes = [8, 8, 9, 8, 9, 9];
+  // Map thumbnails into a flat array
+  const mappedThumbnails = thumbnails.map((thumb, i) => ({
+    title: `Thumbnail ${i + 1}`,
+    src: thumb.image,
+  }));
 
-  // Slice logos into chunks
-  const chunkedThumbnails = [];
-  let start = 0;
-  for (const size of rowSizes) {
-    chunkedThumbnails.push(
-      thumbnails.slice(start, start + size).map((logo, index) => ({
-        title: `Thumbnail ${start + index + 1}`,
-        src: logo.image,
-      }))
-    );
-    start += size;
-  }
-
+  // Split into 3 rows automatically
+  const rows = 3;
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <h2 className="text-3xl font-bold text-center mb-8 text-neutral-800 dark:text-white">
         Thumbnails
       </h2>
 
-      <div className="space-y-8">
-        {chunkedThumbnails.map((row, idx) => (
-          <InfiniteMovingCards
-            key={idx}
-            items={row}
-            speed="normal"
-            direction={idx % 2 === 0 ? "right" : "left"}
-            rows={1}
-          />
-        ))}
-      </div>
+      <InfiniteMovingCards
+        items={mappedThumbnails}
+        speed="normal"
+        direction="left"
+        rows={rows}
+        cardSize="medium"
+      />
     </div>
   );
 }
-
 export const thumbnails = [
   { image: "/images/portfolio/thumbnails/thumb1.jpg" },
   { image: "/images/portfolio/thumbnails/thumb47.jpg" },

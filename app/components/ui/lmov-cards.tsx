@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState ,useCallback} from "react";
 import { cn } from "@/lib/utils";
 import { Play, X } from "lucide-react";
 import Image from "next/image";
@@ -12,15 +12,15 @@ interface CardProps {
     src: string;
   };
   onPreview: (src: string) => void;
-  isDuplicate?: boolean;
+  cardSize?: "small" | "medium" | "large";
 }
 export const InfiniteMovingCards = ({
   items,
   speed = "fast",
   pauseOnHover = true,
   className,
-  rows = 3,
-  direction,
+  rows = 1,
+  direction="left",
   cardSize = "medium", // 👈 NEW PROP
 }: {
   items: {
@@ -31,141 +31,92 @@ export const InfiniteMovingCards = ({
   pauseOnHover?: boolean;
   className?: string;
   rows?: number;
-  direction?: "right" | "left" | undefined;
-  cardSize?: "small" | "medium" | "large"; // 👈 NEW PROP TYPE
+  direction?: "right" | "left";
+  cardSize?: "small" | "medium" | "large";
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const scrollerRefs = useRef<(HTMLUListElement | null)[]>([]);
   const [start, setStart] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
-    addAnimations();
+     setStart(true);
   }, []);
 
-  function addAnimations() {
-    if (containerRef.current) {
-      scrollerRefs.current.forEach((scrollerRef) => {
-        if (scrollerRef) {
-          // Clear any existing duplicated items
-          const existingItems = Array.from(scrollerRef.children);
-          const originalItems = existingItems.slice(
-            0,
-            existingItems.length / 2
-          );
 
-          // Remove duplicates if they exist
-          if (existingItems.length > originalItems.length) {
-            for (let i = originalItems.length; i < existingItems.length; i++) {
-              scrollerRef.removeChild(existingItems[i]);
-            }
-          }
-
-          // Add new duplicates
-          originalItems.forEach((item) => {
-            const duplicatedItem = item.cloneNode(true);
-            scrollerRef.appendChild(duplicatedItem);
-          });
-        }
-      });
-
-      setStart(true);
-    }
-  }
-
-  // Split items into multiple rows
-  const itemsPerRow = Math.ceil(items.length / rows);
-  const rowItems = Array.from({ length: rows }, (_, i) =>
-    items.slice(i * itemsPerRow, (i + 1) * itemsPerRow)
-  );
-
-  // Define animation duration based on speed
-  const getAnimationDuration = () => {
-    if (speed === "fast") return "40s";
-    if (speed === "normal") return "60s";
+  const rowItems = Array.from({ length: rows }, (_, i) => {
+    const itemsPerRow = Math.ceil(items.length / rows);
+    return items.slice(i * itemsPerRow, (i + 1) * itemsPerRow);
+  });
+   const getSpeed = useCallback(() => {
+    if (speed === "fast") return "20s";
+    if (speed === "normal") return "40s";
     return "80s";
-  };
-
-  const handlePreview = (src: string) => {
-    setSelectedImage(src);
-  };
-
-  const closePreview = () => {
-    setSelectedImage(null);
-  };
+     }, [speed]);
+  const handlePreview = (src: string) => setSelectedImage(src);
+  const closePreview = () => setSelectedImage(null);
 
   return (
     <div
       ref={containerRef}
-      className={cn("relative z-20 w-full overflow-hidden", className)}
+      className={cn(
+        "scroller relative z-20 w-full overflow-hidden",
+        className
+      )}
     >
-      <style jsx>{`
+      <style jsx global>{`
         @keyframes scroll {
-          0% {
+          from {
             transform: translateX(0);
           }
-          100% {
+          to {
             transform: translateX(calc(-50% - 0.5rem));
-          }
-        }
-
-        @keyframes scrollReverse {
-          0% {
-            transform: translateX(calc(-50% - 0.5rem));
-          }
-          100% {
-            transform: translateX(0);
           }
         }
 
         .animate-scroll {
-          animation: scroll ${getAnimationDuration()} linear infinite;
-        }
+          animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
 
-        .animate-scroll-reverse {
-          animation: scrollReverse ${getAnimationDuration()} linear infinite;
-        }
-
-        .animate-scroll:hover,
-        .animate-scroll-reverse:hover {
-          animation-play-state: ${pauseOnHover ? "paused" : "running"};
-        }
+        .pause-on-hover:hover .animate-scroll {
+          animation-play-state: paused;
       `}</style>
 
-      {rowItems.map((row, rowIndex) => (
-        <ul
-          key={rowIndex}
-          ref={(el) => {
-            scrollerRefs.current[rowIndex] = el;
-          }}
-          className={cn(
-            "flex w-max min-w-full shrink-0 flex-nowrap gap-2 py-1 mb-1",
-            start &&
-              (direction === "right"
-                ? "animate-scroll-reverse"
-                : "animate-scroll")
-          )}
-        >
-          {row.map((item, idx) => (
-            <Card
-              key={`${item.title}-${rowIndex}-${idx}`}
-              item={item}
-              onPreview={handlePreview}
-              isDuplicate={false}
-              cardSize={cardSize}
-            />
-          ))}
-          {row.map((item, idx) => (
-            <Card
-              key={`${item.title}-${rowIndex}-${idx}-dup`}
-              item={item}
-              onPreview={handlePreview}
-              isDuplicate={true}
-              cardSize={cardSize}
-            />
-          ))}
-        </ul>
-      ))}
+     <div className="flex flex-col gap-4">
+        {rowItems.map((row, rowIndex) => (
+          <ul
+            key={rowIndex}
+            className={cn(
+              "flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap animate-scroll",
+              start && "start-animation",
+              pauseOnHover && "pause-on-hover"
+            )}
+            style={
+              {
+                "--animation-duration": getSpeed(),
+                "--animation-direction": direction === "left" ? "forwards" : "reverse",
+              } as React.CSSProperties
+            }
+          >
+            {/* Original Items */}
+            {row.map((item, idx) => (
+              <Card
+                key={`${item.title}-${rowIndex}-${idx}`}
+                item={item}
+                onPreview={handlePreview}
+                cardSize={cardSize}
+              />
+            ))}
+            {/* Duplicated Items for Seamless Loop */}
+            {row.map((item, idx) => (
+              <Card
+                key={`${item.title}-${rowIndex}-${idx}-dup`}
+                item={item}
+                onPreview={handlePreview}
+                cardSize={cardSize}
+              />
+            ))}
+          </ul>
+        ))}
+      </div>
 
       {selectedImage &&
         createPortal(
@@ -202,9 +153,7 @@ export const InfiniteMovingCards = ({
   );
 };
 
-const Card: React.FC<
-  CardProps & { cardSize?: "small" | "medium" | "large" }
-> = ({ item, onPreview, isDuplicate = false, cardSize = "medium" }) => {
+const Card: React.FC<CardProps> = ({ item, onPreview, cardSize = "medium" }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [aspectRatio, setAspectRatio] = useState<"square" | "wide">("wide");
 
@@ -219,8 +168,11 @@ const Card: React.FC<
   }, [item.src]);
 
   // Width adjustment
-  const sizeClasses =
-    cardSize === "large" ? "w-[26rem]" : cardSize === "small" ? "w-48" : "w-64";
+  const sizeClasses = {
+    small: "w-48",
+    medium: "w-64",
+    large: "w-[26rem]",
+  }[cardSize];
 
   const aspectClasses =
     cardSize === "large"
@@ -231,12 +183,11 @@ const Card: React.FC<
   return (
     <li
       className={cn(
-        `relative ${sizeClasses} max-w-full shrink-0 rounded-xl overflow-hidden border border-zinc-200 bg-gray-100 dark:border-zinc-700 dark:bg-neutral-900 transition-all duration-300`,
-        isHovered && "transform scale-[1.03] shadow-lg z-10"
+        "relative shrink-0 rounded-xl overflow-hidden border border-zinc-200 bg-gray-100 dark:border-zinc-700 dark:bg-neutral-900 transition-all duration-300",
+        sizeClasses,
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      style={{ visibility: isDuplicate ? "hidden" : "visible" }}
     >
       <div className={cn("relative h-0", aspectClasses)}>
         <Image
@@ -245,7 +196,7 @@ const Card: React.FC<
           fill
           quality={100}
           className="object-cover rounded-md"
-          sizes="(max-width: 500px) 100vw, 15vw"
+          sizes="(max-width: 500px) 100vw, 33vw"
         />
         <div
           className={cn(
