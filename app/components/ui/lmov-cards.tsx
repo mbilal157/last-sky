@@ -48,9 +48,9 @@ export const InfiniteMovingCards = ({
     return items.slice(i * itemsPerRow, (i + 1) * itemsPerRow);
   });
    const getSpeed = useCallback(() => {
-    if (speed === "fast") return "20s";
-    if (speed === "normal") return "40s";
-    return "80s";
+    if (speed === "fast") return "50s";
+    if (speed === "normal") return "50s";
+    return "50s";
      }, [speed]);
   const handlePreview = (src: string) => setSelectedImage(src);
   const closePreview = () => setSelectedImage(null);
