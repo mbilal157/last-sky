@@ -92,7 +92,7 @@ function SidebarDemoContent() {
   // -----------------------------------------------------------------------
 
   return (
-    <div className="flex h-screen w-full mt-14 bg-white dark:bg-neutral-900 text-black dark:text-white">
+    <div className="flex h-screen w-full bg-white dark:bg-neutral-900 text-black dark:text-white">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody
           className="hidden sm:flex justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700"

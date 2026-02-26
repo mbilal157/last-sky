@@ -103,8 +103,19 @@ export function VideoSidebarDemo() {
       </span>
     </div>
   );
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024); // lg breakpoint
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
   return (
-    <div className="flex h-screen w-full bg-white dark:bg-neutral-900 text-black dark:text-white">
+    <div className="flex h-screen w-full bg-white dark:bg-neutral-900 text-black dark:text-white flex-col lg:flex-row">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody
           className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700"
@@ -151,10 +162,11 @@ export function VideoSidebarDemo() {
       {/* Main Content */}
       <motion.main
         animate={{
-          marginLeft: open ? "240px" : "64px",
+          marginLeft: isLargeScreen ? (open ? "240px" : "64px") : "0px",
+          marginTop: isLargeScreen ? "0px" : "64px", // Account for mobile sidebar height if it's fixed/sticky
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="flex-1 overflow-y-auto p-6"
+        className="flex-1 overflow-y-auto p-6 mt-16 lg:mt-0"
       >
         <AnimatePresence mode="wait">
           {contentMap[activeLink] || <Dashboard />}

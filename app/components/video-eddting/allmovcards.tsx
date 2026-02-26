@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Play } from "lucide-react";
 import Image from "next/image";
+import { Play } from "lucide-react";
 
-// Update the interfaces
 interface VideoItem {
   title: string;
   src: string;
@@ -18,7 +17,6 @@ interface VideoItem {
 interface CardProps {
   item: VideoItem;
   onPlayVideo: (item: VideoItem) => void;
-  isDuplicate?: boolean;
 }
 
 interface InfiniteMovingCardsProps {
@@ -27,8 +25,8 @@ interface InfiniteMovingCardsProps {
   pauseOnHover?: boolean;
   className?: string;
   rows?: number;
-  direction?: "right" | "left" | undefined;
-  onItemClick?: (item: VideoItem) => void; // Add this prop
+  direction?: "right" | "left";
+  onItemClick?: (item: VideoItem) => void;
 }
 
 export const InfiniteMovingCards = ({
@@ -37,46 +35,10 @@ export const InfiniteMovingCards = ({
   pauseOnHover = true,
   className,
   rows = 3,
-  direction,
-  onItemClick, // Add this prop
+  direction = "left",
+  onItemClick,
 }: InfiniteMovingCardsProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const scrollerRefs = useRef<(HTMLUListElement | null)[]>([]);
-  const [start, setStart] = useState(false);
-
-  useEffect(() => {
-    addAnimations();
-  }, []);
-
-  function addAnimations() {
-    if (containerRef.current) {
-      scrollerRefs.current.forEach((scrollerRef) => {
-        if (scrollerRef) {
-          // Clear any existing duplicated items
-          const existingItems = Array.from(scrollerRef.children);
-          const originalItems = existingItems.slice(
-            0,
-            existingItems.length / 2
-          );
-
-          // Remove duplicates if they exist
-          if (existingItems.length > originalItems.length) {
-            for (let i = originalItems.length; i < existingItems.length; i++) {
-              scrollerRef.removeChild(existingItems[i]);
-            }
-          }
-
-          // Add new duplicates
-          originalItems.forEach((item) => {
-            const duplicatedItem = item.cloneNode(true);
-            scrollerRef.appendChild(duplicatedItem);
-          });
-        }
-      });
-
-      setStart(true);
-    }
-  }
+  const scrollerRefs = useRef<HTMLUListElement[]>([]);
 
   // Split items into multiple rows
   const itemsPerRow = Math.ceil(items.length / rows);
@@ -84,7 +46,6 @@ export const InfiniteMovingCards = ({
     items.slice(i * itemsPerRow, (i + 1) * itemsPerRow)
   );
 
-  // Define animation duration based on speed
   const getAnimationDuration = () => {
     if (speed === "fast") return "40s";
     if (speed === "normal") return "60s";
@@ -92,75 +53,53 @@ export const InfiniteMovingCards = ({
   };
 
   const handlePlayVideo = (item: VideoItem) => {
-    onItemClick?.(item); // Call the parent's click handler
+    onItemClick?.(item);
   };
+
+  // Setup CSS keyframes dynamically for smooth scrolling
+  useEffect(() => {
+    const styleEl = document.createElement("style");
+    styleEl.innerHTML = `
+      @keyframes scroll-left {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      @keyframes scroll-right {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
+      }
+    `;
+    document.head.appendChild(styleEl);
+    return () => {
+      document.head.removeChild(styleEl);
+    };
+  }, []);
 
   return (
     <div
-      ref={containerRef}
       className={cn("relative z-20 w-full overflow-hidden", className)}
     >
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-50% - 0.5rem));
-          }
-        }
-
-        @keyframes scrollReverse {
-          0% {
-            transform: translateX(calc(-50% - 0.5rem));
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-
-        .animate-scroll {
-          animation: scroll ${getAnimationDuration()} linear infinite;
-        }
-
-        .animate-scroll-reverse {
-          animation: scrollReverse ${getAnimationDuration()} linear infinite;
-        }
-
-        .animate-scroll:hover,
-        .animate-scroll-reverse:hover {
-          animation-play-state: ${pauseOnHover ? "paused" : "running"};
-        }
-      `}</style>
-
       {rowItems.map((row, rowIndex) => (
         <ul
           key={rowIndex}
-          ref={(el) => {
-            scrollerRefs.current[rowIndex] = el;
+          ref={(el) => { if (el) scrollerRefs.current[rowIndex] = el; }}
+          className="flex w-max gap-2 py-4 mb-0"
+          style={{
+            animation: `${
+              direction === "right" ? "scroll-right" : "scroll-left"
+            } ${getAnimationDuration()} linear infinite`,
+            animationPlayState: pauseOnHover ? "running" : "paused",
           }}
-          className={cn(
-            "flex w-max min-w-full shrink-0 flex-nowrap gap-2 py-1 mb-1",
-            start &&
-              (direction === "right"
-                ? "animate-scroll-reverse"
-                : "animate-scroll")
-          )}
+          onMouseEnter={() => {
+            if (pauseOnHover) scrollerRefs.current[rowIndex]!.style.animationPlayState = "paused";
+          }}
+          onMouseLeave={() => {
+            if (pauseOnHover) scrollerRefs.current[rowIndex]!.style.animationPlayState = "running";
+          }}
         >
-          {row.map((item, idx) => (
-            <Card
-              key={`${item.id}-${rowIndex}-${idx}`}
-              item={item}
-              onPlayVideo={handlePlayVideo}
-            />
-          ))}
-          {row.map((item, idx) => (
-            <Card
-              key={`${item.id}-${rowIndex}-${idx}-dup`}
-              item={item}
-              onPlayVideo={handlePlayVideo}
-              isDuplicate={true}
-            />
+          {/* Original + duplicate for seamless scroll */}
+          {[...row, ...row].map((item, idx) => (
+            <Card key={`${item.id}-${rowIndex}-${idx}`} item={item} onPlayVideo={handlePlayVideo} />
           ))}
         </ul>
       ))}
@@ -168,35 +107,16 @@ export const InfiniteMovingCards = ({
   );
 };
 
-const Card: React.FC<CardProps> = ({
-  item,
-  onPlayVideo,
-  isDuplicate = false,
-}) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const isReel = item.videoUrl?.includes("shorts/");
+const Card: React.FC<CardProps> = ({ item, onPlayVideo }) => {
+  const isVertical = item.category === "Stories" || item.category === "Shorts";
 
   return (
     <li
-      className={cn(
-        "relative shrink-0 rounded-xl overflow-hidden border border-zinc-200 bg-gray-100 dark:border-zinc-700 dark:bg-neutral-900 transition-all duration-300 cursor-pointer flex flex-col",
-        isHovered && "transform scale-105 shadow-lg z-10"
-      )}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="relative  shrink-0 rounded-xl overflow-hidden border border-zinc-200 bg-gray-100 dark:border-zinc-700 dark:bg-neutral-900 transition-all duration-300 cursor-pointer flex flex-col hover:scale-105 hover:shadow-lg hover:z-50"
       onClick={() => onPlayVideo(item)}
-      style={{
-        visibility: isDuplicate ? "hidden" : "visible",
-        width: isReel ? "180px" : "256px",
-      }}
+      style={{ width: isVertical ? "180px" : "256px" }}
     >
-      {/* 🖼️ Image at top */}
-      <div
-        className={cn(
-          "relative w-full",
-          isReel ? "pb-[177.78%]" : "pb-[56.25%]" // Aspect ratio
-        )}
-      >
+      <div className={cn("relative w-full", isVertical ? "aspect-[9/16]" : "pb-[56.25%]")}>
         <Image
           src={item.src}
           alt={item.title}
@@ -204,30 +124,15 @@ const Card: React.FC<CardProps> = ({
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
-
-        {/* ▶️ Play overlay */}
-        <div
-          className={cn(
-            "absolute inset-0 flex items-center justify-center transition-all duration-300",
-            isHovered ? "opacity-100 bg-black/40" : "opacity-0"
-          )}
-        >
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 bg-black/40 transition-opacity duration-300">
           <div className="bg-white/90 rounded-full p-3 shadow-lg">
-            <Play size={20} className="text-black pl-0.5" fill="black" />
+            <Play size={20} className="text-black" fill="black" />
           </div>
         </div>
       </div>
-
-      {/* 🏷️ Category and 🧾 Title below image */}
-      <div className="flex flex-col items-start p-3 text-left">
-        {item.category && (
-          <span className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-1">
-            {item.category}
-          </span>
-        )}
-        <h3 className="text-xl font-bold text-black dark:text-white line-clamp-2">
-          {item.title}
-        </h3>
+      <div className="flex flex-col items-start p-3">
+        {item.category && <span className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-1">{item.category}</span>}
+        <h3 className="text-xl font-bold text-black dark:text-white line-clamp-2">{item.title}</h3>
       </div>
     </li>
   );

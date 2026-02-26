@@ -30,6 +30,14 @@ export default function Home() {
     setIntroDone(true);
     localStorage.setItem("introDone", "true");
   };
+   useEffect(() => {
+    if (window.location.hash === "#portfolio") {
+      const section = document.getElementById("portfolio");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -37,6 +45,10 @@ export default function Home() {
         <title>
           The Skyline Production | Web Design, Photography & Video Editing
         </title>
+        <meta
+         name="viewport"
+         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
         <meta
           name="description"
           content="The Skyline Production offers creative web design, photography, animation, and video editing services that bring your brand to life."
@@ -63,7 +75,9 @@ export default function Home() {
             <AboutUs />
             <FeaturesSection />
             <CreativeServices />
-            <Portfolio />
+            <section id="portfolio">
+              <Portfolio />
+            </section>
             <ReviewsSection />
             <FiverrSection />
             <ContactUs />

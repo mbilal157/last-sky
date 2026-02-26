@@ -17,7 +17,7 @@ export function BCards() {
   const shuffled = cards.sort(() => Math.random() - 0.5);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
+    <div className="max-w-7xl mx-auto px-4 py-10 mt-10">
       <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-5 space-y-5">
         {shuffled.map((card) => {
           // random variations
@@ -36,7 +36,7 @@ export function BCards() {
               <div
                 className={`relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer ${card.ratio}`}
                 style={{
-                  transform: `rotate(${randomRotate}deg) scale(${randomScale})`,
+                  transform: `rotate(${randomRotate}deg)`,
                   transformOrigin: "center",
                 }}
               >

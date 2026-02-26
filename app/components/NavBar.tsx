@@ -78,7 +78,7 @@ export default function Navbar() {
       className="
     fixed top-0 left-0 w-full h-20
     px-4 md:px-12 flex items-center justify-between
-    bg-white/30 dark:bg-gray-900/60
+    bg-background/30
     backdrop-blur-xl backdrop-saturate-150
     shadow-[0_2px_10px_0_rgba(0,0,0,0.02)] dark:shadow-[0_2px_10px_0_rgba(255,255,255,0.02)]
     z-50
@@ -123,12 +123,12 @@ export default function Navbar() {
                   <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                 </button>
 
-                <div className="absolute left-0 w-48 bg-white dark:bg-black text-black dark:text-white shadow-md rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
+                <div className="absolute left-0 w-48 bg-background text-foreground shadow-md rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 border border-border">
                   {link.dropdown.map((sub) => (
                     <Link
                       key={sub.name}
                       href={sub.href}
-                      className="block px-4 py-2 text-sm text-black dark:text-white hover:bg-[#0098ff] dark:hover:bg-gray-800"
+                      className="block px-4 py-2 text-sm text-foreground hover:bg-accent dark:hover:bg-accent"
                     >
                       {sub.name}
                     </Link>
@@ -166,10 +166,10 @@ export default function Navbar() {
       </button>
 
       {/* Mobile menu */}
-      {menuOpen && (
+       {menuOpen && (
         <div
-          className="absolute top-20 left-0 w-full bg-white/100 dark:bg-black
-    text-black dark:text-white md:hidden flex flex-col items-start p-6 gap-4 transition-colors duration-300"
+          className="absolute top-20 left-0 w-full bg-background
+    text-foreground md:hidden flex flex-col items-start p-6 gap-4 transition-colors duration-300 border-b border-border shadow-xl"
         >
           {links.map((link) => {
             const isActive = pathname === link.href;
@@ -231,9 +231,9 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <div className="w-full pt-2">
+         {/*<div className="w-full pt-2">
             <ModeToggle />
-          </div>
+          </div>*/}
         </div>
       )}
     </nav>

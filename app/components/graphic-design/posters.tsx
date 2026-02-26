@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useMemo } from "react";
 
 export function Posters() {
   const cards = [
@@ -14,12 +15,15 @@ export function Posters() {
   ];
 
   // Shuffle for irregular sequence
-  const shuffled = cards.sort(() => Math.random() - 0.5);
+
+const shuffled = useMemo(() => {
+  return [...cards].sort(() => Math.random() - 0.5);
+}, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
+    <div className="max-w-7xl mx-auto px-4 py-10 mt-10">
       {/* Masonry layout with irregular order */}
-      <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-5 space-y-5">
+     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {shuffled.map((card) => {
           // random tilt, position, and scale for cinematic irregularity
           const randomRotate = Math.random() * 1 - 1; // -3° to +3°
@@ -37,16 +41,16 @@ export function Posters() {
               <div
                 className={`relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer ${card.ratio}`}
                 style={{
-                  transform: `rotate(${randomRotate}deg) scale(${randomScale})`,
+                  transform: `rotate(${randomRotate}deg)`,
                   transformOrigin: "center",
                 }}
               >
                 <Image
                   src={card.image}
                   alt={`Cinematic ${card.id}`}
-                  fill
-                  sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 25vw"
-                  className="object-cover hover:scale-105 transition-transform duration-700 ease-out"
+                  width={600}
+                  height={750}
+                  className="object-contain h-auto w-auto"
                 />
               </div>
             </div>

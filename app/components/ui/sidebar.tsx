@@ -94,7 +94,7 @@ const MobileDropdown = ({
 
   return (
     <>
-      {/* Mobile Navbar - Header Bar */}
+      {/* Mobile Header Bar - Fixed below main navbar (top-20 = 80px) */}
       <div
         className={cn(
           "sm:hidden flex items-center justify-between w-full h-16 fixed top-20 left-0 right-0 z-50 px-4 shadow-md border-b",

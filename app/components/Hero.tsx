@@ -13,16 +13,16 @@ const HeroSection = () => {
   const router = useRouter();
 
   // Redirects to homepage and scrolls to portfolio section
-  const handlePortfolioClick = () => {
-    if (window.location.pathname === "/") {
-      // already on home → just scroll
-      const section = document.getElementById("portfolio");
-      section?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      // go to home and include hash
-      router.push("/#portfolio");
-    }
-  };
+ const handlePortfolioClick = () => {
+  if (window.location.pathname === "/") {
+    // already on home → just scroll
+    const section = document.getElementById("portfolio");
+    section?.scrollIntoView({ behavior: "smooth" });
+  } else {
+    // go to home and include hash
+    router.push("/#portfolio");
+  }
+};
 
   // Redirects to contact page
   const handleContactClick = () => {
@@ -124,7 +124,7 @@ const HeroSection = () => {
       </div>
 
       {/* Buttons */}
-      <div className="flex gap-4 ">
+      <div className="flex gap-4 relative z-20">
         <button
           onClick={handlePortfolioClick}
           className="px-6 py-2 rounded-2xl bg-[#0098ff] text-white hover:bg-[#068be3] transform hover:scale-105 transition-transform duration-200 flex items-center gap-2"

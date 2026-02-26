@@ -29,16 +29,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="antialiased">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange={false}
-          storageKey="skyline-theme"
-        >
           <Navbar />
           {children}
-        </ThemeProvider>
       </body>
     </html>
   );

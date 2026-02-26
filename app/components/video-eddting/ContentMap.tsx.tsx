@@ -644,26 +644,32 @@ const AllVideosCarousel = ({ videos }: { videos: VideoProject[] }) => {
     setSelectedVideo(null);
   };
 
-  // Convert videos to InfiniteMovingCards format with proper typing
-  const carouselItems: InfiniteMovingCardsItem[] = videos.map((video) => ({
+  // Filter videos into horizontal and vertical groups
+  const horizontalVideos = videos.filter(v => v.category !== "Stories" && v.category !== "Shorts");
+  const verticalVideos = videos.filter(v => v.category === "Stories" || v.category === "Shorts");
+
+  // Convert to carousel items
+  const toCarouselItem = (video: VideoProject): InfiniteMovingCardsItem => ({
     title: video.title,
     src: video.thumbnail,
     description: video.description,
     category: video.category,
     videoUrl: video.videoUrl,
     id: video.id,
-  }));
+  });
 
-  // Split into rows for the carousel
-  const rowSizes = [6, 6, 6, 20];
-  const chunkedVideos: InfiniteMovingCardsItem[][] = [];
-  let start = 0;
+  const horizontalItems = horizontalVideos.map(toCarouselItem);
+  const verticalItems = verticalVideos.map(toCarouselItem);
 
-  for (const size of rowSizes) {
-    if (start >= carouselItems.length) break;
-    chunkedVideos.push(carouselItems.slice(start, start + size));
-    start += size;
+  // Split horizontal items into 3 rows
+  const horizontalRows: InfiniteMovingCardsItem[][] = [];
+  const itemsPerRow = Math.ceil(horizontalItems.length / 3);
+  for (let i = 0; i < 3; i++) {
+    horizontalRows.push(horizontalItems.slice(i * itemsPerRow, (i + 1) * itemsPerRow));
   }
+
+  // Combine rows: 3 horizontal rows + 1 vertical row
+  const chunkedVideos = [...horizontalRows, verticalItems];
 
   // Properly typed click handler
   const handleItemClick = (item: InfiniteMovingCardsItem) => {
@@ -691,15 +697,17 @@ const AllVideosCarousel = ({ videos }: { videos: VideoProject[] }) => {
 
         <div className="space-y-8">
           {chunkedVideos.map((row, idx) => (
-            <div key={idx} className="relative">
-              <InfiniteMovingCards
-                items={row}
-                speed="normal"
-                direction={idx % 2 === 0 ? "right" : "left"}
-                rows={1}
-                onItemClick={handleItemClick} // Use the properly typed handler
-              />
-            </div>
+            row.length > 0 && (
+              <div key={idx} className="relative">
+                <InfiniteMovingCards
+                  items={row}
+                  speed="normal"
+                  direction={idx % 2 === 0 ? "right" : "left"}
+                  rows={1}
+                  onItemClick={handleItemClick} // Use the properly typed handler
+                />
+              </div>
+            )
           ))}
         </div>
       </motion.div>
