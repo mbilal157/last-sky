@@ -140,38 +140,32 @@ const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 max-w-7xl overflow-hidden",
+        "scroller relative z-20 overflow-x-hidden",
         className
       )}
     >
       {/* Left Gradient */}
       <div
         className={cn(
-          "absolute left-0 top-0 bottom-0 w-[5%] z-30 pointer-events-none",
-          theme === "dark"
-            ? "bg-gradient-to-r from-black to-transparent"
-            : "bg-gradient-to-r from-white to-transparent"
+          "absolute left-0 top-0 bottom-0 w-[5%] z-30 pointer-events-none bg-gradient-to-r from-white to-transparent",
         )}
       />
 
       {/* Right Gradient */}
       <div
         className={cn(
-          "absolute right-0 top-0 bottom-0 w-[5%] z-30 pointer-events-none",
-          theme === "dark"
-            ? "bg-gradient-to-l from-black to-transparent"
-            : "bg-gradient-to-l from-white to-transparent"
+          "absolute right-0 top-0 bottom-0 w-[5%] z-30 pointer-events-none bg-gradient-to-l from-white to-transparent",
         )}
       />
 
       <ul
-        ref={scrollerRef}
-        className={cn(
-          "flex w-max min-w-full flex-nowrap gap-6 py-12",
-          start && "animate-scroll",
-          pauseOnHover && "hover:[animation-play-state:paused]"
-        )}
-      >
+  ref={scrollerRef}
+  className={cn(
+    "flex w-max flex-nowrap gap-6 py-12", // change min-w-full → w-max
+    start && "animate-scroll",
+    pauseOnHover && "hover:[animation-play-state:paused]"
+  )}
+>
         {items.map((item, idx) => (
           <li
             key={`${item.name}-${idx}`}

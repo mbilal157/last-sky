@@ -576,7 +576,7 @@ const VideoCard = ({ video, onPlay }: VideoCardProps) => {
 
   return (
     <motion.div
-      className="bg-white dark:bg-neutral-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl"
+      className="bg-white text-black rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl"
       whileHover={{ y: -5 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
@@ -604,17 +604,17 @@ const VideoCard = ({ video, onPlay }: VideoCardProps) => {
             animate={{ opacity: isHovered ? 1 : 0 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="bg-white bg-opacity-90 rounded-full p-3 shadow-lg transform hover:scale-110 transition-transform">
+            <div className="bg-white  bg-opacity-90 rounded-full p-3 shadow-lg transform hover:scale-110 transition-transform">
               <Play size={24} className="text-black pl-1" fill="black" />
             </div>
           </motion.div>
         </div>
 
         <div className="p-4">
-          <h3 className="font-semibold text-lg mb-1 text-neutral-800 dark:text-white line-clamp-1">
+          <h3 className="font-semibold text-lg mb-1 text-neutral-800  line-clamp-1">
             {video.title}
           </h3>
-          <p className="text-neutral-600 dark:text-neutral-300 text-sm mb-3 line-clamp-2">
+          <p className="text-neutral-600 text-sm mb-3 line-clamp-2">
             {video.description}
           </p>
         </div>

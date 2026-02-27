@@ -63,7 +63,7 @@ export const SidebarBody = ({
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className={cn(
             "h-screen flex-col fixed left-0 top-0 z-50 shadow-md transition-colors duration-300",
-            "bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white",
+            "bg-neutral-100  text-black ",
             className
           )}
           {...props}
@@ -98,7 +98,7 @@ const MobileDropdown = ({
       <div
         className={cn(
           "sm:hidden flex items-center justify-between w-full h-16 fixed top-20 left-0 right-0 z-50 px-4 shadow-md border-b",
-          "bg-neutral-100 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 text-black dark:text-white"
+          "bg-neutral-100 border-neutral-200  text-black "
         )}
       >
         <Navbar />
@@ -191,7 +191,7 @@ export const SidebarLink = ({
         onClick={onClick}
         className={cn(
           "hidden sm:flex items-center justify-start gap-3 w-full px-3 py-3 rounded-md transition-all duration-300 overflow-hidden",
-          "hover:bg-neutral-200 dark:hover:bg-neutral-700 text-black dark:text-white",
+          "hover:bg-neutral-200 dark:hover:bg-neutral-100 text-black ",
           className
         )}
       >

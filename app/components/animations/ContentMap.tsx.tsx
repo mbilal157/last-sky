@@ -144,14 +144,14 @@ const VideoModal = ({ video, isOpen, onClose }: VideoModalProps) => {
 
   return (
     <motion.div
-      className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0  bg-opacity-90 z-50 flex items-center justify-center p-4"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onClose}
     >
       <motion.div
-        className="relative bg-black rounded-lg overflow-hidden w-full max-w-4xl"
+        className="relative  rounded-lg overflow-hidden w-full max-w-4xl"
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.9 }}
@@ -214,7 +214,7 @@ const VideoCard = ({ video, onPlay }: VideoCardProps) => {
 
   return (
     <motion.div
-      className="bg-white dark:bg-neutral-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl"
+      className="bg-white  rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl"
       whileHover={{ y: -5 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
@@ -249,10 +249,10 @@ const VideoCard = ({ video, onPlay }: VideoCardProps) => {
         </div>
 
         <div className="p-4">
-          <h3 className="font-semibold text-lg mb-1 text-neutral-800 dark:text-white line-clamp-1">
+          <h3 className="font-semibold text-lg mb-1 text-neutral-800  line-clamp-1">
             {video.title}
           </h3>
-          <p className="text-neutral-600 dark:text-neutral-300 text-sm mb-3 line-clamp-2">
+          <p className="text-neutral-600  text-sm mb-3 line-clamp-2">
             {video.description}
           </p>
         </div>

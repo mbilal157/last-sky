@@ -154,7 +154,7 @@ export default function Navbar() {
             </Link>
           );
         })}
-        <ModeToggle />
+       {/* <ModeToggle /> */}
       </div>
 
       {/* Mobile button */}

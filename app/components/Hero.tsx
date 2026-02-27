@@ -89,11 +89,9 @@ const HeroSection = () => {
           width={80}
           height={80}
           priority
-          className={`w-full h-full object-contain transition-transform duration-300 hover:scale-110 ${
-            resolvedTheme === "light" ? "block" : "hidden"
-          }`}
+          className={`w-full h-full object-contain transition-transform duration-300 hover:scale-110 `}
         />
-        <Image
+     { /*  <Image
           src="/images/logo1.png"
           alt="logo"
           width={80}
@@ -102,7 +100,7 @@ const HeroSection = () => {
           className={`w-full h-full object-contain  transition-transform duration-300 hover:scale-110 ${
             resolvedTheme === "dark" ? "block" : "hidden"
           }`}
-        />
+        />*/}
       </div>
 
       <div className="flex h-[8rem] w-[100%] items-center justify-center">

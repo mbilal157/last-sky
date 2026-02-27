@@ -54,29 +54,29 @@ function SidebarDemoContent() {
         height={32}
         className="rounded-full object-cover"
       />
-      <span className="text-sm font-medium whitespace-nowrap text-black dark:text-white">
+      <span className="text-sm font-medium whitespace-nowrap text-black ">
         Animations
       </span>
     </div>
   );
   return (
-    <div className="flex h-screen w-full bg-white dark:bg-neutral-900 text-black dark:text-white">
+    <div className="flex h-screen w-full bg-white  text-black ">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody
           header={headerContent}
           className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700"
         >
-          <div className="flex flex-1 flex-col overflow-x-hidden bg-white dark:bg-black overflow-y-auto">
+          <div className="flex flex-1 flex-col overflow-x-hidden bg-white  overflow-y-auto">
             {/* Sidebar Header */}
             <div
               className={cn(
                 "flex items-center gap-3 px-1 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
-                "bg-neutral-200 dark:bg-black text-black dark:text-white",
+                "bg-neutral-200  text-black ",
                 open ? "justify-start" : "justify-center"
               )}
             >
               {open && (
-                <span className="text-sm font-medium whitespace-pre text-black dark:text-white">
+                <span className="text-sm font-medium whitespace-pre text-black ">
                   Animations
                 </span>
               )}
@@ -94,8 +94,8 @@ function SidebarDemoContent() {
                   }}
                   className={cn(
                     activeLink === link.label
-                      ? "bg-neutral-300 dark:bg-neutral-500 text-black dark:text-white"
-                      : "text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800"
+                      ? "bg-neutral-300  text-black "
+                      : "text-black  hover:bg-neutral-200 "
                   )}
                 />
               ))}
