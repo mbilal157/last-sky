@@ -148,14 +148,32 @@ function SidebarDemoContent() {
         className="hidden sm:flex flex-1 overflow-y-auto p-6"
       >
         <AnimatePresence mode="wait">
-          {contentMap[activeLink] || <Dashboard />}
+          <motion.div
+            key={activeLink}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="h-full"
+          >
+            {contentMap[activeLink] || <Dashboard />}
+          </motion.div>
         </AnimatePresence>
       </motion.main>
 
       {/* Mobile Main Content */}
       <motion.main className="sm:hidden flex-1 overflow-y-auto p-4 mt-32 w-full">
         <AnimatePresence mode="wait">
-          {contentMap[activeLink] || <Dashboard />}
+          <motion.div
+            key={activeLink}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="h-full"
+          >
+            {contentMap[activeLink] || <Dashboard />}
+          </motion.div>
         </AnimatePresence>
       </motion.main>
     </div>

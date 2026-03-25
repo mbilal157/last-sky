@@ -21,7 +21,7 @@ const shuffled = useMemo(() => {
 }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10 mt-10">
+    <div className="w-full px-4 py-10 mt-10">
       {/* Masonry layout with irregular order */}
      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {shuffled.map((card) => {

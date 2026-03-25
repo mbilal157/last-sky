@@ -24,7 +24,7 @@ export function Illustrations() {
   const shuffled = cards.sort(() => Math.random() - 0.5);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10 mt-10">
+    <div className="w-full px-4 py-10 mt-10">
       <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-5 space-y-5">
         {shuffled.map((card) => {
           // random variations

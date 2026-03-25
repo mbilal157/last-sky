@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { Mail, Phone, Instagram, Facebook } from "lucide-react";
+import { Mail, Instagram, Facebook } from "lucide-react";
+import { FaWhatsapp } from 'react-icons/fa';
+
 import Link from "next/link";
 
 export default function ContactUs() {
@@ -79,8 +81,8 @@ export default function ContactUs() {
 
             {/* Phone */}
             <div className="flex flex-row items-center md:items-start text-center gap-4 md:text-left">
-              <div className="p-3 bg-[#0098ff] rounded-xl w-fit">
-                <Phone className="w-6 h-6 text-white" />
+              <div className="p-2 bg-[#0098ff] rounded-xl w-fit">
+                <FaWhatsapp className="w-8 h-8 text-white" />
               </div>
               <div className="flex flex-col">
                 <h3
@@ -88,7 +90,7 @@ export default function ContactUs() {
                     isDark ? "text-white" : ""
                   }`}
                 >
-                  Call us
+                  Contact us
                 </h3>
                 <p
                   className={`${

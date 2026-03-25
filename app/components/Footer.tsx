@@ -128,7 +128,7 @@ const Footer = () => {
           </p>
           <div className="flex space-x-4">
             <a
-              href="#"
+              href="https://www.facebook.com/TheSkylineProduction"
               className={`${
                 isDark
                   ? "text-white hover:text-gray-300"
@@ -138,7 +138,7 @@ const Footer = () => {
               <Facebook />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/theskylineproduction/"
               className={`${
                 isDark
                   ? "text-white hover:text-gray-300"
@@ -146,16 +146,6 @@ const Footer = () => {
               }`}
             >
               <Instagram />
-            </a>
-            <a
-              href="#"
-              className={`${
-                isDark
-                  ? "text-white hover:text-gray-300"
-                  : "text-gray-600 hover:text-gray-800"
-              }`}
-            >
-              <Twitter />
             </a>
             <a
               href="mailto:info@skylineproduction.com"
