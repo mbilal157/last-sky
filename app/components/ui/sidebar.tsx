@@ -151,11 +151,11 @@ const MobileDropdown = ({
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
               className={cn(
-                "fixed left-0 right-0 z-40 shadow-md border-b max-h-[calc(100vh-64px)] overflow-y-auto",
+                "fixed left-0 right-0 z-40 shadow-md border-b max-h-[calc(100vh-144px)] overflow-y-auto",
                 bgColor,
                 borderColor
               )}
-              style={{ top: "64px" }}
+              style={{ top: "130px" }}
             >
               <div
                 className="flex flex-col gap-1 px-0 p-2"

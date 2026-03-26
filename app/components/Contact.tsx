@@ -139,7 +139,9 @@ export default function ContactUs() {
               isDark ? "bg-gray-900" : "bg-blue-50"
             } rounded-2xl p-8`}
           >
-            <form className="space-y-6">
+            <form action="https://formsubmit.co/theskylineproduction@yahoo.com" method="POST" className="space-y-6">
+              <input type="hidden" name="_subject" value="New Contact Form Submission!" />
+
               {/* Name */}
               <div>
                 <label
@@ -153,6 +155,8 @@ export default function ContactUs() {
                 <input
                   type="text"
                   id="name"
+                  name="name"
+                  required
                   className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#0098ff] transition-colors duration-150 ${
                     isDark
                       ? "bg-gray-800 border-gray-600 text-white placeholder-gray-400"
@@ -175,6 +179,8 @@ export default function ContactUs() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
+                  required
                   className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#0098ff] transition-colors duration-150 ${
                     isDark
                       ? "bg-gray-800 border-gray-600 text-white placeholder-gray-400"
@@ -196,6 +202,8 @@ export default function ContactUs() {
                 </label>
                 <select
                   id="service"
+                  name="service"
+                  required
                   className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#0098ff] transition-colors duration-150 ${
                     isDark
                       ? "bg-gray-800 border-gray-600 text-white"
@@ -223,7 +231,9 @@ export default function ContactUs() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={4}
+                  required
                   className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#0098ff] transition-colors duration-150 ${
                     isDark
                       ? "bg-gray-800 border-gray-600 text-white placeholder-gray-400"

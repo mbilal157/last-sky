@@ -65,7 +65,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href="/about"
+                href="/#about"
                 className={`${
                   isDark
                     ? "text-white hover:text-gray-300"
@@ -77,7 +77,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href="/services"
+                href="/#services"
                 className={`${
                   isDark
                     ? "text-white hover:text-gray-300"
@@ -89,7 +89,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href="/portfolio"
+                href="/#portfolio"
                 className={`${
                   isDark
                     ? "text-white hover:text-gray-300"
@@ -101,7 +101,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href="/contact"
+                href="/#contact"
                 className={`${
                   isDark
                     ? "text-white hover:text-gray-300"
@@ -124,7 +124,7 @@ const Footer = () => {
             Contact Us
           </h3>
           <p className={`${isDark ? "text-gray-300" : "text-gray-500"} mb-4`}>
-            Email: info@skylineproduction.com
+            Email: theskylineproduction@yahoo.com
           </p>
           <div className="flex space-x-4">
             <a
@@ -147,16 +147,7 @@ const Footer = () => {
             >
               <Instagram />
             </a>
-            <a
-              href="mailto:info@skylineproduction.com"
-              className={`${
-                isDark
-                  ? "text-white hover:text-gray-300"
-                  : "text-gray-600 hover:text-gray-800"
-              }`}
-            >
-              <Mail />
-            </a>
+
           </div>
         </div>
       </div>

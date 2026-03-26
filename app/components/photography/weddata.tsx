@@ -30,9 +30,9 @@ export function Wedding() {
       .sort(() => Math.random() - 0.5)
       .map(card => ({
         ...card,
-        randomRotate: Math.random() * 1 - 1,
-        randomTranslateY: Math.random() * 1 - 1,
-        randomScale: 0.95 + Math.random() * 0.1
+        randomRotate: 0,
+        randomTranslateY: 0,
+        randomScale: 1
       }));
 
     setShuffled(shuffledWithStyles);

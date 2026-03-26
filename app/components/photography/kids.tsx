@@ -30,9 +30,9 @@ export function Kids() {
       .sort(() => Math.random() - 0.5)
       .map(card => ({
         ...card,
-        randomRotate: Math.random() * 1 - 1,
-        randomTranslateY: Math.random() * 1 - 1,
-        randomScale: 0.95 + Math.random() * 0.1
+        randomRotate: 0,
+        randomTranslateY: 0,
+        randomScale: 1
       }));
 
     setShuffled(shuffledWithStyles);
@@ -54,7 +54,7 @@ export function Kids() {
               }}
             >
               <div
-                className={`relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer ${card.ratio}`}
+                className={`relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer`}
                 style={{
                   transform: `rotate(${card.randomRotate}deg) scale(${card.randomScale})`,
                   transformOrigin: "center",
@@ -63,9 +63,10 @@ export function Kids() {
                 <Image
                   src={card.image}
                   alt={`Poster ${card.id}`}
-                  fill
+                  width={card.type === 'v' ? 800 : 1000}
+                  height={card.type === 'v' ? 1000 : 800}
                   sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 25vw"
-                  className="object-cover hover:scale-105 transition-transform duration-700 ease-out"
+                  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700 ease-out"
                 />
               </div>
             </div>
