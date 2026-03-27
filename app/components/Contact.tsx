@@ -4,12 +4,44 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Mail, Instagram, Facebook } from "lucide-react";
 import { FaWhatsapp } from 'react-icons/fa';
+import { Forminit } from 'forminit';
 
 import Link from "next/link";
 
 export default function ContactUs() {
   const { theme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  const forminit = new Forminit({ proxyUrl: '/api/forminit' });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("submitting");
+    setErrorMsg(null);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const { data, redirectUrl, error } = await forminit.submit('6nf4oz8qiab', formData);
+
+      if (error) {
+        setStatus("error");
+        setErrorMsg(error.message);
+        return;
+      }
+
+      setStatus("success");
+      form.reset();
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch (err: any) {
+      console.error("Form submission error:", err);
+      setStatus("error");
+      setErrorMsg(err?.message || "Something went wrong. Please try again.");
+    }
+  };
 
   // avoid SSR/hydration mismatch
   useEffect(() => {
@@ -139,9 +171,7 @@ export default function ContactUs() {
               isDark ? "bg-gray-900" : "bg-blue-50"
             } rounded-2xl p-8`}
           >
-            <form action="https://formsubmit.co/theskylineproduction@yahoo.com" method="POST" className="space-y-6">
-              <input type="hidden" name="_subject" value="New Contact Form Submission!" />
-
+            <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name */}
               <div>
                 <label
@@ -155,7 +185,7 @@ export default function ContactUs() {
                 <input
                   type="text"
                   id="name"
-                  name="name"
+                  name="fi-sender-fullName"
                   required
                   className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#0098ff] transition-colors duration-150 ${
                     isDark
@@ -179,7 +209,7 @@ export default function ContactUs() {
                 <input
                   type="email"
                   id="email"
-                  name="email"
+                  name="fi-sender-email"
                   required
                   className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#0098ff] transition-colors duration-150 ${
                     isDark
@@ -202,7 +232,7 @@ export default function ContactUs() {
                 </label>
                 <select
                   id="service"
-                  name="service"
+                  name="fi-select-service"
                   required
                   className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#0098ff] transition-colors duration-150 ${
                     isDark
@@ -231,7 +261,7 @@ export default function ContactUs() {
                 </label>
                 <textarea
                   id="message"
-                  name="message"
+                  name="fi-text-message"
                   rows={4}
                   required
                   className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#0098ff] transition-colors duration-150 ${
@@ -246,10 +276,21 @@ export default function ContactUs() {
               {/* Submit */}
               <button
                 type="submit"
-                className="w-full bg-[#0098ff] text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-600 transition-colors duration-300"
+                disabled={status === "submitting" || status === "success"}
+                className={`w-full text-white py-3 px-6 rounded-lg font-medium transition-colors duration-300 ${
+                  status === "success" 
+                    ? "bg-green-500 hover:bg-green-600" 
+                    : "bg-[#0098ff] hover:bg-blue-600 disabled:opacity-70 disabled:cursor-not-allowed"
+                }`}
               >
-                Send Message
+                {status === "submitting" ? "Sending..." : status === "success" ? "Message Sent!" : "Send Message"}
               </button>
+
+              {status === "error" && (
+                <p className="text-red-500 text-sm text-center">
+                  {errorMsg || "Something went wrong. Please try again."}
+                </p>
+              )}
             </form>
           </div>
         </div>
