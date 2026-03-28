@@ -125,7 +125,7 @@ const Card: React.FC<CardProps> = ({ item, onPlayVideo }) => {
           sizes="(max-width: 768px) 100vw, 33vw"
         />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 bg-black/40 transition-opacity duration-300">
-          <div className="bg-white/90 rounded-full p-3 shadow-lg">
+          <div className="bg-white/90 dark:bg-black/90 rounded-full p-3 shadow-lg">
             <Play size={20} className="text-black" fill="black" />
           </div>
         </div>

@@ -2,38 +2,46 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useState ,useEffect} from "react";
 
-import { Button } from "./ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown";
+
 
 export function ModeToggle() {
-  const { setTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return (
+      <button 
+        className="w-10 h-10 rounded-full border border-border/50 bg-background/50 backdrop-blur-md opacity-50 cursor-not-allowed" 
+        aria-hidden="true" 
+      />
+    );
+  }
+
+  const isDark = resolvedTheme === "dark";
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <button
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="relative flex items-center justify-center w-10 h-10 rounded-full border border-border/50 bg-background/50 backdrop-blur-md transition-all duration-500 hover:bg-accent hover:scale-110 active:scale-95 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary/50"
+      aria-label="Toggle theme"
+    >
+      <Sun 
+        strokeWidth={2.5}
+        className={`absolute h-[1.2rem] w-[1.2rem] text-yellow-500 transition-all duration-500 ${
+          isDark ? "scale-0 -rotate-90 opacity-0" : "scale-100 rotate-0 opacity-100"
+        }`} 
+      />
+      <Moon 
+        strokeWidth={2.5}
+        className={`absolute h-[1.2rem] w-[1.2rem] text-blue-400 transition-all duration-500 ${
+          isDark ? "scale-100 rotate-0 opacity-100" : "scale-0 rotate-90 opacity-0"
+        }`} 
+      />
+      <span className="sr-only">Toggle theme</span>
+    </button>
   );
 }

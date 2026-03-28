@@ -83,25 +83,25 @@ function SidebarDemoContent() {
         height={32}
         className="rounded-full object-cover"
       />
-      <span className="text-sm font-medium whitespace-nowrap text-black ">
+      <span className="text-sm font-medium whitespace-nowrap text-black dark:text-white">
         Photography
       </span>
     </div>
   );
 
   return (
-    <div className="flex h-screen w-full bg-white  text-black ">
+    <div className="flex h-screen w-full bg-background text-foreground">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody
           className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700"
           header={headerContent}
         >
-          <div className="flex flex-1 flex-col overflow-x-hidden bg-white  overflow-y-auto">
+          <div className="flex flex-1 flex-col overflow-x-hidden bg-background overflow-y-auto">
             {/* Desktop Header */}
             <div
               className={cn(
                 "hidden sm:flex items-center gap-3 px-1 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
-                "bg-neutral-200  text-black ",
+                "bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white",
                 open ? "justify-start" : "justify-center"
               )}
             >
@@ -113,7 +113,7 @@ function SidebarDemoContent() {
                 className="rounded-full object-cover"
               />
               {open && (
-                <span className="text-sm font-medium whitespace-pre text-black ">
+                <span className="text-sm font-medium whitespace-pre text-black dark:text-white">
                   Photography
                 </span>
               )}
@@ -131,8 +131,8 @@ function SidebarDemoContent() {
                   }}
                   className={cn(
                     activeLink === link.label
-                      ? "bg-neutral-300  text-black "
-                      : "text-black  hover:bg-neutral-200 "
+                      ? "bg-neutral-300 dark:bg-neutral-700 text-black dark:text-white"
+                      : "text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800"
                   )}
                 />
               ))}
@@ -143,9 +143,12 @@ function SidebarDemoContent() {
 
       {/* Desktop Main Content */}
       <motion.main
-        animate={{ marginLeft: open ? "240px" : "64px" }}
+        animate={{ 
+          marginLeft: open ? "240px" : "64px",
+          width: open ? "calc(100vw - 240px)" : "calc(100vw - 64px)"
+        }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="hidden sm:flex flex-1 overflow-y-auto p-6"
+        className="hidden sm:flex flex-col flex-1 overflow-x-hidden overflow-y-auto p-6"
       >
         <AnimatePresence mode="wait">
           <motion.div
@@ -154,7 +157,7 @@ function SidebarDemoContent() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="h-full"
+            className="h-full w-full"
           >
             {contentMap[activeLink] || <Dashboard />}
           </motion.div>

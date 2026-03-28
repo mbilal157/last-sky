@@ -58,7 +58,7 @@ export function Posts() {
 function PostCard({ src }: { src: string }) {
   return (
     <div className="rounded-2xl overflow-hidden shadow-md bg-white dark:bg-neutral-900">
-      <img src={src} alt="Post" className="w-full h-60 object-cover" />
+      <img src={src} alt="Post" className="w-full aspect-square object-cover" />
     </div>
   );
 }

@@ -3,20 +3,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { MouseEvent, useState, useEffect } from "react";
+import { ModeToggle } from "./Theme";
 import { useTheme } from "next-themes";
-import { MouseEvent } from "react";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [portfolioOpen, setPortfolioOpen] = useState(false); // for mobile dropdown
-  const { theme, systemTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { theme, systemTheme } = useTheme();
 
   useEffect(() => setMounted(true), []);
-  const resolvedTheme = theme === "system" ? systemTheme : theme;
 
   const links = [
     { name: "Home", href: "/" },
@@ -51,27 +50,9 @@ export default function Navbar() {
     // If we're on another page, the regular link navigation will happen
     setMenuOpen(false);
   };
-  const logoSrc =
-    mounted && resolvedTheme === "dark"
-      ? "/images/logo1.png"
-      : "/images/logo.png";
 
-  const ModeToggle = () => {
-    if (!mounted) return null;
-    return (
-      <button
-        onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-        className="p-2 rounded-lg border border-gray-300 dark:border-gray-900 hover:bg-gray-500 dark:hover:bg-gray-900 transition"
-        aria-label="Toggle Theme"
-      >
-        {resolvedTheme === "dark" ? (
-          <Moon className="w-5 h-5 text-yellow-300" />
-        ) : (
-          <Sun className="w-5 h-5 text-yellow-500" />
-        )}
-      </button>
-    );
-  };
+  const resolvedTheme = theme === "system" ? systemTheme : theme;
+  const logoSrc = mounted && resolvedTheme === "dark" ? "/images/logo1.png" : "/images/logo.png";
 
   return (
     <nav
@@ -80,7 +61,7 @@ export default function Navbar() {
     px-4 md:px-12 flex items-center justify-between
     bg-background/30
     backdrop-blur-xl backdrop-saturate-150
-    shadow-[0_2px_10px_0_rgba(0,0,0,0.02)] dark:shadow-[0_2px_10px_0_rgba(255,255,255,0.02)]
+    shadow-md shadow-black/40
     z-50
     transition-all duration-300
   "
@@ -123,12 +104,12 @@ export default function Navbar() {
                   <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                 </button>
 
-                <div className="absolute left-0 w-48 bg-white/50 text-foreground shadow-md rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 border border-border">
+                <div className="absolute left-0 w-48  backdrop-blur-md dark:bg-neutral-900/70 text-foreground shadow-md rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 border border-border">
                   {link.dropdown.map((sub) => (
                     <Link
                       key={sub.name}
                       href={sub.href}
-                      className="block px-4 py-2 text-sm text-foreground hover:bg-accent dark:hover:bg-accent"
+                      className="block px-4 py-2 text-sm bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white hover:bg-accent dark:hover:bg-accent"
                     >
                       {sub.name}
                     </Link>
@@ -154,7 +135,7 @@ export default function Navbar() {
             </Link>
           );
         })}
-       {/* <ModeToggle /> */}
+        <ModeToggle />
       </div>
 
       {/* Mobile button */}
@@ -168,7 +149,7 @@ export default function Navbar() {
       {/* Mobile menu */}
        {menuOpen && (
         <div
-          className="absolute top-20 left-0 w-full bg-white
+          className="absolute top-20 left-0 w-full bg-background
     text-foreground md:hidden flex flex-col items-start p-6 gap-4 transition-colors duration-300 border-b border-border shadow-xl"
         >
           {links.map((link) => {
@@ -231,9 +212,9 @@ export default function Navbar() {
               </Link>
             );
           })}
-         {/*<div className="w-full pt-2">
+          <div className="w-full pt-2 flex justify-center border-t border-border">
             <ModeToggle />
-          </div>*/}
+          </div>
         </div>
       )}
     </nav>

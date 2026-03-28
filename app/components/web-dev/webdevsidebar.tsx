@@ -93,14 +93,14 @@ function SidebarDemoContent() {
         height={32}
         className="rounded-full object-cover"
       />
-      <span className="text-sm font-medium whitespace-nowrap  text-black">
+      <span className="text-sm font-medium whitespace-nowrap text-black dark:text-white">
         Website Design & Development
       </span>
     </div>
   );
 
   return (
-    <div className="flex h-screen w-full  text-black ">
+    <div className="flex h-screen w-full bg-background text-foreground">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody
           className="justify-between gap-10 border-r border-neutral-200 mt-20 "
@@ -111,7 +111,7 @@ function SidebarDemoContent() {
             <div
               className={cn(
                 "hidden sm:flex items-center gap-3 px-1 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
-                "bg-neutral-200  text-black ",
+                "bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white",
                 open ? "justify-start" : "justify-center"
               )}
             >
@@ -123,7 +123,7 @@ function SidebarDemoContent() {
                 className="rounded-full object-cover"
               />
               {open && (
-                <span className="text-sm font-medium whitespace-pre text-black ">
+                <span className="text-sm font-medium whitespace-pre text-black dark:text-white">
                   Website Design & Development
                 </span>
               )}
@@ -141,8 +141,8 @@ function SidebarDemoContent() {
                   }}
                   className={cn(
                     activeLink === link.label
-                      ? "bg-neutral-300  text-black "
-                      : "text-black  hover:bg-neutral-200 "
+                      ? "bg-neutral-300 dark:bg-neutral-700 text-black dark:text-white"
+                      : "text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800"
                   )}
                 />
               ))}

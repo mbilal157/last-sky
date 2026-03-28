@@ -10,6 +10,7 @@ const HeroSection = () => {
   const resolvedTheme = theme === "system" ? systemTheme : theme;
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showHeroCursor, setShowHeroCursor] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
 
   // Redirects to homepage and scrolls to portfolio section
@@ -66,6 +67,12 @@ const HeroSection = () => {
     };
   }, []);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const logoSrc = mounted && resolvedTheme === "dark" ? "/images/logo1.png" : "/images/logo.png";
+
   return (
     <section className="hero-background flex flex-col items-center justify-center w-full min-h-screen text-center transition-colors duration-300 relative">
       {/* Hero Section specific cursor ball - appears at boundary */}
@@ -84,23 +91,13 @@ const HeroSection = () => {
       {/* Logo */}
       <div className="w-30 h-25">
         <Image
-          src="/images/logo.png"
+          src={logoSrc}
           alt="logo"
           width={80}
           height={80}
           priority
-          className={`w-full h-full object-contain transition-transform duration-300 hover:scale-110 `}
+          className="w-full h-full object-contain transition-transform duration-300 hover:scale-110"
         />
-     { /*  <Image
-          src="/images/logo1.png"
-          alt="logo"
-          width={80}
-          height={80}
-          priority
-          className={`w-full h-full object-contain  transition-transform duration-300 hover:scale-110 ${
-            resolvedTheme === "dark" ? "block" : "hidden"
-          }`}
-        />*/}
       </div>
 
       <div className="flex h-[8rem] w-[100%] items-center justify-center">

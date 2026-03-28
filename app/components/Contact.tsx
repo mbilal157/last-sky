@@ -25,7 +25,7 @@ export default function ContactUs() {
     const formData = new FormData(form);
 
     try {
-      const { data, redirectUrl, error } = await forminit.submit('6nf4oz8qiab', formData);
+      const { data, redirectUrl, error } = await forminit.submit('ojh4pbm8fhn', formData);
 
       if (error) {
         setStatus("error");

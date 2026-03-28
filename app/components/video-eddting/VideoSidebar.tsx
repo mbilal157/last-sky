@@ -115,23 +115,23 @@ export function VideoSidebarDemo() {
   }, []);
 
   return (
-    <div className="flex h-screen w-full bg-white  text-black flex-col lg:flex-row">
+    <div className="flex h-screen w-full bg-background text-foreground flex-col lg:flex-row">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody
           className="justify-between mt-20 gap-10 border-r border-neutral-200 dark:border-neutral-700"
           header={headerContent}
         >
-          <div className="flex flex-1 flex-col overflow-x-hidden bg-white  overflow-y-auto">
+          <div className="flex flex-1 flex-col overflow-x-hidden bg-background overflow-y-auto">
             {/* Top Section */}
             <div
               className={cn(
                 "flex items-center gap-3 px-3 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
-                "bg-neutral-200  text-black ",
+                "bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white",
                 open ? "justify-start" : "justify-center"
               )}
             >
               {open && (
-                <span className="text-sm font-medium whitespace-pre text-black ">
+                <span className="text-sm font-medium whitespace-pre text-black dark:text-white">
                   Video Editing
                 </span>
               )}
@@ -149,8 +149,8 @@ export function VideoSidebarDemo() {
                   }}
                   className={cn(
                     activeLink === link.label
-                      ? "bg-neutral-300  text-black "
-                      : "text-black  hover:bg-neutral-200 "
+                      ? "bg-neutral-300 dark:bg-neutral-700 text-black dark:text-white"
+                      : "text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800"
                   )}
                 />
               ))}

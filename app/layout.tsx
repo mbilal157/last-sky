@@ -29,8 +29,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="antialiased">
+        <ThemeProvider >
           <Navbar />
           {children}
+        </ThemeProvider>
       </body>
     </html>
   );

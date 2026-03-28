@@ -10,16 +10,16 @@ interface CardProps {
   onPreview: () => void;
 }
 
-const Card = ({ src, className, onPreview }: CardProps) => (
+const Card = ({ src, type, className, onPreview }: CardProps) => (
   <div
-    className={`relative overflow-hidden rounded-2xl shadow-md w-full h-full group cursor-pointer ${className}`}
+    className={`relative overflow-hidden rounded-2xl shadow-md min-w-0 w-full h-full group cursor-pointer ${className}`}
     onClick={onPreview}
   >
     <Image
       src={src}
       alt="Grid Image"
-      width={800}
-      height={800}
+      width={type === "h" ? 1200 : 800}
+      height={type === "h" ? 800 : 1200}
       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
     />
@@ -118,9 +118,9 @@ export default function CinematicGrid() {
 
   return (
     <>
-      <div className="grid gap-4 p-4 md:p-6 pt-14 max-w-7xl mx-auto">
+      <div className="flex flex-col gap-4 p-4 md:p-6 pt-14 max-w-7xl mx-auto w-full">
         {/* 1️⃣ Row 1 */}
-        <div className="grid md:mt-20 grid-cols-1 md:grid-cols-3 gap-4 h-auto md:h-[65vh]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-auto">
           <Card
             src="/images/portfolio/photos/v1.jpg"
             type="v"
@@ -131,7 +131,7 @@ export default function CinematicGrid() {
             type="v"
             onPreview={() => handlePreview("/images/portfolio/photos/v2.jpg")}
           />
-          <div className="flex flex-col gap-4 h-full">
+          <div className="flex flex-col gap-4 h-full min-w-0">
             <Card
               src="/images/portfolio/photos/h2.jpg"
               type="h"
@@ -148,7 +148,7 @@ export default function CinematicGrid() {
         </div>
 
         {/* 2️⃣ Row 2 */}
-        <div className="h-64 md:h-[60vh] md:mt-28">
+        <div className="h-64 md:h-auto">
           <Card
             src="/images/portfolio/photos/h4.jpg"
             type="h"
@@ -158,13 +158,13 @@ export default function CinematicGrid() {
         </div>
 
         {/* 3️⃣ Row 3 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-auto md:h-[70vh]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-auto">
           <Card
             src="/images/portfolio/photos/v3.jpg"
             type="v"
             onPreview={() => handlePreview("/images/portfolio/photos/v3.jpg")}
           />
-          <div className="flex flex-col gap-4 h-full">
+          <div className="flex flex-col gap-4 h-full min-w-0">
             <Card
               src="/images/portfolio/photos/h3.jpg"
               type="h"
@@ -186,7 +186,7 @@ export default function CinematicGrid() {
         </div>
 
         {/* 4️⃣ Row 4 */}
-        <div className="grid md:mt-24 grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-4 h-auto md:h-[60vh]">
+        <div className="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-4 h-auto">
           <Card
             src="/images/portfolio/photos/v5.jpg"
             type="v"
@@ -202,7 +202,7 @@ export default function CinematicGrid() {
         </div>
 
         {/* 5️⃣ Row 5 */}
-        <div className="grid grid-cols-1 md:grid-cols-[1.3fr_0.9fr] gap-4 h-auto md:h-[55vh]">
+        <div className="grid grid-cols-1 md:grid-cols-[1.3fr_0.9fr] gap-4 h-auto">
           <Card
             src="/images/portfolio/photos/h6.jpg"
             type="h"
@@ -218,7 +218,7 @@ export default function CinematicGrid() {
         </div>
 
         {/* 6️⃣ Row 6 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-auto md:h-[70vh]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-auto">
           <Card
             src="/images/portfolio/photos/v7.jpg"
             type="v"
@@ -229,7 +229,7 @@ export default function CinematicGrid() {
             type="v"
             onPreview={() => handlePreview("/images/portfolio/photos/v8.jpg")}
           />
-          <div className="flex flex-col gap-4 h-full">
+          <div className="flex flex-col gap-4 h-full min-w-0">
             <Card
               src="/images/portfolio/photos/h8.jpg"
               type="h"
@@ -246,7 +246,7 @@ export default function CinematicGrid() {
         </div>
 
         {/* 7️⃣ Row 7 */}
-        <div className="h-64 md:h-[65vh] md:mb-10 md:mt-20">
+        <div className="h-64 md:h-auto">
           <Card
             src="/images/portfolio/photos/h10.jpg"
             type="h"

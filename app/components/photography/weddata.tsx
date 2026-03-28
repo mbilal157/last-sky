@@ -43,12 +43,12 @@ export function Wedding() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
-      <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-5 space-y-5">
+      <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-5">
         {shuffled.map((card) => {
           return (
             <div
               key={card.id}
-              className="break-inside-avoid"
+              className="break-inside-avoid mb-5"
               style={{
                 transform: `translateY(${card.randomTranslateY}px)`,
               }}

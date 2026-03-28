@@ -12,18 +12,20 @@ export function Thumbnails() {
   // Split into 3 rows automatically
   const rows = 3;
   return (
-    <div className="w-full px-4 py-12">
-      <h2 className="text-3xl font-bold text-center mb-8 text-neutral-800 dark:text-white">
+    <div className="w-full py-12">
+      <h2 className="text-3xl font-bold text-center mb-8 px-4 text-neutral-800 dark:text-white">
         Thumbnails
       </h2>
 
-      <InfiniteMovingCards
-        items={mappedThumbnails}
-        speed="normal"
-        direction="left"
-        rows={rows}
-        cardSize="medium"
-      />
+      <div className="-mx-4 sm:-mx-6">
+        <InfiniteMovingCards
+          items={mappedThumbnails}
+          speed="normal"
+          direction="left"
+          rows={rows}
+          cardSize="medium"
+        />
+      </div>
     </div>
   );
 }

@@ -117,7 +117,7 @@ export default function Portfolio() {
 
   if (!mounted) {
     return (
-      <section id="portfolio" className="py-20 px-6 bg-white text-gray-800">
+      <section id="portfolio" className="py-20 px-6 bg-background text-foreground">
         <div className="max-w-6xl mx-auto">
           <div className="h-10 bg-gray-200 rounded w-1/3 mb-6 mx-auto"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -163,7 +163,7 @@ export default function Portfolio() {
                   ? "bg-[#0098ff] text-white"
                   : resolvedTheme === "dark"
                   ? "bg-transparent text-white hover:bg-[#0098ff]/20"
-                  : "bg-white text-black hover:bg-blue-50"
+                  : "bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
               }`}
             >
               {category}

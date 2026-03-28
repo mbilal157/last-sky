@@ -63,7 +63,7 @@ export const SidebarBody = ({
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className={cn(
             "h-screen flex-col fixed left-0 top-0 z-50 shadow-md transition-colors duration-300",
-            "bg-neutral-100  text-black ",
+            "bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white",
             className
           )}
           {...props}
@@ -83,10 +83,7 @@ const MobileDropdown = ({
   header?: React.ReactNode;
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { theme } = useTheme();
-  const bgColor = theme === "dark" ? "bg-neutral-900" : "bg-neutral-100";
-  const borderColor =
-    theme === "dark" ? "border-neutral-800" : "border-neutral-200";
+  const { theme } = useTheme();          // ← can delete this now
 
   const handleLinkClick = () => {
     setMobileOpen(false);
@@ -94,73 +91,45 @@ const MobileDropdown = ({
 
   return (
     <>
-      {/* Mobile Header Bar - Fixed below main navbar (top-20 = 80px) */}
+      {/* Mobile Header Bar */}
       <div
         className={cn(
           "sm:hidden flex items-center justify-between w-full h-16 fixed top-20 left-0 right-0 z-50 px-4 shadow-md border-b",
-          "bg-neutral-100 border-neutral-200  text-black "
+          "bg-neutral-100 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 text-black dark:text-white"
         )}
       >
         <Navbar />
         <div className="flex items-center justify-start">{header}</div>
-
-        {/* Mobile Menu Toggle Button */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className={cn(
-            " rounded-md transition-all",
-            theme === "dark" ? "hover:bg-neutral-800" : "hover:bg-neutral-200"
-          )}
+          className="rounded-md transition-all hover:bg-neutral-200 dark:hover:bg-neutral-800"  // ← fixed
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d={
-                mobileOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
-              }
-            />
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+              d={mobileOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
           </svg>
         </button>
       </div>
 
-      {/* Dropdown Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setMobileOpen(false)}
               className="fixed inset-0 z-30 sm:hidden"
               style={{ top: "80px" }}
             />
-
-            {/* Dropdown Menu */}
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
               className={cn(
                 "fixed left-0 right-0 z-40 shadow-md border-b max-h-[calc(100vh-144px)] overflow-y-auto",
-                bgColor,
-                borderColor
+                "bg-neutral-100 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800"  // ← fixed
               )}
               style={{ top: "130px" }}
             >
-              <div
-                className="flex flex-col gap-1 px-0 p-2"
-                onClick={handleLinkClick}
-              >
+              <div className="flex flex-col gap-1 px-0 p-2" onClick={handleLinkClick}>
                 {children}
               </div>
             </motion.div>
@@ -191,7 +160,7 @@ export const SidebarLink = ({
         onClick={onClick}
         className={cn(
           "hidden sm:flex items-center justify-start gap-3 w-full px-3 py-3 rounded-md transition-all duration-300 overflow-hidden",
-          "hover:bg-neutral-200 dark:hover:bg-neutral-100 text-black ",
+          "hover:bg-neutral-200 dark:hover:bg-neutral-800 text-black dark:text-white",
           className
         )}
       >
