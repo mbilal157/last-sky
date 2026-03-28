@@ -171,9 +171,7 @@ const InfiniteMovingCards = ({
             key={`${item.name}-${idx}`}
             className={cn(
               "relative w-[280px] h-[270px] shrink-0 rounded-2xl border px-6 py-6 md:w-[360px] lg:w-[440px] transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl",
-              theme === "dark"
-                ? "bg-bg3 border-gray-700 text-white"
-                : "bg-white border-zinc-200 text-black"
+              "bg-white border-zinc-200 text-black dark:bg-[#1a1a1a] dark:border-gray-700 dark:text-white"
             )}
           >
             <div className="absolute -top-10 right-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-md">
@@ -190,8 +188,7 @@ const InfiniteMovingCards = ({
             <blockquote className="relative z-10 flex flex-col text-left">
               <h3
                 className={cn(
-                  "text-xl font-extrabold",
-                  theme === "dark" ? "text-white" : "text-gray-900"
+                  "text-xl font-extrabold text-gray-900 dark:text-white"
                 )}
               >
                 {item.name}
@@ -199,8 +196,7 @@ const InfiniteMovingCards = ({
 
               <p
                 className={cn(
-                  "text-lg font-semibold mb-1",
-                  theme === "dark" ? "text-gray-300" : "text-gray-800"
+                  "text-lg font-semibold mb-1 text-gray-800 dark:text-gray-300"
                 )}
               >
                 {item.title}
@@ -211,8 +207,7 @@ const InfiniteMovingCards = ({
                 <FaQuoteLeft className="text-4xl text-[#00c8ff] flex-shrink-0" />
                 <p
                   className={cn(
-                    "text-sm leading-relaxed font-normal",
-                    theme === "dark" ? "text-gray-300" : "text-gray-700"
+                    "text-sm leading-relaxed font-normal text-gray-700 dark:text-gray-300"
                   )}
                 >
                   {item.quote}
@@ -227,18 +222,9 @@ const InfiniteMovingCards = ({
 };
 
 export default function ReviewsSection() {
-  const { theme } = useTheme();
-
   return (
-    <section
-      className={cn("py-20", theme === "dark" ? "bg-black" : "bg-white")}
-    >
-      <h2
-        className={cn(
-          "text-3xl font-bold text-center mb-16",
-          theme === "dark" ? "text-white" : "text-black"
-        )}
-      >
+    <section className="py-20 bg-white dark:bg-black">
+      <h2 className="text-3xl font-bold text-center mb-16 text-black dark:text-white">
         Reviews of Production House
       </h2>
       <InfiniteMovingCards items={items} speed={150} />

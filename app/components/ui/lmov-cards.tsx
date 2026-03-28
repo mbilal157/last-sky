@@ -59,7 +59,8 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,transparent_10px,white_10%,white_90%,transparent_calc(100%-10px),transparent)]",
+        "scroller relative z-20 w-full overflow-hidden",
+        "[mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className
       )}
     >
@@ -75,12 +76,14 @@ export const InfiniteMovingCards = ({
 
         .animate-scroll {
           animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+        }
 
         .pause-on-hover:hover .animate-scroll {
           animation-play-state: paused;
+        }
       `}</style>
 
-     <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4">
         {rowItems.map((row, rowIndex) => (
           <ul
             key={rowIndex}

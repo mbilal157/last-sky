@@ -249,10 +249,10 @@ const VideoCard = ({ video, onPlay }: VideoCardProps) => {
         </div>
 
         <div className="p-4">
-          <h3 className="font-semibold text-lg mb-1 text-neutral-800  line-clamp-1">
+          <h3 className="font-semibold text-lg mb-1 text-neutral-800 dark:text-neutral-100 line-clamp-1">
             {video.title}
           </h3>
-          <p className="text-neutral-600  text-sm mb-3 line-clamp-2">
+          <p className="text-neutral-600 dark:text-neutral-300 text-sm mb-3 line-clamp-2">
             {video.description}
           </p>
         </div>
@@ -384,7 +384,7 @@ export const VideoCategory = ({ category }: VideoCategoryProps) => {
           <h2 className="text-3xl font-bold text-neutral-800 dark:text-white mb-2">
             {category}
           </h2>
-          <p className="text-neutral-600 dark:text-neutral-400">
+          <p className="text-neutral-600 dark:text-neutral-100">
             {videos.length} {videos.length === 1 ? "project" : "projects"}
           </p>
         </div>

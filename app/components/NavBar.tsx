@@ -104,12 +104,12 @@ export default function Navbar() {
                   <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                 </button>
 
-                <div className="absolute left-0 w-48  backdrop-blur-md dark:bg-neutral-900/70 text-foreground shadow-md rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 border border-border">
+                <div className="absolute left-0 w-48 bg-white/90 backdrop-blur-md dark:bg-neutral-900/90 text-foreground shadow-md rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 border border-border overflow-hidden">
                   {link.dropdown.map((sub) => (
                     <Link
                       key={sub.name}
                       href={sub.href}
-                      className="block px-4 py-2 text-sm bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white hover:bg-accent dark:hover:bg-accent"
+                      className="block px-4 py-2 text-sm text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
                     >
                       {sub.name}
                     </Link>

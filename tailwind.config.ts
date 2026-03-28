@@ -35,14 +35,6 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-    },
-  },
-} satisfies Config;
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  // ... other config
-  theme: {
-    extend: {
       animation: {
         scroll:
           "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
@@ -56,4 +48,4 @@ module.exports = {
       },
     },
   },
-};
+} satisfies Config;
