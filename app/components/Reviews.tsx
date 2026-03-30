@@ -112,10 +112,17 @@ const InfiniteMovingCards = ({
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
   const [start, setStart] = useState(false);
-  const { theme } = useTheme();
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if (containerRef.current && scrollerRef.current) {
+      // Clean up previous clones if re-running
+      while (scrollerRef.current.children.length > items.length) {
+        scrollerRef.current.removeChild(scrollerRef.current.lastChild as Node);
+      }
+
       const scrollerContent = Array.from(scrollerRef.current.children);
       scrollerContent.forEach((item) => {
         const duplicatedItem = item.cloneNode(true);
@@ -134,7 +141,9 @@ const InfiniteMovingCards = ({
 
       setStart(true);
     }
-  }, [direction, speed]);
+  }, [direction, speed, items.length, theme, systemTheme]);
+
+  const isDark = mounted && (theme === "dark" || (theme === "system" && systemTheme === "dark"));
 
   return (
     <div
@@ -147,31 +156,35 @@ const InfiniteMovingCards = ({
       {/* Left Gradient */}
       <div
         className={cn(
-          "absolute left-0 top-0 bottom-0 w-[5%] z-30 pointer-events-none bg-gradient-to-r from-white dark:from-black to-transparent",
+          "absolute left-0 top-0 bottom-0 w-[5%] z-30 pointer-events-none bg-gradient-to-r to-transparent",
+          isDark ? "from-black" : "from-white"
         )}
       />
 
       {/* Right Gradient */}
       <div
         className={cn(
-          "absolute right-0 top-0 bottom-0 w-[5%] z-30 pointer-events-none bg-gradient-to-l from-white dark:from-black to-transparent",
+          "absolute right-0 top-0 bottom-0 w-[5%] z-30 pointer-events-none bg-gradient-to-l to-transparent",
+          isDark ? "from-black" : "from-white"
         )}
       />
 
       <ul
-  ref={scrollerRef}
-  className={cn(
-    "flex w-max flex-nowrap gap-6 py-12", // change min-w-full → w-max
-    start && "animate-scroll",
-    pauseOnHover && "hover:[animation-play-state:paused]"
-  )}
->
+        ref={scrollerRef}
+        className={cn(
+          "flex w-max flex-nowrap gap-6 py-12",
+          start && "animate-scroll",
+          pauseOnHover && "hover:[animation-play-state:paused]"
+        )}
+      >
         {items.map((item, idx) => (
           <li
             key={`${item.name}-${idx}`}
             className={cn(
               "relative w-[280px] h-[270px] shrink-0 rounded-2xl border px-6 py-6 md:w-[360px] lg:w-[440px] transition-transform duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl",
-              "bg-white border-zinc-200 text-black dark:bg-[#1a1a1a] dark:border-gray-700 dark:text-white"
+              isDark
+                ? "bg-[#1a1a1a] border-gray-700 text-white"
+                : "bg-white border-zinc-200 text-black"
             )}
           >
             <div className="absolute -top-10 right-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-md">
@@ -188,7 +201,8 @@ const InfiniteMovingCards = ({
             <blockquote className="relative z-10 flex flex-col text-left">
               <h3
                 className={cn(
-                  "text-xl font-extrabold text-gray-900 dark:text-white"
+                  "text-xl font-extrabold",
+                  isDark ? "text-white" : "text-gray-900"
                 )}
               >
                 {item.name}
@@ -196,7 +210,8 @@ const InfiniteMovingCards = ({
 
               <p
                 className={cn(
-                  "text-lg font-semibold mb-1 text-gray-800 dark:text-gray-300"
+                  "text-lg font-semibold mb-1",
+                  isDark ? "text-gray-300" : "text-gray-800"
                 )}
               >
                 {item.title}
@@ -207,7 +222,8 @@ const InfiniteMovingCards = ({
                 <FaQuoteLeft className="text-4xl text-[#00c8ff] flex-shrink-0" />
                 <p
                   className={cn(
-                    "text-sm leading-relaxed font-normal text-gray-700 dark:text-gray-300"
+                    "text-sm leading-relaxed font-normal",
+                    isDark ? "text-gray-300" : "text-gray-700"
                   )}
                 >
                   {item.quote}
@@ -222,9 +238,18 @@ const InfiniteMovingCards = ({
 };
 
 export default function ReviewsSection() {
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && (theme === "dark" || (theme === "system" && systemTheme === "dark"));
+
   return (
-    <section className="py-20 bg-white dark:bg-black">
-      <h2 className="text-3xl font-bold text-center mb-16 text-black dark:text-white">
+    <section className={cn("py-20", isDark ? "bg-black" : "bg-white")}>
+      <h2 className={cn("text-3xl font-bold text-center mb-16", isDark ? "text-white" : "text-black")}>
         Reviews of Production House
       </h2>
       <InfiniteMovingCards items={items} speed={150} />

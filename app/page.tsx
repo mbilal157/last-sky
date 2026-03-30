@@ -13,7 +13,6 @@ import Footer from "./components/Footer";
 import CursorCircle from "./components/ui/cusor";
 import LogoIntro from "./components/ui/Logo-intro";
 import ReviewsSection from "./components/Reviews";
-import FiverrSection from "./components/FiverrSection";
 
 export default function Home() {
   const [introDone, setIntroDone] = useState(false);
@@ -79,7 +78,6 @@ export default function Home() {
               <Portfolio />
             </section>
             <ReviewsSection />
-            <FiverrSection />
             <ContactUs />
             <Footer />
           </motion.div>
