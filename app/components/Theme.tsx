@@ -23,9 +23,28 @@ export function ModeToggle() {
 
   const isDark = resolvedTheme === "dark";
 
+  const handleToggle = () => {
+    const nextTheme = isDark ? "light" : "dark";
+
+    if (!document.startViewTransition) {
+      setTheme(nextTheme);
+      return;
+    }
+
+    document.documentElement.classList.add("theme-transitioning");
+
+    const transition = document.startViewTransition(() => {
+      setTheme(nextTheme);
+    });
+
+    transition.finished.finally(() => {
+      document.documentElement.classList.remove("theme-transitioning");
+    });
+  };
+
   return (
     <button
-      onClick={() => setTheme(isDark ? "light" : "dark")}
+      onClick={handleToggle}
       className="relative flex items-center justify-center w-10 h-10 rounded-full border border-border/50 bg-background/50 backdrop-blur-md transition-all duration-500 hover:bg-accent hover:scale-110 active:scale-95 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary/50"
       aria-label="Toggle theme"
     >

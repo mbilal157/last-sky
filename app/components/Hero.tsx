@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { MaskContainer } from "./ui/svg-mask-effect";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 
 const HeroSection = () => {

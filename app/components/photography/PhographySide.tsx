@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Camera, Heart, Film, Baby } from "lucide-react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 import Cinematic from "./cinematicData";
 import { Kids } from "./kids";
 import { Wedding } from "./weddata";
@@ -38,6 +39,11 @@ function SidebarDemoContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const selectedItem = searchParams.get("item");
+
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isDark = mounted && (theme === "dark" || (theme === "system" && systemTheme === "dark"));
 
   const updateURL = (label: ContentKey) => {
     router.push(`${pathname}?item=${encodeURIComponent(label)}`, {
@@ -83,7 +89,7 @@ function SidebarDemoContent() {
         height={32}
         className="rounded-full object-cover"
       />
-      <span className="text-sm font-medium whitespace-nowrap text-black dark:text-white">
+      <span className={cn("text-sm font-medium whitespace-nowrap", isDark ? "text-white" : "text-black")}>
         Photography
       </span>
     </div>
@@ -101,7 +107,7 @@ function SidebarDemoContent() {
             <div
               className={cn(
                 "hidden sm:flex items-center gap-3 px-1 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
-                "bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white",
+                isDark ? "bg-neutral-800 text-white" : "bg-neutral-200 text-black",
                 open ? "justify-start" : "justify-center"
               )}
             >
@@ -113,7 +119,7 @@ function SidebarDemoContent() {
                 className="rounded-full object-cover"
               />
               {open && (
-                <span className="text-sm font-medium whitespace-pre text-black dark:text-white">
+                <span className={cn("text-sm font-medium whitespace-pre", isDark ? "text-white" : "text-black")}>
                   Photography
                 </span>
               )}
@@ -131,8 +137,8 @@ function SidebarDemoContent() {
                   }}
                   className={cn(
                     activeLink === link.label
-                      ? "bg-neutral-300 dark:bg-neutral-700 text-black dark:text-white"
-                      : "text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800"
+                      ? isDark ? "bg-neutral-700 text-white" : "bg-neutral-300 text-black"
+                      : isDark ? "text-white hover:bg-neutral-800" : "text-black hover:bg-neutral-200"
                   )}
                 />
               ))}
@@ -159,7 +165,7 @@ function SidebarDemoContent() {
             transition={{ duration: 0.2 }}
             className="h-full w-full"
           >
-            {contentMap[activeLink] || <Dashboard />}
+            {contentMap[activeLink] || <Dashboard isDark={isDark} />}
           </motion.div>
         </AnimatePresence>
       </motion.main>
@@ -175,7 +181,7 @@ function SidebarDemoContent() {
             transition={{ duration: 0.2 }}
             className="h-full"
           >
-            {contentMap[activeLink] || <Dashboard />}
+            {contentMap[activeLink] || <Dashboard isDark={isDark} />}
           </motion.div>
         </AnimatePresence>
       </motion.main>
@@ -183,12 +189,12 @@ function SidebarDemoContent() {
   );
 }
 
-const Dashboard = () => (
+const Dashboard = ({ isDark }: { isDark?: boolean }) => (
   <div className="space-y-6">
     {[...new Array(12)].map((_, idx) => (
       <div
         key={idx}
-        className="h-32 animate-pulse rounded-lg bg-gray-200 "
+        className={cn("h-32 animate-pulse rounded-lg", isDark ? "bg-neutral-800" : "bg-gray-200")}
       />
     ))}
   </div>
