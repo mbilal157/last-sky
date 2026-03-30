@@ -104,12 +104,16 @@ export default function Navbar() {
                   <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                 </button>
 
-                <div className="absolute left-0 w-48 bg-white/90 backdrop-blur-md dark:bg-neutral-900/90 text-foreground shadow-md rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 border border-border overflow-hidden">
+                <div className={`absolute left-0 w-48 backdrop-blur-md text-foreground shadow-md rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 border border-border overflow-hidden ${mounted && resolvedTheme === 'dark' ? 'bg-black' : 'bg-white'}`}>
                   {link.dropdown.map((sub) => (
                     <Link
                       key={sub.name}
                       href={sub.href}
-                      className="block px-4 py-2 text-sm text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                      className={`block px-4 py-2 text-sm transition-colors ${
+                        mounted && resolvedTheme === 'dark'
+                          ? 'text-neutral-200 hover:bg-neutral-800'
+                          : 'text-neutral-800 hover:bg-neutral-100'
+                      }`}
                     >
                       {sub.name}
                     </Link>

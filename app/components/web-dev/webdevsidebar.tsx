@@ -10,6 +10,7 @@ import CustomWebsiteDevelopment from "./custom";
 import UiUx from "./UiUx";
 import Landing from "./landing";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 import {
   Code2,
   MonitorSmartphone,
@@ -43,6 +44,11 @@ function SidebarDemoContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const selectedItem = searchParams.get("item");
+
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isDark = mounted && (theme === "dark" || (theme === "system" && systemTheme === "dark"));
 
   const updateURL = (label: ContentKey) => {
     router.push(`${pathname}?item=${encodeURIComponent(label)}`, {
@@ -85,7 +91,7 @@ function SidebarDemoContent() {
   ];
 
   const headerContent = (
-    <div className="flex items-center gap-3">
+    <div className={cn("flex items-center gap-3", isDark ? "bg-zinc-900" : "bg-white")}>
       <Image
         src="/images/portfolio/web.jpg"
         alt="Website Logo"
@@ -93,7 +99,7 @@ function SidebarDemoContent() {
         height={32}
         className="rounded-full object-cover"
       />
-      <span className="text-sm font-medium whitespace-nowrap text-black dark:text-white">
+      <span className={cn("text-sm font-medium whitespace-nowrap", isDark ? "text-white" : "text-black")}>
         Website Design & Development
       </span>
     </div>
@@ -103,7 +109,7 @@ function SidebarDemoContent() {
     <div className="flex h-screen w-full bg-background text-foreground">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody
-          className="justify-between gap-10 border-r border-neutral-200 mt-20 "
+          className={cn("justify-between gap-10 border-r mt-20", isDark ? "border-neutral-700" : "border-neutral-200")}
           header={headerContent}
         >
           <div className="flex flex-1 h-full flex-col overflow-x-hidden  overflow-y-auto">
@@ -111,7 +117,7 @@ function SidebarDemoContent() {
             <div
               className={cn(
                 "hidden sm:flex items-center gap-3 px-1 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
-                "bg-neutral-200 dark:bg-neutral-800 text-black dark:text-white",
+                isDark ? "bg-neutral-800 text-white" : "bg-neutral-200 text-black",
                 open ? "justify-start" : "justify-center"
               )}
             >
@@ -123,7 +129,7 @@ function SidebarDemoContent() {
                 className="rounded-full object-cover"
               />
               {open && (
-                <span className="text-sm font-medium whitespace-pre text-black dark:text-white">
+                <span className={cn("text-sm font-medium whitespace-pre", isDark ? "text-white" : "text-black")}>
                   Website Design & Development
                 </span>
               )}
@@ -141,8 +147,8 @@ function SidebarDemoContent() {
                   }}
                   className={cn(
                     activeLink === link.label
-                      ? "bg-neutral-300 dark:bg-neutral-700 text-black dark:text-white"
-                      : "text-black dark:text-white hover:bg-neutral-200 dark:hover:bg-neutral-800"
+                      ? (isDark ? "bg-neutral-700 text-white" : "bg-neutral-300 text-black")
+                      : (isDark ? "text-white hover:bg-neutral-800" : "text-black hover:bg-neutral-200")
                   )}
                 />
               ))}
@@ -158,7 +164,7 @@ function SidebarDemoContent() {
         className="hidden sm:flex flex-1 overflow-y-auto p-6"
       >
         <AnimatePresence mode="wait">
-          {contentMap[activeLink] || <Dashboard />}
+          {contentMap[activeLink] || <Dashboard isDark={isDark} />}
         </AnimatePresence>
       </motion.main>
 
@@ -168,19 +174,19 @@ function SidebarDemoContent() {
         style={{ marginTop: "64px" }}
       >
         <AnimatePresence mode="wait">
-          {contentMap[activeLink] || <Dashboard />}
+          {contentMap[activeLink] || <Dashboard isDark={isDark} />}
         </AnimatePresence>
       </motion.main>
     </div>
   );
 }
 
-const Dashboard = () => (
+const Dashboard = ({ isDark }: { isDark: boolean }) => (
   <div className="space-y-6">
     {[...new Array(12)].map((_, idx) => (
       <div
         key={idx}
-        className="h-32 animate-pulse rounded-lg bg-gray-200 "
+        className={cn("h-32 animate-pulse rounded-lg", isDark ? "bg-neutral-800" : "bg-gray-200")}
       />
     ))}
   </div>

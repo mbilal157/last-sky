@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { motion, HTMLMotionProps, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
@@ -47,6 +47,11 @@ export const SidebarBody = ({
   }
 >) => {
   const { open, setOpen, animate } = useSidebar();
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isDark = mounted && (theme === "dark" || (theme === "system" && systemTheme === "dark"));
+
   return (
     <>
       {/* Mobile Navbar with Dropdown */}
@@ -63,7 +68,7 @@ export const SidebarBody = ({
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className={cn(
             "h-screen flex-col fixed left-0 top-0 z-50 shadow-md transition-colors duration-300",
-            "bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white",
+            isDark ? "bg-neutral-900 text-white" : "bg-neutral-100 text-black",
             className
           )}
           {...props}
@@ -83,7 +88,10 @@ const MobileDropdown = ({
   header?: React.ReactNode;
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { theme } = useTheme();          // ← can delete this now
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isDark = mounted && (theme === "dark" || (theme === "system" && systemTheme === "dark"));
 
   const handleLinkClick = () => {
     setMobileOpen(false);
@@ -95,14 +103,17 @@ const MobileDropdown = ({
       <div
         className={cn(
           "sm:hidden flex items-center justify-between w-full h-16 fixed top-20 left-0 right-0 z-50 px-4 shadow-md border-b",
-          "bg-neutral-100 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 text-black dark:text-white"
+          isDark ? "bg-neutral-900 border-neutral-800 text-white" : "bg-neutral-100 border-neutral-200 text-black"
         )}
       >
         <Navbar />
         <div className="flex items-center justify-start">{header}</div>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="rounded-md transition-all hover:bg-neutral-200 dark:hover:bg-neutral-800"  // ← fixed
+          className={cn(
+            "rounded-md transition-all",
+            isDark ? "hover:bg-neutral-800" : "hover:bg-neutral-200"
+          )}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -125,7 +136,7 @@ const MobileDropdown = ({
               transition={{ duration: 0.2 }}
               className={cn(
                 "fixed left-0 right-0 z-40 shadow-md border-b max-h-[calc(100vh-144px)] overflow-y-auto",
-                "bg-neutral-100 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800"  // ← fixed
+                isDark ? "bg-neutral-900 border-neutral-800" : "bg-neutral-100 border-neutral-200"
               )}
               style={{ top: "130px" }}
             >
@@ -150,9 +161,12 @@ export const SidebarLink = ({
   className?: string;
 }) => {
   const { open } = useSidebar();
-  const { theme } = useTheme();
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isDark = mounted && (theme === "dark" || (theme === "system" && systemTheme === "dark"));
 
-  const textColor = theme === "dark" ? "text-white" : "text-black";
+  const textColor = isDark ? "text-white" : "text-black";
 
   return (
     <>
@@ -160,7 +174,7 @@ export const SidebarLink = ({
         onClick={onClick}
         className={cn(
           "hidden sm:flex items-center justify-start gap-3 w-full px-3 py-3 rounded-md transition-all duration-300 overflow-hidden",
-          "hover:bg-neutral-200 dark:hover:bg-neutral-800 text-black dark:text-white",
+          isDark ? "hover:bg-neutral-800 text-white" : "hover:bg-neutral-200 text-black",
           className
         )}
       >

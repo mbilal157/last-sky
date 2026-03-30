@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Play, X } from "lucide-react";
 import Image from "next/image";
 import { InfiniteMovingCards } from "./allmovcards";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 // 🔹 Types
 type VideoProject = {
   id: number;
@@ -28,6 +30,7 @@ type VideoModalProps = {
 type VideoCardProps = {
   video: VideoProject;
   onPlay: (video: VideoProject) => void;
+  isDark?: boolean;
 };
 
 type VideoCategoryProps = {
@@ -570,13 +573,16 @@ const VideoModal = ({ video, isOpen, onClose }: VideoModalProps) => {
 };
 
 // 🔹 Video Card
-const VideoCard = ({ video, onPlay }: VideoCardProps) => {
+const VideoCard = ({ video, onPlay, isDark }: VideoCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const isReel = video.videoUrl.includes("shorts/"); // ✅ Detect Reels
 
   return (
     <motion.div
-      className="bg-background text-foreground rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl"
+      className={cn(
+        "bg-background text-foreground rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl",
+        isDark ? "shadow-white/20 hover:shadow-white/30" : ""
+      )}
       whileHover={{ y: -5 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
@@ -611,10 +617,10 @@ const VideoCard = ({ video, onPlay }: VideoCardProps) => {
         </div>
 
         <div className="p-4">
-          <h3 className="font-semibold text-lg mb-1 text-neutral-800  line-clamp-1">
+          <h3 className={cn("font-semibold text-lg mb-1 line-clamp-1", isDark ? "text-white" : "text-neutral-800")}>
             {video.title}
           </h3>
-          <p className="text-neutral-600 text-sm mb-3 line-clamp-2">
+          <p className={cn("text-sm mb-3 line-clamp-2", isDark ? "text-white" : "text-neutral-600")}>
             {video.description}
           </p>
         </div>
@@ -726,6 +732,11 @@ export const VideoCategory = ({ category }: VideoCategoryProps) => {
   const [selectedVideo, setSelectedVideo] = useState<VideoProject | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isDark = mounted && (theme === "dark" || (theme === "system" && systemTheme === "dark"));
+
   const handlePlayVideo = (video: VideoProject) => {
     setSelectedVideo(video);
     setIsModalOpen(true);
@@ -751,10 +762,10 @@ export const VideoCategory = ({ category }: VideoCategoryProps) => {
         className="pb-10"
       >
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-neutral-800 dark:text-white mb-2">
+          <h2 className={cn("text-3xl font-bold mb-2", isDark ? "text-white" : "text-neutral-800")}>
             {category}
           </h2>
-          <p className="text-neutral-600 dark:text-neutral-400">
+          <p className={isDark ? "text-white" : "text-neutral-600"}>
             {videos.length} {videos.length === 1 ? "project" : "projects"}
           </p>
         </div>
@@ -766,6 +777,7 @@ export const VideoCategory = ({ category }: VideoCategoryProps) => {
                 key={`${category}-${video.id}`}
                 video={video}
                 onPlay={handlePlayVideo}
+                isDark={isDark}
               />
             ))}
           </div>

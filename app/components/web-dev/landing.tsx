@@ -1,6 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 interface CardProps {
   src: string;
@@ -24,13 +27,18 @@ const Card = ({ src, className }: CardProps) => (
 );
 
 export default function Landing() {
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isDark = mounted && (theme === "dark" || (theme === "system" && systemTheme === "dark"));
+
   return (
     <div className="grid gap-5 p-6 pt-14 max-w-7xl mx-auto">
       <h1 className="text-4xl md:text-5xl font-bold mb-2 mt-14 text-foreground text-center">
         Landing Pages
       </h1>
 
-      <p className="text-lg md:text-xl font-semibold text-black dark:text-white text-center mb-4">
+      <p className={cn("text-lg md:text-xl font-semibold text-center mb-4", isDark ? "text-white" : "text-black")}>
         A curated selection of visually appealing and user-focused landing pages
         — each crafted with a deep understanding of brand identity, design
         psychology, and conversion strategy. These projects highlight how

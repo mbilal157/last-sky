@@ -1,6 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 interface CardProps {
   src: string;
@@ -23,6 +26,11 @@ const Card = ({ src, className }: CardProps) => (
 );
 
 export default function CustomWebsiteDevelopment() {
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isDark = mounted && (theme === "dark" || (theme === "system" && systemTheme === "dark"));
+
   return (
     <section className="pt-32 pb-24 px-6 md:px-16 max-w-7xl mx-auto text-center space-y-32">
       {/* Project 1 */}
@@ -32,7 +40,7 @@ export default function CustomWebsiteDevelopment() {
         </h1>
 
         {/* Subheading (Project Title) */}
-        <h2 className="text-2xl md:text-3xl font-semibold text-black dark:text-white text-center mb-4">
+        <h2 className={cn("text-2xl md:text-3xl font-semibold text-center mb-4", isDark ? "text-white" : "text-black")}>
           Camping Website Design
         </h2>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
@@ -57,7 +65,7 @@ export default function CustomWebsiteDevelopment() {
         </h1>
 
         {/* Subheading (Project Title) */}
-        <h2 className="text-2xl md:text-3xl font-semibold text-black dark:text-white  text-center mb-4">
+        <h2 className={cn("text-2xl md:text-3xl font-semibold text-center mb-4", isDark ? "text-white" : "text-black")}>
           E-Commerce Website Development & Design
         </h2>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
@@ -80,7 +88,7 @@ export default function CustomWebsiteDevelopment() {
           Project 3
         </h1>
 
-        <h2 className="text-2xl md:text-3xl font-semibold text-black dark:text-white text-center mb-4">
+        <h2 className={cn("text-2xl md:text-3xl font-semibold text-center mb-4", isDark ? "text-white" : "text-black")}>
           Premium Mango Export Website Design & Development
         </h2>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">

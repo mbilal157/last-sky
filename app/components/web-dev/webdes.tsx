@@ -1,6 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 interface CardProps {
   src: string;
@@ -24,6 +27,11 @@ const Card = ({ src, className }: CardProps) => (
 );
 
 export default function WebDesign() {
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isDark = mounted && (theme === "dark" || (theme === "system" && systemTheme === "dark"));
+
   return (
     <div className="grid gap-4 p-6 pt-20 max-w-7xl mx-auto">
       <h1 className="text-4xl md:text-5xl font-bold mb-2 text-foreground text-center">
@@ -31,7 +39,7 @@ export default function WebDesign() {
       </h1>
 
       {/* Subheading (Project Title) */}
-      <p className="text-lg md:text-xl font-semibold text-black dark:text-white text-center mb-4">
+      <p className={cn("text-lg md:text-xl font-semibold text-center mb-4", isDark ? "text-white" : "text-black")}>
         Every brand has a story — we bring that story online through stunning,
         responsive web experiences. Below are some of our recent website
         projects created to match our client&apos;s unique goals and business

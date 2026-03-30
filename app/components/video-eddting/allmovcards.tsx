@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Play } from "lucide-react";
+import { useTheme } from "next-themes";
 
 interface VideoItem {
   title: string;
@@ -17,6 +18,7 @@ interface VideoItem {
 interface CardProps {
   item: VideoItem;
   onPlayVideo: (item: VideoItem) => void;
+  isDark: boolean;
 }
 
 interface InfiniteMovingCardsProps {
@@ -39,6 +41,12 @@ export const InfiniteMovingCards = ({
   onItemClick,
 }: InfiniteMovingCardsProps) => {
   const scrollerRefs = useRef<HTMLUListElement[]>([]);
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+  
+  const isDark = mounted && (theme === "dark" || (theme === "system" && systemTheme === "dark"));
 
   // Split items into multiple rows
   const itemsPerRow = Math.ceil(items.length / rows);
@@ -99,7 +107,7 @@ export const InfiniteMovingCards = ({
         >
           {/* Original + duplicate for seamless scroll */}
           {[...row, ...row].map((item, idx) => (
-            <Card key={`${item.id}-${rowIndex}-${idx}`} item={item} onPlayVideo={handlePlayVideo} />
+            <Card key={`${item.id}-${rowIndex}-${idx}`} item={item} onPlayVideo={handlePlayVideo} isDark={isDark} />
           ))}
         </ul>
       ))}
@@ -107,12 +115,15 @@ export const InfiniteMovingCards = ({
   );
 };
 
-const Card: React.FC<CardProps> = ({ item, onPlayVideo }) => {
+const Card: React.FC<CardProps> = ({ item, onPlayVideo, isDark }) => {
   const isVertical = item.category === "Stories" || item.category === "Shorts";
 
   return (
     <li
-      className="relative  shrink-0 rounded-xl overflow-hidden border border-zinc-200 bg-gray-100 dark:border-zinc-700 dark:bg-neutral-900 transition-all duration-300 cursor-pointer flex flex-col hover:scale-105 hover:shadow-lg hover:z-50"
+      className={cn(
+        "relative shrink-0 rounded-xl overflow-hidden border transition-all duration-300 cursor-pointer flex flex-col hover:scale-105 shadow-md hover:shadow-xl hover:z-50",
+        isDark ? "bg-neutral-900 border-zinc-700 shadow-white/20 hover:shadow-white/30" : "bg-gray-100 border-zinc-200"
+      )}
       onClick={() => onPlayVideo(item)}
       style={{ width: isVertical ? "180px" : "256px" }}
     >
@@ -125,14 +136,14 @@ const Card: React.FC<CardProps> = ({ item, onPlayVideo }) => {
           sizes="(max-width: 768px) 100vw, 33vw"
         />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 bg-black/40 transition-opacity duration-300">
-          <div className="bg-white/90 dark:bg-black/90 rounded-full p-3 shadow-lg">
-            <Play size={20} className="text-black" fill="black" />
+          <div className={cn("rounded-full p-3 shadow-lg", isDark ? "bg-black/90" : "bg-white/90")}>
+            <Play size={20} className={isDark ? "text-white" : "text-black"} fill={isDark ? "white" : "black"} />
           </div>
         </div>
       </div>
       <div className="flex flex-col items-start p-3">
-        {item.category && <span className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-1">{item.category}</span>}
-        <h3 className="text-xl font-bold text-black dark:text-white line-clamp-2">{item.title}</h3>
+        {item.category && <span className={cn("text-lg font-semibold mb-1", isDark ? "text-blue-400" : "text-blue-600")}>{item.category}</span>}
+        <h3 className={cn("text-xl font-bold line-clamp-2", isDark ? "text-white" : "text-black")}>{item.title}</h3>
       </div>
     </li>
   );

@@ -181,12 +181,16 @@ export default function Portfolio() {
                     `${item.href}?item=${encodeURIComponent(item.title)}`
                   )
                 }
-                className="cursor-pointer bg-gray-50 dark:bg-[#1e1d1d] border dark:border-white/[0.2] border-black/[0.1] rounded-xl p-6 hover:shadow-lg transition"
+                className={`cursor-pointer border rounded-xl p-6 transition-all duration-300 hover:shadow-xl ${
+                  resolvedTheme === "dark"
+                    ? "bg-gray-800 border-white/[0.2] shadow-white/20 hover:shadow-white/30"
+                    : "bg-gray-50 border-black/[0.1]"
+                }`}
               >
                 {/* Category */}
                 <CardItem
                   translateZ="50"
-                  className="text-sm font-semibold text-gray-500 dark:text-gray-400"
+                  className={`text-sm font-semibold ${resolvedTheme === "dark" ? "text-gray-400" : "text-gray-500"}`}
                 >
                   {item.category}
                 </CardItem>
@@ -194,7 +198,7 @@ export default function Portfolio() {
                 {/* Title */}
                 <CardItem
                   translateZ="80"
-                  className="text-xl font-bold mt-2 text-gray-800 dark:text-gray-100 group-hover/card:text-[#0098ff]"
+                  className={`text-xl font-bold mt-2 group-hover/card:text-[#0098ff] ${resolvedTheme === "dark" ? "text-gray-100" : "text-gray-800"}`}
                 >
                   {item.title}
                 </CardItem>
@@ -203,7 +207,7 @@ export default function Portfolio() {
                 <CardItem
                   as="p"
                   translateZ="60"
-                  className="text-sm mt-1 text-gray-600 dark:text-gray-400"
+                  className={`text-sm mt-1 ${resolvedTheme === "dark" ? "text-gray-400" : "text-gray-600"}`}
                 >
                   {item.subtitle}
                 </CardItem>

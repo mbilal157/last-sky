@@ -59,8 +59,10 @@ export default function ContactUs() {
   return (
     <section
       id="contact"
-      className={`py-20 px-6 transition-colors duration-300  ${
-        isDark ? "bg-black text-gray-100" : "bg-white text-gray-800"
+      className={`py-20 px-6 transition-colors duration-300 ${
+        isDark
+          ? "bg-[url('/images/bg3.jpg')] bg-cover bg-center text-gray-100"
+          : "bg-[url('/images/bg.jpg')] bg-cover bg-center text-gray-800"
       }`}
     >
       <div className="max-w-6xl mx-auto">
