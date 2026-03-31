@@ -248,6 +248,7 @@ export default function ContactUs() {
                   <option value="web-development">Web Development</option>
                   <option value="filmography">Photography</option>
                   <option value="video-graphy">Animations</option>
+                  <option value="other">Other</option>
                 </select>
               </div>
 

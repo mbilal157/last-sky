@@ -153,8 +153,7 @@ export default function Navbar() {
       {/* Mobile menu */}
        {menuOpen && (
         <div
-          className="absolute top-20 left-0 w-full bg-background
-    text-foreground md:hidden flex flex-col items-start p-6 gap-4 transition-colors duration-300 border-b border-border shadow-xl"
+          className={`absolute top-20 left-0 w-full text-foreground md:hidden flex flex-col items-start p-6 gap-4 transition-colors duration-300 border-b border-border shadow-xl ${mounted && resolvedTheme === 'dark' ? 'bg-black' : 'bg-white'}`}
         >
           {links.map((link) => {
             const isActive = pathname === link.href;

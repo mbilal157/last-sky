@@ -172,7 +172,7 @@ export default function Portfolio() {
         </div>
 
         {/* Portfolio Grid with 3D Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 mx-4 lg:grid-cols-3 gap-x-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 mx-0 lg:grid-cols-3 gap-x-10">
           {filteredItems.map((item) => (
             <CardContainer key={item.id} className="inter-var">
               <CardBody

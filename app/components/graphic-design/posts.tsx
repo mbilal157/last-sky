@@ -10,7 +10,7 @@ export function Posts() {
   }));
 
   return (
-    <section className="w-full px-4 py-16">
+    <section className="w-full py-16">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
         Social Media Posts
       </h2>
@@ -23,7 +23,7 @@ export function Posts() {
       </div>
 
       {/* TABLET: single row moving cards */}
-      <div className="hidden md:block lg:hidden">
+      <div className="hidden md:block lg:hidden -mx-4 sm:-mx-6">
         <InfiniteMovingCards
           items={mappedPosts.slice(0, 8)}
           speed="slow"
@@ -34,7 +34,7 @@ export function Posts() {
       </div>
 
       {/* DESKTOP: multiple moving rows */}
-      <div className="hidden lg:flex flex-col gap-10">
+      <div className="hidden lg:flex flex-col gap-10 -mx-4 sm:-mx-6">
         <InfiniteMovingCards
           items={mappedPosts.slice(0, 10)}
           speed="normal"
