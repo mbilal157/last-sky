@@ -28,13 +28,8 @@ export default function AboutUs() {
   const resolvedTheme = theme === "system" ? systemTheme : theme;
 
   const aboutText = `
-    Skyline Production is a creative media studio offering a complete range of services under one roof — 
-    from graphic design and video editing to web design, development, and animations. 
-    We combine creativity with technology to deliver impactful visuals and digital experiences that help brands grow, 
-    communicate their stories, and connect with audiences effectively. 
-    Our goal is simple — to bring ideas to life through visuals that inspire, engage, and make a lasting impression. 
-    Whether you need stunning designs, cinematic edits, or interactive websites, 
-    Skyline Production is your trusted creative partner for all things digital and design.
+    Skyline Production is a multi-disciplinary creative house delivering end-to-end digital and visual solutions. From graphic design and UI/UX to full-stack web development, we build products that are both functional and visually strong. Our filmmaking, videography, and YouTube content services focus on storytelling that actually holds attention and drives engagement. We don’t just create content—we build scalable, high-impact digital experiences across platforms.
+
   `;
 
   return (

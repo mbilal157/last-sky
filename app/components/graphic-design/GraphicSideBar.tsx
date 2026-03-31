@@ -7,6 +7,7 @@ import { useTheme } from "next-themes";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { FiPenTool } from "react-icons/fi";
 import {
   ImageIcon,
   FileText,
@@ -82,13 +83,7 @@ function SidebarDemoContent() {
 
   const headerContent = (
     <div className="flex items-center gap-3 bg-transparent">
-      <Image
-        src="/images/portfolio/grapdes.jpg"
-        alt="Graphic Design Logo"
-        width={32}
-        height={32}
-        className="rounded-full object-cover"
-      />
+      <FiPenTool className="text-sky-400 w-5 h-5 shrink-0" />
      <span className="text-xl font-medium whitespace-nowrap text-sky-400">
         Graphics Design
       </span>
@@ -112,13 +107,7 @@ function SidebarDemoContent() {
                 open ? "justify-start" : "justify-center"
               )}
             >
-              <Image
-                src="/images/portfolio/grapdes.png"
-                alt="Graphic Design Logo"
-                width={32}
-                height={32}
-                className="rounded-full object-cover"
-              />
+              <FiPenTool className="text-sky-400 w-5 h-5 shrink-0" />
               {open && (
                 <span className="text-xl font-medium whitespace-pre text-sky-400">
                   Graphic Design

@@ -21,7 +21,7 @@ export const InfiniteMovingCards = ({
   className,
   rows = 1,
   direction="left",
-  cardSize = "medium", // 👈 NEW PROP
+  cardSize = "medium", 
 }: {
   items: {
     title: string;

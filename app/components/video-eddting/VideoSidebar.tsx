@@ -130,13 +130,7 @@ export function VideoSidebarDemo() {
                 open ? "justify-start" : "justify-center"
               )}
             >
-              <Image
-                src="/images/portfolio/video-editing/vedico.jpg"
-                alt="Video Editing Logo"
-                width={32}
-                height={32}
-                className="rounded-full object-cover"
-              />
+              <FiVideo className="text-sky-400 w-5 h-5 shrink-0" />
               {open && (
                 <span className="text-xl font-medium whitespace-pre text-sky-400">
                   Video Editing

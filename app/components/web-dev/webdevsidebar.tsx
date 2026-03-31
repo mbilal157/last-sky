@@ -5,7 +5,6 @@ import { Sidebar, SidebarBody, SidebarLink } from "../ui/sidebar";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import WebDesign from "./webdes";
-import Image from "next/image";
 import {FiCode} from "react-icons/fi";
 import CustomWebsiteDevelopment from "./custom";
 import UiUx from "./UiUx";
@@ -93,13 +92,7 @@ function SidebarDemoContent() {
 
   const headerContent = (
     <div className="flex items-center gap-3 bg-transparent">
-      <Image
-        src="/images/portfolio/web.jpg"
-        alt="Website Logo"
-        width={32}
-        height={32}
-        className="rounded-full object-cover"
-      />
+      <FiCode className="text-sky-400 w-5 h-5" />
       <span className="text-xl font-medium text-sky-400">
         Website Design &<br /> Development
       </span>
@@ -121,7 +114,7 @@ function SidebarDemoContent() {
                 open ? "justify-start" : "justify-center"
               )}
             >
-              <FiCode className="text-sky-400 w-5 h-5" />
+              <FiCode className="text-sky-400 w-5 h-5 shrink-0" />
               {open && (
                 <span className="text-xl font-medium whitespace-pre text-sky-400">
                   Website Design & Development
