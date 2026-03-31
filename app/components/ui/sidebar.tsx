@@ -67,10 +67,12 @@ export const SidebarBody = ({
           }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className={cn(
-            "h-screen flex-col fixed left-0 top-0 z-50 shadow-md transition-colors duration-300",
-            isDark ? "bg-neutral-900 text-white" : "bg-neutral-100 text-black",
-            className
-          )}
+  "flex-col fixed left-0 top-4 bottom-4 z-50 rounded-r-2xl transition-all duration-500 ease-out backdrop-blur-3xl border-none overflow-hidden",
+  isDark 
+    ? "bg-gray-900 shadow-[8px_0_40px_rgba(0,0,0,0.5)] text-neutral-100"
+    : "bg-blue-100 bg-blend-luminosity bg-cover bg-center bg-no-repeat shadow-[8px_0_40px_rgba(0,0,0,0.08)] text-neutral-900",
+  className
+)}
           {...props}
         >
           {children}
@@ -135,8 +137,8 @@ const MobileDropdown = ({
               initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
               className={cn(
-                "fixed left-0 right-0 z-40 shadow-md border-b max-h-[calc(100vh-144px)] overflow-y-auto",
-                isDark ? "bg-neutral-900 border-neutral-800" : "bg-neutral-100 border-neutral-200"
+                "fixed left-0 right-0 z-40 shadow-md border-b max-h-[calc(100vh-144px)] overflow-y-auto backdrop-blur-md",
+                isDark ? "bg-black/70 border-neutral-800" : "bg-white/70 border-neutral-200"
               )}
               style={{ top: "130px" }}
             >
@@ -174,7 +176,6 @@ export const SidebarLink = ({
         onClick={onClick}
         className={cn(
           "hidden sm:flex items-center justify-start gap-3 w-full px-3 py-3 rounded-md transition-all duration-300 overflow-hidden",
-          isDark ? "hover:bg-neutral-800 text-white" : "hover:bg-neutral-200 text-black",
           className
         )}
       >
@@ -203,17 +204,12 @@ export const SidebarLink = ({
         )}
       >
         {/* Icon */}
-        <div
-          className={cn(
-            "shrink-0 flex items-center justify-center w-5 h-5",
-            textColor
-          )}
-        >
+        <div className="shrink-0 flex items-center justify-center w-5 h-5 text-current">
           {link.icon}
         </div>
 
         {/* Label */}
-        <span className={cn("text-sm whitespace-nowrap", textColor)}>
+        <span className="text-sm whitespace-nowrap text-current">
           {link.label}
         </span>
       </button>

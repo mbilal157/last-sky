@@ -4,6 +4,7 @@ import { Sidebar, SidebarBody, SidebarLink } from "../ui/sidebar";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import {FiVideo} from "react-icons/fi";
 import { VideoCategory } from "../video-eddting/ContentMap.tsx";
 import { cn } from "@/lib/utils";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
@@ -96,15 +97,9 @@ export function VideoSidebarDemo() {
   ];
 
   const headerContent = (
-    <div className={cn("flex items-center gap-3", isDark ? "bg-zinc-900" : "bg-white")}>
-      <Image
-        src="/images/portfolio/video-editing/vedico.jpg"
-        alt="Graphic Design Logo"
-        width={32}
-        height={32}
-        className="rounded-full object-cover"
-      />
-      <span className={cn("text-sm font-medium whitespace-nowrap", isDark ? "text-white" : "text-black")}>
+    <div className="flex items-center gap-3 bg-transparent">
+      <FiVideo className="text-sky-400 w-5 h-5" />
+      <span className="text-xl font-medium whitespace-nowrap text-sky-400">
         Video Editing
       </span>
     </div>
@@ -124,20 +119,26 @@ export function VideoSidebarDemo() {
     <div className="flex h-screen w-full bg-background text-foreground flex-col lg:flex-row">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody
-          className={cn("justify-between mt-20 gap-10 border-r", isDark ? "border-neutral-700" : "border-neutral-200")}
+          className="justify-between mt-20 gap-10"
           header={headerContent}
         >
-          <div className="flex flex-1 flex-col overflow-x-hidden bg-background overflow-y-auto">
+          <div className="flex flex-1 flex-col overflow-x-hidden bg-transparent overflow-y-auto">
             {/* Top Section */}
             <div
               className={cn(
-                "flex items-center gap-3 px-3 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
-                isDark ? "bg-neutral-800 text-white" : "bg-neutral-200 text-black",
+                "flex items-center gap-3 px-3 py-2 mt-3 mb-4 w-full transition-all duration-300 bg-transparent text-sky-400",
                 open ? "justify-start" : "justify-center"
               )}
             >
+              <Image
+                src="/images/portfolio/video-editing/vedico.jpg"
+                alt="Video Editing Logo"
+                width={32}
+                height={32}
+                className="rounded-full object-cover"
+              />
               {open && (
-                <span className={cn("text-sm font-medium whitespace-pre", isDark ? "text-white" : "text-black")}>
+                <span className="text-xl font-medium whitespace-pre text-sky-400">
                   Video Editing
                 </span>
               )}
@@ -154,9 +155,14 @@ export function VideoSidebarDemo() {
                     updateURL(link.label);
                   }}
                   className={cn(
-                    activeLink === link.label
-                      ? (isDark ? "bg-neutral-700 text-white" : "bg-neutral-300 text-black")
-                      : (isDark ? "text-white hover:bg-neutral-800" : "text-black hover:bg-neutral-200")
+                    "transition-all duration-300",
+                     activeLink === link.label
+  ? (isDark
+      ? "!border-l-[3px] !border-l-sky-400 border-sky-400 rounded-none bg-sky-400/15 text-white tracking-wide shadow-[4px_0_24px_rgba(56,189,248,0.15),-2px_0_12px_rgba(56,189,248,0.4)] [&_svg]:text-sky-400"
+      : "!border-l-[3px] !border-l-sky-400 border-sky-400 rounded-none bg-sky-400/10 text-neutral-900 tracking-wide shadow-[4px_0_24px_rgba(56,189,248,0.15),-2px_0_12px_rgba(56,189,248,0.4)] [&_svg]:text-sky-400")
+  : (isDark 
+      ? "rounded-md text-neutral-400 tracking-wide hover:bg-white/5 hover:text-neutral-200 [&_svg]:text-neutral-500 [&_svg]:hover:text-[#38BDF8]" 
+      : "rounded-md text-neutral-600 tracking-wide hover:bg-black/5 hover:text-neutral-900 [&_svg]:text-neutral-400 [&_svg]:hover:text-[#38BDF8]")
                   )}
                 />
               ))}
@@ -168,7 +174,7 @@ export function VideoSidebarDemo() {
       {/* Main Content */}
       <motion.main
         animate={{
-          marginLeft: isLargeScreen ? (open ? "240px" : "64px") : "0px",
+          marginLeft: isLargeScreen ? (open ? "272px" : "96px") : "0px",
           marginTop: isLargeScreen ? "0px" : "64px", // Account for mobile sidebar height if it's fixed/sticky
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}

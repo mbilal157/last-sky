@@ -81,7 +81,7 @@ function SidebarDemoContent() {
   const [open, setOpen] = useState(false);
 
   const headerContent = (
-    <div className={cn("flex items-center gap-3", isDark ? "bg-zinc-900" : "bg-white")}>
+    <div className="flex items-center gap-3 bg-transparent">
       <Image
         src="/images/portfolio/grapdes.jpg"
         alt="Graphic Design Logo"
@@ -89,7 +89,7 @@ function SidebarDemoContent() {
         height={32}
         className="rounded-full object-cover"
       />
-      <span className={cn("text-sm font-medium whitespace-nowrap", isDark ? "text-white" : "text-black")}>
+     <span className="text-xl font-medium whitespace-nowrap text-sky-400">
         Graphics Design
       </span>
     </div>
@@ -101,20 +101,26 @@ function SidebarDemoContent() {
     <div className="flex h-screen w-full bg-background text-foreground">
       <Sidebar open={open} setOpen={setOpen} animate={true}>
         <SidebarBody
-          className={cn("hidden sm:flex justify-between mt-20 gap-10 border-r", isDark ? "border-neutral-700" : "border-neutral-200")}
+          className="hidden sm:flex justify-between mt-20 gap-10"
           header={headerContent}
         >
-          <div className="flex flex-1 flex-col overflow-x-hidden bg-background text-foreground overflow-y-auto">
+          <div className="flex flex-1 flex-col overflow-x-hidden bg-transparent text-foreground overflow-y-auto">
             {/* Logo */}
             <div
               className={cn(
-                "flex items-center gap-3 px-1 py-2 mt-3 mb-4 w-full rounded-md transition-all duration-300",
-                isDark ? "bg-neutral-800 text-white" : "bg-neutral-200 text-black",
+                "flex items-center gap-3 px-1 py-2 mt-3 mb-4 w-full transition-all duration-300 bg-transparent text-sky-400",
                 open ? "justify-start" : "justify-center"
               )}
             >
+              <Image
+                src="/images/portfolio/grapdes.png"
+                alt="Graphic Design Logo"
+                width={32}
+                height={32}
+                className="rounded-full object-cover"
+              />
               {open && (
-                <span className={cn("text-sm font-medium whitespace-pre", isDark ? "text-white" : "text-black")}>
+                <span className="text-xl font-medium whitespace-pre text-sky-400">
                   Graphic Design
                 </span>
               )}
@@ -131,9 +137,14 @@ function SidebarDemoContent() {
                     updateURL(link.label);
                   }}
                   className={cn(
+                    "transition-all duration-300",
                     activeLink === link.label
-                      ? (isDark ? "bg-neutral-700 text-white" : "bg-neutral-300 text-black")
-                      : (isDark ? "text-white hover:bg-neutral-800" : "text-black hover:bg-neutral-200")
+                      ? (isDark 
+                          ? "!border-l-[3px] !border-l-sky-400 rounded-none border-sky-400 bg-sky-400/15 text-white tracking-wide shadow-[4px_0_24px_rgba(56,189,248,0.15),-2px_0_12px_rgba(56,189,248,0.4)] [&_svg]:text-sky-400" 
+                          : "!border-l-[3px] !border-l-sky-400 rounded-none border-sky-400 bg-sky-400/10 text-neutral-900 tracking-wide shadow-[4px_0_24px_rgba(56,189,248,0.15),-2px_0_12px_rgba(56,189,248,0.4)] [&_svg]:text-sky-400")
+                      : (isDark 
+                          ? "rounded-md text-neutral-400 tracking-wide hover:bg-white/5 hover:text-neutral-200 [&_svg]:text-neutral-500 [&_svg]:hover:text-[#38BDF8]" 
+                          : "rounded-md text-neutral-600 tracking-wide hover:bg-black/5 hover:text-neutral-900 [&_svg]:text-neutral-400 [&_svg]:hover:text-[#38BDF8]")
                   )}
                 />
               ))}
@@ -144,7 +155,7 @@ function SidebarDemoContent() {
 
       {/* Desktop Main Content */}
       <motion.main
-        animate={{ marginLeft: open ? "240px" : "64px" }}
+        animate={{ marginLeft: open ? "272px" : "96px" }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="hidden sm:flex flex-1 overflow-y-auto p-6 pt-16 sm:pt-6"
       >
