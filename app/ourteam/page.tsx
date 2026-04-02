@@ -1,5 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import { CardContainer, CardBody, CardItem } from "@/app/components/ui/3d-card";
+import { WavyBackground } from "@/app/components/ui/wav-bg";
+import { AnimatedTooltip } from "@/app/components/ui/animated-tooltip";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 const team = [
   {
@@ -35,38 +41,109 @@ const team = [
   {
     name: "Zayan Khan",
     role: "Video Editor",
-    image: "https://ui-avatars.com/api/?name=Zayan+Khan&background=random&color=fff&size=512",
+    image: "/images/team/zayan.jpeg",
     description: "Zayan focuses on engaging edits with strong visual flow. Skilled in motion, cuts, and content pacing. Understands trends and platform-specific editing styles. Delivers content that holds attention."
   },
   {
     name: "Zain Ali",
     role: "Videographer",
-    image: "https://ui-avatars.com/api/?name=Zain+Ali&background=random&color=fff&size=512",
+    image: "/images/team/zain.jpeg",
     description: "Zain captures high-quality visuals with strong composition and lighting. Experienced in shooting professional-grade footage for multiple formats. Focuses on clarity, framing, and storytelling through camera work. Delivers raw footage that's edit-ready."
   },
   {
     name: "Anya ",
     role: "UI/UX Designer",
-    image: "https://ui-avatars.com/api/?name=Anya&background=random&color=fff&size=512",
+    image: "/images/team/anya.jpeg",
     description: "Anya designs clean, user-focused interfaces that actually convert. Strong sense of layout, color, and usability. Focused on creating smooth user experiences, not just visuals. Turns ideas into intuitive digital products."
   },
   {
     name: "Sobia Khan",
     role: "Hiring Manager",
-    image: "https://ui-avatars.com/api/?name=Sobia+Khan&background=random&color=fff&size=512",
+    image: "/images/team/sobia.jpeg",
     description: "Sobia handles recruitment with precision and speed. Identifies talent that fits both skill and culture. Manages hiring pipelines and onboarding efficiently. Ensures the team grows with the right people."
   }
 ];
+const instructors = [
+    {
+      id: 1,
+      name: 'Taimoor Qaiser',
+      designation: 'Founder & CEO',
+      image:
+        '/images/team/tm.jpeg',
+    },
+    {
+      id: 2,
+      name: 'Muhammad Ibtisam',
+      designation: 'Co-Founder & COO',
+      image:
+      '/images/team/ibtisam.jpg',
+    },
+    {
+      id: 3,
+      name: 'Bilal Shahid',
+      designation: 'Full Stack Developer',
+      image:
+        '/images/team/bilal.jpg',
+    },
+    {
+      id: 4,
+      name: 'Muhammad Zohaib',
+      designation: 'Full Stack Developer',
+      image:
+        '/images/team/zohaib.jpg',
+    },
+    {
+      id: 5,
+      name: 'Musab Ali',
+      designation: 'Video Editor',
+      image:
+        '/images/team/musab.jpg',
+    },
+    {
+      id: 6,
+      name: 'Zayan Khan',
+      designation: 'Video Editor',
+      image:
+        '/images/team/zayan.jpeg',
+    },
+    {
+      id: 7,
+      name: 'Zain Ali',
+      designation: 'Videographer',
+      image:
+        '/images/team/zain.jpeg',
+    },
+    {
+      id: 8,
+      name: 'Anya',
+      designation: 'UI/UX Designer',
+      image:
+        '/images/team/anya.jpeg',
+    },
+    {
+      id: 9,
+      name: 'Sobia Khan',
+      designation: 'Hiring Manager',
+      image:
+        '/images/team/sobia.jpeg',
+    },
+  ];
+
 
 export default function OurTeamPage() {
+  const { theme, systemTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isDark = mounted && (theme === "dark" || (theme === "system" && systemTheme === "dark"));
+
   return (
     <section className="w-full pt-32 pb-20 px-4 min-h-screen bg-transparent transition-colors duration-300">
       {/* Heading */}
       <div className="max-w-7xl mx-auto text-center mb-10 space-y-4">
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
+        <h1 className={`text-5xl md:text-7xl font-extrabold tracking-tight ${isDark ? "text-white" : "text-neutral-900"}`}>
           Meet the <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">Visionaries</span>
         </h1>
-        <p className="max-w-3xl mx-auto text-lg md:text-xl text-neutral-600 dark:text-neutral-400 pb-8">
+        <p className={`max-w-3xl mx-auto text-lg md:text-xl pb-8 ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
           A relentless team of creators, developers, and strategists obsessed with delivering unparalleled digital experiences.
         </p>
       </div>
@@ -126,6 +203,15 @@ export default function OurTeamPage() {
             </CardBody>
           </CardContainer>
         ))}
+      </div>
+      <div className="relative h-[40rem] overflow-hidden flex items-center justify-center">
+          <WavyBackground className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center h-full">
+              <h2 className={`text-2xl md:text-4xl lg:text-7xl font-bold text-center mb-8 ${isDark ? "text-white" : "text-black"}`}> Meet Our Expert Team</h2>
+              <p className={`text-base md:text-lg text-center mb-4 ${isDark ? "text-white" : "text-black"}`}> Our team of skilled mentors brings real-world experience and guidance to elevate your journey.</p>
+              <div className="flex flex-row items-center justify-center mb-10 w-full">
+                  <AnimatedTooltip items={instructors} />
+              </div>
+          </WavyBackground>
       </div>
     </section>
   );
