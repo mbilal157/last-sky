@@ -23,7 +23,7 @@ const AboutPage = () => {
   const isDark = resolvedTheme === "dark";
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 font-sans overflow-hidden ${isDark ? 'bg-neutral-950' : 'bg-[#f5efe6]'}`}>
+    <div className={`min-h-screen transition-colors duration-300 font-sans overflow-hidden ${isDark ? 'bg-neutral-950' : 'bg-white'}`}>
       
       {/* Main Two-Column Section */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 pt-16 pb-10">
@@ -41,8 +41,8 @@ const AboutPage = () => {
           {/* RIGHT: Text Content */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center text-center lg:text-left z-10">
             <h2 className={`text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight tracking-tight ${isDark ? 'text-white' : 'text-neutral-900'}`}>
-              From sketch to <br className="hidden sm:block lg:hidden" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-blue-600">real life</span>
+              Where Ideas Turns Into <br className="hidden sm:block lg:hidden" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-blue-600">Visual Masterpieces</span>
             </h2>
             <p className={`text-base sm:text-lg mb-6 leading-relaxed ${isDark ? 'text-neutral-300' : 'text-neutral-700'}`}>
               We believe in the power of visual storytelling. At Skyline Production, our mission is to transform raw ideas and fleeting sketches into immersive, tangible experiences. We combine artistry with technical precision to bring your vision to life.
@@ -60,21 +60,16 @@ const AboutPage = () => {
         {/* Subtle top border/separator */}
         <div className={`absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent to-transparent ${isDark ? 'via-neutral-700' : 'via-blue-300'}`}></div>
         
-        <div className={`max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-4 text-center divide-y md:divide-y-0 md:divide-x ${isDark ? 'divide-neutral-700' : 'divide-blue-200'}`}>
+        <div className={`max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-4 text-center divide-y md:divide-y-0 md:divide-x ${isDark ? 'divide-neutral-700' : 'divide-blue-200'}`}>
           
           <div className="flex flex-col items-center justify-center pt-4 md:pt-0">
-            <h3 className={`text-4xl sm:text-5xl font-bold mb-2 ${isDark ? 'text-sky-400' : 'text-sky-600'}`}>10+</h3>
+            <h3 className={`text-4xl sm:text-5xl font-bold mb-2 ${isDark ? 'text-sky-400' : 'text-sky-600'}`}>5+</h3>
             <span className={`font-semibold uppercase tracking-wider text-sm mt-1 ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>Years</span>
           </div>
           
           <div className="flex flex-col items-center justify-center pt-4 md:pt-0">
-            <h3 className={`text-4xl sm:text-5xl font-bold mb-2 ${isDark ? 'text-sky-400' : 'text-sky-600'}`}>300+</h3>
+            <h3 className={`text-4xl sm:text-5xl font-bold mb-2 ${isDark ? 'text-sky-400' : 'text-sky-600'}`}>500+</h3>
             <span className={`font-semibold uppercase tracking-wider text-sm mt-1 ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>Clients</span>
-          </div>
-          
-          <div className="flex flex-col items-center justify-center pt-4 md:pt-0">
-            <h3 className={`text-4xl sm:text-5xl font-bold mb-2 ${isDark ? 'text-sky-400' : 'text-sky-600'}`}>15+</h3>
-            <span className={`font-semibold uppercase tracking-wider text-sm mt-1 ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>Awards</span>
           </div>
           
           <div className="flex flex-col items-center justify-center pt-4 md:pt-0">

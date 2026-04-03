@@ -85,7 +85,7 @@ export default function OurTeamPage() {
     <section className="w-full min-h-screen bg-transparent transition-colors duration-300">
       <div className="relative h-[40rem] overflow-hidden flex items-center pb-25 justify-center">
           <WavyBackground className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center h-full">
-              <h2 className={`text-2xl md:text-4xl lg:text-7xl font-bold text-center mb-8 text-transparent ${isDark ? "[-webkit-text-stroke:1px_white] sm:[-webkit-text-stroke:2px_white]" : "[-webkit-text-stroke:1px_black] sm:[-webkit-text-stroke:2px_black]"}`}> Meet Our Expert Team</h2>
+              <h2 className={`text-2xl md:text-4xl lg:text-7xl font-bold text-center mb-8 ${isDark ? "text-white" : "text-black"}`}> Meet Our Expert Team</h2>
               <p className={`text-base md:text-lg text-center mb-4 ${isDark ? "text-white" : "text-black"}`}> A relentless team of creators, developers, and strategists obsessed with delivering unparalleled digital experiences.</p>
               <div className="flex flex-row items-center justify-center mb-10 w-full">
                   <AnimatedTooltip items={instructors} />
