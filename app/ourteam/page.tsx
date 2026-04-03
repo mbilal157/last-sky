@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import { CardContainer, CardBody, CardItem } from "@/app/components/ui/3d-card";
 import { WavyBackground } from "@/app/components/ui/wav-bg";
 import { AnimatedTooltip } from "@/app/components/ui/animated-tooltip";
 import { useTheme } from "next-themes";
@@ -88,7 +86,7 @@ export default function OurTeamPage() {
               <h2 className={`text-2xl md:text-4xl lg:text-7xl font-bold text-center mb-8 ${isDark ? "text-white" : "text-black"}`}> Meet Our Expert Team</h2>
               <p className={`text-base md:text-lg text-center mb-4 ${isDark ? "text-white" : "text-black"}`}> A relentless team of creators, developers, and strategists obsessed with delivering unparalleled digital experiences.</p>
               <div className="flex flex-row items-center justify-center mb-10 w-full">
-                  <AnimatedTooltip items={instructors} />
+                  <AnimatedTooltip items={instructors}/>
               </div>
           </WavyBackground>
       </div>
