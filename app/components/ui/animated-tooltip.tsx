@@ -92,17 +92,19 @@ export const AnimatedTooltip = ({
                 }}
                 exit={{ opacity: 0, y: 20, scale: 0.6 }}
                 style={{ whiteSpace: "normal" }}
-                className="absolute bottom-full mb-4 left-1/2 -translate-x-1/2 flex flex-col justify-start rounded-xl bg-white dark:bg-black z-[60] shadow-2xl px-6 py-5 w-[18rem] md:w-[24rem] border border-black/10 dark:border-white/20"
+                className={`absolute top-full mt-4 flex flex-col justify-start rounded-xl !bg-white dark:!bg-black z-[60] shadow-2xl px-6 py-5 w-[18rem] md:w-[24rem] border border-black/10 dark:border-white/20 ${
+                  idx < 3 ? "left-0 sm:left-1/2 sm:-translate-x-1/2" : idx > items.length - 4 ? "right-0 sm:right-auto sm:left-1/2 sm:-translate-x-1/2" : "left-1/2 -translate-x-1/2"
+                }`}
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="absolute inset-x-10 z-30 w-[20%] -bottom-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent h-px " />
                 <div className="absolute left-10 w-[40%] z-30 -bottom-px bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px " />
-                <div className="flex flex-col gap-1 w-full relative z-30 bg-white dark:bg-black">
-                  <h1 className="font-bold text-black dark:text-white text-xl">{item.name}</h1>
-                  <h2 className="text-gray-700 dark:text-gray-300 text-sm font-medium">{item.designation}</h2>
+                <div className="flex flex-col gap-1 w-full relative z-30 !bg-transparent">
+                  <h1 className="font-bold !text-black dark:!text-white text-xl">{item.name}</h1>
+                  <h2 className="!text-gray-700 dark:!text-gray-300 text-sm font-medium">{item.designation}</h2>
                   <FaQuoteLeft className="text-4xl text-[#00c8ff] flex-shrink-0" />
                   <div className="flex gap-3 items-start mt-2">
-                    <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed italic text-left">
+                    <p className="!text-gray-600 dark:!text-gray-400 text-xs leading-relaxed italic text-left">
                       {item.description}
                     </p>
                   </div>
