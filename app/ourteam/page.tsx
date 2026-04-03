@@ -5,7 +5,6 @@ import { AnimatedTooltip } from "@/app/components/ui/animated-tooltip";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
-
 const instructors = [
     {
       id: 1,
