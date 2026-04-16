@@ -46,7 +46,7 @@ export default function AboutUs() {
         <div className="relative group overflow-hidden rounded-2xl shadow-lg">
           <div className="relative w-full aspect-[1/1] overflow-hidden group">
             <Image
-              src="/images/3pro.jpg"
+              src="/images/3pro.jpeg"
               alt="About Skyline Production"
               fill
               className="object-cover transform group-hover:scale-110 transition-transform duration-700"

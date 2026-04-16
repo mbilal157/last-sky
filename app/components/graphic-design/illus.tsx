@@ -18,6 +18,20 @@ export function Illustrations() {
       ratio: "aspect-[5/4]",
       type: "h",
     })),
+    // 4:5 verticals (illusn 1-14 .jpeg)
+    ...Array.from({ length: 14 }, (_, i) => ({
+      id: 38 + i,
+      image: `/images/portfolio/newphotos/illus/illusn${i + 1}.jpeg`,
+      ratio: "aspect-[4/5]",
+      type: "v",
+    })),
+    // 4:5 vertical (illusn15 .png)
+    {
+      id: 52,
+      image: `/images/portfolio/newphotos/illus/illusn15.png`,
+      ratio: "aspect-[4/5]",
+      type: "v",
+    },
   ];
 
   // shuffle for randomness

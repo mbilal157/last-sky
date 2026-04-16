@@ -242,7 +242,7 @@ export default function ContactUs() {
                       : "bg-white border-gray-300 text-gray-700"
                   }`}
                 >
-                  <option value="">Select a service</option>
+                  <option value="" disabled hidden>Select a service</option>
                   <option value="graphic-design">Graphic Design</option>
                   <option value="video-editing">Video Editing</option>
                   <option value="web-development">Web Development</option>

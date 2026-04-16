@@ -24,6 +24,27 @@ export function Kids() {
         ratio: "aspect-[5/4]",
         type: "h",
       })),
+      // 5:4 horizontals (kidh)
+      ...Array.from({ length: 9 }, (_, i) => ({
+        id: 36 + i,
+        image: `/images/portfolio/newphotos/kids/kidh${i + 1}.jpeg`,
+        ratio: "aspect-[5/4]",
+        type: "h",
+      })),
+      // 4:5 verticals (kidn)
+      ...Array.from({ length: 16 }, (_, i) => ({
+        id: 45 + i,
+        image: `/images/portfolio/newphotos/kids/kidn${i + 1}.jpeg`,
+        ratio: "aspect-[4/5]",
+        type: "v",
+      })),
+      // 4:3 horizontals (kidm)
+      ...Array.from({ length: 3 }, (_, i) => ({
+        id: 61 + i,
+        image: `/images/portfolio/newphotos/kids/kidm${i + 1}.jpeg`,
+        ratio: "aspect-[4/3]",
+        type: "m",
+      })),
     ];
 
     const shuffledWithStyles = cards
@@ -64,7 +85,7 @@ export function Kids() {
                   src={card.image}
                   alt={`Poster ${card.id}`}
                   width={card.type === 'v' ? 800 : 1000}
-                  height={card.type === 'v' ? 1000 : 800}
+                  height={card.type === 'v' ? 1000 : (card.type === 'm' ? 750 : 800)}
                   sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 25vw"
                   className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700 ease-out"
                 />
